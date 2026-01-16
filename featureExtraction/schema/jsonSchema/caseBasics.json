@@ -1,0 +1,232 @@
+{
+    "$defs": {
+        "DateDetail": {
+            "additionalProperties": false,
+            "properties": {
+                "date": {
+                    "description": "The date in ISO 8601 format (YYYY-MM-DD)",
+                    "format": "date",
+                    "title": "Date",
+                    "type": "string"
+                },
+                "source": {
+                    "description": "The exact match source text from which the date was extracted",
+                    "title": "Source",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "date",
+                "source"
+            ],
+            "title": "DateDetail",
+            "type": "object"
+        },
+        "District": {
+            "enum": [
+                "Central and Western",
+                "Eastern",
+                "Southern",
+                "Wan Chai",
+                "Kowloon City",
+                "Kwun Tong",
+                "Sham Shui Po",
+                "Wong Tai Sin",
+                "Yau Tsim Mong",
+                "Islands",
+                "Kwai Tsing",
+                "North",
+                "Sai Kung",
+                "Sha Tin",
+                "Tai Po",
+                "Tuen Wan",
+                "Tuen Mun",
+                "Yuen Long"
+            ],
+            "title": "District",
+            "type": "string"
+        },
+        "NatureOfPlace": {
+            "enum": [
+                "Residential building",
+                "Commercial building",
+                "Industrial building",
+                "Government or public building",
+                "Entertainment venue",
+                "Street",
+                "Car park or parking lot",
+                "Shopping mall",
+                "Public transport",
+                "Private vehicle",
+                "Restaurant",
+                "Educational institution",
+                "Hospital or medical facility",
+                "Outside methadone clinic",
+                "Recreational area",
+                "Hotel or guesthouse",
+                "Construction site",
+                "Vacant or abandoned property",
+                "Border checkpoint",
+                "Other"
+            ],
+            "title": "NatureOfPlace",
+            "type": "string"
+        },
+        "NatureOfPlaceOfOffence": {
+            "additionalProperties": false,
+            "properties": {
+                "nature": {
+                    "$ref": "#/$defs/NatureOfPlace",
+                    "description": "The nature of the place of offence."
+                },
+                "source": {
+                    "description": "The exact match source text from which the nature of the place of offence was extracted",
+                    "title": "Source",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "nature",
+                "source"
+            ],
+            "title": "NatureOfPlaceOfOffence",
+            "type": "object"
+        },
+        "PlaceOfOffence": {
+            "additionalProperties": false,
+            "properties": {
+                "address": {
+                    "description": "The full address of the place of offence",
+                    "title": "Address",
+                    "type": "string"
+                },
+                "district": {
+                    "$ref": "#/$defs/District",
+                    "description": "The district where the place of offence is located"
+                },
+                "source": {
+                    "description": "The exact match source text from which the place of offence was extracted",
+                    "title": "Source",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "address",
+                "district",
+                "source"
+            ],
+            "title": "PlaceOfOffence",
+            "type": "object"
+        },
+        "TimeDetail": {
+            "additionalProperties": false,
+            "properties": {
+                "time": {
+                    "description": "The time in ISO 8601 format (HH:MM:SS), UTC +8 timezone",
+                    "format": "time",
+                    "title": "Time",
+                    "type": "string"
+                },
+                "source": {
+                    "description": "The exact match source text from which the time was extracted",
+                    "title": "Source",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "time",
+                "source"
+            ],
+            "title": "TimeDetail",
+            "type": "object"
+        },
+        "TraffickingMode": {
+            "additionalProperties": false,
+            "properties": {
+                "mode": {
+                    "$ref": "#/$defs/TraffickingModeEnum",
+                    "description": "The mode of drug trafficking. Options include:'Street-level dealing' (Selling drugs directly to users in public spaces like streets, parks, or clubs); 'Social supply' (Sharing or selling drugs within social circles); 'Courier delivery' (Transporting drugs personally from one location to another for delivery to buyers); 'Parcel delivery' (Shipping drugs through postal or courier services); 'Drug houses' (Operating from fixed locations (e.g., apartments or houses) where buyers visit to purchase drugs); 'Vehicle-based dealing' (Conducting drug transactions from cars, either through drive-by exchanges, quick meetings in parking lots, or mobile delivery to buyers); 'Vehicle concealment' (Hiding drugs in vehicles); 'Mule trafficking' (Using individuals to transport drugs across borders); 'Drug storage' (Storing drugs in specific locations before distribution); 'Maritime transport'; 'Festival or event dealing' (Selling drugs at music festivals, raves, or large gatherings where drug use is prevalent); 'Online trafficking' (Selling and distributing drugs through internet platforms), or 'Other'."
+                },
+                "source": {
+                    "description": "The exact match source text from which the mode of drug trafficking was extracted",
+                    "title": "Source",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "mode",
+                "source"
+            ],
+            "title": "TraffickingMode",
+            "type": "object"
+        },
+        "TraffickingModeEnum": {
+            "enum": [
+                "Not mentioned",
+                "Street-level dealing",
+                "Social supply",
+                "Courier delivery",
+                "Parcel delivery",
+                "Drug houses",
+                "Vehicle-based dealing",
+                "Vehicle concealment",
+                "Mule trafficking",
+                "Drug storage",
+                "Maritime transport",
+                "Festival or event dealing",
+                "Online trafficking",
+                "Other"
+            ],
+            "title": "TraffickingModeEnum",
+            "type": "string"
+        }
+    },
+    "additionalProperties": false,
+    "properties": {
+        "date": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/DateDetail"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "time": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/TimeDetail"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "placeOfOffence": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/PlaceOfOffence"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "natureOfPlaceOfOffence": {
+            "$ref": "#/$defs/NatureOfPlaceOfOffence"
+        },
+        "traffickingMode": {
+            "$ref": "#/$defs/TraffickingMode"
+        }
+    },
+    "required": [
+        "natureOfPlaceOfOffence",
+        "traffickingMode"
+    ],
+    "title": "CaseBasics",
+    "type": "object"
+}

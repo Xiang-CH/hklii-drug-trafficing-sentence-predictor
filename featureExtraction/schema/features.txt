@@ -1,0 +1,497 @@
+Features
+
+1.	Date of offence                                         // caseBasics/date
+    a.	Not mentioned                                       // null value
+    b.	Exact date                                          // infer from date.date
+    c.	Day of the week                                     // infer from date.date
+        i.	Weekday (Mon-Fri)
+        ii.	Weekend (Sat-Sun)
+    d.	Whether the offence occurred on a public holiday    // infer from date
+
+
+2.	Time of offence                                         // caseBasics/time.time
+    a.	Not mentioned                                       // null value
+    b.	Exact time                                          // infer from time.time
+    c.	Time category                                       // infer from time.time
+        i.	Morning (6am-11:59pm)
+        ii.	Afternoon (12pm-5:59pm)
+        iii.	Evening (6pm-10:59pm)
+        iv.	Night (11pm-5:59am)
+
+
+3.	Place of offence                                        // caseBasics/placeOfOffence
+    a.	Not mentioned                                       // null value
+    b.	Full address                                        
+    c.	District                                             
+
+
+4.	Nature of place of offence                              // caseBasics/natureOfPlaceOfOffence.nature
+    a.	Residential building 
+        (e.g., house, apartment)
+    b.	Commercial building 
+        (e.g., office, retail store)
+    c.	Industrial building 
+        (e.g., warehouse, factory)
+    d.	Government or public building 
+        (e.g., courthouse, community centre)
+    e.	Entertainment venue 
+        (e.g., nightclub, bar, concert hall)
+    f.	Street
+    g.	Car park or parking lot
+    h.	Shopping mall
+    i.	Public transport 
+        (including public transport facility)
+    j.	Private vehicle
+    k.	Restaurant
+    l.	Educational institution
+    m.	Hospital or medical facility
+    n.	Outside methadone clinic
+    o.	Recreational area
+    p.	Hotel or guesthouse
+    q.	Construction site
+    r.	Vacant or abandoned property
+    s.	Border checkpoint
+    t.	Other
+
+
+5.	Mode of drug trafficking                                // caseBasics/traffickingMode.mode
+    a.	Street-level dealing: Selling drugs directly to users in public spaces like streets, parks, or clubs
+    b.	Social supply: Sharing or selling drugs within social circles
+    c.	Courier delivery: Transporting drugs personally from one location to another for delivery to buyers
+    d.	Parcel delivery: Shipping drugs through postal or courier services
+    e.	Drug houses: Operating from fixed locations (e.g., apartments or houses) where buyers visit to purchase drugs
+    f.	Vehicle-based dealing: Conducting drug transactions from cars, either through drive-by exchanges, quick meetings in parking lots, or mobile delivery to buyers
+    g.	Vehicle concealment: Hiding drugs in vehicles
+    h.	Mule trafficking: Using individuals to transport drugs across borders
+    i.	Drug storage: Storing drugs in specific locations before distribution
+    j.	Maritime transport
+    k.	Festival or event dealing: Selling drugs at music festivals, raves, or large gatherings where drug use is prevalent.
+    l.	Online trafficking: Selling and distributing drugs through internet platforms
+    m.	Other
+
+
+6.	Types and quantities of drugs
+
+
+7.	Role of the defendant
+    a.	Not mentioned
+    b.	Courier: Transporter of drugs
+    c.	Storekeeper: Responsible for storage or warehousing
+    d.	Lookout/scout: Person monitoring for law enforcement or rivals
+    e.	Actual trafficker: Directly sells or distributes dangerous drugs to the public, and may also be involved in related activities such as repackaging, storage, or delivery. However, unlike a courier, who passively transports drugs under direction, or a storekeeper, who merely safeguards them, the actual trafficker plays a more active and hands-on role in the trafficking process, often engaging directly with buyers and facilitating transactions.
+    f.	Manager/organizer: Coordinator or planner of trafficking activities, typically holds strategic authority and is responsible for planning, supervising logistics, assigning roles, and maintaining the structure and efficiency of the trafficking network
+    g.	Operator/financial controller: Making substantial gains from drug trafficking
+    h.	International operator/financial controller: organiser or controller of a large and lucrative commercial operation which transcends jurisdictional boundaries
+    i.	Other
+
+
+8.	Reasons for committing the offence
+    a.	Not mentioned
+    b.	Financial gain: To obtain money, valuables, or other material benefit, regardless of financial need
+    c.	Economic hardship: Motivated by financial difficulties facing the offender, such as debt, unemployment, or other economic pressures
+    d.	Coercion: Compelled to commit the offence due to threats, intimidation, or pressure from criminal groups or other parties
+    e.	Deception: Misled or deceived about the nature or consequences of the activity, leading to involvement in the offence
+    f.	Addiction-driven: To support the individual’s substance abuse or addiction, such as funding personal drug use
+    g.	Peer influence: Influenced by social pressure or encouragement from peers or associates
+    h.	Helping other people: Committed the offence with the intention of assisting or benefiting others, such as family or friends.
+    i.	Other
+
+
+9.	Benefits received/to be received for trafficking (excluding value of the drug)
+    a.	Amount
+
+
+10.	Defendant’s background                                                  \\ defendantProfile
+    a.	Nationality                                                         \\ nationality
+        i.	Not mentioned                                                   \\ nationality = null
+        ii.	Hong Kong resident                                              \\ nationality.category + nationality.hk_resident_status
+            1.	Not mentioned
+            2.	Permanent resident
+            3.	New arrival (less than 7 years in Hong Kong)
+        iii.	Mainland Chinese                                            \\ nationality.category
+        iv.	Foreign nationality (specify country)                           \\ nationality.category + nationality.foreign_country_code
+    b.	Age at the time of offence                                          \\ age_at_offence.age (int)
+        (if no exact age is mentioned, estimate the range if possible)      \\ age_at_offence.age (list(int): [min, max])
+    c.	Age at sentencing                                                   \\ age_at_sentencing.age              
+        (if no exact age is mentioned, estimate the range if possible)      \\ age_at_sentencing.age (list(int): [min, max])
+    d.	Gender                                                              \\ gender.gender
+        i.	 Not mentioned
+        ii.	 Male
+        iii. Female
+    e.	Marital status                                                      \\ marital_status.status                                                          
+        i.	 Not mentioned
+        ii.	 Single
+        iii. Married
+        iv.	 Separated/divorced
+        v.	 Widowed
+        vi.	 Cohabiting
+    f.	Parental status                                                     \\ parental_status.status
+        i.	 Not mentioned
+        ii.	 No children
+        iii. Parent                                                         \\ parental_status.status + parental_status.custody
+            1.	Not mentioned
+            2.	Parent with custody: Has one or more children and primary or shared custody
+            3.	Parent without custody: Has one or more children but does not have custody (e.g., children live with another parent or guardian)
+        iv.	Expecting parent: Currently pregnant or partner is pregnant
+    g.	Household composition                                               \\ household_composition.composition
+        i.	Not mentioned
+        ii.	Lives alone
+        iii.	Lives with family (excluding fiancé and fiancée)
+        iv.	Lives with non-family
+        v.	Homeless
+    h.	Health status                                                       \\ health_status
+        i.	Drug addiction (specify substance, if known)                    \\ health_status.drug_addiction
+        ii.	Mental health conditions (e.g., depression, anxiety)            \\ health_status.mental_health
+        iii.	Physical health conditions (e.g., chronic illnesses)        
+    i.	Participation in (community/residential) drug treatment services or programmes
+    j.	Education level
+        i.	Not mentioned
+        ii.	Uneducated
+        iii.	Primary
+        iv.	Secondary
+            1.	Lower secondary: Including Secondary 1-3 or equivalent level.
+            2.	Upper secondary: Including Secondary 4-7 of old academic structure (1985-2011), Secondary 4-6 of new academic structure (2012 onwards) or equivalent level, Project Yi Jin/Yi Jin Diploma, Diploma of Applied Education and craft level
+        v.	Tertiary
+    k.	Occupation (at the time of the offence)
+        i.	    Not mentioned
+        ii.	    Unemployed
+        iii.	Manager: Including legislators; senior government officials; foreign diplomats; managing directors and chief executives; business services managers; administration managers; sales and marketing managers; manufacturing managers; construction managers; supply and distribution managers; information and communications technology service managers; professional services managers; school principals; hotel managers; retail and wholesale trade managers; etc.
+        iv.	    Professional: Including accountants and auditors; engineering professionals; medical doctors; registered nurses and other healthcare professionals (e.g. registered Chinese medicine practitioners, dentists, pharmacists, midwives, veterinarians); lawyers; university and post-secondary college lecturers; school teachers and other teaching professionals; actuaries; statisticians; economists; financial and investment advisers; software and applications developers and analysts; social and religious professionals; etc.
+        v.	    Associate professional: Including engineering technicians; manufacturing and construction supervisors; enrolled nurses and other healthcare associate professionals (e.g. dental assistants, dispensers, postnatal care workers); law clerks; actuarial assistants; statistical assistants; securities traders; insurance consultants and underwriters; information and communications technology technicians; real estate agents and property managers; administrative and specialised secretaries; inspectors and similarly ranked staff in disciplined services; social work assistants; photographers; chefs; etc.
+        vi.	    Clerical support worker: Including general office clerks; accounting and bookkeeping clerks; personal secretaries; bank tellers; client information workers; storekeepers; etc.
+        vii.	Service and sales worker: Including salespersons; travel attendants and guides; cooks; waiters; barbers; beauticians; personal care workers; rank and file staff in disciplined services; child care workers and teachers’ aides; building security guards; transport workers; etc.
+        viii.	Craft and related worker: Including building and related trades workers; machinery mechanics and repairers; electrical, electronic and telecommunication equipment installers and repairers; bakers and other food processing workers; tailors; etc.
+        ix.	    Plant and machine operator and assembler: Including food and related products machine operators; drivers and mobile plant operators; etc.
+        x.	    Elementary occupation: Including domestic helpers; cleaners and labourers; food preparation assistants; messengers and deliverers; etc.
+        xi.	    Skilled agricultural and fishery worker: Including vegetable farm workers; gardeners; fishery workers
+        xii.	Student
+        xiii.	Other
+    l.	Monthly wage (at the time of the offence) (other currencies?)
+    m.	Criminal record
+        i.	 Not mentioned
+        ii.	 None
+        iii. Previous convictions on drug trafficking
+        iv.	 Previous convictions on other dangerous drug offences (e.g. possession, manufacturing, possession of drug paraphernalia, cultivation, etc.)
+        v.	 Previous convictions on other offences
+    n.	 Positive habits after arrest
+        i.	 Not mentioned
+        ii.	 Volunteering
+        iii. Studying 
+        iv.	 Working
+        v.	 Negative drug tests
+        vi.	 Participation in rehabilitation or self-improvement programs
+
+11.	Family support
+    a.	None
+    b.	Presence of family members in court
+    c.	Letters of support from family
+    d.	Other
+
+12.	Aggravating factors (must be explicitly addressed by the judge, not inferred by implication)
+    a.	No aggravating factors
+    b.	Refugee/Asylum seeker status
+    c.	Illegal immigrant
+    d.	Offending while on bail
+    e.	Offending during suspended sentence or probation
+    f.	Offending while under Correctional Services Department supervision
+    g.	Offending while wanted
+    h.	Persistent offender
+    i.	Cross-border drug trafficking
+    i.	Import
+    ii.	Export
+    j.	Use of minors
+    k.	Dealing in more than one type of dangerous drugs
+
+13.	Corresponding enhancement in sentence for each identified aggravating factor
+    a.	The judge acknowledged the aggravating factor but decided not to impose a sentence enhancement.
+    b.	The specific enhancement due to this aggravating factor
+
+14.	Guilty plea or not
+    a.	High Court
+        i.	Stage unknown
+        ii.	Up to committal in Magistrates’ Courts
+        iii.	After committal and up to and until trial dates are fixed
+        iv.	After trial dates are fixed but before the first date of trial
+        v.	First day of trial
+        vi.	During the trial
+    b.	District Court
+        i.	Stage unknown
+        ii.	At plea day
+        iii.	After trial dates are fixed but before the first date of trial
+        iv.	First day of trial
+        v.	During the trial
+
+15.	Mitigating factors (must be explicitly addressed by the judge, not inferred by implication) (Do not consider D’s guilty plea in this question)
+    a.	Voluntary surrender
+    b.	Self-consumption of significant proportion of drugs
+    c.	Assistance to authorities
+        i.	Of some limited help but unfruitful
+        ii.	Useful assistance leading to arrest / conviction of another accused
+        iii.	Testify in court successfully against another accused
+        iv.	Assist the authorities at considerable personal risk
+    d.	Young age
+        i.	Extreme youth (15 years old or below)
+        ii.	Young Offender (16-20 years old)
+    e.	Medical conditions
+    f.	Family illness or tragedy
+    g.	Prosecutorial delay
+    h.	Mistaken belief about drug type
+    i.	Positive good character
+    j.	Participation in anti-trafficking or rehabilitative programmes (e.g., Father Wotherspoon’s programme)
+
+16.	Corresponding reduction in sentence for each identified mitigating factor
+    a.	The judge acknowledged the mitigating factor but decided not to impose a sentence reduction.
+    b.	The specific reduction due to this mitigating factor
+
+17.	Starting point of sentence (based on drug type and quantity)
+
+18.	The sentence taking into account the role of each defendant (where applicable)
+
+19.	Notional sentence (i.e. the starting point plus any enhancement due to aggravating factors)
+
+20.	For each identified aggravating factor, specify the corresponding sentence enhancement applied by the judge (if any).
+
+21.	Sentence reduction (if any) granted based on other mitigating factors explicitly acknowledged by the judge (excluding the guilty plea)
+
+22.	Final sentence for each charge (any reduction as a result of the defendant’s guilty plea) 
+
+
+
+特徵
+1.	案發日期
+a.	未有提及
+b.	確切日期
+c.	星期幾
+i.	平日（星期一至星期五）
+ii.	週末（星期六至星期日）
+d.	是否在公眾假期犯罪
+
+2.	案發時間 
+a.	未有提及
+b.	確切時間
+c.	時間類別
+i.	上午（6:00-11:59）
+ii.	下午（12:00-17:59）
+iii.	傍晚（18:00-22:59）
+iv.	夜間（23:00-5:59）
+
+3.	案發地點
+a.	未有提及
+b.	完整地址
+c.	地區
+
+4.	案發場所性質
+a.	住宅區（例如：房屋、公寓）
+b.	商業區（例如：辦公室、零售店）
+c.	工業區（例如：倉庫、工廠）
+d.	政府或公共建築（例如：法院、社區中心）
+e.	娛樂場所（例如：夜總會、酒吧、音樂會場地）
+f.	街道
+g.	停車場或停車位
+h.	購物商場
+i.	公共交通（包括公共交通設施）
+j.	私家車輛
+k.	餐廳
+l.	教育機構
+m.	醫院或醫療設施
+n.	美沙酮診所外
+o.	康樂區域
+p.	酒店或賓館
+q.	建築工地
+r.	空置或廢棄物業
+s.	邊境檢查站
+t.	其他
+
+5.	販毒手法
+a.	街頭交易：在街道、公園或夜店等公共場所，直接向吸毒者販售毒品
+b.	社交供應：在社交圈中分享或販售毒品
+c.	運毒配送：親自從一地將毒品運送至買家所在地
+d.	包裹寄送：透過郵寄或速遞服務運送毒品
+e.	毒窟：在固定場所（如公寓或住宅）經營販毒，買家上門購買
+f.	車上販毒：以汽車進行交易，包括駕車交易、在停車場短暫會面，或送貨到買家處
+g.	車輛藏毒：將毒品藏於車輛內
+h.	人體運毒：利用個人將毒品偷運過境
+i.	儲存毒品：在特定地點儲藏毒品以待分發
+j.	海運販毒
+k.	節慶或活動販毒：在音樂節、狂歡派對或大型聚會等場合販售毒品
+l.	網絡販毒：透過網際網路平台販售與分發毒品
+m.	其他
+
+6.	毒品種類及重量
+
+7.	被告角色
+a.	未有提及
+b.	帶家／運毒者：運送毒品
+c.	倉管員：負責毒品存放或倉儲
+d.	放風／巡哨者：負責監察執法人員或敵對勢力動向的人
+e.	實際(或直接)販運者：直接向公眾銷售或分發危險藥物，並可能涉及與販毒相關的其他活動，例如重新包裝、儲存或運送。然而，與僅根據指示被動運送毒品的運毒者，或單純負責保管毒品的倉管員不同，實際販毒者在整個販毒過程中扮演更積極和主動的角色，往往直接與買家接觸並促成交易。
+f.	管理人／組織者：販毒活動的統籌或策劃人，通常擁有策略性決策權，負責規劃、監督後勤安排、分配角色，以及維持整個販毒網絡的結構及效率
+g.	操作／財務控制人：從販毒中獲取大量利益
+h.	跨境操作╱財務控制人：組織或控制跨境、大型且利潤豐厚的販毒商業運作
+i.	其他
+
+8.	犯案原因
+a.	未有提及
+b.	財務利益：為了獲得金錢、財物或其他物質利益，不論是否真的有財務需要
+c.	經濟困境：因面對債務、失業或其他經濟壓力而犯案
+d.	被脅迫：因受威脅、恐嚇或來自犯罪組織或其他人士的壓力而被迫犯案
+e.	被欺騙：因對行為的性質或後果被誤導或欺騙，導致參與犯罪
+f.	毒癮驅使：為了支持自身的物質濫用或毒癮，例如購買毒品
+g.	朋輩影響：因朋友或同輩施加社交壓力或鼓勵而作出有關行為
+h.	協助他人：為了協助或讓他人（如親人、朋友）受益而作出有關行為
+i.	其他
+
+9.	獲得利益（不包括毒品本身的價值）
+a.	金額
+
+10.	被告背景
+a.	國籍
+i.	未有提及
+ii.	香港居民
+1.	未有提及
+2.	永久居民
+3.	新來港人士（來港未滿七年）
+iii.	中國內地居民
+iv.	外籍人士（註明國家）
+b.	犯案時年齡（如未有確實年齡，請盡可能估算範圍）
+c.	判刑時年齡（如未有確實年齡，請盡可能估算範圍）
+d.	性別
+i.	未有提及
+ii.	男
+iii.	女
+e.	婚姻狀況
+i.	未有提及
+ii.	單身
+iii.	已婚
+iv.	分居/離婚
+v.	喪偶
+vi.	同居
+f.	家庭狀況
+i.	未有提及
+ii.	沒有子女
+iii.	為人父母
+1.	未有提及
+2.	有撫養權的父母：擁有一名或以上子女，並具有主要或共同撫養權
+3.	沒有撫養權的父母：擁有一名或以上子女，但沒有撫養權（例如：子女與另一方或監護人同住）
+iv.	準父母：目前懷孕或伴侶懷孕
+g.	家庭組成
+i.	未有提及
+ii.	獨居
+iii.	與家人同住（不包括未婚夫或未婚妻）
+iv.	與非家庭成員同住
+v.	無家可歸
+h.	健康狀況
+i.	藥物成癮（如已知，請註明物質）
+ii.	精神健康問題（如抑鬱、焦慮）
+iii.	身體健康問題（如慢性疾病）
+i.	參與社區/住院式毒品治療服務或計劃
+j.	教育程度
+i.	未有提及
+ii.	未受過教育
+iii.	小學
+iv.	中學
+1.	初中程度：包括中一至中三或同等學歷
+2.	高中程度：包括舊學制（1985–2011年）中四至中七、新學制（2012年起）中四至中六，或同等學歷，例如毅進計劃／毅進文憑、應用教育文憑及工藝課程等
+v.	大學及以上
+k.	職業（案發時）
+i.	未有提及
+ii.	失業
+iii.	管理人員：包括立法會議員、高級政府官員、外國外交人員、董事總經理及行政總裁、商業服務經理、行政經理、銷售及市場經理、製造業經理、建造業經理、供應及物流經理、資訊及通訊科技服務經理、專業服務經理、校長、酒店經理、零售及批發業經理等
+iv.	專業人員：包括會計師及核數師、工程師、醫生、註冊護士及其他醫護專業人員（例如註冊中醫、牙醫、藥劑師、助產士、獸醫）、律師、大學及專上學院講師、中小學教師及其他教育專業人士、精算師、統計師、經濟師、財務及投資顧問、軟件及應用程式開發人員及分析員、社會及宗教專業人士等
+v.	輔助專業人員：包括工程技術員、製造及建築業監督、登記護士及其他醫護副專業人員（如牙科助理、配藥員、陪月員）、法律助理、精算助理、統計助理、證券交易員、保險顧問及核保員、資訊及通訊科技技術員、地產代理及物業管理員、行政及專門秘書、紀律部隊稽查人員及同級職位、社會工作助理、攝影師、廚師等
+vi.	文書支援人員：包括一般文員、會計及簿記文員、私人秘書、銀行櫃員、客戶資料服務員、倉務員等
+vii.	服務及銷售人員：包括售貨員、導遊及旅遊服務員、廚師、侍應、理髮師、美容師、個人護理人員、紀律部隊基層人員、育嬰員及教學助理、保安員、交通服務從業員等
+viii.	工藝及有關人員：包括建築及相關行業工人、機器技工及維修員、電力、電子及電訊設備裝配及維修員、麵包師及其他食品加工工人、裁縫等
+ix.	機器操作員及裝配工人：包括食品及相關製品機器操作員、司機及流動機械操作員等
+x.	初級工作人員：包括家庭傭工、清潔工及體力勞動者、食品準備助理、速遞及送遞員等
+xi.	熟練農業及漁業工人：包括蔬菜種植工人、園藝工人、漁業從業員
+xii.	學生
+xiii.	其他職業
+l.	每月工資（案發時）
+m.	犯罪記錄
+i.	未有提及
+ii.	無犯罪記錄
+iii.	曾因販毒定罪
+iv.	曾因其他危險毒物罪行定罪（例如：管有、製造、管有吸食毒品用具、栽種等）
+v.	曾因其他罪行定罪
+n.	良好習慣
+i.	未有提及
+ii.	義工服務
+iii.	學習
+iv.	工作
+v.	毒品檢測呈陰性
+vi.	參與康復或自我提升計劃
+
+11.	家庭支持
+a.	無
+b.	家庭成員出庭支持
+c.	家庭成員支持信件
+d.	其他
+
+12.	加刑因素（必須由法官明確指出，而不是依據推論）
+a.	沒有加刑因素
+b.	難民申請人/尋求庇護者身份
+c.	非法入境者
+d.	保釋期間犯罪
+e.	在緩刑或感化期間犯罪
+f.	在懲教署監管期間犯罪
+g.	在通緝期間犯罪
+h.	慣犯
+i.	跨境販毒
+i.	進口
+ii.	出口
+j.	利用未成年人販毒
+k.	涉及多於一種危險藥物
+
+13.	對於每一項已確認的加刑因素所對應增加的刑期
+a.	法官承認該加刑因素的存在，但決定不增加刑期
+b.	相應每項加刑因素所增加的刑期
+
+14.	認罪與否
+a.	高等法院
+i.	階段不詳
+ii.	至裁判法院移交前
+iii.	自移交後至正式排期前
+iv.	正式排期後但尚未開庭前
+v.	開庭第一天
+vi.	審訊過程中
+b.	區域法院
+i.	階段不詳
+ii.	答辯日
+iii.	正式排期後但尚未開庭前
+iv.	開庭第一天
+v.	審訊過程中
+
+15.	減刑因素（必須由法官明確指出，不可依據推論）（本題不考慮被告的認罪）
+a.	自願投案
+b.	自用相當比例毒品
+c.	協助執法機關
+i.	提供有限幫助，但未取得成果
+ii.	提供有效協助，導致另一名被告被逮捕/定罪
+iii.	在法庭上成功指證另一名被告
+iv.	冒著相當大的個人風險協助執法機關
+d.	少年因素
+i.	極度年輕（15歲或以下）
+ii.	少年罪犯（16-20歲）
+e.	健康狀況
+f.	家庭疾病或不幸事故
+g.	檢控延誤
+h.	對毒品種類的錯誤認知
+i.	正面良好品格
+j.	參與反販毒計劃（例如：胡頌恆神父的計劃）
+
+16.	對於每一項已確認的減刑因素所對應減輕的刑期
+a.	法官承認該減刑因素的存在，但決定不減輕刑期
+b.	相應每項減刑因素所減輕的刑期
+
+17.	量刑起點（基於毒品類型與份量）
+
+18.	考慮每名被告角色後的量刑（如適用）
+
+19.	名義刑期（即量刑起點加上因加刑因素而增加的刑期）
+
+20.	針對每一項已確認的加刑因素，說明法官所對應增加的刑期（如有）
+
+21.	因法官明確承認的其他減刑因素而減輕的刑期（不包括認罪）
+
+22.	每項罪名的最終刑期（包括因被告認罪所導致的任何減刑）

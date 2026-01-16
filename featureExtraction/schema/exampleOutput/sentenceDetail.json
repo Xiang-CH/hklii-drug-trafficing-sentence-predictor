@@ -1,0 +1,68 @@
+{
+  "drugs": [
+    {
+      "drug_type": "Ketamine",
+      "quantity": 216,
+      "source": "The summary of facts reveal that on 17 September 2023, police officers on an anti-narcotics operation intercepted Defendant in Lam Tin. He was carrying a black plastic bag heading towards a taxi which was found to contain a package with 250 grammes of a solid, later confirmed by the Government Chemist to contain 216 grammes of ketamine."
+    }
+  ],
+  "role": {
+    "role": "Courier",
+    "source": "I accept the defence counsel\u0002s submission that Defendant\u0002s role was that of a courier simpliciter."
+  },
+  "aggravating_factors": null,
+  "mitigating_factors": [
+    {
+      "factor": "Young offender",
+      "reduction": 5,
+      "source": "Because of his young age and clear record in particular, I shall further reduce his starting point by 5 months to 7 years and 6 months."
+    },
+    {
+      "factor": "Positive character",
+      "reduction": null,
+      "source": "Letters from his parents and grandparents attest to his fundamentally good character, his filial nature, and their belief that this offence was a result of youthful folly and poor judgment rather than inherent criminality."
+    },
+    {
+      "factor": "Rehabilitation programme",
+      "reduction": null,
+      "source": "It is submitted that Defendant has taken positive steps towards self-improvement while in custody, having completed vocational training courses in hairdressing and construction site safety."
+    },
+    {
+      "factor": "Assistance - limited",
+      "reduction": null,
+      "source": "Furthermore, he provided a text message to the police in January 2025, offering information on a drug dealer. While this did not directly lead to an immediate arrest in that specific case, it is urged that this demonstrates his genuine cooperation and remorse."
+    }
+  ],
+  "guilty_plea": {
+    "pleaded_guilty": true,
+    "court_type": "High Court",
+    "high_court_stage": "Up to committal",
+    "district_court_stage": null,
+    "source": "Defendant pleaded guilty to this charge in the Eastern Magistrates\u0002 Court on 5 December 2024 and admitted the summary of facts. The case was committed to this Court for sentence.\n\nDefendant is entitled to the customary one-third discount for his early guilty plea, which he entered at the first available opportunity."
+  },
+  "benefits_received": {
+    "amount": 2000.0,
+    "source": "I accept the defence counsel\u0002s submission that Defendant\u0002s role was that of a courier simpliciter.\n\nIt is submitted ... his confined role as a courier expecting a relatively small reward (HK$2,000)."
+  },
+  "starting_point": {
+    "sentence_months": 95,
+    "source": "For quantities between 50 and 300 grammes, the starting point after trial is 6 to 9 years\u0002 imprisonment.\n\nI set the starting point at 7 years and 11 months\u0002 imprisonment."
+  },
+  "sentence_after_role": {
+    "sentence_months": 95,
+    "source": "I therefore find that Defendant falls squarely within the baseline category of a courier. No upward adjustment from the starting point based on his role is required."
+  },
+  "notional_sentence": {
+    "sentence_months": 95,
+    "source": "I set the starting point at 7 years and 11 months\u0002 imprisonment."
+  },
+  "mitigation_reduction": {
+    "reduction_months": 5,
+    "source": "Because of his young age and clear record in particular, I shall further reduce his starting point by 5 months to 7 years and 6 months."
+  },
+  "final_sentence": {
+    "sentence_months": 60,
+    "guilty_plea_reduction_months": 30,
+    "source": "After applying the one-third discount for the guilty plea to the starting point of 7 years and 6 months (90 months), the sentence is reduced to 60 months (5 years).\n\nThe Defendant is sentenced to 5 years\u0002 imprisonment."
+  }
+}
