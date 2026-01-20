@@ -3,41 +3,39 @@
     {
       "charge_type": {
         "type": "Actual Trafficking",
-        "defendants": [
-          "Lau Kam Hung"
-        ],
-        "source": "The defendant pleaded not guilty before a magistrate ... to one count of trafficking in dangerous drugs, contrary to section 4(1)(a) and (3) of the Dangerous Drugs Ordinance, Cap 134"
+        "defendant": "Lau Kam Hung (劉金洪)",
+        "source": "Having pleaded not guilty before a magistrate at his committal on 11 April 2024 to one count of trafficking in dangerous drugs, contrary to section 4(1)(a) and (3) of the Dangerous Drugs Ordinance, Cap 134, the applicant later indicated that he would plead guilty shortly after trial dates were fixed in the High Court. On 22 January 2025, he was sentenced by D Yau J (“the judge”) to 6 years and 1 month’s imprisonment."
       },
       "drugs": [
         {
           "drug_type": "Methamphetamine",
           "other_drug_type": null,
           "quantity": 17,
-          "source": "4 re-sealable plastic bags containing totally 17.0 grammes of “Ice”; particulars: 17.3g of a crystalline solid containing 17.0g of methamphetamine hydrochloride"
+          "source": "Particulars of the offence are that the defendant on 2 April 2022 ... unlawfully trafficked in dangerous drugs, namely, 17.3g of a crystalline solid containing 17.0g of methamphetamine hydrochloride (commonly known as “ice”)"
         },
         {
           "drug_type": "Cannabis",
           "other_drug_type": null,
           "quantity": 14,
-          "source": "3 plastic bags containing 14.4 grammes of herbal cannabis"
+          "source": "Particulars of the offence are that the defendant on 2 April 2022 ... and 14.40g of cannabis in herbal form."
         }
       ],
       "role": {
         "role": "Storekeeper",
-        "source": "the judge, identifying the applicant’s role as a “storekeeper”; and, by arithmetically applying the applicable guidelines, adopted a starting point of 7½ years’ imprisonment"
+        "source": "Based on the summary of facts, the only reasonable inference is that the defendant was in possession of the dangerous drugs as a storekeeper, and he is to be sentenced as such."
       },
       "aggravating_factors": [
         {
           "factor": "Multiple drugs",
           "other_factor": null,
           "enhancement": 1,
-          "source": "trafficking in more than one type of drug was an aggravating factor, the judge enhanced the starting point by 1 month"
+          "source": "Having said that, it is trite law that trafficking in more than one type of dangerous drugs is an aggravating factor, as such, despite the small quantity, I will still take into consideration of this factor and enhance the sentence accordingly... I will enhance his sentence on this basis by 1 month"
         },
         {
           "factor": "Persistent offender",
           "other_factor": null,
           "enhancement": 6,
-          "source": "the judge further found the applicant to be a persistent offender, for which he enhanced the sentence by a further 6 months"
+          "source": "The defendant has a number of convictions for very serious offences. ... I find that I must place more weight on the need to deter the defendant from committing further offences in the future when sentencing. As such, I will enhance his sentence by 6 months on him being a persistent offender"
         }
       ],
       "mitigating_factors": null,
@@ -46,25 +44,25 @@
         "court_type": "High Court",
         "high_court_stage": "After dates fixed",
         "district_court_stage": null,
-        "source": "The defendant did plead guilty on 22 January 2025, admitted to the summary of facts ... he indicated he would plead guilty about 1 month after the trial dates were fixed"
+        "source": "Trial dates were fixed on 21 August 2024, commencing on 28 January 2026. On 20 September 2024, the defendant’s solicitors wrote to inform the court that the defendant will plead guilty to the count. The defendant did plead guilty on 22 January 2025, admitted to the summary of facts, and was duly convicted."
       },
       "starting_point": {
         "sentence_months": 90,
-        "source": "adopt a starting point of 7 years and 6 months, being the arithmetical application of the tariff"
+        "source": "Based on my finding of the defendant’s role and culpability, I adopt a starting point of 7 years and 6 months, being the arithmetical application of the tariff."
       },
       "sentence_after_role": {
         "sentence_months": 90,
-        "source": "based on my finding of the defendant’s role and culpability, I adopt a starting point of 7 years and 6 months"
+        "source": "Based on my finding of the defendant’s role and culpability, I adopt a starting point of 7 years and 6 months, being the arithmetical application of the tariff."
       },
       "notional_sentence": {
         "sentence_months": 97,
-        "source": "enhanced by 6 months for persistent offender and 1 month for multiple drugs, taking the total to 8 years and 1 month"
+        "source": "As such, I will enhance his sentence by 6 months ... I will enhance his sentence on this basis by 1 month, taking the total to 8 years and 1 month."
       },
       "mitigation_reduction": null,
       "final_sentence": {
         "sentence_months": 73,
         "guilty_plea_reduction_months": 24,
-        "source": "the applicant was given a discount of about 25% ... resulting in a sentence of 6 years and 1 month’s imprisonment"
+        "source": "Here the defendant indicated through his solicitors his intention to plead guilty ... I find that the defendant should be granted a discount of about 25% for his plea, resulting in a post discount sentence of 73 months’ imprisonment. The defendant is sentenced to 6 years 1 month’s imprisonment."
       }
     }
   ]

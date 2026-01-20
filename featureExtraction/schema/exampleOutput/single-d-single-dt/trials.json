@@ -3,28 +3,26 @@
     {
       "charge_type": {
         "type": "Actual Trafficking",
-        "defendants": [
-          "Wong Man-kit"
-        ],
-        "source": "Offence:   Trafficking in dangerous drugs (販運危險藥物)\n\nThe particulars of the charge are that the defendant on 30 November 2023, at Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories, unlawfully trafficked in dangerous drugs, namely, 112.35 grammes of a solid containing 85.63 grammes of cocaine and 211.16 grammes of a solid containing 170.37 grammes of ketamine."
+        "defendant": "Wong Man-kit",
+        "source": "The particulars of the charge are that the defendant on 30 November 2023... unlawfully trafficked in dangerous drugs, namely, 112.35 grammes of a solid containing 85.63 grammes of cocaine and 211.16 grammes of a solid containing 170.37 grammes of ketamine."
       },
       "drugs": [
         {
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 86,
-          "source": "The particulars of the charge ... 112.35 grammes of a solid containing 85.63 grammes of cocaine"
+          "source": "112.35 grammes of a solid containing 85.63 grammes of cocaine"
         },
         {
           "drug_type": "Ketamine",
           "other_drug_type": null,
           "quantity": 170,
-          "source": "The particulars of the charge ... 211.16 grammes of a solid containing 170.37 grammes of ketamine"
+          "source": "211.16 grammes of a solid containing 170.37 grammes of ketamine"
         }
       ],
       "role": {
         "role": "Storekeeper",
-        "source": "I am satisfied that the role of the defendant is one of storekeeper and courier. This is a position at the bottom of the hierarchy of drug traffickers."
+        "source": "I am satisfied that the role of the defendant is one of storekeeper and courier."
       },
       "aggravating_factors": null,
       "mitigating_factors": null,
@@ -33,25 +31,25 @@
         "court_type": "High Court",
         "high_court_stage": "Up to committal",
         "district_court_stage": null,
-        "source": "The defendant pleaded guilty to one count of trafficking in dangerous drugs on 20 February 2025. He was committed to the Court of First Instance for sentence. Today he confirms his plea and admission of the Summary of Facts."
+        "source": "The defendant pleaded guilty to one count of trafficking in dangerous drugs on 20 February 2025. He was committed to the Court of First Instance for sentence."
       },
       "starting_point": {
         "sentence_months": 120,
-        "source": "After the conversion, I calculate a total of 128.22 grammes of cocaine, which will mathematically attract a starting point of 10 years and 1 month imprisonment.\nI am satisfied that the role of the defendant is one of storekeeper and courier. ... I find the mathematical starting point of 10 years\u0002 imprisonment appropriate in this case."
+        "source": "After the conversion, I calculate a total of 128.22 grammes of cocaine, which will mathematically attract a starting point of 10 years and 1 month imprisonment. ... I find the mathematical starting point of 10 years' imprisonment appropriate in this case."
       },
       "sentence_after_role": {
         "sentence_months": 120,
-        "source": "I am satisfied that the role of the defendant is one of storekeeper and courier. ... I find the mathematical starting point of 10 years\u0002 imprisonment appropriate in this case."
+        "source": "I am satisfied that the role of the defendant is one of storekeeper and courier. I find the mathematical starting point of 10 years' imprisonment appropriate in this case."
       },
       "notional_sentence": {
         "sentence_months": 120,
-        "source": "I find the mathematical starting point of 10 years\u0002 imprisonment appropriate in this case."
+        "source": "I find the mathematical starting point of 10 years' imprisonment appropriate in this case."
       },
       "mitigation_reduction": null,
       "final_sentence": {
         "sentence_months": 80,
         "guilty_plea_reduction_months": 40,
-        "source": "The defendant pleaded guilty at the earliest opportunity and is entitled to a full one-third discount. I will take the starting point of 10 years and reduce it by one-third. The defendant is sentenced to 6 years and 8 months\u0002 imprisonment.\nAccordingly, the defendant is sentenced to a total of 6 years and 8 months\u0002 imprisonment."
+        "source": "The defendant pleaded guilty at the earliest opportunity and is entitled to a full one-third discount. I will take the starting point of 10 years and reduce it by one-third. The defendant is sentenced to 6 years and 8 months' imprisonment."
       }
     }
   ]

@@ -12,7 +12,6 @@ RERUN_ALL = False
 MAX_RETRIES = 3
 
 judgement_base_path = "sampleJudgments"
-# judgement_type = "single-d-single-dt"
 judgement_types = [
     "single-d-single-dt",
     "single-d-multi-dt",

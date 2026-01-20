@@ -3,9 +3,7 @@
     {
       "charge_type": {
         "type": "Actual Trafficking",
-        "defendants": [
-          "Wong Pui-hung"
-        ],
+        "defendant": "Wong Pui-hung",
         "source": "The defendant has pleaded guilty to one count of trafficking in a dangerous drug and one count of possession of a dangerous drug, contrary to section 4 and section 8 of the Dangerous Drugs Ordinance respectively."
       },
       "drugs": [
@@ -32,9 +30,9 @@
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "High Court",
-        "high_court_stage": "Unknown",
+        "high_court_stage": null,
         "district_court_stage": null,
-        "source": "The defendant has pleaded guilty to one count of trafficking in a dangerous drug and one count of possession of a dangerous drug, contrary to section 4 and section 8 of the Dangerous Drugs Ordinance respectively."
+        "source": "After a full one-third discount for the defendant’s earliest plea, the sentence is therefore reduced to 82 months’ imprisonment."
       },
       "starting_point": {
         "sentence_months": 111,
@@ -46,13 +44,13 @@
       },
       "notional_sentence": {
         "sentence_months": 123,
-        "source": "Starting point for trafficking in 43.13 grammes of methamphetamine hydrochloride based on quantity alone will be 9 years and 3 months’ imprisonment. However, this is not the defendant’s first trafficking record. As such, an additional 1 year will be added."
+        "source": "There is nothing in this case to indicate the defendant’s role beyond a mere courier. However, this is not the defendant’s first trafficking record. As such, an additional 1 year will be added."
       },
       "mitigation_reduction": null,
       "final_sentence": {
         "sentence_months": 82,
         "guilty_plea_reduction_months": 41,
-        "source": "There is nothing in this case to indicate the defendant’s role beyond a mere courier. However, this is not the defendant’s first trafficking record. As such, an additional 1 year will be added. After a full one-third discount for the defendant’s earliest plea, the sentence is therefore reduced to 82 months’ imprisonment."
+        "source": "After a full one-third discount for the defendant’s earliest plea, the sentence is therefore reduced to 82 months’ imprisonment."
       }
     }
   ]

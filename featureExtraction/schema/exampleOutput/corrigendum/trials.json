@@ -3,49 +3,58 @@
     {
       "charge_type": {
         "type": "Conspiracy to Traffic",
-        "defendants": [
-          "黃鈺庭"
-        ],
-        "source": "第11段及整篇案情摘要顯示，第一被告人與第二被告人一同串謀非法販運氯胺酮（控罪三）"
+        "defendant": "黃鈺庭",
+        "source": "控罪三：串謀販運危險藥物（針對第一及第二被告人）；本席以160包合共約105克氯胺酮計算（見段23,46,62）"
       },
       "drugs": [
         {
           "drug_type": "Ketamine",
           "other_drug_type": "氯胺酮",
           "quantity": 105,
-          "source": "第23、46及57段：雙方同意以160包約合105克氯胺酮作為推算基礎；第62段以105克作判刑事實基礎"
+          "source": "本席最終接納以105克作為判刑的事實基礎（段56-57,62）"
         }
       ],
       "role": {
         "role": "Courier",
-        "source": "第5-9段及第13段說明第一被告人負責取貨、放貨、派送及出售（以每粒售價計）"
+        "source": "第一被告人供稱負責拿取、放毒及派送（段7 (a)-(l)），屬運送/派送角色"
       },
-      "aggravating_factors": [
-        {
-          "factor": "Use of minors",
-          "other_factor": null,
-          "enhancement": null,
-          "source": "第60-61段：本案涉及利用年輕人犯案，法官認為應加刑，認為加刑起碼10%"
-        }
-      ],
+      "aggravating_factors": null,
       "mitigating_factors": [
+        {
+          "factor": "Young offender",
+          "other_factor": null,
+          "reduction": null,
+          "source": "第一被告人年僅18歲，為量刑上之減刑背景（段13）"
+        },
+        {
+          "factor": "Assistance - useful",
+          "other_factor": null,
+          "reduction": 3,
+          "source": "第一被告人供出並協助警方成功認出、拘捕第二被告人，法庭就此減刑3個月（段65）"
+        },
         {
           "factor": "Assistance - limited",
           "other_factor": null,
-          "reduction": 6,
-          "source": "第64-66段及勘誤：法官就第一被告人的\"招認\"及供出第二被告人，先後各給予3個月減刑，並在勘誤加多3個月（見第65-66段與勘誤）；合計共9個月。但區分出被歸入非認罪之減刑合計為9個月（在此字段列出除認罪外的減刑總額）"
+          "reduction": 3,
+          "source": "第一被告人之招認被認為是減刑理由，法庭給予3個月（段64）"
+        },
+        {
+          "factor": "Other",
+          "other_factor": "其他求情內容（鼓勵改過自新）",
+          "reduction": 3,
+          "source": "勘誤及更正：法庭就其他求情內容給予3個月進一步減刑（勘誤，段頁22註）"
         }
       ],
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "District Court",
         "high_court_stage": null,
-        "district_court_stage": "Unknown",
-        "source": "第4段：就控罪二及三，兩名被告人均表示認罪"
+        "district_court_stage": "Plea day",
+        "source": "兩名被告人均表示認罪（段4）；減刑以認罪下調約1/3（段63）"
       },
       "starting_point": {
         "sentence_months": 80,
-        "source": "第62段：以105克毒品份量而定，控罪三的適當的量刑起點為80個月"
+        "source": "以105克氯胺酮計算，量刑起點80個月（段25,62）"
       },
       "sentence_after_role": {
         "sentence_months": 80,
@@ -53,81 +62,138 @@
       },
       "notional_sentence": {
         "sentence_months": 80,
-        "source": "第62段（起刑點為80個月，無另行列明基於角色或其他加刑後的不同起點）"
+        "source": "起刑點80個月，無額外加重，故不ional sentence為80個月（段62-63）"
       },
       "mitigation_reduction": {
         "reduction_months": 9,
-        "source": "第63-66段及勘誤：認罪後由80個月下調約1/3至53個月（認罪扣減27個月屬認罪扣減），其後法官就招認及供出第二被告人合共再減9個月，最終為44個月"
+        "source": "法院就招認、協助破案及其他求情各減刑3個月，合計9個月（段64-66及勘誤）"
       },
       "final_sentence": {
         "sentence_months": 44,
         "guilty_plea_reduction_months": 27,
-        "source": "第66段：針對第一被告人的控罪三，判刑為44個月即時監禁"
+        "source": "最終判控罪三：44個月即時監禁，計算：80 - 27 (認罪扣減) - 9 (其他減刑) = 44（段63-66與勘誤）"
       }
     },
     {
       "charge_type": {
-        "type": "Conspiracy to Traffic",
-        "defendants": [
-          "蘇偉強"
-        ],
-        "source": "第11段及整篇案情摘要顯示，第一被告人與第二被告人一同串謀非法販運氯胺酮（控罪三）"
+        "type": "Actual Trafficking",
+        "defendant": "黃鈺庭",
+        "source": "控罪二（管有危險藥物）：警方化驗證物2為含0.34克氯胺酮之證物（段10(ii)）；法庭就控罪二判刑（段69）"
       },
       "drugs": [
         {
           "drug_type": "Ketamine",
           "other_drug_type": "氯胺酮",
-          "quantity": 105,
-          "source": "第23、46及57段：雙方同意以160包約合105克氯胺酮作為推算基礎；第62段以105克作判刑事實基礎"
+          "quantity": 0,
+          "source": "證物2載有0.34克氯胺酮（段10(ii)） — 量字段以克為整數記錄，數量為小於1克情況（段10）"
         }
       ],
-      "role": {
-        "role": "Manager/organizer",
-        "source": "第8-9、16段：第二被告人為介紹人，安排第一被告人派送及分成；第58-61段指出兩被告角色不同，第二被告人為較重角色"
-      },
-      "aggravating_factors": [
-        {
-          "factor": "Use of minors",
-          "other_factor": null,
-          "enhancement": null,
-          "source": "第60-61段：涉及利用年輕人犯案，法官認為應加刑，認為加刑起碼10%"
-        }
-      ],
+      "role": null,
+      "aggravating_factors": null,
       "mitigating_factors": [
         {
           "factor": "Other",
-          "other_factor": "Positive personal references / family support",
-          "reduction": 3,
-          "source": "第67段：法官基於其求情內容及家人朋友的正面評價，酌情減刑3個月"
+          "other_factor": "同案整體求情因素（按比例適用）",
+          "reduction": 1,
+          "source": "法庭就同樣適用的部分求情因素按比例減刑1個月（段69）"
         }
       ],
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "District Court",
         "high_court_stage": null,
-        "district_court_stage": "Unknown",
-        "source": "第4段：就控罪二及三，兩名被告人均表示認罪（第二被告人亦認罪）"
+        "district_court_stage": "Plea day",
+        "source": "第一被告人認罪（段4）；法庭就認罪從6個月減至4個月（段69）"
+      },
+      "starting_point": {
+        "sentence_months": 6,
+        "source": "控罪二之合適量刑起點定為6個月（段69）"
+      },
+      "sentence_after_role": {
+        "sentence_months": 6,
+        "source": "Inferred as starting point since role adjustment not provided"
+      },
+      "notional_sentence": {
+        "sentence_months": 6,
+        "source": "控罪二起點6個月，無另行加重（段69）"
+      },
+      "mitigation_reduction": {
+        "reduction_months": 1,
+        "source": "按比例適用的求情因素減刑1個月（段69）"
+      },
+      "final_sentence": {
+        "sentence_months": 3,
+        "guilty_plea_reduction_months": 2,
+        "source": "最終判控罪二：3個月即時監禁；計算：6 - 2 (認罪扣減至4個月) - 1 (其他減刑) = 3（段69）"
+      }
+    },
+    {
+      "charge_type": {
+        "type": "Conspiracy to Traffic",
+        "defendant": "蘇偉強",
+        "source": "控罪三：串謀販運危險藥物（針對第一及第二被告人）；法庭以105克氯胺酮作為事實基礎並考量角色加減（段23,46,62-67）"
+      },
+      "drugs": [
+        {
+          "drug_type": "Ketamine",
+          "other_drug_type": "氯胺酮",
+          "quantity": 105,
+          "source": "本席最終接納以105克作為判刑的事實基礎（段56-57,62）"
+        }
+      ],
+      "role": {
+        "role": "Manager/organizer",
+        "source": "第二被告人為介紹人/中介，安排派送並抽成，屬組織/管理中介角色（段9(e),(h);16-17）"
+      },
+      "aggravating_factors": [
+        {
+          "factor": "Use of minors",
+          "other_factor": null,
+          "enhancement": null,
+          "source": "案情涉及利用年輕人（第一被告人為18歲），法庭認為應加刑10%以反映利用年輕人的因素（段60-61）"
+        },
+        {
+          "factor": "Role of the defendant",
+          "other_factor": null,
+          "enhancement": null,
+          "source": "第二被告人角色較重，法庭在量刑時以較高基準處理，並就第二被告人作出加刑處理（段59,67）"
+        }
+      ],
+      "mitigating_factors": [
+        {
+          "factor": "Other",
+          "other_factor": "正面品格材料及家人朋友支持（求情信）",
+          "reduction": 3,
+          "source": "基於其求情內容及正面評價，法庭酌情減刑3個月（段67）"
+        }
+      ],
+      "guilty_plea": {
+        "pleaded_guilty": true,
+        "court_type": "District Court",
+        "high_court_stage": null,
+        "district_court_stage": "Plea day",
+        "source": "兩名被告人均表示認罪（段4）；法庭以認罪下調1/3（段63,67）"
       },
       "starting_point": {
         "sentence_months": 80,
-        "source": "第62段：以105克毒品份量而定，控罪三的適當的量刑起點為80個月（作為基本起刑點用以進一步加減）"
+        "source": "以105克氯胺酮計算，基本量刑起點80個月（段25,62）"
       },
       "sentence_after_role": {
         "sentence_months": 90,
-        "source": "第67段：法官綜合角色及加刑因素後，認為一個90個月的綜合量刑基準可反映第二被告人的刑責（作為考量基準）"
+        "source": "法庭將基本起點調整以反映第二被告人之角色，得出90個月之綜合量刑基準（段67）"
       },
       "notional_sentence": {
         "sentence_months": 90,
-        "source": "第67段：法官以90個月作為綜合量刑基準（即起刑点加角色/加刑因素後的參考基準）"
+        "source": "經角色及其他客觀因素後的綜合量刑基準為90個月（段67）"
       },
       "mitigation_reduction": {
         "reduction_months": 3,
-        "source": "第67段：在認罪下先由90個月下調至60個月（認罪扣減為30個月），其後基於求情酌情再減3個月，故除認罪外的減刑為3個月"
+        "source": "基於求情材料（正面評價等）給予3個月減刑（段67）"
       },
       "final_sentence": {
         "sentence_months": 57,
         "guilty_plea_reduction_months": 30,
-        "source": "第67-68段：第二被告人認罪後由90個月下調至60個月，並進一步酌情減3個月，最終判處57個月即時監禁"
+        "source": "最終判控罪三：57個月即時監禁；計算：90 - 30 (認罪扣減) - 3 (其他減刑) = 57（段67）"
       }
     }
   ]
