@@ -1,5 +1,33 @@
 {
     "$defs": {
+        "BenefitsReceivedDetail": {
+            "additionalProperties": false,
+            "properties": {
+                "amount": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Amount of benefits received or to be received for trafficking in HKD, excluding the value of the drug itself",
+                    "title": "Amount"
+                },
+                "source": {
+                    "description": "The exact match source text from which the benefits amount was extracted",
+                    "title": "Source",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "source"
+            ],
+            "title": "BenefitsReceivedDetail",
+            "type": "object"
+        },
         "DateDetail": {
             "additionalProperties": false,
             "properties": {
@@ -118,6 +146,43 @@
             "title": "PlaceOfOffence",
             "type": "object"
         },
+        "ReasonForOffence": {
+            "enum": [
+                "Financial gain",
+                "Economic hardship",
+                "Coercion",
+                "Deception",
+                "Addiction-driven",
+                "Peer influence",
+                "Other"
+            ],
+            "title": "ReasonForOffence",
+            "type": "string"
+        },
+        "ReasonForOffenceDetail": {
+            "additionalProperties": false,
+            "properties": {
+                "reasons": {
+                    "description": "Reasons for committing the offence. Financial gain: To obtain money, valuables, or other material benefit, regardless of financial need; Economic hardship: Motivated by financial difficulties facing the offender, such as debt, unemployment, or other economic pressures; Coercion: Compelled to commit the offence due to threats, intimidation, or pressure from criminal groups or other parties; Deception: Misled or deceived about the nature or consequences of the activity, leading to involvement in the offence; Addiction-driven: To support the individual's substance abuse or addiction, such as funding personal drug use; Peer influence: Influenced by social pressure or encouragement from peers or associates; ",
+                    "items": {
+                        "$ref": "#/$defs/ReasonForOffence"
+                    },
+                    "title": "Reasons",
+                    "type": "array"
+                },
+                "source": {
+                    "description": "The exact match source text from which the reasons for committing the offence were extracted",
+                    "title": "Source",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "reasons",
+                "source"
+            ],
+            "title": "ReasonForOffenceDetail",
+            "type": "object"
+        },
         "TimeDetail": {
             "additionalProperties": false,
             "properties": {
@@ -162,7 +227,6 @@
         },
         "TraffickingModeEnum": {
             "enum": [
-                "Not mentioned",
                 "Street-level dealing",
                 "Social supply",
                 "Courier delivery",
@@ -220,12 +284,41 @@
             "$ref": "#/$defs/NatureOfPlaceOfOffence"
         },
         "traffickingMode": {
-            "$ref": "#/$defs/TraffickingMode"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/TraffickingMode"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "reason_for_offence": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/ReasonForOffenceDetail"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "benefits_received": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/BenefitsReceivedDetail"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
     "required": [
-        "natureOfPlaceOfOffence",
-        "traffickingMode"
+        "natureOfPlaceOfOffence"
     ],
     "title": "CaseBasics",
     "type": "object"

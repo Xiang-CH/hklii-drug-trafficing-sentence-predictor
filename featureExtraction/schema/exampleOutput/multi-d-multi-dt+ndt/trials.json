@@ -1,0 +1,94 @@
+{
+  "trials": [
+    {
+      "charge_type": {
+        "type": "Actual Trafficking",
+        "defendants": [
+          "曾浩然"
+        ],
+        "source": "本席就每一項控罪採納48個月監禁為量刑起點。第一被告人適時認罪，獲得三分之一的刑期扣減，每項控罪的刑期下調至32個月。"
+      },
+      "drugs": [
+        {
+          "drug_type": "Cocaine",
+          "other_drug_type": null,
+          "quantity": 7,
+          "source": "本案中，警方在第一被告人駕駛的車上和其身上（衞衣前袋及斜孭袋內）找到合共6.73克可卡因（即是控罪一的2.15克及控罪四的4.58克）。"
+        }
+      ],
+      "role": null,
+      "aggravating_factors": null,
+      "mitigating_factors": null,
+      "guilty_plea": {
+        "pleaded_guilty": true,
+        "court_type": "District Court",
+        "high_court_stage": null,
+        "district_court_stage": "Unknown",
+        "source": "第一被告人適時認罪，獲得三分之一的刑期扣減。"
+      },
+      "starting_point": {
+        "sentence_months": 48,
+        "source": "本席打算綜合兩項控罪的可卡因的總重量作計算...6.73克可卡因的份量屬於販運10克以下的組別，相應的量刑起點為2至5年監禁。...適當的量刑起點為48個月監禁。"
+      },
+      "sentence_after_role": {
+        "sentence_months": 48,
+        "source": "Inferred as starting point since role adjustment not provided"
+      },
+      "notional_sentence": {
+        "sentence_months": 48,
+        "source": "本席就每一項控罪採納48個月監禁為量刑起點。"
+      },
+      "mitigation_reduction": null,
+      "final_sentence": {
+        "sentence_months": 32,
+        "guilty_plea_reduction_months": 16,
+        "source": "第一被告人適時認罪，獲得三分之一的刑期扣減，每項控罪的刑期下調至32個月。"
+      }
+    },
+    {
+      "charge_type": {
+        "type": "Actual Trafficking",
+        "defendants": [
+          "張曜龍"
+        ],
+        "source": "因此，以合共4.05克可卡因作計算，考慮了整體情況之後，本席就每一項控罪採納38個月監禁為量刑起點。第二被告人適時認罪，獲得三分之一的刑期扣減，刪除小數位之後，刑期下調至25個月，兩項控罪同期執行，總刑期為25個月。"
+      },
+      "drugs": [
+        {
+          "drug_type": "Cocaine",
+          "other_drug_type": null,
+          "quantity": 4,
+          "source": "就第二被告人而言，涉及的危險藥物分別在第一被告人駕駛的車上和第二被告人的外套右袋找到合共4.05克可卡因（即控罪一的2.15克及控罪五的1.9克可卡因）。"
+        }
+      ],
+      "role": null,
+      "aggravating_factors": null,
+      "mitigating_factors": null,
+      "guilty_plea": {
+        "pleaded_guilty": true,
+        "court_type": "District Court",
+        "high_court_stage": null,
+        "district_court_stage": "Unknown",
+        "source": "第二被告人適時認罪，獲得三分之一的刑期扣減，刪除小數位之後，刑期下調至25個月。"
+      },
+      "starting_point": {
+        "sentence_months": 38,
+        "source": "以合共4.05克可卡因作計算...本席就每一項控罪採納38個月監禁為量刑起點。"
+      },
+      "sentence_after_role": {
+        "sentence_months": 38,
+        "source": "Inferred as starting point since role adjustment not provided"
+      },
+      "notional_sentence": {
+        "sentence_months": 38,
+        "source": "本席就每一項控罪採納38個月監禁為量刑起點。"
+      },
+      "mitigation_reduction": null,
+      "final_sentence": {
+        "sentence_months": 25,
+        "guilty_plea_reduction_months": 13,
+        "source": "第二被告人適時認罪，獲得三分之一的刑期扣減，刪除小數位之後，刑期下調至25個月。"
+      }
+    }
+  ]
+}

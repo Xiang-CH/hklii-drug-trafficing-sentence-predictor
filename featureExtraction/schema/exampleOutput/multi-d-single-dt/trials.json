@@ -1,0 +1,126 @@
+{
+  "trials": [
+    {
+      "charge_type": {
+        "type": "Conspiracy to Traffic",
+        "defendants": [
+          "Hui Kwai-chung, Dick"
+        ],
+        "source": "Both defendants were jointly charged with one count of conspiracy to traffic in a dangerous drug, namely on an unknown date between December 2022 and the 27th day of December 2022, in a room in Yau Tong, they conspired to unlawfully traffic in cocaine."
+      },
+      "drugs": [
+        {
+          "drug_type": "Cocaine",
+          "other_drug_type": null,
+          "quantity": 31,
+          "source": "Upon search, the police found a paper wrapping containing two plastic bags containing a total of 42 grammes of a solid containing 31.4 grammes of cocaine narcotic. This is Exhibit E1."
+        },
+        {
+          "drug_type": "Other",
+          "other_drug_type": "unknown white powder (Exhibit E3)",
+          "quantity": 89866,
+          "source": "A plastic recycling bag (Exhibit E2) containing 99 resealable plastic bags containing 89.866 kilogrammes of an unknown white powder (Exhibit E3) were also found inside the room."
+        }
+      ],
+      "role": {
+        "role": "Courier",
+        "source": "Counsel said that his role was more like a courier taking the drug from the Lei Yue Mun Plaza back to the room."
+      },
+      "aggravating_factors": null,
+      "mitigating_factors": [
+        {
+          "factor": "Assistance - useful",
+          "other_factor": null,
+          "reduction": null,
+          "source": "I was informed by the prosecution ... that as a result of checking or enquiry of that telephone number, they identified a certain person and eventually, about 152.26 grammes of cocaine was found at that person’s home. That person subsequently pleaded guilty ... and was sentenced to 7 years and 1 month’s imprisonment."
+        }
+      ],
+      "guilty_plea": {
+        "pleaded_guilty": true,
+        "court_type": "High Court",
+        "high_court_stage": "Up to committal",
+        "district_court_stage": null,
+        "source": "They pleaded guilty to the offence on 3 February this year before a magistrate and were committed to the High Court for sentence."
+      },
+      "starting_point": {
+        "sentence_months": 79,
+        "source": "So for 31.4 grammes of cocaine narcotics, on a mathematical calculation, the starting point would be one of 6 years and 7 months’ imprisonment."
+      },
+      "sentence_after_role": {
+        "sentence_months": 79,
+        "source": "Inferred as starting point since role adjustment not provided"
+      },
+      "notional_sentence": {
+        "sentence_months": 79,
+        "source": "So for 31.4 grammes of cocaine narcotics, on a mathematical calculation, the starting point would be one of 6 years and 7 months’ imprisonment."
+      },
+      "mitigation_reduction": null,
+      "final_sentence": {
+        "sentence_months": 50,
+        "guilty_plea_reduction_months": null,
+        "source": "In any event, having considered all the circumstances, I am agreeable to give him a slight further discount for the information provided to the police. So he would be entitled to 36 per cent discount in total including his assistance and also his plea of guilty. The resulting sentence for the 1st defendant is 4 years and 2 months’ imprisonment."
+      }
+    },
+    {
+      "charge_type": {
+        "type": "Conspiracy to Traffic",
+        "defendants": [
+          "Hong Ka-ming"
+        ],
+        "source": "Both defendants were jointly charged with one count of conspiracy to traffic in a dangerous drug, namely on an unknown date between December 2022 and the 27th day of December 2022, in a room in Yau Tong, they conspired to unlawfully traffic in cocaine."
+      },
+      "drugs": [
+        {
+          "drug_type": "Cocaine",
+          "other_drug_type": null,
+          "quantity": 31,
+          "source": "Upon search, the police found a paper wrapping containing two plastic bags containing a total of 42 grammes of a solid containing 31.4 grammes of cocaine narcotic. This is Exhibit E1."
+        },
+        {
+          "drug_type": "Other",
+          "other_drug_type": "unknown white powder (Exhibit E3)",
+          "quantity": 89866,
+          "source": "A plastic recycling bag (Exhibit E2) containing 99 resealable plastic bags containing 89.866 kilogrammes of an unknown white powder (Exhibit E3) were also found inside the room."
+        }
+      ],
+      "role": {
+        "role": "Storekeeper",
+        "source": "He also hired the room for a period of 2 years, apparently on behalf of the drug trafficking syndicate. He admitted under caution that he had rented the room and he did not lock it, apparently for the purpose of allowing others to use it whenever they wanted."
+      },
+      "aggravating_factors": null,
+      "mitigating_factors": [
+        {
+          "factor": "Medical conditions",
+          "other_factor": null,
+          "reduction": null,
+          "source": "In his mitigation, counsel for the 2nd defendant Mr Clement Lau informed this court that he has a long history of mental illness. He first received psychiatric treatment at the age of 11 and there were multiple psychiatric admissions to various hospitals between year 2009 to 2022."
+        }
+      ],
+      "guilty_plea": {
+        "pleaded_guilty": true,
+        "court_type": "High Court",
+        "high_court_stage": "Up to committal",
+        "district_court_stage": null,
+        "source": "They pleaded guilty to the offence on 3 February this year before a magistrate and were committed to the High Court for sentence."
+      },
+      "starting_point": {
+        "sentence_months": 80,
+        "source": "Having considered all the circumstances of the conspiracy, I consider the appropriate starting point for the 2nd defendant will be 6 years and 8 months’ imprisonment."
+      },
+      "sentence_after_role": {
+        "sentence_months": 80,
+        "source": "Inferred as starting point since role adjustment not provided"
+      },
+      "notional_sentence": {
+        "sentence_months": 80,
+        "source": "Having considered all the circumstances of the conspiracy, I consider the appropriate starting point for the 2nd defendant will be 6 years and 8 months’ imprisonment."
+      },
+      "mitigation_reduction": null,
+      "final_sentence": {
+        "sentence_months": 52,
+        "guilty_plea_reduction_months": null,
+        "source": "As such, he is entitled to the full one-third discount which reduce the sentence to 4 years and 5 months’ imprisonment. Counsel also submitted ... grant him a further discount of 1 month. So the sentence in respect of the 2nd defendant is 4 years and 4 months’ imprisonment."
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "defendants": [
+    {
+      "defendant_name": {
+        "name": "Wong Pui-hung",
+        "source": "HKSAR v. Wong Pui-hung"
+      },
+      "nationality": null,
+      "age_at_offence": {
+        "age": 45,
+        "source": "The defendant is 45"
+      },
+      "age_at_sentencing": {
+        "age": 45,
+        "source": "The defendant is 45"
+      },
+      "gender": null,
+      "marital_status": null,
+      "parental_status": null,
+      "household_composition": null,
+      "health_status": null,
+      "drug_treatment_participation": null,
+      "education_level": {
+        "level": "Secondary - Upper",
+        "source": "The defendant is 45 and educated up to secondary school level."
+      },
+      "occupation": {
+        "occupation": "Unemployed",
+        "source": "Prior to his arrest, he was unemployed."
+      },
+      "monthly_wage": null,
+      "criminal_record": {
+        "record": "Dangerous drug offences",
+        "source": "He has 25 criminal convictions with multiple offences. In particular, he has four trafficking in dangerous drugs and eight possession in dangerous drugs records."
+      },
+      "positive_habits_after_arrest": null,
+      "family_support": null
+    }
+  ]
+}

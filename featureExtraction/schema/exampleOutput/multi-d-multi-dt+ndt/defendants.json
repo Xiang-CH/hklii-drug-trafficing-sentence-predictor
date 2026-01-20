@@ -1,0 +1,107 @@
+{
+  "defendants": [
+    {
+      "defendant_name": {
+        "name": "曾浩然",
+        "source": "訴 曾浩然（第一被告人）"
+      },
+      "nationality": {
+        "category": "Hong Kong resident",
+        "hk_resident_status": "Permanent resident",
+        "foreign_country_code": null,
+        "source": "第一被告人現年26歲，香港出生，接受教育程度至中三。"
+      },
+      "age_at_offence": {
+        "age": 24,
+        "source": "許大律師在求情時指出...案發時，他年僅24歲 (para 19)"
+      },
+      "age_at_sentencing": {
+        "age": 26,
+        "source": "第一被告人現年26歲 (para 16)"
+      },
+      "gender": null,
+      "marital_status": {
+        "status": "Single",
+        "source": "第一被告人未婚 (para 17)"
+      },
+      "parental_status": null,
+      "household_composition": {
+        "composition": "Lives with family",
+        "source": "第一被告人未婚，與家人關係良好...第一被告人負責家庭部分經濟來源 (para 17)"
+      },
+      "health_status": null,
+      "drug_treatment_participation": null,
+      "education_level": {
+        "level": "Secondary - Lower",
+        "source": "接受教育程度至中三 (para 16)"
+      },
+      "occupation": {
+        "occupation": "Craft and related worker",
+        "source": "畢業後，他入讀職業訓練學院並修讀為期約4年半的電梯維修兼讀課程，隨後從事相關維修行業。此外，第一被告人曾擔任貨車及私家車司機等職位 (para 16)"
+      },
+      "monthly_wage": {
+        "wage": 20000,
+        "source": "每月收入約為港幣2萬元 (para 16)"
+      },
+      "criminal_record": {
+        "record": "None",
+        "source": "第一被告人過往沒有任何刑事定罪紀錄 (para 18)"
+      },
+      "positive_habits_after_arrest": null,
+      "family_support": {
+        "support": [
+          "Family presence in court",
+          "Letters of support from family"
+        ],
+        "source": "辯方向法庭提交了第一被告人及其父母的求情信...第一被告人的父親今天到庭旁聽 (para 20-21)"
+      }
+    },
+    {
+      "defendant_name": {
+        "name": "張曜龍",
+        "source": "訴 張曜龍（第二被告人）"
+      },
+      "nationality": {
+        "category": "Hong Kong resident",
+        "hk_resident_status": "Permanent resident",
+        "foreign_country_code": null,
+        "source": "書面求情陳詞中補充「第二被告人現年23歲，香港出生，無刑事定罪紀錄」 (para 22)"
+      },
+      "age_at_offence": null,
+      "age_at_sentencing": {
+        "age": 23,
+        "source": "書面求情陳詞中補充「第二被告人現年23歲，香港出生，無刑事定罪紀錄」 (para 22)"
+      },
+      "gender": null,
+      "marital_status": {
+        "status": "Single",
+        "source": "經歷口供提及第二被告人未婚 (para 23)"
+      },
+      "parental_status": null,
+      "household_composition": {
+        "composition": "Lives with family",
+        "source": "經歷口供提及...被捕之後與母親同住 (para 23)"
+      },
+      "health_status": null,
+      "drug_treatment_participation": null,
+      "education_level": {
+        "level": "Secondary - Lower",
+        "source": "經歷口供提及接受教育程度至中三 (para 23)"
+      },
+      "occupation": {
+        "occupation": "Elementary occupation",
+        "source": "經歷口供提及第二被告人之前任職倉務員 (para 23)"
+      },
+      "monthly_wage": {
+        "wage": 8000,
+        "source": "第二被告人之前任職倉務員的每月收入為8,000元 (para 24)"
+      },
+      "criminal_record": {
+        "record": "None",
+        "source": "第二被告人過往沒有任何刑事定罪紀錄 (para 25)"
+      },
+      "positive_habits_after_arrest": null,
+      "family_support": null
+    }
+  ]
+}

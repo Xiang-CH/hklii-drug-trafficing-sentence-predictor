@@ -1,0 +1,52 @@
+{
+  "defendants": [
+    {
+      "defendant_name": {
+        "name": "Wong Man-kit",
+        "source": "Case title and transcript heading: 'Wong Man-kit'"
+      },
+      "nationality": null,
+      "age_at_offence": {
+        "age": 21,
+        "source": "Transcript: 'After all, he was 21 years old at the time, not a very young teenager.' (offence date 30 November 2023)"
+      },
+      "age_at_sentencing": {
+        "age": 23,
+        "source": "Transcript: 'The defendant is now 23 years old'"
+      },
+      "gender": {
+        "gender": "Male",
+        "source": "Transcript uses male pronouns: 'his', 'he'"
+      },
+      "marital_status": null,
+      "parental_status": {
+        "status": "No children",
+        "custody": null,
+        "source": "Transcript: 'Defendant lived there with his parents and younger brother.' (no children mentioned)"
+      },
+      "household_composition": {
+        "composition": "Lives with family",
+        "source": "Transcript: 'Defendant lived there with his parents and younger brother.'"
+      },
+      "health_status": null,
+      "drug_treatment_participation": null,
+      "education_level": null,
+      "occupation": {
+        "occupation": "Unemployed",
+        "source": "Transcript: 'After finishing school, he became an elevator repair apprentice ... he was made redundant. ... But at the time of his arrest, he was unemployed.'"
+      },
+      "monthly_wage": null,
+      "criminal_record": {
+        "record": "None",
+        "source": "Transcript: 'He had a clear record.'"
+      },
+      "positive_habits_after_arrest": null,
+      "family_support": {
+        "support": [
+          "Letters of support from family"
+        ],
+        "source": "Transcript: 'I do have a mitigation letter from the defendant’s parents who are very supportive ... I have a letter from the defendant ...'"
+      }
+    }
+  ]
+}

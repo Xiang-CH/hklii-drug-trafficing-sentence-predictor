@@ -5,7 +5,20 @@
             "properties": {
                 "factor": {
                     "$ref": "#/$defs/AggravatingFactorType",
-                    "description": "The aggravating factor explicitly addressed by the judge. None: No aggravating factors; Refugee/Asylum: Refugee or asylum seeker status; Illegal immigrant: Illegal immigrant status; On bail: Offending while on bail; Suspended sentence: Offending during suspended sentence or probation; CSD supervision: Offending while under Correctional Services Department supervision; Wanted: Offending while wanted; Persistent offender: Repeat/persistent offender; Import: Cross-border drug trafficking - import; Export: Cross-border drug trafficking - export; Use of minors: Using minors in trafficking; Multiple drugs: Dealing in more than one type of dangerous drugs."
+                    "description": "The aggravating factor explicitly addressed by the judge. Refugee/Asylum: Refugee or asylum seeker status; Illegal immigrant: Illegal immigrant status; On bail: Offending while on bail; Suspended sentence: Offending during suspended sentence or probation; CSD supervision: Offending while under Correctional Services Department supervision; Wanted: Offending while wanted; Persistent offender: Repeat/persistent offender; Import: Cross-border drug trafficking - import; Export: Cross-border drug trafficking - export; Use of minors: Using minors in trafficking; Multiple drugs: Dealing in more than one type of dangerous drugs; Role of the defendant: Aggravation due to the role of the defendant."
+                },
+                "other_factor": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The mitigating factor if the factor is 'Other'",
+                    "title": "Other Factor"
                 },
                 "enhancement": {
                     "anyOf": [
@@ -35,7 +48,6 @@
         },
         "AggravatingFactorType": {
             "enum": [
-                "None",
                 "Refugee/Asylum",
                 "Illegal immigrant",
                 "On bail",
@@ -46,38 +58,49 @@
                 "Import",
                 "Export",
                 "Use of minors",
-                "Multiple drugs"
+                "Multiple drugs",
+                "Role of the defendant",
+                "Other"
             ],
             "title": "AggravatingFactorType",
             "type": "string"
         },
-        "BenefitsReceivedDetail": {
+        "ChargeDetail": {
             "additionalProperties": false,
             "properties": {
-                "amount": {
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "description": "Amount of benefits received or to be received for trafficking in HKD, excluding the value of the drug itself",
-                    "title": "Amount"
+                "type": {
+                    "$ref": "#/$defs/ChargeType",
+                    "description": "Type of charge:\nActual Trafficking: Trafficking in a dangerous drug/dangerous drugs or \nConspiracy to Traffic: Conspiracy to traffic in a dangerous drug/dangerous drugs \n**Ignore other types of charges**"
+                },
+                "defendants": {
+                    "description": "List of defendant names associated with this charge",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Defendants",
+                    "type": "array"
                 },
                 "source": {
-                    "description": "The exact match source text from which the benefits amount was extracted",
+                    "description": "The exact match source text from which the charge type was extracted",
                     "title": "Source",
                     "type": "string"
                 }
             },
             "required": [
+                "type",
+                "defendants",
                 "source"
             ],
-            "title": "BenefitsReceivedDetail",
+            "title": "ChargeDetail",
             "type": "object"
+        },
+        "ChargeType": {
+            "enum": [
+                "Actual Trafficking",
+                "Conspiracy to Traffic"
+            ],
+            "title": "ChargeType",
+            "type": "string"
         },
         "CourtType": {
             "enum": [
@@ -89,7 +112,6 @@
         },
         "DefendantRole": {
             "enum": [
-                "Not mentioned",
                 "Courier",
                 "Storekeeper",
                 "Lookout/scout",
@@ -120,6 +142,19 @@
                     "$ref": "#/$defs/DrugType",
                     "description": "Type of dangerous drug"
                 },
+                "other_drug_type": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "If the drug type is 'Other', provide the most drug type specified in the source text.",
+                    "title": "Other Drug Type"
+                },
                 "quantity": {
                     "description": "Quantity of the drug in grams",
                     "title": "Quantity",
@@ -140,16 +175,23 @@
             "type": "object"
         },
         "DrugType": {
-            "description": "Common dangerous drugs in Hong Kong",
             "enum": [
+                "Cannabis",
+                "THC/CBD",
+                "Cathinones",
                 "Cocaine",
+                "Cough medicine",
+                "Ecstasy",
+                "GHB/GBL",
                 "Heroin",
-                "Meth",
                 "Ketamine",
                 "Nimetazepam",
-                "Ecstasy",
-                "Cannabis resin",
-                "Herbal cannabis"
+                "Morphine",
+                "Methamphetamine",
+                "Salvia",
+                "TFMPP",
+                "Etomidate",
+                "Other"
             ],
             "title": "DrugType",
             "type": "string"
@@ -262,7 +304,20 @@
             "properties": {
                 "factor": {
                     "$ref": "#/$defs/MitigatingFactorType",
-                    "description": "The mitigating factor explicitly addressed by the judge (excluding guilty plea). None: No mitigating factors; Voluntary surrender: Defendant voluntarily surrendered to authorities; Self-consumption: Self-consumption of significant proportion of drugs; Assistance - limited: Of some limited help to authorities but unfruitful; Assistance - useful: Useful assistance leading to arrest/conviction of another accused; Assistance - testify: Testified in court successfully against another accused; Assistance - risk: Assisted authorities at considerable personal risk; Extreme youth: 15 years old or below; Young offender: 16-20 years old; Medical conditions: Defendant's medical conditions; Family illness: Family illness or tragedy; Prosecutorial delay: Delay in prosecution; Mistaken belief: Mistaken belief about drug type; Positive character: Positive good character; Rehabilitation programme: Participation in anti-trafficking or rehabilitative programmes."
+                    "description": "The mitigating factor explicitly addressed by the judge (excluding guilty plea). Voluntary surrender: Defendant voluntarily surrendered to authorities; Self-consumption: Self-consumption of significant proportion of drugs; Assistance - limited: Of some limited help to authorities but unfruitful; Assistance - useful: Useful assistance leading to arrest/conviction of another accused; Assistance - testify: Testified in court successfully against another accused; Assistance - risk: Assisted authorities at considerable personal risk; Extreme youth: 15 years old or below; Young offender: 16-20 years old; Medical conditions: Defendant's medical conditions; Family illness: Family illness or tragedy; Prosecutorial delay: Delay in prosecution; Mistaken belief: Mistaken belief about drug type; Rehabilitation programme: Participation in anti-trafficking or rehabilitative programmes."
+                },
+                "other_factor": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The mitigating factor if the factor is 'Other'",
+                    "title": "Other Factor"
                 },
                 "reduction": {
                     "anyOf": [
@@ -292,7 +347,6 @@
         },
         "MitigatingFactorType": {
             "enum": [
-                "None",
                 "Voluntary surrender",
                 "Self-consumption",
                 "Assistance - limited",
@@ -305,8 +359,8 @@
                 "Family illness",
                 "Prosecutorial delay",
                 "Mistaken belief",
-                "Positive character",
-                "Rehabilitation programme"
+                "Rehabilitation programme",
+                "Other"
             ],
             "title": "MitigatingFactorType",
             "type": "string"
@@ -414,134 +468,129 @@
             ],
             "title": "StartingPointDetail",
             "type": "object"
+        },
+        "Trial": {
+            "additionalProperties": false,
+            "properties": {
+                "charge_type": {
+                    "$ref": "#/$defs/ChargeDetail"
+                },
+                "drugs": {
+                    "description": "Types and quantities of drugs involved in the offence",
+                    "items": {
+                        "$ref": "#/$defs/DrugDetail"
+                    },
+                    "title": "Drugs",
+                    "type": "array"
+                },
+                "role": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/RoleDetail"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "aggravating_factors": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/AggravatingFactorDetail"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Aggravating factors explicitly addressed by the judge",
+                    "title": "Aggravating Factors"
+                },
+                "mitigating_factors": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/MitigatingFactorDetail"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Mitigating factors explicitly addressed by the judge (excluding guilty plea)",
+                    "title": "Mitigating Factors"
+                },
+                "guilty_plea": {
+                    "$ref": "#/$defs/GuiltyPleaDetail"
+                },
+                "starting_point": {
+                    "$ref": "#/$defs/StartingPointDetail",
+                    "description": "Starting point of sentence based on drug type and quantity"
+                },
+                "sentence_after_role": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SentenceAfterRoleDetail"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The sentence taking into account the role of the defendant"
+                },
+                "notional_sentence": {
+                    "$ref": "#/$defs/NotionalSentenceDetail",
+                    "description": "Notional sentence (starting point plus enhancement due to aggravating factors)"
+                },
+                "mitigation_reduction": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MitigationReductionDetail"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Sentence reduction granted based on mitigating factors (excluding guilty plea)"
+                },
+                "final_sentence": {
+                    "$ref": "#/$defs/FinalSentenceDetail",
+                    "description": "Final sentence for the charge including any guilty plea reduction"
+                }
+            },
+            "required": [
+                "charge_type",
+                "drugs",
+                "guilty_plea",
+                "starting_point",
+                "notional_sentence",
+                "final_sentence"
+            ],
+            "title": "Trial",
+            "type": "object"
         }
     },
     "additionalProperties": false,
     "properties": {
-        "drugs": {
-            "description": "Types and quantities of drugs involved in the offence",
+        "trials": {
             "items": {
-                "$ref": "#/$defs/DrugDetail"
+                "$ref": "#/$defs/Trial"
             },
-            "title": "Drugs",
+            "title": "Trials",
             "type": "array"
-        },
-        "role": {
-            "$ref": "#/$defs/RoleDetail"
-        },
-        "aggravating_factors": {
-            "anyOf": [
-                {
-                    "items": {
-                        "$ref": "#/$defs/AggravatingFactorDetail"
-                    },
-                    "type": "array"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null,
-            "description": "Aggravating factors explicitly addressed by the judge",
-            "title": "Aggravating Factors"
-        },
-        "mitigating_factors": {
-            "anyOf": [
-                {
-                    "items": {
-                        "$ref": "#/$defs/MitigatingFactorDetail"
-                    },
-                    "type": "array"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null,
-            "description": "Mitigating factors explicitly addressed by the judge (excluding guilty plea)",
-            "title": "Mitigating Factors"
-        },
-        "guilty_plea": {
-            "$ref": "#/$defs/GuiltyPleaDetail"
-        },
-        "benefits_received": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/BenefitsReceivedDetail"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null,
-            "description": "Benefits received or to be received for trafficking"
-        },
-        "starting_point": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/StartingPointDetail"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null,
-            "description": "Starting point of sentence based on drug type and quantity"
-        },
-        "sentence_after_role": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/SentenceAfterRoleDetail"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null,
-            "description": "The sentence taking into account the role of the defendant"
-        },
-        "notional_sentence": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/NotionalSentenceDetail"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null,
-            "description": "Notional sentence (starting point plus enhancement due to aggravating factors)"
-        },
-        "mitigation_reduction": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/MitigationReductionDetail"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null,
-            "description": "Sentence reduction granted based on mitigating factors (excluding guilty plea)"
-        },
-        "final_sentence": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/FinalSentenceDetail"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null,
-            "description": "Final sentence for the charge including any guilty plea reduction"
         }
     },
     "required": [
-        "drugs",
-        "role",
-        "guilty_plea"
+        "trials"
     ],
-    "title": "DefendantOffence",
+    "title": "Trials",
     "type": "object"
 }

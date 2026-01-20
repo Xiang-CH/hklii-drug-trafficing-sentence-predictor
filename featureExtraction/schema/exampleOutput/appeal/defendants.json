@@ -1,0 +1,59 @@
+{
+  "defendants": [
+    {
+      "defendant_name": {
+        "name": "Lau Kam Hung (劉金洪)",
+        "source": "Case title and repeated references throughout judgment (e.g. HCCC 114/2024, Reasons for Sentence at [1], case caption)"
+      },
+      "nationality": null,
+      "age_at_offence": {
+        "age": 65,
+        "source": "Born July 1956 (Reasons for Sentence [17]) and offence dated 2 April 2022 (Summary of Facts [6],[8])"
+      },
+      "age_at_sentencing": {
+        "age": 68,
+        "source": "Born July 1956 (Reasons for Sentence [17]) and sentence date 22 January 2025 (head and Reasons for Sentence)"
+      },
+      "gender": {
+        "gender": "Male",
+        "source": "Male pronouns and references throughout (e.g. Reasons for Sentence [1],[17])"
+      },
+      "marital_status": null,
+      "parental_status": {
+        "status": "Parent",
+        "custody": null,
+        "source": "Contributes about RMB800 towards his daughter’s living expenses; daughter is 18 and studying in Guangzhou (Background and Mitigation [18])"
+      },
+      "household_composition": null,
+      "health_status": {
+        "conditions": [
+          {
+            "type": "Physical health",
+            "source": "Suffers from cardiac disease, diabetes, kidney problems, hernia and polyps; underwent angioplasty; constant exhaustion and pain (Background and Mitigation [20])"
+          }
+        ]
+      },
+      "drug_treatment_participation": null,
+      "education_level": null,
+      "occupation": {
+        "occupation": "Craft and related worker",
+        "source": "Was working as a construction site worker in 2015 (Background and Mitigation [19])"
+      },
+      "monthly_wage": {
+        "wage": 5300,
+        "source": "Receiving CSSA of $5,300 per month since 2017 for daily and medical expenses (Background and Mitigation [19])"
+      },
+      "criminal_record": {
+        "record": "Other offences",
+        "source": "Long criminal record including convictions for theft, rape (two convictions), robbery, assault with intent to rob, indecent assault, managing a vice establishment, assault occasioning actual bodily harm, criminal intimidation, assaulting a police officer, possession of dangerous drugs (2019) (Previous Convictions [13]-[16]; Reasons for Sentence [36])"
+      },
+      "positive_habits_after_arrest": {
+        "habits": [
+          "Participation in rehabilitation/self-improvement"
+        ],
+        "source": "Reportedly has since quit his drug use and plans to reunite with his daughter and not return to Hong Kong (Background and Mitigation [21])"
+      },
+      "family_support": null
+    }
+  ]
+}

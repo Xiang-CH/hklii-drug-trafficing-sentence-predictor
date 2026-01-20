@@ -1,0 +1,193 @@
+{
+  "trials": [
+    {
+      "charge_type": {
+        "type": "Conspiracy to Traffic",
+        "defendants": [
+          "So Hoi-yan"
+        ],
+        "source": "Count 1 against the 1st defendant, So\nSo has pleaded guilty to conspiracy to traffic in a dangerous drug, namely, cocaine with Fu, the defendant of 316/2023, and other persons unknown, between two dates, 1 and 2 October 2021 in Hong Kong."
+      },
+      "drugs": [
+        {
+          "drug_type": "Cocaine",
+          "other_drug_type": null,
+          "quantity": 20,
+          "source": "On 2 October 2021, at around 1.30 am, police officers ... She had in her bag 87 plastic bags containing a total of 23.05 grammes of a solid containing a total of 20.44 grammes of cocaine."
+        }
+      ],
+      "role": {
+        "role": "Courier",
+        "source": "She would receive phone calls or messages from drug suppliers to tell her where to pick up the drugs... He handed her a bag ... She then proceeded to make deliveries as instructed all over Kowloon and New Territories."
+      },
+      "aggravating_factors": null,
+      "mitigating_factors": [
+        {
+          "factor": "Extreme youth",
+          "other_factor": null,
+          "reduction": null,
+          "source": "The 1st defendant of 317/2023, So, was 15 at the time of her arrest and is now 19 years old."
+        },
+        {
+          "factor": "Assistance - useful",
+          "other_factor": null,
+          "reduction": null,
+          "source": "After the trial for Fu had been set down, So gave a statement to the police, implicating Fu and agreeing to give evidence against him in his trial. ... Although she did not ultimately need to give evidence during his trial, I have no doubt that she would have done so without reluctance and come up to proof. She is entitled to a further discount for her cooperation and assistance."
+        }
+      ],
+      "guilty_plea": {
+        "pleaded_guilty": true,
+        "court_type": "High Court",
+        "high_court_stage": null,
+        "district_court_stage": "Plea day",
+        "source": "The 1st and 2nd defendant of 317/2023 pleaded guilty to their respective charges at the earliest opportunity and were committed to the Court of First Instance for sentence to be dealt with after the trial of their co-accused..."
+      },
+      "starting_point": {
+        "sentence_months": 69,
+        "source": "For the 1st defendant, So, I will take into account the drugs found on her in her bag and that was 20.44 grammes of cocaine. Now according to the latest sentencing guidelines, those trafficking in 20.44 grammes of cocaine would attract a mathematical starting point of 5 years and 9 months\u0002 imprisonment."
+      },
+      "sentence_after_role": {
+        "sentence_months": 69,
+        "source": "Inferred as starting point since role adjustment not provided"
+      },
+      "notional_sentence": {
+        "sentence_months": 69,
+        "source": "For the 1st defendant, So, I will take into account the drugs found on her in her bag and that was 20.44 grammes of cocaine. Now according to the latest sentencing guidelines, those trafficking in 20.44 grammes of cocaine would attract a mathematical starting point of 5 years and 9 months\u0002 imprisonment."
+      },
+      "mitigation_reduction": null,
+      "final_sentence": {
+        "sentence_months": 36,
+        "guilty_plea_reduction_months": null,
+        "source": "Therefore, for 317/2023, Count 1 against the 1st defendant, So, I intend to take a starting point of 5 years and 9 months and I will reduce it to 3 years\u0002 imprisonment."
+      }
+    },
+    {
+      "charge_type": {
+        "type": "Conspiracy to Traffic",
+        "defendants": [
+          "Lam Tsz-man"
+        ],
+        "source": "Count 2 against the 2nd defendant only, Lam\nLam has pleaded guilty to conspiracy to traffic in a dangerous drug, namely, cocaine and cannabis in a herbal form with Fu, the defendant of 316/2023, and other persons unknown between 22 September and 3 October 2021, both dates inclusive, in Hong Kong."
+      },
+      "drugs": [
+        {
+          "drug_type": "Cocaine",
+          "other_drug_type": null,
+          "quantity": 109,
+          "source": "When questioned, he said he intended to go into those premises. He was searched and police found keys to the premises as well as five packets in his backpack containing a total of 118 grammes of a solid containing 103 grammes of cocaine. ... I will take into account the cocaine found on him and the cocaine found in the premises rented by Fu and Lam which totals 109.19 grammes of cocaine."
+        },
+        {
+          "drug_type": "Cannabis",
+          "other_drug_type": null,
+          "quantity": 6,
+          "source": "They found ... two plastic bags containing a total of 6.12 grammes of cannabis in herbal form. ... There is 6 grammes of herbal cannabis, which I consider de minimis in the circumstances and therefore ignore it."
+        }
+      ],
+      "role": {
+        "role": "Storekeeper",
+        "source": "He told the police that both he and Fu met this Siu Wan who offered them both a way to make easy money. He instructed them to rent the subdivided unit and provided money to buy digital scales and plastic bags. Both these defendants did as instructed. He was on his way to the flat when he was arrested by the police."
+      },
+      "aggravating_factors": null,
+      "mitigating_factors": [
+        {
+          "factor": "Young offender",
+          "other_factor": null,
+          "reduction": null,
+          "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences and still is a student in a vocational education course."
+        }
+      ],
+      "guilty_plea": {
+        "pleaded_guilty": true,
+        "court_type": "High Court",
+        "high_court_stage": null,
+        "district_court_stage": "Plea day",
+        "source": "The 1st and 2nd defendant of 317/2023 pleaded guilty to their respective charges at the earliest opportunity and were committed to the Court of First Instance for sentence to be dealt with after the trial of their co-accused..."
+      },
+      "starting_point": {
+        "sentence_months": 114,
+        "source": "For the 2nd defendant, Lam, I will take into account the cocaine found on him and the cocaine found in the premises rented by Fu and Lam which totals 109.19 grammes of cocaine. ... those trafficking in 109.19 grammes of cocaine would attract a mathematical starting point of 9 years and 7 months\u0002 imprisonment."
+      },
+      "sentence_after_role": {
+        "sentence_months": 114,
+        "source": "Inferred as starting point since role adjustment not provided"
+      },
+      "notional_sentence": {
+        "sentence_months": 114,
+        "source": "For the 2nd defendant, Lam, I will take into account the cocaine found on him and the cocaine found in the premises rented by Fu and Lam which totals 109.19 grammes of cocaine. ... those trafficking in 109.19 grammes of cocaine would attract a mathematical starting point of 9 years and 7 months\u0002 imprisonment."
+      },
+      "mitigation_reduction": null,
+      "final_sentence": {
+        "sentence_months": 76,
+        "guilty_plea_reduction_months": null,
+        "source": "Count 2 against the 2nd defendant, Lam. I intend to take a starting point of 9 years and 6 months' imprisonment and reduce it by 38 months to reflect his plea at the earliest opportunity. Lam is sentenced to 6 years and 4 months' imprisonment."
+      }
+    },
+    {
+      "charge_type": {
+        "type": "Actual Trafficking",
+        "defendants": [
+          "Fu Chun-wah"
+        ],
+        "source": "Count 2\nFu now pleads guilty to trafficking in dangerous drugs on 3 October 2021 in Room F, 3rd Floor, 59 Prince Edward Road West, Mongkok, Hong Kong, he unlawfully trafficked in 7.2 grammes of a solid containing 6.19 grammes of cocaine and 6.12 grammes of cannabis in herbal form."
+      },
+      "drugs": [
+        {
+          "drug_type": "Cocaine",
+          "other_drug_type": null,
+          "quantity": 26,
+          "source": "For Fu, there is 20.44 grammes of cocaine he admits he delivered to So in relation to the 1st count he faces. In relation to the 2nd count ... there was 6.19 grammes of cocaine found in those rented premises. As far as he is concerned, I can quantify a total of 26.63 grammes of cocaine."
+        },
+        {
+          "drug_type": "Cannabis",
+          "other_drug_type": null,
+          "quantity": 6,
+          "source": "They found ... two plastic bags containing a total of 6.12 grammes of cannabis in herbal form."
+        }
+      ],
+      "role": {
+        "role": "Manager/organizer",
+        "source": "Apart from messages with So, the police found a WhatsApp group in Fu\u0002s mobile showing members of the WhatsApp group sending out instructions of customers, their drug order, the price to pay and location of delivery. It would appear that he had made deliveries as well. ... They found a tenancy agreement dated 23 September 2021 signed by Fu and the 2nd defendant, Lam."
+      },
+      "aggravating_factors": null,
+      "mitigating_factors": [
+        {
+          "factor": "Young offender",
+          "other_factor": null,
+          "reduction": null,
+          "source": "Fu of 316/2023 was also 18 at the time of these offences. Fu was also still a student ..."
+        },
+        {
+          "factor": "Assistance - limited",
+          "other_factor": null,
+          "reduction": null,
+          "source": "After the trial for Fu had been set down, So gave a statement to the police, implicating Fu and agreeing to give evidence against him in his trial. It was this new development that prompted Fu to change his plea and indicate a plea of guilty to all charges."
+        }
+      ],
+      "guilty_plea": {
+        "pleaded_guilty": true,
+        "court_type": "High Court",
+        "high_court_stage": "After dates fixed",
+        "district_court_stage": null,
+        "source": "Before his trial, this defendant reconsidered in light of the additional evidence against him and indicated a plea. He has pleaded guilty before me today and admitted the Summary of Facts."
+      },
+      "starting_point": {
+        "sentence_months": 75,
+        "source": "For Fu, ... I can quantify a total of 26.63 grammes of cocaine. According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months' imprisonment."
+      },
+      "sentence_after_role": {
+        "sentence_months": 75,
+        "source": "Inferred as starting point since role adjustment not provided"
+      },
+      "notional_sentence": {
+        "sentence_months": 75,
+        "source": "For Fu, ... I can quantify a total of 26.63 grammes of cocaine. According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months' imprisonment."
+      },
+      "mitigation_reduction": null,
+      "final_sentence": {
+        "sentence_months": 52,
+        "guilty_plea_reduction_months": null,
+        "source": "Therefore, for 316/2023, Count 1 against Fu. I intend to take a starting point of 6 years and 3 months' imprisonment and I will reduce it by 23 months. This represents a discount of just over 30 per cent. Fu is sentenced to 4 years and 4 months' imprisonment for Count 1.\nFor Count 2, I take the same starting point as Count 1 and reduce it by the same discount, 23 months. For Count 2, this defendant is sentenced to 4 years and 4 months' imprisonment.\nFor Count 1 and 2, I will order the sentences to run concurrently. Therefore, Fu is sentenced to a total of 4 years and 4 months' imprisonment."
+      }
+    }
+  ]
+}

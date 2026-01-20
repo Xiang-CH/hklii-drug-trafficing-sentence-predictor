@@ -1,0 +1,33 @@
+{
+  "date": {
+    "date": "2022-04-02",
+    "source": "In the evening of 2 April 2022, during an anti-narcotics operation, the police took the opportunity to enter Room 2110, Hoi Yan House, Hoi Fu Court, Mong Kok (“the Flat”)",
+    "day_of_week": 6,
+    "is_hk_public_holiday": false
+  },
+  "time": {
+    "time": "21:20:00+08:00",
+    "source": "At around 9:20pm, a male and a female appeared on the 21st floor and rang the doorbell of flat 2110"
+  },
+  "placeOfOffence": {
+    "address": "Room/Flat 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon",
+    "district": "Yau Tsim Mong",
+    "source": "Particulars of the offence: on 2 April 2022, at room 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon"
+  },
+  "natureOfPlaceOfOffence": {
+    "nature": "Residential building",
+    "source": "Hoi Yan House is a public housing estate, with the defendant as the registered tenant of flat 2110"
+  },
+  "traffickingMode": {
+    "mode": "Drug houses",
+    "source": "The paraphernalia of the trafficker were found inside the premises, namely two different types of dangerous drugs contained in smaller re-sealable bags of drugs, multiple empty re-sealable plastic bags and an electronic scale...that people would come to the flat to consume or receive drugs"
+  },
+  "reason_for_offence": {
+    "reasons": [
+      "Addiction-driven",
+      "Peer influence"
+    ],
+    "source": "The defendant claimed under caution that the “pork” and “weed” were for his own consumption, and he would sometimes share them with his friends; mitigation: the pain drove the defendant to resort to dangerous drugs"
+  },
+  "benefits_received": null
+}

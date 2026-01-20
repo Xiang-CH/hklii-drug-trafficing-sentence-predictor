@@ -1,0 +1,71 @@
+{
+  "trials": [
+    {
+      "charge_type": {
+        "type": "Actual Trafficking",
+        "defendants": [
+          "Lau Kam Hung"
+        ],
+        "source": "The defendant pleaded not guilty before a magistrate ... to one count of trafficking in dangerous drugs, contrary to section 4(1)(a) and (3) of the Dangerous Drugs Ordinance, Cap 134"
+      },
+      "drugs": [
+        {
+          "drug_type": "Methamphetamine",
+          "other_drug_type": null,
+          "quantity": 17,
+          "source": "4 re-sealable plastic bags containing totally 17.0 grammes of “Ice”; particulars: 17.3g of a crystalline solid containing 17.0g of methamphetamine hydrochloride"
+        },
+        {
+          "drug_type": "Cannabis",
+          "other_drug_type": null,
+          "quantity": 14,
+          "source": "3 plastic bags containing 14.4 grammes of herbal cannabis"
+        }
+      ],
+      "role": {
+        "role": "Storekeeper",
+        "source": "the judge, identifying the applicant’s role as a “storekeeper”; and, by arithmetically applying the applicable guidelines, adopted a starting point of 7½ years’ imprisonment"
+      },
+      "aggravating_factors": [
+        {
+          "factor": "Multiple drugs",
+          "other_factor": null,
+          "enhancement": 1,
+          "source": "trafficking in more than one type of drug was an aggravating factor, the judge enhanced the starting point by 1 month"
+        },
+        {
+          "factor": "Persistent offender",
+          "other_factor": null,
+          "enhancement": 6,
+          "source": "the judge further found the applicant to be a persistent offender, for which he enhanced the sentence by a further 6 months"
+        }
+      ],
+      "mitigating_factors": null,
+      "guilty_plea": {
+        "pleaded_guilty": true,
+        "court_type": "High Court",
+        "high_court_stage": "After dates fixed",
+        "district_court_stage": null,
+        "source": "The defendant did plead guilty on 22 January 2025, admitted to the summary of facts ... he indicated he would plead guilty about 1 month after the trial dates were fixed"
+      },
+      "starting_point": {
+        "sentence_months": 90,
+        "source": "adopt a starting point of 7 years and 6 months, being the arithmetical application of the tariff"
+      },
+      "sentence_after_role": {
+        "sentence_months": 90,
+        "source": "based on my finding of the defendant’s role and culpability, I adopt a starting point of 7 years and 6 months"
+      },
+      "notional_sentence": {
+        "sentence_months": 97,
+        "source": "enhanced by 6 months for persistent offender and 1 month for multiple drugs, taking the total to 8 years and 1 month"
+      },
+      "mitigation_reduction": null,
+      "final_sentence": {
+        "sentence_months": 73,
+        "guilty_plea_reduction_months": 24,
+        "source": "the applicant was given a discount of about 25% ... resulting in a sentence of 6 years and 1 month’s imprisonment"
+      }
+    }
+  ]
+}

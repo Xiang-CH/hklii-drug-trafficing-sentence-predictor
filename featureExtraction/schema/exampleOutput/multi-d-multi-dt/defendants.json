@@ -1,0 +1,118 @@
+{
+  "defendants": [
+    {
+      "defendant_name": {
+        "name": "So Hoi-yan",
+        "source": "So Hoi-yan (A1 for HCCC 317/2023)"
+      },
+      "nationality": null,
+      "age_at_offence": {
+        "age": 15,
+        "source": "She was 15 years old at the time."
+      },
+      "age_at_sentencing": {
+        "age": 19,
+        "source": "The 1st defendant of 317/2023, So, was 15 at the time of her arrest and is now 19 years old."
+      },
+      "gender": null,
+      "marital_status": null,
+      "parental_status": null,
+      "household_composition": {
+        "composition": "Lives with non-family",
+        "source": "She was living with a friend from September 2021 and not at home."
+      },
+      "health_status": null,
+      "drug_treatment_participation": null,
+      "education_level": null,
+      "occupation": null,
+      "monthly_wage": null,
+      "criminal_record": {
+        "record": "Other offences",
+        "source": "In June 2018, she was given a police superintendent’s caution for the offences of common assault and theft. In November 2018, she was sentenced to 24 months’ probation for the offences of wounding with intent to do grievous bodily harm and criminal damage. That probation order was subsequently extended for a further 6 months."
+      },
+      "positive_habits_after_arrest": {
+        "habits": [
+          "Studying",
+          "Participation in rehabilitation/self-improvement"
+        ],
+        "source": "I have received a letter in mitigation and evidence of her further recent vocational training to set herself up in employment in the future."
+      },
+      "family_support": null
+    },
+    {
+      "defendant_name": {
+        "name": "Lam Tsz-man",
+        "source": "Lam Tsz-man (A2 for HCCC 317/2023)"
+      },
+      "nationality": null,
+      "age_at_offence": {
+        "age": 18,
+        "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences"
+      },
+      "age_at_sentencing": null,
+      "gender": null,
+      "marital_status": null,
+      "parental_status": null,
+      "household_composition": null,
+      "health_status": null,
+      "drug_treatment_participation": null,
+      "education_level": null,
+      "occupation": {
+        "occupation": "Student",
+        "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences and still is a student in a vocational education course."
+      },
+      "monthly_wage": null,
+      "criminal_record": {
+        "record": "None",
+        "source": "He had a clear record at the time of his arrest."
+      },
+      "positive_habits_after_arrest": {
+        "habits": [
+          "Studying"
+        ],
+        "source": "He was ... still is a student in a vocational education course. I have received many mitigation letters ... All ask for leniency and truly believe this defendant when he says he has learnt his lesson and will not re-offend."
+      },
+      "family_support": {
+        "support": [
+          "Letters of support from family"
+        ],
+        "source": "I have received many mitigation letters from not only the defendant himself expressing remorse but his supportive father, uncle, aunt and social workers."
+      }
+    },
+    {
+      "defendant_name": {
+        "name": "Fu Chun-wah",
+        "source": "Fu Chun-wah (HCCC 316/2023)"
+      },
+      "nationality": null,
+      "age_at_offence": {
+        "age": 18,
+        "source": "Fu of 316/2023 was also 18 at the time of these offences."
+      },
+      "age_at_sentencing": null,
+      "gender": null,
+      "marital_status": null,
+      "parental_status": null,
+      "household_composition": null,
+      "health_status": null,
+      "drug_treatment_participation": null,
+      "education_level": null,
+      "occupation": {
+        "occupation": "Student",
+        "source": "Fu was also still a student and I granted him bail to give him a chance to complete his HKDSE examinations"
+      },
+      "monthly_wage": null,
+      "criminal_record": {
+        "record": "None",
+        "source": "He too had a clear record at the time of his arrest."
+      },
+      "positive_habits_after_arrest": null,
+      "family_support": {
+        "support": [
+          "Letters of support from family"
+        ],
+        "source": "I have a letter from his mother who accepts he must bear responsibility for his mistakes but sees the good in him. I have also a letter from a social worker."
+      }
+    }
+  ]
+}

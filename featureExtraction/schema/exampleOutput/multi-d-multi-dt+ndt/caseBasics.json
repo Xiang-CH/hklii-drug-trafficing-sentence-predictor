@@ -1,0 +1,33 @@
+{
+  "date": {
+    "date": "2023-12-31",
+    "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
+    "day_of_week": 7,
+    "is_hk_public_holiday": false
+  },
+  "time": {
+    "time": "02:07:00+08:00",
+    "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。"
+  },
+  "placeOfOffence": {
+    "address": "元朗八鄉錦田公路AD1688號燈柱附近的警方路障",
+    "district": "Yuen Long",
+    "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。"
+  },
+  "natureOfPlaceOfOffence": {
+    "nature": "Street",
+    "source": "警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車（路障設於道路）。"
+  },
+  "traffickingMode": {
+    "mode": "Vehicle-based dealing",
+    "source": "警方在路障截停並搜查登記號碼YW3947私家車，於車內及被告人身上發現多包可卡因及大麻，顯示毒品與車輛有關。"
+  },
+  "reason_for_offence": {
+    "reasons": [
+      "Economic hardship",
+      "Peer influence"
+    ],
+    "source": "第一被告人在警誡下表示他無業（2024年1月1日）；辯方求情陳詞指其受損友影響犯罪（第19-20段）。"
+  },
+  "benefits_received": null
+}
