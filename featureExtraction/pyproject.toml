@@ -1,0 +1,27 @@
+[project]
+name = "drug-trafficking-judgment-feature-extraction"
+version = "0.2.0"
+description = "Extract structured features from drug trafficking court judgment documents."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4>=4.14.3",
+    "holidays>=0.89",
+    "openai>=2.15.0",
+    "pycountry>=24.6.1",
+    "pydantic>=2.12.5",
+    "pydantic-extra-types>=2.11.0",
+    "python-dotenv>=1.2.1",
+    "tqdm>=4.67.1",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.13",
+]
+
+[tool.ruff]
+exclude = [
+    "schema/exampleOutput",
+    "schema/jsonSchema",
+]
