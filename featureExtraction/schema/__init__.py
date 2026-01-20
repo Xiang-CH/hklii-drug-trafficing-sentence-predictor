@@ -1,11 +1,11 @@
 from .caseBasics import CaseBasics
-from .defendantProfile import DefendantProfile
-from .sentenceDetail import SentenceDetail
+from .defendants import Defendants
+from .trials import Trials
 
 __all__ = [
     "CaseBasics",
-    "DefendantProfile",
-    "ChargeDetail",
+    "Defendants",
+    "Trials",
 ]
 
 export_classes = __all__

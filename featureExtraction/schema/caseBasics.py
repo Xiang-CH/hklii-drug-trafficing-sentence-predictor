@@ -1,8 +1,10 @@
 from enum import Enum
 import os
-from typing import Optional
-from pydantic import BaseModel, Field, ConfigDict
+from typing import List, Optional
+from pydantic import BaseModel, Field, ConfigDict, computed_field
 from datetime import date as date_type, time as time_type
+import holidays
+
 
 class District(str, Enum):
     CENTRAL_AND_WESTERN = "Central and Western"
@@ -49,7 +51,6 @@ class NatureOfPlace(str, Enum):
 
 
 class TraffickingModeEnum(str, Enum):
-    NOT_MENTIONED = "Not mentioned"
     STREET_DEALING = "Street-level dealing"
     SOCIAL_SUPPLY = "Social supply"
     COURIER = "Courier delivery"
@@ -65,15 +66,36 @@ class TraffickingModeEnum(str, Enum):
     OTHER = "Other"
 
 
+class ReasonForOffence(str, Enum):
+    FINANCIAL_GAIN = "Financial gain"
+    ECONOMIC_HARDSHIP = "Economic hardship"
+    COERCION = "Coercion"
+    DECEPTION = "Deception"
+    ADDICTION_DRIVEN = "Addiction-driven"
+    PEER_INFLUENCE = "Peer influence"
+    OTHER = "Other"
+
+
 class DateDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    date: date_type = Field(
-        description="The date in ISO 8601 format (YYYY-MM-DD)"
-    )
+    date: date_type = Field(description="The date in ISO 8601 format (YYYY-MM-DD)")
     source: str = Field(
         description="The exact match source text from which the date was extracted"
     )
+
+    @computed_field
+    @property
+    def day_of_week(self) -> int:
+        """Automatically computed day of the week from the date (1=Monday, 7=Sunday)."""
+        return self.date.weekday() + 1
+
+    @computed_field
+    @property
+    def is_hk_public_holiday(self) -> bool:
+        """Automatically computed whether the date is a Hong Kong public holiday."""
+        hk_holidays = holidays.country_holidays("HK")
+        return self.date in hk_holidays
 
 
 class TimeDetail(BaseModel):
@@ -89,7 +111,7 @@ class TimeDetail(BaseModel):
 
 class PlaceOfOffence(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    
+
     address: str = Field(description="The full address of the place of offence")
     district: District = Field(
         description="The district where the place of offence is located"
@@ -101,7 +123,7 @@ class PlaceOfOffence(BaseModel):
 
 class NatureOfPlaceOfOffence(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    
+
     nature: NatureOfPlace = Field(description="The nature of the place of offence.")
     source: str = Field(
         description="The exact match source text from which the nature of the place of offence was extracted"
@@ -110,24 +132,54 @@ class NatureOfPlaceOfOffence(BaseModel):
 
 class TraffickingMode(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    
+
     mode: TraffickingModeEnum = Field(
         description="The mode of drug trafficking. Options include:"
-                    "'Street-level dealing' (Selling drugs directly to users in public spaces like streets, parks, or clubs); "
-                    "'Social supply' (Sharing or selling drugs within social circles); "
-                    "'Courier delivery' (Transporting drugs personally from one location to another for delivery to buyers); "
-                    "'Parcel delivery' (Shipping drugs through postal or courier services); "
-                    "'Drug houses' (Operating from fixed locations (e.g., apartments or houses) where buyers visit to purchase drugs); "
-                    "'Vehicle-based dealing' (Conducting drug transactions from cars, either through drive-by exchanges, quick meetings in parking lots, or mobile delivery to buyers); "
-                    "'Vehicle concealment' (Hiding drugs in vehicles); "
-                    "'Mule trafficking' (Using individuals to transport drugs across borders); "
-                    "'Drug storage' (Storing drugs in specific locations before distribution); "
-                    "'Maritime transport'; "
-                    "'Festival or event dealing' (Selling drugs at music festivals, raves, or large gatherings where drug use is prevalent); "
-                    "'Online trafficking' (Selling and distributing drugs through internet platforms), or 'Other'."
+        "'Street-level dealing' (Selling drugs directly to users in public spaces like streets, parks, or clubs); "
+        "'Social supply' (Sharing or selling drugs within social circles); "
+        "'Courier delivery' (Transporting drugs personally from one location to another for delivery to buyers); "
+        "'Parcel delivery' (Shipping drugs through postal or courier services); "
+        "'Drug houses' (Operating from fixed locations (e.g., apartments or houses) where buyers visit to purchase drugs); "
+        "'Vehicle-based dealing' (Conducting drug transactions from cars, either through drive-by exchanges, quick meetings in parking lots, or mobile delivery to buyers); "
+        "'Vehicle concealment' (Hiding drugs in vehicles); "
+        "'Mule trafficking' (Using individuals to transport drugs across borders); "
+        "'Drug storage' (Storing drugs in specific locations before distribution); "
+        "'Maritime transport'; "
+        "'Festival or event dealing' (Selling drugs at music festivals, raves, or large gatherings where drug use is prevalent); "
+        "'Online trafficking' (Selling and distributing drugs through internet platforms), or 'Other'."
     )
     source: str = Field(
         description="The exact match source text from which the mode of drug trafficking was extracted"
+    )
+
+
+class ReasonForOffenceDetail(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    reasons: List[ReasonForOffence] = Field(
+        description="Reasons for committing the offence. "
+        "Financial gain: To obtain money, valuables, or other material benefit, regardless of financial need; "
+        "Economic hardship: Motivated by financial difficulties facing the offender, such as debt, unemployment, or other economic pressures; "
+        "Coercion: Compelled to commit the offence due to threats, intimidation, or pressure from criminal groups or other parties; "
+        "Deception: Misled or deceived about the nature or consequences of the activity, leading to involvement in the offence; "
+        "Addiction-driven: To support the individual's substance abuse or addiction, such as funding personal drug use; "
+        "Peer influence: Influenced by social pressure or encouragement from peers or associates; "
+    )
+    source: str = Field(
+        description="The exact match source text from which the reasons for committing the offence were extracted"
+    )
+
+
+class BenefitsReceivedDetail(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    amount: Optional[float] = Field(
+        default=None,
+        description="Amount of benefits received or to be received for trafficking in HKD, "
+        "excluding the value of the drug itself",
+    )
+    source: str = Field(
+        description="The exact match source text from which the benefits amount was extracted"
     )
 
 
@@ -138,12 +190,15 @@ class CaseBasics(BaseModel):
     time: Optional[TimeDetail] = Field(default=None)
     placeOfOffence: Optional[PlaceOfOffence] = Field(default=None)
     natureOfPlaceOfOffence: NatureOfPlaceOfOffence
-    traffickingMode: TraffickingMode
+    traffickingMode: Optional[TraffickingMode] = Field(default=None)
+    reason_for_offence: Optional[ReasonForOffenceDetail] = Field(default=None)
+    benefits_received: Optional[BenefitsReceivedDetail] = Field(default=None)
+
 
 if __name__ == "__main__":
     import os
     import json
-    
+
     schema = CaseBasics.model_json_schema()
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     with open("jsonSchema/caseBasics.json", "w") as f:

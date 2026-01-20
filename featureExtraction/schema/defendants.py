@@ -3,28 +3,25 @@ from typing import Optional, List, Union
 from pydantic import BaseModel, Field, ConfigDict, model_validator
 from pydantic_extra_types.country import CountryAlpha2
 
+
 class NationalityCategory(str, Enum):
-    NOT_MENTIONED = "Not mentioned"
     HK_RESIDENT = "Hong Kong resident"
     MAINLAND_CHINESE = "Mainland Chinese"
     FOREIGN = "Foreign nationality"
 
 
 class HKResidentStatus(str, Enum):
-    NOT_MENTIONED = "Not mentioned"
     PERMANENT = "Permanent resident"
     NEW_ARRIVAL = "New arrival"
     NA = "N/A"
 
 
 class Gender(str, Enum):
-    NOT_MENTIONED = "Not mentioned"
     MALE = "Male"
     FEMALE = "Female"
 
 
 class MaritalStatus(str, Enum):
-    NOT_MENTIONED = "Not mentioned"
     SINGLE = "Single"
     MARRIED = "Married"
     SEPARATED_DIVORCED = "Separated/divorced"
@@ -33,20 +30,17 @@ class MaritalStatus(str, Enum):
 
 
 class ParentalStatusEnum(str, Enum):
-    NOT_MENTIONED = "Not mentioned"
     NO_CHILDREN = "No children"
     PARENT = "Parent"
     EXPECTING = "Expecting parent"
 
 
 class CustodyStatus(str, Enum):
-    NOT_MENTIONED = "Not mentioned"
     WITH_CUSTODY = "Parent with custody"
     WITHOUT_CUSTODY = "Parent without custody"
 
 
 class HouseholdComposition(str, Enum):
-    NOT_MENTIONED = "Not mentioned"
     ALONE = "Lives alone"
     WITH_FAMILY = "Lives with family"
     WITH_NON_FAMILY = "Lives with non-family"
@@ -54,7 +48,6 @@ class HouseholdComposition(str, Enum):
 
 
 class EducationLevel(str, Enum):
-    NOT_MENTIONED = "Not mentioned"
     UNEDUCATED = "Uneducated"
     PRIMARY = "Primary"
     SECONDARY_LOWER = "Secondary - Lower"
@@ -63,7 +56,6 @@ class EducationLevel(str, Enum):
 
 
 class OccupationCategory(str, Enum):
-    NOT_MENTIONED = "Not mentioned"
     UNEMPLOYED = "Unemployed"
     MANAGER = "Manager"
     PROFESSIONAL = "Professional"
@@ -79,7 +71,6 @@ class OccupationCategory(str, Enum):
 
 
 class CriminalRecord(str, Enum):
-    NOT_MENTIONED = "Not mentioned"
     NONE = "None"
     DRUG_TRAFFICKING = "Drug trafficking"
     OTHER_DRUG = "Dangerous drug offences"
@@ -87,7 +78,6 @@ class CriminalRecord(str, Enum):
 
 
 class PositiveHabit(str, Enum):
-    NOT_MENTIONED = "Not mentioned"
     VOLUNTEERING = "Volunteering"
     STUDYING = "Studying"
     WORKING = "Working"
@@ -102,16 +92,10 @@ class FamilySupport(str, Enum):
     OTHER = "Other"
 
 
-class ReasonForOffence(str, Enum):
-    NOT_MENTIONED = "Not mentioned"
-    FINANCIAL_GAIN = "Financial gain"
-    ECONOMIC_HARDSHIP = "Economic hardship"
-    COERCION = "Coercion"
-    DECEPTION = "Deception"
-    ADDICTION_DRIVEN = "Addiction-driven"
-    PEER_INFLUENCE = "Peer influence"
-    HELPING_OTHERS = "Helping other people"
-    OTHER = "Other"
+class HealthStatusType(str, Enum):
+    DRUG_ADDICTION = "Drug addiction"
+    MENTAL_HEALTH = "Mental health"
+    PHYSICAL_HEALTH = "Physical health"
 
 
 class Nationality(BaseModel):
@@ -119,12 +103,11 @@ class Nationality(BaseModel):
 
     category: NationalityCategory
     hk_resident_status: Optional[HKResidentStatus] = Field(
-        default=None,
-        description="Only applicable if category is Hong Kong resident"
+        default=None, description="Only applicable if category is Hong Kong resident"
     )
     foreign_country_code: Optional[CountryAlpha2] = Field(
         default=None,
-        description="Specify country code in ISO 3166-1 alpha-2 format if nationality is Foreign nationality"
+        description="Specify country code in ISO 3166-1 alpha-2 format if nationality is Foreign nationality",
     )
     source: str = Field(
         description="The exact match source text from which the nationality was extracted"
@@ -132,10 +115,20 @@ class Nationality(BaseModel):
 
     @model_validator(mode="after")
     def validate_conditional_fields(self):
-        if self.category == NationalityCategory.HK_RESIDENT and self.hk_resident_status is None:
-            raise ValueError("hk_resident_status is required when category is 'Hong Kong resident'")
-        if self.category == NationalityCategory.FOREIGN and self.foreign_country_code is None:
-            raise ValueError("foreign_country_code is required when category is 'Foreign nationality'")
+        if (
+            self.category == NationalityCategory.HK_RESIDENT
+            and self.hk_resident_status is None
+        ):
+            raise ValueError(
+                "hk_resident_status is required when category is 'Hong Kong resident'"
+            )
+        if (
+            self.category == NationalityCategory.FOREIGN
+            and self.foreign_country_code is None
+        ):
+            raise ValueError(
+                "foreign_country_code is required when category is 'Foreign nationality'"
+            )
         return self
 
 
@@ -167,38 +160,34 @@ class ParentalStatus(BaseModel):
     status: ParentalStatusEnum
     custody: Optional[CustodyStatus] = Field(
         default=None,
-        description="Only applicable if status is Parent. Parent with custody means: Has one or more children and primary or shared custody; Parent without custody means: Has one or more children but does not have custody (e.g., children live with another parent or guardian)"
+        description="Only applicable if status is Parent. Parent with custody means: Has one or more children and primary or shared custody; Parent without custody means: Has one or more children but does not have custody (e.g., children live with another parent or guardian)",
     )
     source: str = Field(
         description="The exact match source text from which the parental status was extracted"
     )
 
+
+class HealthStatusCondition(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    type: HealthStatusType = Field(description="Type of health status")
+    source: str = Field(
+        description="The exact match source text from which this health status was extracted"
+    )
+
+
 class HealthStatus(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    drug_addiction: Optional[str] = Field(
-        default=None,
-        description="Specify substance if known"
-    )
-    mental_health: Optional[str] = Field(
-        default=None,
-        description="Specify conditions like depression/anxiety"
-    )
-    physical_health: Optional[str] = Field(
-        default=None,
-        description="Specify chronic illnesses"
-    )
-    source: str = Field(
-        description="The exact match source text from which the health status was extracted"
+    conditions: List[HealthStatusCondition] = Field(
+        description="List of health status items found in the judgment"
     )
 
 
 class Occupation(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    occupation: OccupationCategory = Field(
-        description="Occupation at time of offence."
-    )
+    occupation: OccupationCategory = Field(description="Occupation at time of offence.")
 
     source: str = Field(
         description="The exact match source text from which the occupation was extracted"
@@ -268,9 +257,7 @@ class EducationLevelDetail(BaseModel):
 class MonthlyWageDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    wage: int = Field(
-        description="Monthly wage at time of offence in HKD"
-    )
+    wage: int = Field(description="Monthly wage at time of offence in HKD")
     source: str = Field(
         description="The exact match source text from which the monthly wage was extracted"
     )
@@ -297,29 +284,9 @@ class PositiveHabitDetail(BaseModel):
 class FamilySupportDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    support: List[FamilySupport] = Field(
-        description="Types of family support present"
-    )
+    support: List[FamilySupport] = Field(description="Types of family support present")
     source: str = Field(
         description="The exact match source text from which the family support was extracted"
-    )
-
-
-class ReasonForOffenceDetail(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-
-    reasons: List[ReasonForOffence] = Field(
-        description="Reasons for committing the offence. "
-                    "Financial gain: To obtain money, valuables, or other material benefit, regardless of financial need; "
-                    "Economic hardship: Motivated by financial difficulties facing the offender, such as debt, unemployment, or other economic pressures; "
-                    "Coercion: Compelled to commit the offence due to threats, intimidation, or pressure from criminal groups or other parties; "
-                    "Deception: Misled or deceived about the nature or consequences of the activity, leading to involvement in the offence; "
-                    "Addiction-driven: To support the individual's substance abuse or addiction, such as funding personal drug use; "
-                    "Peer influence: Influenced by social pressure or encouragement from peers or associates; "
-                    "Helping other people: Committed the offence with the intention of assisting or benefiting others, such as family or friends."
-    )
-    source: str = Field(
-        description="The exact match source text from which the reasons for committing the offence were extracted"
     )
 
 
@@ -327,29 +294,42 @@ class DefendantProfile(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     defendant_name: DefendantNameDetail
-    nationality: Nationality
+    nationality: Optional[Nationality] = Field(default=None)
     age_at_offence: Optional[AgeAtOffence] = Field(default=None)
     age_at_sentencing: Optional[AgeAtSentencing] = Field(default=None)
-    gender: GenderDetail
-    marital_status: MaritalStatusDetail
-    parental_status: ParentalStatus
-    household_composition: HouseholdCompositionDetail
+    gender: Optional[GenderDetail] = Field(default=None)
+    marital_status: Optional[MaritalStatusDetail] = Field(default=None)
+    parental_status: Optional[ParentalStatus] = Field(default=None)
+    household_composition: Optional[HouseholdCompositionDetail] = Field(default=None)
     health_status: Optional[HealthStatus] = Field(default=None)
     drug_treatment_participation: Optional[DrugTreatmentDetail] = Field(default=None)
-    education_level: EducationLevelDetail
-    occupation: Occupation
+    education_level: Optional[EducationLevelDetail] = Field(default=None)
+    occupation: Optional[Occupation] = Field(default=None)
     monthly_wage: Optional[MonthlyWageDetail] = Field(default=None)
     criminal_record: Optional[CriminalRecordDetail] = Field(default=None)
     positive_habits_after_arrest: Optional[PositiveHabitDetail] = Field(default=None)
     family_support: Optional[FamilySupportDetail] = Field(default=None)
-    reason_for_offence: Optional[ReasonForOffenceDetail] = Field(default=None)
+
+
+class Defendants(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    defendants: List[DefendantProfile] = Field(
+        description="List of defendant profiles extracted from the judgment"
+    )
+
+    @model_validator(mode="after")
+    def check_defendant_count(self) -> "Defendants":
+        if len(self.defendants) == 0:
+            raise ValueError("At least one defendant must be provided")
+        return self
 
 
 if __name__ == "__main__":
     import json
     import os
 
-    schema = DefendantProfile.model_json_schema()
+    schema = Defendants.model_json_schema()
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
-    with open("jsonSchema/defendantProfile.json", "w") as f:
+    with open("jsonSchema/defendants.json", "w") as f:
         json.dump(schema, f, indent=4)
