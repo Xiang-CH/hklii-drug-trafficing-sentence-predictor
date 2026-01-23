@@ -7,11 +7,14 @@ requires-python = ">=3.12"
 dependencies = [
     "beautifulsoup4>=4.14.3",
     "holidays>=0.89",
+    "langfuse>=3.12.0",
     "openai>=2.15.0",
+    "pandas>=2.3.3",
     "pycountry>=24.6.1",
     "pydantic>=2.12.5",
     "pydantic-extra-types>=2.11.0",
     "python-dotenv>=1.2.1",
+    "tabulate>=0.9.0",
     "tqdm>=4.67.1",
 ]
 
