@@ -6,17 +6,18 @@ This directory contains Pydantic schema definitions for extracting structured fe
 
 ```
 schema/
-├── caseBasics.py            # Schema for case-level information (CaseBasics)
+├── common.py                # Shared utilities (source_field helper)
+├── judgement.py             # Schema for case and charge-level information (Judgement, Charge)
 ├── defendants.py            # Schema for defendant background information (DefendantProfile, Defendants)
 ├── trials.py                # Schema for trial and sentencing information (Trial, Trials)
 ├── features.txt             # Reference document listing all features
 ├── jsonSchema/              # Auto-generated JSON Schema files
-│   ├── caseBasics.json
+│   ├── judgement.json
 │   ├── defendants.json
 │   └── trials.json
 └── exampleOutput/           # Example extraction outputs (organized by judgment type)
     ├── single-d-single-dt/
-    │   ├── caseBasics.json
+    │   ├── judgement.json
     │   ├── defendants.json
     │   └── trials.json
     ├── single-d-multi-dt/
@@ -32,7 +33,8 @@ schema/
 
 | Schema | File | Purpose | Key Fields |
 |--------|------|---------|------------|
-| **CaseBasics** | caseBasics.py | Case-level information about the offence | Date, time, place, nature of place, trafficking mode |
+| **Judgement** | judgement.py | Case-level metadata and charges | Neutral citation, judge, judgment date, representatives, charges |
+| **Charge** | judgement.py | Charge-level information about the offence | Date, time, place, cross-border, trafficking mode, reasons, benefits |
 | **Defendants** | defendants.py | Defendant background and personal information | Demographics, education, occupation, criminal record, family support |
 | **Trial** | trials.py | Trial and sentencing factors and outcomes | Drugs, role, aggravating/mitigating factors, guilty plea, sentence progression |
 
@@ -42,18 +44,43 @@ schema/
 
 **Note**: For features with "Not Mentioned" values, the corresponding schema fields will be `null`.
 
-### Table 1: [CaseBasics Schema](caseBasics.py)
+### Table 1: [Judgement Schema](judgement.py)
+
+The `Judgement` schema captures case-level metadata and contains a list of `Charge` objects.
+
+#### Judgement-Level Fields
+
+| Field | Type | Notes |
+|-------|------|-------|
+| `neutral_citation` | `str` | Format: `[year] court number` (e.g., `[2024] HKCFI 123`) |
+| `court` | computed | Automatically derived from neutral citation |
+| `judge_name` | `str` | Name of the presiding judge |
+| `judgment_date_time` | `datetime` | Date and time of the judgment |
+| `representatives` | `List[Representative]` | Legal representatives with name and role |
+| `cases_heard` | `List[str]` | Format: `case_type case_no/year` (e.g., `CC 1/2024`) |
+| `charges` | `List[Charge]` | List of charges in the case |
+
+#### Charge-Level Fields (per charge)
 
 | Feature # | Feature Name | Schema Field | Notes |
 |-----------|--------------|--------------|-------|
-| 1 | Date of offence | `date` | `DateDetail` with date and source; null if not mentioned |
-| 1a-d | Date derivations | `date`(inferred) | Day of week, weekend/weekday, public holiday derived from `date.date` |
-| 2 | Time of offence | `time` | `TimeDetail` with time and source; null if not mentioned |
-| 2a-c | Time derivations | (inferred) | Time category (morning/afternoon/evening/night) derived from `time.time` |
-| 3 | Place of offence | `placeOfOffence` | `PlaceOfOffence` with address, district, source |
-| 4 | Nature of place of offence | `natureOfPlaceOfOffence` | `NatureOfPlaceOfOffence` with nature enum and source |
-| 5 | Mode of drug trafficking | `traffickingMode` | `TraffickingMode` with mode enum and source |
-| 8 | Reasons for committing offence | `reason_for_offence` | `ReasonForOffenceDetail` with list of reasons |
+| — | Charge name | `charge_name` | `ChargeName` enum (trafficking/conspiracy variants) |
+| 1 | Date of offence | `offence_date` | `DateDetail` with date and source; null if not mentioned |
+| 1a-d | Date derivations | `offence_date` (computed) | Day of week, public holiday derived from `date` |
+| 2 | Time of offence | `offence_time` | `TimeDetail` with time and source; null if not mentioned |
+| 2a-c | Time derivations | `offence_time` (computed) | Time of day (morning/afternoon/evening/night) derived from `time` |
+| 3 | Place of offence | `place_of_offence` | `PlaceOfOffence` with address, sub-district, nature |
+| 4 | Nature of place of offence | `place_of_offence.nature` | `NatureOfPlace` enum |
+| — | Cross-border | `cross_border` | `CrossBorderDetail` with import/export type |
+| — | Defendants of charge | `defendants_of_charge` | List of `ChargeForDefendant` per defendant |
+
+#### ChargeForDefendant Fields (per defendant per charge)
+
+| Feature # | Feature Name | Schema Field | Notes |
+|-----------|--------------|--------------|-------|
+| — | Defendant name | `defendant_name` | Full name as appearing in the judgment |
+| 5 | Mode of drug trafficking | `trafficking_mode` | `TraffickingMode` with mode enum and source |
+| 8 | Reasons for committing offence | `reasons_for_offence` | List of `ReasonForOffenceDetail` |
 | 9 | Benefits received for trafficking | `benefits_received` | `BenefitsReceivedDetail` with amount in HKD |
 
 ### Table 2: [DefendantProfile Schema](defendants.py)
@@ -81,7 +108,7 @@ schema/
 
 | Feature # | Feature Name | Schema Field | Notes |
 |-----------|--------------|--------------|-------|
-| - | Charge type | `charge_type` | `ChargeDetail` with charge type enum |
+| — | Charge type | `charge_type` | `ChargeDetail` with charge type enum |
 | 6 | Types and quantities of drugs | `drugs` | List of `DrugDetail` with drug type, quantity, source |
 | 7 | Role of defendant | `role` | `RoleDetail` with role enum |
 | 12 | Aggravating factors | `aggravating_factors` | List of `AggravatingFactorDetail` |
@@ -97,13 +124,26 @@ schema/
 
 ---
 
+## Enumerations Reference
+
+### Judgement Schema Enums
+
+| Enum | Values |
+|------|--------|
+| `ChargeName` | Trafficking in a dangerous drug, Trafficking in dangerous drugs, Conspiracy to traffic in a dangerous drug, Conspiracy to traffic in dangerous drugs |
+| `NatureOfPlace` | Residential building, Commercial building, Industrial building, Government or public building, Entertainment venue, Street, Car park, Shopping mall, Public transport, Private vehicle, Restaurant, Educational institution, Hospital, Outside methadone clinic, Recreational area, Hotel or guesthouse, Construction site, Vacant or abandoned property, Border checkpoint, Other |
+| `TraffickingModeEnum` | Street-level dealing, Social supply, Courier delivery, Parcel delivery, Drug houses, Vehicle-based dealing, Vehicle concealment, Mule trafficking, Drug repackaging or storage, Maritime transport, Festival or event dealing, Online trafficking, Other |
+| `ReasonForOffence` | Financial gain, Economic hardship, Coercion, Deception, Addiction-driven, Peer influence, Helping other people, Other |
+
+---
+
 ## Generating JSON Schema Files
 
 Each schema file can generate its corresponding JSON Schema:
 
 ```bash
 cd featureExtraction/schema
-python caseBasics.py
+python judgement.py
 python defendants.py
 python trials.py
 ```

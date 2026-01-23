@@ -9,51 +9,61 @@
         "category": "Hong Kong resident",
         "hk_resident_status": "Permanent resident",
         "foreign_country_code": null,
-        "source": "第一被告人現年26歲，香港出生，接受教育程度至中三。"
+        "infer_reason": "記載為「香港出生」，可推斷為香港居民並為永久居民",
+        "source": "第一被告人現年26歲，香港出生"
       },
       "age_at_offence": {
         "age": 24,
-        "source": "許大律師在求情時指出...案發時，他年僅24歲 (para 19)"
+        "source": "案發時，他年僅24歲"
       },
       "age_at_sentencing": {
         "age": 26,
-        "source": "第一被告人現年26歲 (para 16)"
+        "source": "第一被告人現年26歲，香港出生"
       },
-      "gender": null,
+      "gender": {
+        "gender": "Male",
+        "source": "2024年1月1日，警方與第一被告人進行錄影會面。第一被告人在警誡下說出以下事情：...他無業，與女友同住。"
+      },
       "marital_status": {
         "status": "Single",
-        "source": "第一被告人未婚 (para 17)"
+        "source": "第一被告人未婚，與家人關係良好。"
       },
       "parental_status": null,
       "household_composition": {
-        "composition": "Lives with family",
-        "source": "第一被告人未婚，與家人關係良好...第一被告人負責家庭部分經濟來源 (para 17)"
+        "composition": "Lives with non-family",
+        "source": "第一被告人在警誡下說出：他無業，與女友同住。"
       },
       "health_status": null,
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Lower",
-        "source": "接受教育程度至中三 (para 16)"
+        "source": "第一被告人現年26歲，香港出生，接受教育程度至中三。"
       },
       "occupation": {
-        "occupation": "Craft and related worker",
-        "source": "畢業後，他入讀職業訓練學院並修讀為期約4年半的電梯維修兼讀課程，隨後從事相關維修行業。此外，第一被告人曾擔任貨車及私家車司機等職位 (para 16)"
+        "occupation_category": "Craft and related worker",
+        "occupation_name": "曾為電梯維修學徒，後從事維修行業；亦曾擔任貨車及私家車司機",
+        "source": "畢業後，他入讀職業訓練學院並修讀為期約4年半的電梯維修兼讀課程，隨後從事相關維修行業。此外，第一被告人曾擔任貨車及私家車司機等職位。"
       },
       "monthly_wage": {
         "wage": 20000,
-        "source": "每月收入約為港幣2萬元 (para 16)"
+        "source": "此外，第一被告人曾擔任貨車及私家車司機等職位，每月收入約為港幣2萬元。"
       },
       "criminal_record": {
         "record": "None",
-        "source": "第一被告人過往沒有任何刑事定罪紀錄 (para 18)"
+        "source": "第一被告人過往沒有任何刑事定罪紀錄。"
       },
-      "positive_habits_after_arrest": null,
+      "positive_habits_after_arrest": {
+        "habits": [
+          "Participation in rehabilitation/self-improvement"
+        ],
+        "source": "還押期間，第一被告人在此期間接受教會傳道人的輔導，並希望於刑期結束後能盡快尋求一份穩定的工作。"
+      },
       "family_support": {
         "support": [
-          "Family presence in court",
-          "Letters of support from family"
+          "Letters of support from family",
+          "Family presence in court"
         ],
-        "source": "辯方向法庭提交了第一被告人及其父母的求情信...第一被告人的父親今天到庭旁聽 (para 20-21)"
+        "source": "辯方向法庭提交了第一被告人及其父母的求情信以供考慮。第一被告人的父親今天到庭旁聽。"
       }
     },
     {
@@ -65,43 +75,49 @@
         "category": "Hong Kong resident",
         "hk_resident_status": "Permanent resident",
         "foreign_country_code": null,
-        "source": "書面求情陳詞中補充「第二被告人現年23歲，香港出生，無刑事定罪紀錄」 (para 22)"
+        "infer_reason": "記載為「香港出生」，可推斷為香港居民並為永久居民",
+        "source": "馬大律師在其書面求情陳詞中，除接納控方所提供的認證經歷口供，以及補充「第二被告人現年23歲，香港出生，無刑事定罪紀錄」外"
       },
       "age_at_offence": null,
       "age_at_sentencing": {
         "age": 23,
-        "source": "書面求情陳詞中補充「第二被告人現年23歲，香港出生，無刑事定罪紀錄」 (para 22)"
+        "source": "馬大律師在其書面求情陳詞中，除接納控方所提供的認證經歷口供，以及補充「第二被告人現年23歲，香港出生，無刑事定罪紀錄」外"
       },
-      "gender": null,
+      "gender": {
+        "gender": "Male",
+        "source": "警方要求第二被告人出示香港身份證，但他聲稱沒有攜帶。"
+      },
       "marital_status": {
         "status": "Single",
-        "source": "經歷口供提及第二被告人未婚 (para 23)"
+        "source": "經歷口供提及第二被告人未婚"
       },
       "parental_status": null,
       "household_composition": {
         "composition": "Lives with family",
-        "source": "經歷口供提及...被捕之後與母親同住 (para 23)"
+        "source": "經歷口供提及...被捕之後與母親同住"
       },
       "health_status": null,
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Lower",
-        "source": "經歷口供提及接受教育程度至中三 (para 23)"
+        "source": "經歷口供提及第二被告人...接受教育程度至中三"
       },
       "occupation": {
-        "occupation": "Elementary occupation",
-        "source": "經歷口供提及第二被告人之前任職倉務員 (para 23)"
+        "occupation_category": "Elementary occupation",
+        "occupation_name": "倉務員（前職）",
+        "source": "經歷口供提及第二被告人之前任職倉務員。"
       },
       "monthly_wage": {
         "wage": 8000,
-        "source": "第二被告人之前任職倉務員的每月收入為8,000元 (para 24)"
+        "source": "最後，本席獲告知...第二被告人之前任職倉務員的每月收入為8,000元。"
       },
       "criminal_record": {
         "record": "None",
-        "source": "第二被告人過往沒有任何刑事定罪紀錄 (para 25)"
+        "source": "第二被告人過往沒有任何刑事定罪紀錄。"
       },
       "positive_habits_after_arrest": null,
       "family_support": null
     }
-  ]
+  ],
+  "tracing_id": "78e5ba512f8b867258b115e7889a6fae"
 }

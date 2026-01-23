@@ -1,0 +1,81 @@
+{
+  "neutral_citation": "[2025] HKCA 943",
+  "judge_name": "Andrew Macrae",
+  "judgment_date_time": "2025-10-17T00:00:00+08:00",
+  "representatives": [
+    {
+      "name": "Mr Prakash L Daryanani",
+      "role": "SPP, of the Department of Justice, for the Respondent"
+    },
+    {
+      "name": "Mr Duncan Percy",
+      "role": "instructed by SH Chan & Co, assigned by the Director of Legal Aid, for the Applicant"
+    },
+    {
+      "name": "Ms. Janice KWAN",
+      "role": "SPP of Department of Justice for the Prosecution/ HKSAR"
+    },
+    {
+      "name": "Mr. Raymond YU",
+      "role": "instructed by Messrs. Chan & Chan, assigned by D.L.A., for the defendant"
+    }
+  ],
+  "cases_heard": [
+    "CACC 28/2025",
+    "HCCC 114/2024"
+  ],
+  "charges": [
+    {
+      "charge_name": "Trafficking in dangerous drugs",
+      "offence_date": {
+        "date": "2022-04-02",
+        "source": "the defendant on 2 April 2022, at room 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon",
+        "day_of_week": 6,
+        "is_hk_public_holiday": false
+      },
+      "offence_time": {
+        "time": "21:20:00+08:00",
+        "source": "At around 9:20pm",
+        "time_of_day": "evening"
+      },
+      "place_of_offence": {
+        "address": "room 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon",
+        "nature": "Residential building",
+        "subDistrict": "Tai Kok Tsui",
+        "source": "the defendant on 2 April 2022, at room 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon",
+        "district": "Yau Tsim Mong"
+      },
+      "cross_border": {
+        "cross_border": false,
+        "type": null,
+        "source": ""
+      },
+      "defendants_of_charge": [
+        {
+          "defendant_name": "Lau Kam Hung",
+          "trafficking_mode": {
+            "mode": "Drug houses",
+            "source": "That people would come to the flat to consume or receive drugs was apparent from the fact that the person who opened the door had herself received drugs from the applicant, there were two glass bottles and straws found for the consumption of drugs in the premises and the applicant admitted that he would share drugs with his friends."
+          },
+          "reasons_for_offence": [
+            {
+              "reason": "Addiction-driven",
+              "source": "At the time of sentencing, the applicant was a former drug abuser aged 68"
+            },
+            {
+              "reason": "Helping other people",
+              "source": "the defendant claimed under caution that the “pork” (colloquial term for methamphetamine) and “weed” (colloquial term for cannabis) were for his own consumption, and he would sometimes share them with his friends."
+            }
+          ],
+          "benefits_received": {
+            "received": false,
+            "amount": null,
+            "source": "the street value of which was HK$9,895.60 and HK$2,621 respectively."
+          }
+        }
+      ]
+    }
+  ],
+  "court": "HKCA",
+  "tracing_id": "15195fb418319285d8f56f36286a05fb"
+}

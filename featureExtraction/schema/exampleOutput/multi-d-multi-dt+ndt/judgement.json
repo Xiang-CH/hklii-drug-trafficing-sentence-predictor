@@ -1,0 +1,144 @@
+{
+  "neutral_citation": "[2025] HKDC 1339",
+  "judge_name": "徐綺薇",
+  "judgment_date_time": "2025-08-06T00:00:00+08:00",
+  "representatives": [
+    {
+      "name": "譚皓",
+      "role": "律政司署理高級檢控官，代表香港特別行政區"
+    },
+    {
+      "name": "許浩銘",
+      "role": "由禤氏律師行延聘，代表第一被告人"
+    },
+    {
+      "name": "馬明德",
+      "role": "由法律援助署委派的李楚正律師事務所延聘，代表第二被告人"
+    }
+  ],
+  "cases_heard": [
+    "DCCC 1077/2024"
+  ],
+  "charges": [
+    {
+      "charge_name": "Trafficking in a dangerous drug",
+      "offence_date": {
+        "date": "2023-12-31",
+        "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
+        "day_of_week": 7,
+        "is_hk_public_holiday": false
+      },
+      "offence_time": {
+        "time": "02:07:00+08:00",
+        "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
+        "time_of_day": "night"
+      },
+      "place_of_offence": {
+        "address": "元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車",
+        "nature": "Street",
+        "subDistrict": "Yuen Long",
+        "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
+        "district": "Yuen Long"
+      },
+      "cross_border": {
+        "cross_border": false,
+        "type": null,
+        "source": "未有提及跨境運送或進出口事宜。"
+      },
+      "defendants_of_charge": [
+        {
+          "defendant_name": "曾浩然",
+          "trafficking_mode": null,
+          "reasons_for_offence": [
+            {
+              "reason": "Peer influence",
+              "source": "因疫情及經濟低迷，他受損友影響犯罪，現希望法庭給予改過自新的機會。"
+            }
+          ],
+          "benefits_received": null
+        },
+        {
+          "defendant_name": "張曜龍",
+          "trafficking_mode": null,
+          "reasons_for_offence": null,
+          "benefits_received": null
+        }
+      ]
+    },
+    {
+      "charge_name": "Trafficking in a dangerous drug",
+      "offence_date": {
+        "date": "2023-12-31",
+        "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
+        "day_of_week": 7,
+        "is_hk_public_holiday": false
+      },
+      "offence_time": {
+        "time": "02:07:00+08:00",
+        "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
+        "time_of_day": "night"
+      },
+      "place_of_offence": {
+        "address": "元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車",
+        "nature": "Street",
+        "subDistrict": "Yuen Long",
+        "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
+        "district": "Yuen Long"
+      },
+      "cross_border": {
+        "cross_border": false,
+        "type": null,
+        "source": "未有提及跨境運送或進出口事宜。"
+      },
+      "defendants_of_charge": [
+        {
+          "defendant_name": "曾浩然",
+          "trafficking_mode": null,
+          "reasons_for_offence": [
+            {
+              "reason": "Peer influence",
+              "source": "因疫情及經濟低迷，他受損友影響犯罪，現希望法庭給予改過自新的機會。"
+            }
+          ],
+          "benefits_received": null
+        }
+      ]
+    },
+    {
+      "charge_name": "Trafficking in a dangerous drug",
+      "offence_date": {
+        "date": "2023-12-31",
+        "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
+        "day_of_week": 7,
+        "is_hk_public_holiday": false
+      },
+      "offence_time": {
+        "time": "02:07:00+08:00",
+        "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
+        "time_of_day": "night"
+      },
+      "place_of_offence": {
+        "address": "元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車",
+        "nature": "Street",
+        "subDistrict": "Yuen Long",
+        "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
+        "district": "Yuen Long"
+      },
+      "cross_border": {
+        "cross_border": false,
+        "type": null,
+        "source": "未有提及跨境運送或進出口事宜。"
+      },
+      "defendants_of_charge": [
+        {
+          "defendant_name": "張曜龍",
+          "trafficking_mode": null,
+          "reasons_for_offence": null,
+          "benefits_received": null
+        }
+      ]
+    }
+  ],
+  "court": "HKDC",
+  "tracing_id": "bab399f6bac0296271804a9fb5fa1af2"
+}

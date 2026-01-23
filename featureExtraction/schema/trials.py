@@ -1,6 +1,7 @@
 from enum import Enum
 from typing import Optional, List
-from pydantic import BaseModel, Field, ConfigDict, model_validator
+from pydantic import BaseModel, Field, ConfigDict, model_validator, computed_field
+from schema.common import source_field
 
 
 class DrugType(str, Enum):
@@ -97,10 +98,8 @@ class DrugDetail(BaseModel):
         description="If the drug type is 'Other', provide the most drug type specified in the source text.",
         default=None,
     )
-    quantity: int = Field(description="Quantity of the drug in grams")
-    source: str = Field(
-        description="The exact match source text from which the drug type and quantity were extracted"
-    )
+    quantity: float = Field(description="Quantity of the drug in grams")
+    source: str = source_field("drug type and quantity")
 
     @model_validator(mode="after")
     def validate_conditional_fields(self):
@@ -123,9 +122,7 @@ class RoleDetail(BaseModel):
         "International operator/financial controller: Organiser or controller of a large "
         "and lucrative commercial operation which transcends jurisdictional boundaries."
     )
-    source: str = Field(
-        description="The exact match source text from which the role was extracted"
-    )
+    source: str = source_field("role")
 
 
 class AggravatingFactorDetail(BaseModel):
@@ -154,9 +151,7 @@ class AggravatingFactorDetail(BaseModel):
         description="The specific sentence enhancement in months due to this aggravating factor, "
         "or null if the judge acknowledged the factor but decided not to impose enhancement",
     )
-    source: str = Field(
-        description="The exact match source text from which the aggravating factor was extracted"
-    )
+    source: str = source_field("aggravating factor")
 
     @model_validator(mode="after")
     def validate_conditional_fields(self):
@@ -170,11 +165,12 @@ class GuiltyPleaDetail(BaseModel):
 
     pleaded_guilty: bool = Field(description="Whether the defendant pleaded guilty")
     court_type: Optional[CourtType] = Field(
-        default=None, description="The court where the plea was entered"
+        description="The court where the plea was entered, Must have if pleaded_guilty is True",
+        default=None,
     )
     high_court_stage: Optional[HighCourtPleaStage] = Field(
         default=None,
-        description="Stage of guilty plea if in High Court. "
+        description="Must have if court_type is High Court. "
         "Unknown: Stage unknown; "
         "Up to committal: Up to committal in Magistrates' Courts; "
         "After committal: After committal and up to and until trial dates are fixed; "
@@ -184,16 +180,31 @@ class GuiltyPleaDetail(BaseModel):
     )
     district_court_stage: Optional[DistrictCourtPleaStage] = Field(
         default=None,
-        description="Stage of guilty plea if in District Court. "
+        description="Must have if court_type is District Court. "
         "Unknown: Stage unknown; "
         "Plea day: At plea day; "
         "After dates fixed: After trial dates are fixed but before the first date of trial; "
         "First day: First day of trial; "
         "During trial: During the trial.",
     )
-    source: str = Field(
-        description="The exact match source text from which the guilty plea information was extracted"
-    )
+    source: str = source_field("guilty plea information")
+
+    @model_validator(mode="after")
+    def validate_conditional_fields(self):
+        if self.pleaded_guilty and self.court_type is None:
+            raise ValueError("court_type is required when pleaded_guilty is True")
+        if self.court_type == CourtType.HIGH_COURT and self.high_court_stage is None:
+            raise ValueError(
+                "high_court_stage is required when court_type is 'High Court'"
+            )
+        if (
+            self.court_type == CourtType.DISTRICT_COURT
+            and self.district_court_stage is None
+        ):
+            raise ValueError(
+                "district_court_stage is required when court_type is 'District Court'"
+            )
+        return self
 
 
 class MitigatingFactorDetail(BaseModel):
@@ -223,9 +234,7 @@ class MitigatingFactorDetail(BaseModel):
         description="The specific sentence reduction in months due to this mitigating factor, "
         "or null if the judge acknowledged the factor but decided not to impose reduction",
     )
-    source: str = Field(
-        description="The exact match source text from which the mitigating factor was extracted"
-    )
+    source: str = source_field("mitigating factor")
 
     @model_validator(mode="after")
     def validate_conditional_fields(self):
@@ -237,34 +246,50 @@ class MitigatingFactorDetail(BaseModel):
 class StartingPointDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
+    sentence_years: int = Field(
+        description="Starting point of sentence - years component"
+    )
     sentence_months: int = Field(
-        description="Starting point of sentence in months based on drug type and quantity"
+        description="Starting point of sentence - months component (0-11)"
     )
-    source: str = Field(
-        description="The exact match source text from which the starting point was extracted"
-    )
+    source: str = source_field("starting point")
+
+    @computed_field
+    @property
+    def total_months(self) -> int:
+        return self.sentence_years * 12 + self.sentence_months
 
 
 class SentenceAfterRoleDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
+    sentence_years: int = Field(
+        description="Sentence after role adjustment - years component"
+    )
     sentence_months: int = Field(
-        description="The sentence in months after taking into account the role of the defendant"
+        description="Sentence after role adjustment - months component (0-11)"
     )
-    source: str = Field(
-        description="The exact match source text from which this sentence was extracted"
-    )
+    source: str = source_field("sentence after role")
+
+    @computed_field
+    @property
+    def total_months(self) -> int:
+        return self.sentence_years * 12 + self.sentence_months
 
 
 class NotionalSentenceDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
+    sentence_years: int = Field(description="Notional sentence - years component")
     sentence_months: int = Field(
-        description="Notional sentence in months (starting point plus any enhancement due to aggravating factors)"
+        description="Notional sentence - months component (0-11)"
     )
-    source: str = Field(
-        description="The exact match source text from which the notional sentence was extracted"
-    )
+    source: str = source_field("notional sentence")
+
+    @computed_field
+    @property
+    def total_months(self) -> int:
+        return self.sentence_years * 12 + self.sentence_months
 
 
 class MitigationReductionDetail(BaseModel):
@@ -274,24 +299,40 @@ class MitigationReductionDetail(BaseModel):
         description="Total sentence reduction in months granted based on mitigating factors "
         "(excluding guilty plea reduction)"
     )
-    source: str = Field(
-        description="The exact match source text from which the mitigation reduction was extracted"
-    )
+    source: str = source_field("mitigation reduction")
 
 
 class FinalSentenceDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    sentence_months: int = Field(
-        description="Final sentence in months for the charge, including any reduction from guilty plea"
+    sentence_years: int = Field(description="Final sentence - years component")
+    sentence_months: int = Field(description="Final sentence - months component (0-11)")
+    guilty_plea_reduction_years: Optional[int] = Field(
+        default=None,
+        description="The reduction due to the defendant's guilty plea - years component",
     )
     guilty_plea_reduction_months: Optional[int] = Field(
         default=None,
-        description="The reduction in months specifically due to the defendant's guilty plea",
+        description="The reduction due to the defendant's guilty plea - months component (0-11)",
     )
-    source: str = Field(
-        description="The exact match source text from which the final sentence was extracted"
-    )
+    source: str = source_field("final sentence")
+
+    @computed_field
+    @property
+    def total_months(self) -> int:
+        return self.sentence_years * 12 + self.sentence_months
+
+    @computed_field
+    @property
+    def guilty_plea_reduction_total_months(self) -> Optional[int]:
+        if (
+            self.guilty_plea_reduction_years is None
+            and self.guilty_plea_reduction_months is None
+        ):
+            return None
+        years = self.guilty_plea_reduction_years or 0
+        months = self.guilty_plea_reduction_months or 0
+        return years * 12 + months
 
 
 class ChargeType(str, Enum):
@@ -301,6 +342,9 @@ class ChargeType(str, Enum):
 
 class ChargeDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
+    charge_no: int = Field(
+        description="Charge number (1 for first charge, 2 for second charge, etc.)"
+    )
     type: ChargeType = Field(
         description="Type of charge:\n"
         "Actual Trafficking: Trafficking in a dangerous drug/dangerous drugs or \n"
@@ -310,9 +354,7 @@ class ChargeDetail(BaseModel):
     defendant: str = Field(
         description="Name of the defendant associated with this charge"
     )
-    source: str = Field(
-        description="The exact match source text from which the charge type was extracted"
-    )
+    source: str = source_field("charge type")
 
 
 class Trial(BaseModel):
@@ -320,65 +362,81 @@ class Trial(BaseModel):
 
     charge_type: ChargeDetail
     drugs: List[DrugDetail] = Field(
-        description="Types and quantities of drugs involved in the offence"
+        description="Types and quantities of drugs involved **in the current charge**"
     )
-    role: Optional[RoleDetail] = Field(default=None)
+    roles: List[RoleDetail] = Field(
+        description="Roles of the defendant in the offence **in the current charge**"
+    )
     aggravating_factors: Optional[List[AggravatingFactorDetail]] = Field(
         default=None,
-        description="Aggravating factors explicitly addressed by the judge",
+        description="Aggravating factors explicitly addressed by the judge for the current charge",
     )
     mitigating_factors: Optional[List[MitigatingFactorDetail]] = Field(
         default=None,
-        description="Mitigating factors explicitly addressed by the judge (excluding guilty plea)",
+        description="Mitigating factors explicitly addressed by the judge for the current charge (excluding guilty plea)",
     )
     guilty_plea: GuiltyPleaDetail
     starting_point: StartingPointDetail = Field(
-        description="Starting point of sentence based on drug type and quantity"
+        description="Starting point of sentence based on drug type and quantity for the current charge"
     )
     sentence_after_role: Optional[SentenceAfterRoleDetail] = Field(
         default=None,
-        description="The sentence taking into account the role of the defendant",
+        description="The sentence taking into account the role of the defendant for the current charge",
     )
     notional_sentence: NotionalSentenceDetail = Field(
-        description="Notional sentence (starting point plus enhancement due to aggravating factors)"
+        description="Notional sentence (starting point plus enhancement due to aggravating factors) for the current charge"
     )
     mitigation_reduction: Optional[MitigationReductionDetail] = Field(
         default=None,
-        description="Sentence reduction granted based on mitigating factors (excluding guilty plea)",
+        description="Sentence reduction granted based on mitigating factors for the current charge (excluding guilty plea)",
     )
     final_sentence: FinalSentenceDetail = Field(
-        description="Final sentence for the charge including any guilty plea reduction"
+        description="Final sentence for the charge including any guilty plea reduction for the current charge"
     )
 
     @model_validator(mode="after")
     def check_sentence_flow(self) -> "Trial":
+        def to_total_months(years: int, months: int) -> int:
+            return years * 12 + months
+
         if not self.sentence_after_role:
             self.sentence_after_role = SentenceAfterRoleDetail(
+                sentence_years=self.starting_point.sentence_years,
                 sentence_months=self.starting_point.sentence_months,
                 source="Inferred as starting point since role adjustment not provided",
             )
 
-        if (
-            self.notional_sentence.sentence_months
-            < self.sentence_after_role.sentence_months
-        ):
+        notional_total = to_total_months(
+            self.notional_sentence.sentence_years,
+            self.notional_sentence.sentence_months,
+        )
+        after_role_total = to_total_months(
+            self.sentence_after_role.sentence_years,
+            self.sentence_after_role.sentence_months,
+        )
+
+        if notional_total < after_role_total:
             raise ValueError(
                 "Notional sentence cannot be less than sentence after role/starting point"
             )
 
-        current_sentence = self.notional_sentence.sentence_months
+        current_sentence = notional_total
         if self.mitigation_reduction:
             current_sentence -= self.mitigation_reduction.reduction_months
 
-        if self.final_sentence.sentence_months > current_sentence:
+        final_total = to_total_months(
+            self.final_sentence.sentence_years, self.final_sentence.sentence_months
+        )
+
+        if final_total > current_sentence:
             raise ValueError(
                 "Final sentence cannot be greater than notional sentence minus mitigation reduction"
             )
 
         if (
-            self.final_sentence.guilty_plea_reduction_months
-            and self.final_sentence.sentence_months
-            != current_sentence - self.final_sentence.guilty_plea_reduction_months
+            self.final_sentence.guilty_plea_reduction_total_months
+            and final_total
+            != current_sentence - self.final_sentence.guilty_plea_reduction_total_months
         ):
             raise ValueError(
                 "Final sentence must be equal to notional sentence minus mitigation reduction minus guilty plea reduction"
@@ -388,7 +446,9 @@ class Trial(BaseModel):
 
 class Trials(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    trials: List[Trial]
+    trials: List[Trial] = Field(
+        description="List of trials for each charge against the defendant pairs, there could be multiple charges per defendant, one charge to multiple defendants, or multiple charges to multiple defendants."
+    )
 
 
 if __name__ == "__main__":

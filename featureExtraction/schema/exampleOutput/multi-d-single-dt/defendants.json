@@ -3,71 +3,79 @@
     {
       "defendant_name": {
         "name": "Hui Kwai-chung, Dick",
-        "source": "Case heading and transcript: 'Hui Kwai-chung, Dick (許貴仲) (A1)'"
+        "source": "Hui Kwai-chung, Dick (許貴仲) (A1)"
       },
       "nationality": null,
       "age_at_offence": {
         "age": 36,
-        "source": "Transcript: 'The 1st defendant is 39 years of age. He was 36 years old at the time of the offence.'"
+        "source": "The 1st defendant is 39 years of age. He was 36 years old at the time of the offence."
       },
       "age_at_sentencing": {
         "age": 39,
-        "source": "Transcript: 'The 1st defendant is 39 years of age.'"
+        "source": "The 1st defendant is 39 years of age. He was 36 years old at the time of the offence."
       },
-      "gender": null,
+      "gender": {
+        "gender": "Male",
+        "source": "The 1st defendant is 39 years of age. He was 36 years old at the time of the offence."
+      },
       "marital_status": {
         "status": "Separated/divorced",
-        "source": "Transcript: 'He was divorced and lived together with his family members.'"
+        "source": "He was divorced and lived together with his family members."
       },
       "parental_status": null,
       "household_composition": {
         "composition": "Lives with family",
-        "source": "Transcript: 'He was divorced and lived together with his family members.'"
+        "source": "He was divorced and lived together with his family members."
       },
       "health_status": null,
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Lower",
-        "source": "Transcript: 'He has studied up to Form 3 level.'"
+        "source": "He has studied up to Form 3 level."
       },
       "occupation": {
-        "occupation": "Unemployed",
-        "source": "Transcript: 'He was unemployed at the time of his arrest.'"
+        "occupation_category": "Unemployed",
+        "occupation_name": null,
+        "source": "He was unemployed at the time of his arrest."
       },
       "monthly_wage": {
-        "wage": 20000,
-        "source": "Transcript (mitigation): 'the 1st defendant used to work as a construction site worker earning around $20,000 a month.'"
+        "wage": 0,
+        "source": "He was unemployed at the time of his arrest."
       },
       "criminal_record": {
         "record": "Other offences",
-        "source": "Transcript: 'He has a total of three criminal convictions for the offence of gambling in a gambling establishment.'"
+        "source": "He has a total of three criminal convictions for the offence of gambling in a gambling establishment. He had never been imprisoned for those offences."
       },
       "positive_habits_after_arrest": {
         "habits": [
+          "Studying",
           "Participation in rehabilitation/self-improvement"
         ],
-        "source": "Transcript: 'he had taken different courses to better equip himself whilst remanded in custody.'"
+        "source": "he had taken different courses to better equip himself whilst remanded in custody."
       },
       "family_support": null
     },
     {
       "defendant_name": {
         "name": "Hong Ka-ming",
-        "source": "Case heading and transcript: 'Hong Ka-ming (康家銘) (A2)'"
+        "source": "Hong Ka-ming (康家銘) (A2)"
       },
       "nationality": null,
       "age_at_offence": {
         "age": 34,
-        "source": "Transcript: 'In respect of the 2nd defendant, he is now 36 years of age. He was 34 years old at the time of the offence.'"
+        "source": "In respect of the 2nd defendant, he is now 36 years of age. He was 34 years old at the time of the offence."
       },
       "age_at_sentencing": {
         "age": 36,
-        "source": "Transcript: 'In respect of the 2nd defendant, he is now 36 years of age.'"
+        "source": "In respect of the 2nd defendant, he is now 36 years of age. He was 34 years old at the time of the offence."
       },
-      "gender": null,
+      "gender": {
+        "gender": "Male",
+        "source": "In respect of the 2nd defendant, he is now 36 years of age. He was 34 years old at the time of the offence."
+      },
       "marital_status": {
         "status": "Single",
-        "source": "Transcript: 'He was single and worked as a hairdresser.'"
+        "source": "He was single and worked as a hairdresser."
       },
       "parental_status": null,
       "household_composition": null,
@@ -75,35 +83,37 @@
         "conditions": [
           {
             "type": "Mental health",
-            "source": "Transcript: 'he has a long history of mental illness. He first received psychiatric treatment at the age of 11 and there were multiple psychiatric admissions to various hospitals between year 2009 to 2022.'"
+            "source": "he has a long history of mental illness. He first received psychiatric treatment at the age of 11 and there were multiple psychiatric admissions to various hospitals between year 2009 to 2022."
           },
           {
             "type": "Drug addiction",
-            "source": "Transcript: 'I noted from various psychiatric reports ... part of the condition of the 2nd defendant was a result of his own drug abuse. In any event, counsel informed me that he is now clear of the drug usage.'"
+            "source": "I noted from various psychiatric reports that had been submitted by counsel that indeed part of the condition of the 2nd defendant was a result of his own drug abuse."
           }
         ]
       },
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Lower",
-        "source": "Transcript: 'He has attained Form 3 education.'"
+        "source": "He has attained Form 3 education."
       },
       "occupation": {
-        "occupation": "Other",
-        "source": "Transcript: 'He ... worked as a hairdresser.'"
+        "occupation_category": "Service and sales worker",
+        "occupation_name": "hairdresser",
+        "source": "He was single and worked as a hairdresser."
       },
       "monthly_wage": null,
       "criminal_record": {
         "record": "Dangerous drug offences",
-        "source": "Transcript: 'He has a total of five criminal convictions including two convictions for the offence of possession of dangerous drug and one conviction for possession of pipe or equipment fit and intended for the consumption of dangerous drug.'"
+        "source": "He has a total of five criminal convictions including two convictions for the offence of possession of dangerous drug and one conviction for possession of pipe or equipment fit and intended for the consumption of dangerous drug."
       },
       "positive_habits_after_arrest": null,
       "family_support": {
         "support": [
           "Letters of support from family"
         ],
-        "source": "Transcript: 'A total of three mitigation letters respectively prepared by the mother, a friend of the 2nd defendant and also by a pastor were submitted to urge for leniency.'"
+        "source": "A total of three mitigation letters respectively prepared by the mother, a friend of the 2nd defendant and also by a pastor were submitted to urge for leniency."
       }
     }
-  ]
+  ],
+  "tracing_id": "9cd0d9bec382d7a3ff27fb1924193439"
 }

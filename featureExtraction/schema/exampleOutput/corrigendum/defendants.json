@@ -3,18 +3,27 @@
     {
       "defendant_name": {
         "name": "黃鈺庭",
-        "source": "案首及多處（標題及正文）出現被告人姓名：黃鈺庭"
+        "source": "訴\n\n黃鈺庭\n（第一被告人）"
       },
-      "nationality": null,
+      "nationality": {
+        "category": "Hong Kong resident",
+        "hk_resident_status": "N/A",
+        "foreign_country_code": null,
+        "infer_reason": "Completed Form 3 (中三) in 2021, indicating participation in the Hong Kong education system",
+        "source": "他在2021年完成中三學歷"
+      },
       "age_at_offence": {
         "age": 17,
-        "source": "判詞第17段指出「第一被告人犯案時未滿18歲」"
+        "source": "第一被告人犯案時未滿18歲"
       },
       "age_at_sentencing": {
         "age": 18,
-        "source": "判詞第13段指出「他現年只有18歲。」（判刑日期2025年4月30日）"
+        "source": "他現年只有18歲。"
       },
-      "gender": null,
+      "gender": {
+        "gender": "Male",
+        "source": "第一被告人隨即被拘捕，在警誡下，他表示管有該些毒品自用"
+      },
       "marital_status": null,
       "parental_status": null,
       "household_composition": null,
@@ -22,36 +31,51 @@
         "conditions": [
           {
             "type": "Drug addiction",
-            "source": "第13段稱第一被告人開始吸食氯胺酮（表明有吸食毒品情況）"
+            "source": "繼而開始吸食氯胺酮"
           }
         ]
       },
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Lower",
-        "source": "第13段指出「他在2021年完成中三學歷」"
+        "source": "他在2021年完成中三學歷"
       },
       "occupation": {
-        "occupation": "Unemployed",
-        "source": "第9(f)段及第13段說明第一被告人無業／案發時因失業外出"
+        "occupation_category": "Unemployed",
+        "occupation_name": null,
+        "source": "第一被告人因為失業而借故外出消遣"
       },
       "monthly_wage": null,
       "criminal_record": {
         "record": "None",
-        "source": "第14段及第68段等指出兩名被告人均無定罪紀錄；第14段特別指出第一被告人「沒有任何前科」"
+        "source": "第一被告人沒有任何前科"
       },
-      "positive_habits_after_arrest": null,
+      "positive_habits_after_arrest": {
+        "habits": [
+          "Participation in rehabilitation/self-improvement"
+        ],
+        "source": "坦白認罪，以及和警方充份合作。"
+      },
       "family_support": null
     },
     {
       "defendant_name": {
         "name": "蘇偉強",
-        "source": "案首及多處（標題及正文）出現被告人姓名：蘇偉強"
+        "source": "訴\n\n蘇偉強\n（第二被告人）"
       },
-      "nationality": null,
+      "nationality": {
+        "category": "Hong Kong resident",
+        "hk_resident_status": "N/A",
+        "foreign_country_code": null,
+        "infer_reason": "Identified by Hong Kong-style mobile number and local activity (arrest in Hong Kong); contextual indicators consistent with Hong Kong residency",
+        "source": "第二被告人的流動電話號碼一樣為第一被告人所指的69XX XXXX"
+      },
       "age_at_offence": null,
       "age_at_sentencing": null,
-      "gender": null,
+      "gender": {
+        "gender": "Male",
+        "source": "在警誡下，第二被告人說他會就介紹工作給第一被告人而“從中抽水”"
+      },
       "marital_status": null,
       "parental_status": null,
       "household_composition": null,
@@ -62,16 +86,16 @@
       "monthly_wage": null,
       "criminal_record": {
         "record": "None",
-        "source": "第68段指出兩名被告人均為初犯／無定罪紀錄"
+        "source": "兩位均為初犯"
       },
       "positive_habits_after_arrest": null,
       "family_support": {
         "support": [
-          "Letters of support from family",
-          "Other"
+          "Letters of support from family"
         ],
-        "source": "第67段提到「其家人及朋友對他的正面評價及支持」；求情材料提及大量求情信（第18段、第19段、第67段）"
+        "source": "特別是其家人及朋友對他的正面評價及支持，本席酌情減刑3個月。"
       }
     }
-  ]
+  ],
+  "tracing_id": "b459840b1f2e9eaeb95bb6c64c6e038e"
 }

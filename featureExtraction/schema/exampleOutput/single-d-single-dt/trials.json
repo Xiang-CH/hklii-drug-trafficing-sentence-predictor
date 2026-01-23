@@ -2,55 +2,73 @@
   "trials": [
     {
       "charge_type": {
+        "charge_no": 1,
         "type": "Actual Trafficking",
         "defendant": "Wong Man-kit",
-        "source": "The particulars of the charge are that the defendant on 30 November 2023... unlawfully trafficked in dangerous drugs, namely, 112.35 grammes of a solid containing 85.63 grammes of cocaine and 211.16 grammes of a solid containing 170.37 grammes of ketamine."
+        "source": "The particulars of the charge are that the defendant on 30 November 2023, at Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories, unlawfully trafficked in dangerous drugs, namely, 112.35 grammes of a solid containing 85.63 grammes of cocaine and 211.16 grammes of a solid containing 170.37 grammes of ketamine."
       },
       "drugs": [
         {
           "drug_type": "Cocaine",
           "other_drug_type": null,
-          "quantity": 86,
-          "source": "112.35 grammes of a solid containing 85.63 grammes of cocaine"
+          "quantity": 85.63,
+          "source": "The particulars of the charge are that the defendant on 30 November 2023, at Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories, unlawfully trafficked in dangerous drugs, namely, 112.35 grammes of a solid containing 85.63 grammes of cocaine and 211.16 grammes of a solid containing 170.37 grammes of ketamine."
         },
         {
           "drug_type": "Ketamine",
           "other_drug_type": null,
-          "quantity": 170,
-          "source": "211.16 grammes of a solid containing 170.37 grammes of ketamine"
+          "quantity": 170.37,
+          "source": "The particulars of the charge are that the defendant on 30 November 2023, at Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories, unlawfully trafficked in dangerous drugs, namely, 112.35 grammes of a solid containing 85.63 grammes of cocaine and 211.16 grammes of a solid containing 170.37 grammes of ketamine."
         }
       ],
-      "role": {
-        "role": "Storekeeper",
-        "source": "I am satisfied that the role of the defendant is one of storekeeper and courier."
-      },
+      "roles": [
+        {
+          "role": "Storekeeper",
+          "source": "I am satisfied that the role of the defendant is one of storekeeper and courier."
+        },
+        {
+          "role": "Courier",
+          "source": "I am satisfied that the role of the defendant is one of storekeeper and courier."
+        }
+      ],
       "aggravating_factors": null,
       "mitigating_factors": null,
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "High Court",
-        "high_court_stage": "Up to committal",
+        "high_court_stage": "After committal",
         "district_court_stage": null,
-        "source": "The defendant pleaded guilty to one count of trafficking in dangerous drugs on 20 February 2025. He was committed to the Court of First Instance for sentence."
+        "source": "The defendant pleaded guilty to one count of trafficking in dangerous drugs on 20 February 2025. He was committed to the Court of First Instance for sentence. Today he confirms his plea and admission of the Summary of Facts."
       },
       "starting_point": {
-        "sentence_months": 120,
-        "source": "After the conversion, I calculate a total of 128.22 grammes of cocaine, which will mathematically attract a starting point of 10 years and 1 month imprisonment. ... I find the mathematical starting point of 10 years' imprisonment appropriate in this case."
+        "sentence_years": 10,
+        "sentence_months": 0,
+        "source": "After the conversion, I calculate a total of 128.22 grammes of cocaine, which will mathematically attract a starting point of 10 years and 1 month imprisonment. I am satisfied that the role of the defendant is one of storekeeper and courier. This is a position at the bottom of the hierarchy of drug traffickers. I find the mathematical starting point of 10 years' imprisonment appropriate in this case.",
+        "total_months": 120
       },
       "sentence_after_role": {
-        "sentence_months": 120,
-        "source": "I am satisfied that the role of the defendant is one of storekeeper and courier. I find the mathematical starting point of 10 years' imprisonment appropriate in this case."
+        "sentence_years": 10,
+        "sentence_months": 0,
+        "source": "I am satisfied that the role of the defendant is one of storekeeper and courier. This is a position at the bottom of the hierarchy of drug traffickers. I find the mathematical starting point of 10 years' imprisonment appropriate in this case.",
+        "total_months": 120
       },
       "notional_sentence": {
-        "sentence_months": 120,
-        "source": "I find the mathematical starting point of 10 years' imprisonment appropriate in this case."
+        "sentence_years": 10,
+        "sentence_months": 0,
+        "source": "After the conversion, I calculate a total of 128.22 grammes of cocaine, which will mathematically attract a starting point of 10 years and 1 month imprisonment. I find the mathematical starting point of 10 years' imprisonment appropriate in this case.",
+        "total_months": 120
       },
       "mitigation_reduction": null,
       "final_sentence": {
-        "sentence_months": 80,
-        "guilty_plea_reduction_months": 40,
-        "source": "The defendant pleaded guilty at the earliest opportunity and is entitled to a full one-third discount. I will take the starting point of 10 years and reduce it by one-third. The defendant is sentenced to 6 years and 8 months' imprisonment."
+        "sentence_years": 6,
+        "sentence_months": 8,
+        "guilty_plea_reduction_years": 3,
+        "guilty_plea_reduction_months": 4,
+        "source": "The defendant pleaded guilty at the earliest opportunity and is entitled to a full one-third discount. I will take the starting point of 10 years and reduce it by one-third. The defendant is sentenced to a total of 6 years and 8 months' imprisonment.",
+        "total_months": 80,
+        "guilty_plea_reduction_total_months": 40
       }
     }
-  ]
+  ],
+  "tracing_id": "bf3ee62ce178efa31fc4728476622c94"
 }

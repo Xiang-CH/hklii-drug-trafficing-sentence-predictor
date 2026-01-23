@@ -2,6 +2,7 @@ from enum import Enum
 from typing import Optional, List, Union
 from pydantic import BaseModel, Field, ConfigDict, model_validator
 from pydantic_extra_types.country import CountryAlpha2
+from schema.common import source_field
 
 
 class NationalityCategory(str, Enum):
@@ -103,15 +104,20 @@ class Nationality(BaseModel):
 
     category: NationalityCategory
     hk_resident_status: Optional[HKResidentStatus] = Field(
-        default=None, description="Only applicable if category is Hong Kong resident"
+        default=None,
+        description="Required if category is Hong Kong resident. "
+        "To infer Hong Kong permanent resident status (b2), look for indications such as "
+        "references to living in Hong Kong for seven or more years, or possession of a Hong Kong permanent identity card.",
     )
     foreign_country_code: Optional[CountryAlpha2] = Field(
         default=None,
-        description="Specify country code in ISO 3166-1 alpha-2 format if nationality is Foreign nationality",
+        description="Required if category is Foreign nationality. Specify country code in ISO 3166-1 alpha-2 format",
     )
-    source: str = Field(
-        description="The exact match source text from which the nationality was extracted"
+    infer_reason: Optional[str] = Field(
+        default=None,
+        description="Reason for inferring nationality, if applicable",
     )
+    source: str = source_field("nationality")
 
     @model_validator(mode="after")
     def validate_conditional_fields(self):
@@ -138,9 +144,7 @@ class AgeAtOffence(BaseModel):
     age: Union[int, List[int]] = Field(
         description="Exact age or estimated range at time of offence by using a list with two integers"
     )
-    source: str = Field(
-        description="The exact match source text from which the age at offence was extracted"
-    )
+    source: str = source_field("age at offence")
 
 
 class AgeAtSentencing(BaseModel):
@@ -149,9 +153,7 @@ class AgeAtSentencing(BaseModel):
     age: Union[int, List[int]] = Field(
         description="Exact age or estimated range at sentencing by using a list with two integers"
     )
-    source: str = Field(
-        description="The exact match source text from which the age at sentencing was extracted"
-    )
+    source: str = source_field("age at sentencing")
 
 
 class ParentalStatus(BaseModel):
@@ -162,18 +164,14 @@ class ParentalStatus(BaseModel):
         default=None,
         description="Only applicable if status is Parent. Parent with custody means: Has one or more children and primary or shared custody; Parent without custody means: Has one or more children but does not have custody (e.g., children live with another parent or guardian)",
     )
-    source: str = Field(
-        description="The exact match source text from which the parental status was extracted"
-    )
+    source: str = source_field("parental status")
 
 
 class HealthStatusCondition(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     type: HealthStatusType = Field(description="Type of health status")
-    source: str = Field(
-        description="The exact match source text from which this health status was extracted"
-    )
+    source: str = source_field("health status")
 
 
 class HealthStatus(BaseModel):
@@ -187,11 +185,13 @@ class HealthStatus(BaseModel):
 class Occupation(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    occupation: OccupationCategory = Field(description="Occupation at time of offence.")
-
-    source: str = Field(
-        description="The exact match source text from which the occupation was extracted"
+    occupation_category: OccupationCategory = Field(
+        description="Occupation at time of offence."
     )
+    occupation_name: Optional[str] = Field(
+        default=None, description="Specific occupation name if available"
+    )
+    source: str = source_field("occupation")
 
 
 class DefendantNameDetail(BaseModel):
@@ -200,36 +200,28 @@ class DefendantNameDetail(BaseModel):
     name: str = Field(
         description="Full name of the defendant as appearing in the judgment"
     )
-    source: str = Field(
-        description="The exact match source text from which the name was extracted"
-    )
+    source: str = source_field("name")
 
 
 class GenderDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     gender: Gender
-    source: str = Field(
-        description="The exact match source text from which the gender was extracted"
-    )
+    source: str = source_field("gender")
 
 
 class MaritalStatusDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     status: MaritalStatus
-    source: str = Field(
-        description="The exact match source text from which the marital status was extracted"
-    )
+    source: str = source_field("marital status")
 
 
 class HouseholdCompositionDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     composition: HouseholdComposition
-    source: str = Field(
-        description="The exact match source text from which the household composition was extracted"
-    )
+    source: str = source_field("household composition")
 
 
 class DrugTreatmentDetail(BaseModel):
@@ -238,9 +230,7 @@ class DrugTreatmentDetail(BaseModel):
     participated: bool = Field(
         description="Whether the defendant participated in community or residential drug treatment"
     )
-    source: str = Field(
-        description="The exact match source text from which the drug treatment participation was extracted"
-    )
+    source: str = source_field("drug treatment participation")
 
 
 class EducationLevelDetail(BaseModel):
@@ -249,55 +239,56 @@ class EducationLevelDetail(BaseModel):
     level: EducationLevel = Field(
         description="Lower secondary: Including Secondary 1-3 or equivalent level; Upper secondary: Including Secondary 4-7 of old academic structure (1985-2011), Secondary 4-6 of new academic structure (2012 onwards) or equivalent level, Project Yi Jin/Yi Jin Diploma, Diploma of Applied Education and craft level"
     )
-    source: str = Field(
-        description="The exact match source text from which the education level was extracted"
-    )
+    source: str = source_field("education level")
 
 
 class MonthlyWageDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    wage: int = Field(description="Monthly wage at time of offence in HKD")
-    source: str = Field(
-        description="The exact match source text from which the monthly wage was extracted"
+    wage: int = Field(
+        description="Monthly wage at time of offence in HKD, 0 if unemployed"
     )
+    source: str = source_field("monthly wage")
 
 
 class CriminalRecordDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     record: CriminalRecord
-    source: str = Field(
-        description="The exact match source text from which the criminal record was extracted"
-    )
+    source: str = source_field("criminal record")
 
 
 class PositiveHabitDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     habits: List[PositiveHabit]
-    source: str = Field(
-        description="The exact match source text from which the positive habits were extracted"
-    )
+    source: str = source_field("positive habits")
 
 
 class FamilySupportDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     support: List[FamilySupport] = Field(description="Types of family support present")
-    source: str = Field(
-        description="The exact match source text from which the family support was extracted"
-    )
+    source: str = source_field("family support")
 
 
 class DefendantProfile(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     defendant_name: DefendantNameDetail
-    nationality: Optional[Nationality] = Field(default=None)
+    nationality: Optional[Nationality] = Field(
+        default=None,
+        description="Infer nationality if not explicitly stated, "
+        "(e.g., the defendant’s name (if culturally indicative), place of birth, location or system of education). "
+        "Do not infer nationality based on the court location or setting.",
+    )
+
     age_at_offence: Optional[AgeAtOffence] = Field(default=None)
     age_at_sentencing: Optional[AgeAtSentencing] = Field(default=None)
-    gender: Optional[GenderDetail] = Field(default=None)
+    gender: Optional[GenderDetail] = Field(
+        default=None,
+        description="Gender of the defendant, try to infer from (he/she/他/她) if not explicitly stated",
+    )
     marital_status: Optional[MaritalStatusDetail] = Field(default=None)
     parental_status: Optional[ParentalStatus] = Field(default=None)
     household_composition: Optional[HouseholdCompositionDetail] = Field(default=None)
@@ -305,7 +296,9 @@ class DefendantProfile(BaseModel):
     drug_treatment_participation: Optional[DrugTreatmentDetail] = Field(default=None)
     education_level: Optional[EducationLevelDetail] = Field(default=None)
     occupation: Optional[Occupation] = Field(default=None)
-    monthly_wage: Optional[MonthlyWageDetail] = Field(default=None)
+    monthly_wage: Optional[MonthlyWageDetail] = Field(
+        default=None, description="null means not mentioned at all; use 0 if unemployed"
+    )
     criminal_record: Optional[CriminalRecordDetail] = Field(default=None)
     positive_habits_after_arrest: Optional[PositiveHabitDetail] = Field(default=None)
     family_support: Optional[FamilySupportDetail] = Field(default=None)

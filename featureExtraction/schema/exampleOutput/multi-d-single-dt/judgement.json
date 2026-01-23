@@ -1,0 +1,76 @@
+{
+  "neutral_citation": "[2025] HKCFI 4503",
+  "judge_name": "Hon Anna Lai J",
+  "judgment_date_time": "2025-08-29T11:21:00+08:00",
+  "representatives": [
+    {
+      "name": "Miss Lo Sum-yee Rosa",
+      "role": "SPP of the Department of Justice, for HKSAR"
+    },
+    {
+      "name": "Mr Chung Boey",
+      "role": "for the 1st accused; instructed by Eli K K Tsui & Co, assigned by DLA"
+    },
+    {
+      "name": "Mr Lau Chung-man Clement",
+      "role": "for the 2nd accused; instructed by Raymond C P Lo & Co, assigned by DLA"
+    }
+  ],
+  "cases_heard": [
+    "HCCC 33/2025"
+  ],
+  "charges": [
+    {
+      "charge_name": "Conspiracy to traffic in a dangerous drug",
+      "offence_date": null,
+      "offence_time": {
+        "time": "01:20:00Z",
+        "source": "at about 1.20 am on 27 December 2022",
+        "time_of_day": "night"
+      },
+      "place_of_offence": {
+        "address": "Room 606D, Block B, Yau Tong Industrial City in Kwun Tong",
+        "nature": "Industrial building",
+        "subDistrict": "Kwun Tong",
+        "source": "Room 606D, Block B, Yau Tong Industrial City in Kwun Tong",
+        "district": "Kwun Tong"
+      },
+      "cross_border": {
+        "cross_border": false,
+        "type": null,
+        "source": "No cross-border activity is mentioned in the transcript."
+      },
+      "defendants_of_charge": [
+        {
+          "defendant_name": "Hui Kwai-chung, Dick (許貴仲) (A1)",
+          "trafficking_mode": {
+            "mode": "Courier delivery",
+            "source": "his role was more like a courier taking the drug from the Lei Yue Mun Plaza back to the room."
+          },
+          "reasons_for_offence": [
+            {
+              "reason": "Economic hardship",
+              "source": "Because the 1st defendant was indebted so he agreed."
+            }
+          ],
+          "benefits_received": {
+            "received": true,
+            "amount": null,
+            "source": "The acquaintance said that he would be remunerated afterwards."
+          }
+        },
+        {
+          "defendant_name": "Hong Ka-ming (康家銘) (A2)",
+          "trafficking_mode": {
+            "mode": "Drug houses",
+            "source": "he had rented the room and he did not lock it, apparently for the purpose of allowing others to use it whenever they wanted."
+          },
+          "reasons_for_offence": null,
+          "benefits_received": null
+        }
+      ]
+    }
+  ],
+  "court": "HKCFI",
+  "tracing_id": "09627ff05ec5e4959b004734db4efcc0"
+}

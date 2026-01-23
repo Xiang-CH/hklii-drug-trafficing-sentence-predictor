@@ -14,7 +14,10 @@
         "age": 19,
         "source": "The 1st defendant of 317/2023, So, was 15 at the time of her arrest and is now 19 years old."
       },
-      "gender": null,
+      "gender": {
+        "gender": "Female",
+        "source": "She was 15 years old at the time."
+      },
       "marital_status": null,
       "parental_status": null,
       "household_composition": {
@@ -23,12 +26,15 @@
       },
       "health_status": null,
       "drug_treatment_participation": null,
-      "education_level": null,
+      "education_level": {
+        "level": "Secondary - Upper",
+        "source": "I have received a letter in mitigation and evidence of her further recent vocational training to set herself up in employment in the future."
+      },
       "occupation": null,
       "monthly_wage": null,
       "criminal_record": {
         "record": "Other offences",
-        "source": "In June 2018, she was given a police superintendent’s caution for the offences of common assault and theft. In November 2018, she was sentenced to 24 months’ probation for the offences of wounding with intent to do grievous bodily harm and criminal damage. That probation order was subsequently extended for a further 6 months."
+        "source": "In June 2018, she was given a police superintendent’s caution for the offences of common assault and theft. In November 2018, she was sentenced to 24 months’ probation for the offences of wounding with intent to do grievous bodily harm and criminal damage."
       },
       "positive_habits_after_arrest": {
         "habits": [
@@ -47,18 +53,25 @@
       "nationality": null,
       "age_at_offence": {
         "age": 18,
-        "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences"
+        "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences and still is a student in a vocational education course."
       },
       "age_at_sentencing": null,
-      "gender": null,
+      "gender": {
+        "gender": "Male",
+        "source": "When questioned, he said he intended to go into those premises."
+      },
       "marital_status": null,
       "parental_status": null,
       "household_composition": null,
       "health_status": null,
       "drug_treatment_participation": null,
-      "education_level": null,
+      "education_level": {
+        "level": "Secondary - Upper",
+        "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences and still is a student in a vocational education course."
+      },
       "occupation": {
-        "occupation": "Student",
+        "occupation_category": "Student",
+        "occupation_name": null,
         "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences and still is a student in a vocational education course."
       },
       "monthly_wage": null,
@@ -70,7 +83,7 @@
         "habits": [
           "Studying"
         ],
-        "source": "He was ... still is a student in a vocational education course. I have received many mitigation letters ... All ask for leniency and truly believe this defendant when he says he has learnt his lesson and will not re-offend."
+        "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences and still is a student in a vocational education course."
       },
       "family_support": {
         "support": [
@@ -90,29 +103,42 @@
         "source": "Fu of 316/2023 was also 18 at the time of these offences."
       },
       "age_at_sentencing": null,
-      "gender": null,
+      "gender": {
+        "gender": "Male",
+        "source": "Fu was traced through his messages to her and on the following day, at about 2.50 pm on 3 October, the police, having obtained a search warrant, located and arrested Fu at home in Aberdeen."
+      },
       "marital_status": null,
       "parental_status": null,
       "household_composition": null,
       "health_status": null,
       "drug_treatment_participation": null,
-      "education_level": null,
+      "education_level": {
+        "level": "Secondary - Upper",
+        "source": "I granted him bail to give him a chance to complete his HKDSE examinations and support his mother whilst she received chemotherapy treatment for cancer."
+      },
       "occupation": {
-        "occupation": "Student",
-        "source": "Fu was also still a student and I granted him bail to give him a chance to complete his HKDSE examinations"
+        "occupation_category": "Student",
+        "occupation_name": null,
+        "source": "Fu of 316/2023 was also 18 at the time of these offences. Fu was also still a student"
       },
       "monthly_wage": null,
       "criminal_record": {
         "record": "None",
         "source": "He too had a clear record at the time of his arrest."
       },
-      "positive_habits_after_arrest": null,
+      "positive_habits_after_arrest": {
+        "habits": [
+          "Studying"
+        ],
+        "source": "I granted him bail to give him a chance to complete his HKDSE examinations and support his mother whilst she received chemotherapy treatment for cancer."
+      },
       "family_support": {
         "support": [
           "Letters of support from family"
         ],
-        "source": "I have a letter from his mother who accepts he must bear responsibility for his mistakes but sees the good in him. I have also a letter from a social worker."
+        "source": "I have a letter from his mother who accepts he must bear responsibility for his mistakes but sees the good in him."
       }
     }
-  ]
+  ],
+  "tracing_id": "9fc4df35363162953fe3496a3e330970"
 }

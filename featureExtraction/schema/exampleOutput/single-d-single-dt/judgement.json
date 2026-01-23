@@ -1,0 +1,68 @@
+{
+  "neutral_citation": "[2025] HKCFI 4195",
+  "judge_name": "Hon Woodcock J",
+  "judgment_date_time": "2025-07-24T09:36:00+08:00",
+  "representatives": [
+    {
+      "name": "Ms Clara Ma",
+      "role": "SADPP of the Department of Justice, for HKSAR"
+    },
+    {
+      "name": "Ms Ling Wai-kai Vickie",
+      "role": "instructed by DLA, for the accused"
+    }
+  ],
+  "cases_heard": [
+    "HCCC 66/2025"
+  ],
+  "charges": [
+    {
+      "charge_name": "Trafficking in dangerous drugs",
+      "offence_date": {
+        "date": "2023-11-30",
+        "source": "the defendant on 30 November 2023, at Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories, unlawfully trafficked in dangerous drugs, namely, 112.35 grammes of a solid containing 85.63 grammes of cocaine and 211.16 grammes of a solid containing 170.37 grammes of ketamine.",
+        "day_of_week": 4,
+        "is_hk_public_holiday": false
+      },
+      "offence_time": null,
+      "place_of_offence": {
+        "address": "Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories",
+        "nature": "Residential building",
+        "subDistrict": "Tsing Yi",
+        "source": "at Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories",
+        "district": "Kwai Tsing"
+      },
+      "cross_border": {
+        "cross_border": false,
+        "type": null,
+        "source": ""
+      },
+      "defendants_of_charge": [
+        {
+          "defendant_name": "Wong Man-kit",
+          "trafficking_mode": {
+            "mode": "Courier delivery",
+            "source": "I am satisfied that the role of the defendant is one of storekeeper and courier."
+          },
+          "reasons_for_offence": [
+            {
+              "reason": "Financial gain",
+              "source": "The defendant was arrested and he admitted packing and delivering drugs on instructions for monetary rewards."
+            },
+            {
+              "reason": "Economic hardship",
+              "source": "the COVID pandemic affected his employment and he was made redundant."
+            }
+          ],
+          "benefits_received": {
+            "received": true,
+            "amount": 16000.0,
+            "source": "He could store some goods and make some deliveries for $16,000 a month."
+          }
+        }
+      ]
+    }
+  ],
+  "court": "HKCFI",
+  "tracing_id": "7f8fdf1963c96f18af17f6fe0303019d"
+}

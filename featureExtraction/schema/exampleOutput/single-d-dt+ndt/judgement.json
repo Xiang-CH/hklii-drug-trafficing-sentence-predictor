@@ -1,0 +1,55 @@
+{
+  "neutral_citation": "[2025] HKCFI 4709",
+  "judge_name": "Andrew Chan",
+  "judgment_date_time": "2025-07-24T09:42:00+08:00",
+  "representatives": [
+    {
+      "name": "Antony Leung",
+      "role": "Mr Antony Leung, SPP of the Department of Justice, for HKSAR"
+    },
+    {
+      "name": "So Pui-man Maria",
+      "role": "Ms So Pui-man Maria, instructed by Ernest Tang, Solicitors, assigned by DLA, for the accused"
+    }
+  ],
+  "cases_heard": [
+    "HCCC 386/2024"
+  ],
+  "charges": [
+    {
+      "charge_name": "Trafficking in a dangerous drug",
+      "offence_date": {
+        "date": "2023-01-30",
+        "source": "In the afternoon on 30 January 2023, the defendant was stopped by police officers in Yau Ma Tei.",
+        "day_of_week": 1,
+        "is_hk_public_holiday": false
+      },
+      "offence_time": null,
+      "place_of_offence": {
+        "address": "",
+        "nature": "Street",
+        "subDistrict": "Yau Ma Tei",
+        "source": "In the afternoon on 30 January 2023, the defendant was stopped by police officers in Yau Ma Tei.",
+        "district": "Yau Tsim Mong"
+      },
+      "cross_border": {
+        "cross_border": false,
+        "type": null,
+        "source": ""
+      },
+      "defendants_of_charge": [
+        {
+          "defendant_name": "Wong Pui-hung",
+          "trafficking_mode": {
+            "mode": "Courier delivery",
+            "source": "There is nothing in this case to indicate the defendant’s role beyond a mere courier."
+          },
+          "reasons_for_offence": null,
+          "benefits_received": null
+        }
+      ]
+    }
+  ],
+  "court": "HKCFI",
+  "tracing_id": "7179069b0882e7b0fe5da11774d5aeb6"
+}

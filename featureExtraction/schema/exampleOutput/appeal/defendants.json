@@ -2,58 +2,75 @@
   "defendants": [
     {
       "defendant_name": {
-        "name": "Lau Kam Hung (劉金洪)",
-        "source": "Case title and repeated references throughout judgment (e.g. HCCC 114/2024, Reasons for Sentence at [1], case caption)"
+        "name": "LAU Kam-hung (劉金洪)",
+        "source": "LAU Kam-hung (劉金洪)"
       },
-      "nationality": null,
+      "nationality": {
+        "category": "Mainland Chinese",
+        "hk_resident_status": null,
+        "foreign_country_code": null,
+        "infer_reason": "Born in Guangzhou",
+        "source": "The defendant was born in Guangzhou in July 1956 and is 68."
+      },
       "age_at_offence": {
         "age": 65,
-        "source": "Born July 1956 (Reasons for Sentence [17]) and offence dated 2 April 2022 (Summary of Facts [6],[8])"
+        "source": "The defendant was born in Guangzhou in July 1956 and is 68. Particulars of the offence are that the defendant on 2 April 2022, at room 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon, unlawfully trafficked in dangerous drugs, namely, 17.3g of a crystalline solid containing 17.0g of methamphetamine hydrochloride (commonly known as “ice”)  and 14.40g of cannabis in herbal form."
       },
       "age_at_sentencing": {
         "age": 68,
-        "source": "Born July 1956 (Reasons for Sentence [17]) and sentence date 22 January 2025 (head and Reasons for Sentence)"
+        "source": "The defendant was born in Guangzhou in July 1956 and is 68."
       },
       "gender": {
         "gender": "Male",
-        "source": "Male pronouns and references throughout (e.g. Reasons for Sentence [1],[17])"
+        "source": "He relocated to Hong Kong when he was 21."
       },
       "marital_status": null,
       "parental_status": {
         "status": "Parent",
         "custody": null,
-        "source": "Contributes about RMB800 towards his daughter’s living expenses; daughter is 18 and studying in Guangzhou (Background and Mitigation [18])"
+        "source": "The defendant contributes about RMB800 towards his daughter’s living expenses, who is 18 years old and studying nursing in Guangzhou."
       },
       "household_composition": null,
       "health_status": {
         "conditions": [
           {
             "type": "Physical health",
-            "source": "Suffers from cardiac disease, diabetes, kidney problems, hernia and polyps; underwent angioplasty; constant exhaustion and pain (Background and Mitigation [20])"
+            "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps. He had undergone angioplasty procedure during his remand. He is constantly exhausted from frequent night time urination, and is in pain most of the time."
+          },
+          {
+            "type": "Drug addiction",
+            "source": "It may very well be true that the defendant was a drug abuser, and that urine tests showed that he might have taken some drugs before his arrest."
           }
         ]
       },
       "drug_treatment_participation": null,
       "education_level": null,
       "occupation": {
-        "occupation": "Craft and related worker",
-        "source": "Was working as a construction site worker in 2015 (Background and Mitigation [19])"
+        "occupation_category": "Craft and related worker",
+        "occupation_name": "construction site worker",
+        "source": "The defendant was working as a construction site worker in 2015, earning around $30,000, when he suffered a hand injury forcing him to stop."
       },
       "monthly_wage": {
         "wage": 5300,
-        "source": "Receiving CSSA of $5,300 per month since 2017 for daily and medical expenses (Background and Mitigation [19])"
+        "source": "His health had since deteriorated and had to rely on CSSA of $5,300 per month for his daily and medical expenses since 2017."
       },
       "criminal_record": {
         "record": "Other offences",
-        "source": "Long criminal record including convictions for theft, rape (two convictions), robbery, assault with intent to rob, indecent assault, managing a vice establishment, assault occasioning actual bodily harm, criminal intimidation, assaulting a police officer, possession of dangerous drugs (2019) (Previous Convictions [13]-[16]; Reasons for Sentence [36])"
+        "source": "The defendant has 19 convictions from 6 court appearances."
       },
       "positive_habits_after_arrest": {
         "habits": [
           "Participation in rehabilitation/self-improvement"
         ],
-        "source": "Reportedly has since quit his drug use and plans to reunite with his daughter and not return to Hong Kong (Background and Mitigation [21])"
+        "source": "He has since quit his drug use and plans to be reunited with his daughter in the mainland upon release, and to never return to Hong Kong."
       },
-      "family_support": null
+      "family_support": {
+        "support": [
+          "Other"
+        ],
+        "source": "The defendant contributes about RMB800 towards his daughter’s living expenses, who is 18 years old and studying nursing in Guangzhou."
+      }
     }
-  ]
+  ],
+  "tracing_id": "3c7a13488acf9cbe2a4b5d1b7fd6c09c"
 }

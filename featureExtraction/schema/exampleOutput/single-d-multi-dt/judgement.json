@@ -1,0 +1,110 @@
+{
+  "neutral_citation": "[2025] HKCFI 4298",
+  "judge_name": "姚勳智",
+  "judgment_date_time": "2025-08-08T10:07:00+08:00",
+  "representatives": [
+    {
+      "name": "黎靖頎",
+      "role": "律政司高級檢控官"
+    },
+    {
+      "name": "何偉健",
+      "role": "由杜偉強律師事務所延聘，代表被告人"
+    }
+  ],
+  "cases_heard": [
+    "HCCC 238/2024"
+  ],
+  "charges": [
+    {
+      "charge_name": "Trafficking in a dangerous drug",
+      "offence_date": {
+        "date": "2023-03-29",
+        "source": "被告於2023年3月29日",
+        "day_of_week": 3,
+        "is_hk_public_holiday": false
+      },
+      "offence_time": {
+        "time": "09:00:00-08:00",
+        "source": "2023年3月29日上午九時許",
+        "time_of_day": "morning"
+      },
+      "place_of_offence": {
+        "address": "美孚19座",
+        "nature": "Residential building",
+        "subDistrict": "Mei Foo",
+        "source": "進入美孚19座",
+        "district": "Sham Shui Po"
+      },
+      "cross_border": {
+        "cross_border": false,
+        "type": null,
+        "source": "null"
+      },
+      "defendants_of_charge": [
+        {
+          "defendant_name": "劉子健",
+          "trafficking_mode": {
+            "mode": "Courier delivery",
+            "source": "按盧的指示將多磚毒品從D室搬到C室大約三次"
+          },
+          "reasons_for_offence": [
+            {
+              "reason": "Economic hardship",
+              "source": "我因為爭人錢，等錢使，所以幫人帶呢袋毒品，之後會收到5,000蚊報酬"
+            }
+          ],
+          "benefits_received": {
+            "received": true,
+            "amount": 5000.0,
+            "source": "在他身上發現的現金港幣5,000元是當日販運毒品工作所得的報酬"
+          }
+        }
+      ]
+    },
+    {
+      "charge_name": "Trafficking in dangerous drugs",
+      "offence_date": {
+        "date": "2023-03-29",
+        "source": "被告於2023年3月29日",
+        "day_of_week": 3,
+        "is_hk_public_holiday": false
+      },
+      "offence_time": null,
+      "place_of_offence": {
+        "address": "深水埗匯璽1B座25樓D室",
+        "nature": "Residential building",
+        "subDistrict": "Sham Shui Po",
+        "source": "深水埗匯璽1B座25樓D室",
+        "district": "Sham Shui Po"
+      },
+      "cross_border": {
+        "cross_border": false,
+        "type": null,
+        "source": "null"
+      },
+      "defendants_of_charge": [
+        {
+          "defendant_name": "劉子健",
+          "trafficking_mode": {
+            "mode": "Courier delivery",
+            "source": "按盧的指示將多磚毒品從D室搬到C室大約三次"
+          },
+          "reasons_for_offence": [
+            {
+              "reason": "Economic hardship",
+              "source": "我因為爭人錢，等錢使，所以幫人帶呢袋毒品，之後會收到5,000蚊報酬"
+            }
+          ],
+          "benefits_received": {
+            "received": true,
+            "amount": 5000.0,
+            "source": "在他身上發現的現金港幣5,000元是當日販運毒品工作所得的報酬"
+          }
+        }
+      ]
+    }
+  ],
+  "court": "HKCFI",
+  "tracing_id": "2ee7284042f5a948e49832f308ddddc5"
+}

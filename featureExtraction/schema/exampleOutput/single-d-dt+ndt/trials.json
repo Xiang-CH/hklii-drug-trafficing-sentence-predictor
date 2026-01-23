@@ -2,6 +2,7 @@
   "trials": [
     {
       "charge_type": {
+        "charge_no": 1,
         "type": "Actual Trafficking",
         "defendant": "Wong Pui-hung",
         "source": "The defendant has pleaded guilty to one count of trafficking in a dangerous drug and one count of possession of a dangerous drug, contrary to section 4 and section 8 of the Dangerous Drugs Ordinance respectively."
@@ -10,14 +11,16 @@
         {
           "drug_type": "Methamphetamine",
           "other_drug_type": null,
-          "quantity": 43,
+          "quantity": 43.13,
           "source": "Inside the car in question, police officers found a rucksack which contained 43.13 grammes of methamphetamine hydrochloride and various resealable plastic bags."
         }
       ],
-      "role": {
-        "role": "Courier",
-        "source": "There is nothing in this case to indicate the defendant’s role beyond a mere courier."
-      },
+      "roles": [
+        {
+          "role": "Courier",
+          "source": "There is nothing in this case to indicate the defendant’s role beyond a mere courier."
+        }
+      ],
       "aggravating_factors": [
         {
           "factor": "Persistent offender",
@@ -30,28 +33,39 @@
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "High Court",
-        "high_court_stage": null,
+        "high_court_stage": "Unknown",
         "district_court_stage": null,
-        "source": "After a full one-third discount for the defendant’s earliest plea, the sentence is therefore reduced to 82 months’ imprisonment."
+        "source": "The defendant has pleaded guilty to one count of trafficking in a dangerous drug and one count of possession of a dangerous drug, contrary to section 4 and section 8 of the Dangerous Drugs Ordinance respectively."
       },
       "starting_point": {
-        "sentence_months": 111,
-        "source": "Starting point for trafficking in 43.13 grammes of methamphetamine hydrochloride based on quantity alone will be 9 years and 3 months’ imprisonment."
+        "sentence_years": 9,
+        "sentence_months": 3,
+        "source": "Starting point for trafficking in 43.13 grammes of methamphetamine hydrochloride based on quantity alone will be 9 years and 3 months’ imprisonment.",
+        "total_months": 111
       },
       "sentence_after_role": {
-        "sentence_months": 111,
-        "source": "Inferred as starting point since role adjustment not provided"
+        "sentence_years": 10,
+        "sentence_months": 3,
+        "source": "There is nothing in this case to indicate the defendant’s role beyond a mere courier. However, this is not the defendant’s first trafficking record. As such, an additional 1 year will be added.",
+        "total_months": 123
       },
       "notional_sentence": {
-        "sentence_months": 123,
-        "source": "There is nothing in this case to indicate the defendant’s role beyond a mere courier. However, this is not the defendant’s first trafficking record. As such, an additional 1 year will be added."
+        "sentence_years": 10,
+        "sentence_months": 3,
+        "source": "Starting point for trafficking in 43.13 grammes of methamphetamine hydrochloride based on quantity alone will be 9 years and 3 months’ imprisonment. However, this is not the defendant’s first trafficking record. As such, an additional 1 year will be added.",
+        "total_months": 123
       },
       "mitigation_reduction": null,
       "final_sentence": {
-        "sentence_months": 82,
-        "guilty_plea_reduction_months": 41,
-        "source": "After a full one-third discount for the defendant’s earliest plea, the sentence is therefore reduced to 82 months’ imprisonment."
+        "sentence_years": 6,
+        "sentence_months": 10,
+        "guilty_plea_reduction_years": 3,
+        "guilty_plea_reduction_months": 5,
+        "source": "After a full one-third discount for the defendant’s earliest plea, the sentence is therefore reduced to 82 months’ imprisonment.",
+        "total_months": 82,
+        "guilty_plea_reduction_total_months": 41
       }
     }
-  ]
+  ],
+  "tracing_id": "ca55ca15488c7810d77853fd6aa32976"
 }
