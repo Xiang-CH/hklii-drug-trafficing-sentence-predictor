@@ -268,13 +268,14 @@ class PositiveHabitDetail(BaseModel):
 class FamilySupportDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    support: List[FamilySupport] = Field(description="Types of family support present")
+    support: FamilySupport = Field(description="Type of family support present")
     source: str = source_field("family support")
 
 
 class DefendantProfile(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
+    defendant_id: int = Field(description="Defendant ID in the prompt")
     defendant_name: DefendantNameDetail
     nationality: Optional[Nationality] = Field(
         default=None,
@@ -301,7 +302,7 @@ class DefendantProfile(BaseModel):
     )
     criminal_record: Optional[CriminalRecordDetail] = Field(default=None)
     positive_habits_after_arrest: Optional[PositiveHabitDetail] = Field(default=None)
-    family_support: Optional[FamilySupportDetail] = Field(default=None)
+    family_supports: Optional[List[FamilySupportDetail]] = Field(default=None)
 
 
 class Defendants(BaseModel):

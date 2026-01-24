@@ -342,17 +342,18 @@ class ChargeType(str, Enum):
 
 class ChargeDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    charge_no: int = Field(
-        description="Charge number (1 for first charge, 2 for second charge, etc.)"
-    )
+    charge_no: int = Field(description="Charge number provided in the system prompt")
     type: ChargeType = Field(
         description="Type of charge:\n"
         "Actual Trafficking: Trafficking in a dangerous drug/dangerous drugs or \n"
         "Conspiracy to Traffic: Conspiracy to traffic in a dangerous drug/dangerous drugs \n"
         "**Ignore other types of charges**"
     )
-    defendant: str = Field(
+    defendant_name: str = Field(
         description="Name of the defendant associated with this charge"
+    )
+    defendant_id: int = Field(
+        description="ID of the defendant associated with this charge, as provided in the prompt"
     )
     source: str = source_field("charge type")
 

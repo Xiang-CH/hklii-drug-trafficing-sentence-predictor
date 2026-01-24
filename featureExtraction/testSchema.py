@@ -20,7 +20,7 @@ load_dotenv()
 langfuse = Langfuse()
 
 RERUN_ALL = False
-MAX_RETRIES = 3
+MAX_RETRIES = 5
 
 judgement_base_path = "sampleJudgments"
 judgement_types = [
@@ -33,11 +33,42 @@ judgement_types = [
     "appeal",
     "corrigendum",
 ]
-schemas = [
-    ("judgement", Judgement),
-    ("defendants", Defendants),
-    ("trials", Trials),
-]
+
+# Define schemas with their specific prompts in sequence order
+SCHEMA_CONFIGS = {
+    "judgement": {
+        "model": Judgement,
+        "prompt": (
+            "Extract the judgement metadata according to the provided schema. "
+            "There may be multiple charges in a single defendant; single charge for multiple defendants; "
+            "or multiple charges for multiple defendants; etc. So ensure to capture all charges and link them to the correct defendants. "
+            "If a feature is not mentioned in the case, set the corresponding field to null, "
+            "but check the case text thoroughly."
+        ),
+    },
+    "defendants": {
+        "model": Defendants,
+        "prompt": (
+            "Extract all defendant information according to the provided schema. "
+            "Here are the list of defendant ids and names: \n{defendant_ids_and_names}.\n\n "
+            "If a feature is not mentioned in the case, set the corresponding field to null, "
+            "but check the case text thoroughly."
+        ),
+    },
+    "trials": {
+        "model": Trials,
+        "prompt": (
+            "Extract all trial information according to the provided schema. "
+            "You need to extract the information for each charge to defendant pair separately. "
+            "Here are the list of charge to defendant mappings extracted from the judgement: \n{charge_to_defendants}.\n\n "
+            "If a feature is not mentioned in the case, set the corresponding field to null, "
+            "but check the case text thoroughly."
+        ),
+    },
+}
+
+# Extraction order - each can use context from previous extractions
+EXTRACTION_ORDER = ["judgement", "defendants", "trials"]
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 client = openai.OpenAI(
@@ -45,12 +76,19 @@ client = openai.OpenAI(
 )
 
 
-@observe(name="extract_feature.callLLM")
-def callLLM(schema_name, schema_model, case_txt, judgement_type, output_path):
-    langfuse.update_current_trace(
-        input={"schema_name": schema_name, "judgement_type": judgement_type}
-    )
-    parent_trace_id = None
+@observe(name="extract_single_schema")
+def extract_single_schema(
+    schema_name: str,
+    case_txt: str,
+    judgement_type: str,
+    output_path: str,
+    previous_extractions: dict[str, dict] | None = None,
+) -> Judgement | Defendants | Trials:
+    """Extract a single schema, optionally using context from previous extractions."""
+    config = SCHEMA_CONFIGS[schema_name]
+    schema_model = config["model"]
+    base_prompt = config["prompt"]
+
     last_error = None
     for attempt in range(MAX_RETRIES):
         try:
@@ -58,14 +96,34 @@ def callLLM(schema_name, schema_model, case_txt, judgement_type, output_path):
             if last_error:
                 error_context = f"\n\nPrevious attempt failed with error: {last_error}. Please try again carefully."
 
+            full_input = case_txt + error_context
+
+            if schema_name == "defendants":
+                base_prompt = base_prompt.format(
+                    defendant_ids_and_names="\n".join(
+                        [f"{d[0]}. {d[1]}" for d in previous_extractions["defendants"]]
+                    )
+                )
+            elif schema_name == "trials":
+                charge_to_defendants_list = []
+                for charge in previous_extractions["charge_to_defendants"]:
+                    charge_to_defendants_list.append(
+                        f"Charge {charge.charge_no}. {charge.charge_name}"
+                    )
+                    for defendant in charge.defendants_of_charge:
+                        charge_to_defendants_list.append(
+                            f"  -> On Defendant {defendant.defendant_id}: {defendant.defendant_name}"
+                        )
+                base_prompt = base_prompt.format(
+                    charge_to_defendants="\n".join(charge_to_defendants_list)
+                )
+
             response = client.responses.parse(
-                name=f"{schema_name}-feature-extraction-{attempt + 1}",
+                name=f"{schema_name}-extraction-{attempt + 1}",
                 model="gpt-5-mini",
-                instructions=f"Extract {schema_name} according to the provided schema. "
-                "If a feature is not mentioned in the case, set the corresponding field to null, but check the case text thoroughly."
-                + error_context,
-                input=case_txt,
-                reasoning={"effort": "medium", "summary": "detailed"},
+                instructions=base_prompt,
+                input=full_input,
+                reasoning={"effort": "low", "summary": "detailed"},
                 text_format=schema_model,
                 metadata={
                     "judgement_type": judgement_type,
@@ -74,22 +132,32 @@ def callLLM(schema_name, schema_model, case_txt, judgement_type, output_path):
                 },
             )
 
-            if not parent_trace_id:
-                parent_trace_id = langfuse.get_current_trace_id()
+            # Check if parsing succeeded
+            if response.output_parsed is None:
+                # Check for refusal
+                if hasattr(response, "refusal") and response.refusal:
+                    raise ValueError(
+                        f"Model refused to generate output: {response.refusal}"
+                    )
+                # Check raw output for debugging
+                raw_output = getattr(response, "output_text", None) or getattr(
+                    response, "output", None
+                )
+                raise ValueError(f"Failed to parse response. Raw output: {raw_output}")
 
-            langfuse.update_current_trace(
-                output={
-                    "extracted_data": response.output_parsed.model_dump_json(indent=2)
-                }
-            )
+            output_dict = response.output_parsed.model_dump(mode="json")
 
             with open(output_path, "w") as f:
-                output_dict = response.output_parsed.model_dump(mode="json")
-                output_dict["tracing_id"] = parent_trace_id
-                f.write(json.dumps(output_dict, indent=2, ensure_ascii=False))
-            break  # Success, exit retry loop
+                output_dict_with_trace = output_dict.copy()
+                output_dict_with_trace["tracing_id"] = langfuse.get_current_trace_id()
+                f.write(
+                    json.dumps(output_dict_with_trace, indent=2, ensure_ascii=False)
+                )
+
+            return response.output_parsed  # Return for use in subsequent extractions
 
         except (OpenAIError, ValidationError) as e:
+            # print(f"Attempt {attempt + 1} failed for {schema_name}: {str(e)}")
             if isinstance(e, ValidationError):
                 last_error = str(e)
             if attempt == MAX_RETRIES - 1:
@@ -98,9 +166,53 @@ def callLLM(schema_name, schema_model, case_txt, judgement_type, output_path):
                 )
                 raise
 
+    return {}
+
+
+@observe(name="extract_all_features")
+def extract_all_features(case_txt: str, judgement_type: str, output_dir: str) -> None:
+    """Extract all features in sequence, passing context between extractions."""
+    langfuse.update_current_trace(
+        input={"judgement_type": judgement_type},
+        tags=["feature-extraction"],
+    )
+
+    previous_extractions: dict[str, dict] = {}
+
+    for schema_name in tqdm(EXTRACTION_ORDER, desc="Schemas", leave=False):
+        output_path = f"{output_dir}/{schema_name}.json"
+
+        # Extract with context from previous extractions
+        extracted_data = extract_single_schema(
+            schema_name=schema_name,
+            case_txt=case_txt,
+            judgement_type=judgement_type,
+            output_path=output_path,
+            previous_extractions=previous_extractions if previous_extractions else None,
+        )
+
+        # Store for use in subsequent extractions
+        if schema_name == "judgement":
+            previous_extractions["defendants"] = extracted_data.defendants
+            previous_extractions["charge_to_defendants"] = extracted_data.charges
+
+    langfuse.update_current_trace(
+        output={"schemas_extracted": list(previous_extractions.keys())}
+    )
+
 
 for judgement_type in tqdm(judgement_types, desc="Judgement Types"):
-    os.makedirs(f"schema/exampleOutput/{judgement_type}", exist_ok=True)
+    output_dir = f"schema/exampleOutput/{judgement_type}"
+    os.makedirs(output_dir, exist_ok=True)
+
+    # Skip if all outputs already exist and not rerunning all
+    if not RERUN_ALL:
+        all_outputs_exist = all(
+            os.path.exists(f"{output_dir}/{schema_name}.json")
+            for schema_name in EXTRACTION_ORDER
+        )
+        if all_outputs_exist:
+            continue
 
     # Load case file
     if judgement_type in ["corrigendum", "appeal"]:
@@ -128,17 +240,10 @@ for judgement_type in tqdm(judgement_types, desc="Judgement Types"):
 
     case_txt = re.sub(r"\n\s*\n", "\n\n", case_txt)  # Remove excessive newlines
     case_txt = case_txt.strip()
-    # print(case_txt)
 
-    # Extract features
-    for schema_name, schema_model in tqdm(schemas, desc="Schemas", leave=False):
-        output_path = f"schema/exampleOutput/{judgement_type}/{schema_name}.json"
-
-        if not RERUN_ALL and os.path.exists(output_path):
-            continue
-
-        callLLM(schema_name, schema_model, case_txt, judgement_type, output_path)
-        langfuse.flush()
+    # Extract all features in sequence within a single trace
+    extract_all_features(case_txt, judgement_type, output_dir)
+    langfuse.flush()
 
 # Flush Langfuse to ensure all traces are sent
 langfuse.flush()

@@ -3,8 +3,15 @@ import re
 import holidays
 
 from enum import Enum
-from typing import List, Optional
-from pydantic import BaseModel, Field, ConfigDict, computed_field, field_validator
+from typing import List, Optional, Dict, Tuple
+from pydantic import (
+    BaseModel,
+    Field,
+    ConfigDict,
+    computed_field,
+    field_validator,
+    model_validator,
+)
 from datetime import date as date_type, time as time_type, datetime
 from schema.common import source_field
 from utils.hkDistricts import (
@@ -211,6 +218,10 @@ class ChargeForDefendant(BaseModel):
     defendant_name: str = Field(
         description="Full name of the defendant given the charge as appearing in the judgment"
     )
+    defendant_id: Optional[int] = Field(
+        default=None,
+        description="Defendant ID (1-indexed), automatically assigned based on first appearance order across all charges",
+    )
     trafficking_mode: Optional[TraffickingMode] = Field(default=None)
     reasons_for_offence: Optional[List[ReasonForOffenceDetail]] = Field(default=None)
     benefits_received: Optional[BenefitsReceivedDetail] = Field(default=None)
@@ -219,6 +230,10 @@ class ChargeForDefendant(BaseModel):
 class Charge(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
+    charge_no: Optional[int] = Field(
+        default=None,
+        description="Charge number (1-indexed), automatically assigned after model creation",
+    )
     charge_name: ChargeName = Field(
         description="Name of the charge (offence), ignore charges not in the enumeration"
     )
@@ -295,6 +310,39 @@ class Judgement(BaseModel):
         return v
 
     charges: List[Charge] = Field(description="List of charges in the case")
+
+    @model_validator(mode="after")
+    def assign_charge_and_defendant_ids(self) -> "Judgement":
+        """Assign charge numbers and defendant IDs after model creation."""
+        # Assign charge numbers (1-indexed)
+        for idx, charge in enumerate(self.charges, start=1):
+            charge.charge_no = idx
+
+        # Assign defendant IDs based on first appearance order
+        defendant_id_map: Dict[str, int] = {}
+        current_id = 1
+        for charge in self.charges:
+            for defendant in charge.defendants_of_charge:
+                if defendant.defendant_name not in defendant_id_map:
+                    defendant_id_map[defendant.defendant_name] = current_id
+                    current_id += 1
+                defendant.defendant_id = defendant_id_map[defendant.defendant_name]
+
+        return self
+
+    @computed_field
+    @property
+    def defendants(self) -> List[Tuple[int, str]]:
+        """Computed list of all defendants with their IDs based on first appearance order."""
+        defendant_id_map: Dict[str, int] = {}
+        current_id = 1
+        for charge in self.charges:
+            for defendant in charge.defendants_of_charge:
+                if defendant.defendant_name not in defendant_id_map:
+                    defendant_id_map[defendant.defendant_name] = current_id
+                    current_id += 1
+        # Return as list of (id, name) tuples sorted by ID
+        return sorted([(id, name) for name, id in defendant_id_map.items()])
 
 
 if __name__ == "__main__":
