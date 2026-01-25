@@ -29,7 +29,7 @@
         "address": "Room 606D, Block B, Yau Tong Industrial City in Kwun Tong",
         "nature": "Industrial building",
         "subDistrict": "Kwun Tong",
-        "source": "at about 1.20 am on 27 December 2022, the police arrived at Room 606D, Block B, Yau Tong Industrial City in Kwun Tong",
+        "source": "at about 1.20 am on 27 December 2022, the police arrived at Room 606D, Block B, Yau Tong Industrial City in Kwun Tong as a result of a 999 call regarding a dispute.",
         "district": "Kwun Tong"
       },
       "cross_border": {
@@ -39,27 +39,25 @@
       },
       "defendants_of_charge": [
         {
-          "defendant_name": "Hui Kwai-chung, Dick (A1)",
+          "defendant_name": "Hui Kwai-chung, Dick (許貴仲) (A1)",
           "defendant_id": 1,
-          "trafficking_mode": {
-            "mode": "Courier delivery",
-            "source": "Counsel said his role was more like a courier taking the drug from the Lei Yue Mun Plaza back to the room; 1st defendant mainly responsible for taking a quantity of cocaine from the Lei Yue Mun Plaza back to the room."
-          },
+          "trafficking_mode": null,
           "reasons_for_offence": [
             {
+              "reason": "Financial gain",
+              "source": "Counsel submitted that he committed the present offence to earn quick money."
+            },
+            {
               "reason": "Economic hardship",
-              "source": "Because the 1st defendant was indebted so he agreed... he owed debts in the region of $300,000."
+              "source": "Because the 1st defendant was indebted so he agreed."
             }
           ],
           "benefits_received": null
         },
         {
-          "defendant_name": "Hong Ka-ming (A2)",
+          "defendant_name": "Hong Ka-ming (康家銘) (A2)",
           "defendant_id": 2,
-          "trafficking_mode": {
-            "mode": "Drug houses",
-            "source": "the 2nd defendant signed a tenancy agreement to rent the room... he had rented the room and did not lock it, apparently for the purpose of allowing others to use it whenever they wanted."
-          },
+          "trafficking_mode": null,
           "reasons_for_offence": null,
           "benefits_received": null
         }
@@ -70,12 +68,12 @@
   "defendants": [
     [
       1,
-      "Hui Kwai-chung, Dick (A1)"
+      "Hui Kwai-chung, Dick (許貴仲) (A1)"
     ],
     [
       2,
-      "Hong Ka-ming (A2)"
+      "Hong Ka-ming (康家銘) (A2)"
     ]
   ],
-  "tracing_id": "365aa83bb667339de84b212bf5e12113"
+  "tracing_id": "9d6ef67153e44b1f21d84954c0a0c07d"
 }

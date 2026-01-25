@@ -4,15 +4,18 @@
       "defendant_id": 1,
       "defendant_name": {
         "name": "Wong Pui-hung",
-        "source": "Wong Pui-hung"
+        "source": "HKSAR v. WONG PUI HUNG (case title)"
       },
       "nationality": null,
       "age_at_offence": null,
       "age_at_sentencing": {
         "age": 45,
-        "source": "The defendant is 45"
+        "source": "The defendant is 45 and educated up to secondary school level."
       },
-      "gender": null,
+      "gender": {
+        "gender": "Male",
+        "source": "He was holding a car key at the time. (\"He\" referring to the defendant)"
+      },
       "marital_status": null,
       "parental_status": null,
       "household_composition": null,
@@ -32,12 +35,12 @@
         "source": "Prior to his arrest, he was unemployed."
       },
       "criminal_record": {
-        "record": "Dangerous drug offences",
+        "record": "Drug trafficking",
         "source": "He has 25 criminal convictions with multiple offences. In particular, he has four trafficking in dangerous drugs and eight possession in dangerous drugs records."
       },
       "positive_habits_after_arrest": null,
       "family_supports": null
     }
   ],
-  "tracing_id": "b109fddc99a43933d5f192c2a2deb7d6"
+  "tracing_id": "8f3015ccee4a881b8f9b522347e2ef32"
 }

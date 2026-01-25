@@ -6,20 +6,20 @@
         "type": "Actual Trafficking",
         "defendant_name": "Wong Man-kit",
         "defendant_id": 1,
-        "source": "Offence:   Trafficking in dangerous drugs (販運危險藥物)"
+        "source": "Offence:   Trafficking in dangerous drugs (販運危險藥物)"
       },
       "drugs": [
         {
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 85.63,
-          "source": "112.35 grammes of a solid containing 85.63 grammes of cocaine"
+          "source": "The particulars of the charge are that the defendant on 30 November 2023, at Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories, unlawfully trafficked in dangerous drugs, namely, 112.35 grammes of a solid containing 85.63 grammes of cocaine and 211.16 grammes of a solid containing 170.37 grammes of ketamine."
         },
         {
           "drug_type": "Ketamine",
           "other_drug_type": null,
           "quantity": 170.37,
-          "source": "211.16 grammes of a solid containing 170.37 grammes of ketamine"
+          "source": "The particulars of the charge are that the defendant on 30 November 2023, at Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories, unlawfully trafficked in dangerous drugs, namely, 112.35 grammes of a solid containing 85.63 grammes of cocaine and 211.16 grammes of a solid containing 170.37 grammes of ketamine."
         }
       ],
       "roles": [
@@ -33,14 +33,7 @@
         }
       ],
       "aggravating_factors": null,
-      "mitigating_factors": [
-        {
-          "factor": "Other",
-          "other_factor": "Remorse; supportive letters from family; unemployment and redundancy; approached/tempted by an old school friend and paid to store and deliver; attempted to return drugs but threatened with repayment obligation",
-          "reduction": null,
-          "source": "He is grateful for their continued support ... I have a letter from the defendant who deeply regrets committing this offence ... he was made redundant ... tempted by an old school friend who promised an easy job ... He tried to return the drugs but was told if he quit the job, he would need to repay $30,000 ... I do have a mitigation letter from the defendant’s parents who are very supportive and accept the defendant’s remorse as genuine."
-        }
-      ],
+      "mitigating_factors": null,
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "High Court",
@@ -51,19 +44,19 @@
       "starting_point": {
         "sentence_years": 10,
         "sentence_months": 0,
-        "source": "I take the view that the combined approach should be adopted here using cocaine as the base drug ... I calculate a total of 128.22 grammes of cocaine, which will mathematically attract a starting point of 10 years and 1 month imprisonment. I find the mathematical starting point of 10 years’ imprisonment appropriate in this case.",
+        "source": "After the conversion, I calculate a total of 128.22 grammes of cocaine, which will mathematically attract a starting point of 10 years and 1 month imprisonment. I find the mathematical starting point of 10 years\u0000imprisonment appropriate in this case.",
         "total_months": 120
       },
       "sentence_after_role": {
         "sentence_years": 10,
         "sentence_months": 0,
-        "source": "I am satisfied that the role of the defendant is one of storekeeper and courier. I find the mathematical starting point of 10 years’ imprisonment appropriate in this case.",
+        "source": "I am satisfied that the role of the defendant is one of storekeeper and courier. I find the mathematical starting point of 10 years\u0000imprisonment appropriate in this case.",
         "total_months": 120
       },
       "notional_sentence": {
         "sentence_years": 10,
         "sentence_months": 0,
-        "source": "I calculate a total of 128.22 grammes of cocaine, which will mathematically attract a starting point of 10 years and 1 month imprisonment. I find the mathematical starting point of 10 years’ imprisonment appropriate in this case.",
+        "source": "After the conversion, I calculate a total of 128.22 grammes of cocaine, which will mathematically attract a starting point of 10 years and 1 month imprisonment. I find the mathematical starting point of 10 years\u0000imprisonment appropriate in this case.",
         "total_months": 120
       },
       "mitigation_reduction": null,
@@ -72,11 +65,11 @@
         "sentence_months": 8,
         "guilty_plea_reduction_years": 3,
         "guilty_plea_reduction_months": 4,
-        "source": "The defendant pleaded guilty at the earliest opportunity and is entitled to a full one-third discount. I will take the starting point of 10 years and reduce it by one-third. The defendant is sentenced to 6 years and 8 months’ imprisonment.",
+        "source": "The defendant pleaded guilty at the earliest opportunity and is entitled to a full one-third discount. I will take the starting point of 10 years and reduce it by one-third. The defendant is sentenced to 6 years and 8 months\u0000imprisonment.",
         "total_months": 80,
         "guilty_plea_reduction_total_months": 40
       }
     }
   ],
-  "tracing_id": "b8fba0f8b6395ab5d04b584290e4e10f"
+  "tracing_id": "af7a7c1553a813e29752ca8f7f61e302"
 }

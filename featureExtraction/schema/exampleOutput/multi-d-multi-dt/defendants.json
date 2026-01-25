@@ -4,7 +4,7 @@
       "defendant_id": 1,
       "defendant_name": {
         "name": "Fu Chun-wah",
-        "source": "HKSAR v\n\nFu Chun-wah (HCCC 316/2023)"
+        "source": "HKSAR v Fu Chun-wah (HCCC 316/2023)"
       },
       "nationality": null,
       "age_at_offence": {
@@ -14,17 +14,14 @@
       "age_at_sentencing": null,
       "gender": {
         "gender": "Male",
-        "source": "Fu of 316/2023 was also 18 at the time of these offences. Fu was also still a student..."
+        "source": "I convicted him accordingly. ... Fu now pleads guilty ... Fu was traced ... Fu revealed ... Fu of 316/2023 was also 18 at the time of these offences. Fu was also still a student and I granted him bail..."
       },
       "marital_status": null,
       "parental_status": null,
       "household_composition": null,
       "health_status": null,
       "drug_treatment_participation": null,
-      "education_level": {
-        "level": "Secondary - Upper",
-        "source": "I granted him bail to give him a chance to complete his HKDSE examinations"
-      },
+      "education_level": null,
       "occupation": {
         "occupation_category": "Student",
         "occupation_name": null,
@@ -39,7 +36,7 @@
       "family_supports": [
         {
           "support": "Letters of support from family",
-          "source": "I have a letter from his mother who accepts he must bear responsibility for his mistakes but sees the good in him. I have also a letter from a social worker."
+          "source": "I have a letter from his mother who accepts he must bear responsibility for his mistakes but sees the good in him."
         }
       ]
     },
@@ -47,12 +44,12 @@
       "defendant_id": 2,
       "defendant_name": {
         "name": "So Hoi-yan",
-        "source": "HKSAR v\n\nSo Hoi-yan (A1 for HCCC 317/2023)"
+        "source": "HKSAR v So Hoi-yan (A1 for HCCC 317/2023)"
       },
       "nationality": null,
       "age_at_offence": {
         "age": 15,
-        "source": "On 2 October 2021, at around 1.30 am, police officers ... stopped and searched a taxi carrying the 1st defendant, So, as a passenger. She was 15 years old at the time."
+        "source": "On 2 October 2021, at around 1.30 am, police officers ... She was 15 years old at the time."
       },
       "age_at_sentencing": {
         "age": 19,
@@ -60,7 +57,7 @@
       },
       "gender": {
         "gender": "Female",
-        "source": "On 2 October 2021... stopped and searched a taxi carrying the 1st defendant, So, as a passenger. She was 15 years old at the time."
+        "source": "On 2 October 2021... She was 15 years old at the time. Under caution at the scene, So admitted... She made a further statement..."
       },
       "marital_status": null,
       "parental_status": null,
@@ -70,23 +67,17 @@
       },
       "health_status": null,
       "drug_treatment_participation": null,
-      "education_level": {
-        "level": "Tertiary",
-        "source": "I have received a letter in mitigation and evidence of her further recent vocational training to set herself up in employment in the future."
-      },
-      "occupation": {
-        "occupation_category": "Other",
-        "occupation_name": "Drug courier (deliverer)",
-        "source": "Under caution at the scene, So admitted delivering drugs for money. She ... was offered a job to make easy money, delivering drugs as instructed for $1,000 a day."
-      },
+      "education_level": null,
+      "occupation": null,
       "monthly_wage": null,
       "criminal_record": {
         "record": "Other offences",
-        "source": "Despite her young age, she does not have a clear record. In June 2018, she was given a police superintendent’s caution for the offences of common assault and theft. In November 2018, she was sentenced to 24 months’ probation for the offences of wounding with intent to do grievous bodily harm and criminal damage."
+        "source": "Despite her young age, she does not have a clear record. In June 2018, she was given a police superintendent’s caution for the offences of common assault and theft. In November 2018, she was sentenced to 24 months’ probation for the offences of wounding with intent to do grievous bodily harm and criminal damage. That probation order was subsequently extended for a further 6 months ..."
       },
       "positive_habits_after_arrest": {
         "habits": [
-          "Studying"
+          "Studying",
+          "Participation in rehabilitation/self-improvement"
         ],
         "source": "I have received a letter in mitigation and evidence of her further recent vocational training to set herself up in employment in the future."
       },
@@ -96,27 +87,24 @@
       "defendant_id": 3,
       "defendant_name": {
         "name": "Lam Tsz-man",
-        "source": "HKSAR v\n\nLam Tsz-man (A2 for HCCC 317/2023)"
+        "source": "HKSAR v Lam Tsz-man (A2 for HCCC 317/2023)"
       },
       "nationality": null,
       "age_at_offence": {
         "age": 18,
-        "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences"
+        "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences and still is a student in a vocational education course."
       },
       "age_at_sentencing": null,
       "gender": {
         "gender": "Male",
-        "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences and still is a student in a vocational education course."
+        "source": "He was on his way to the flat when he was arrested by the police. ... The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences and still is a student..."
       },
       "marital_status": null,
       "parental_status": null,
       "household_composition": null,
       "health_status": null,
       "drug_treatment_participation": null,
-      "education_level": {
-        "level": "Secondary - Upper",
-        "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences and still is a student in a vocational education course."
-      },
+      "education_level": null,
       "occupation": {
         "occupation_category": "Student",
         "occupation_name": null,
@@ -125,7 +113,7 @@
       "monthly_wage": null,
       "criminal_record": {
         "record": "None",
-        "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences and still is a student in a vocational education course. He had a clear record at the time of his arrest."
+        "source": "He had a clear record at the time of his arrest."
       },
       "positive_habits_after_arrest": null,
       "family_supports": [
@@ -136,5 +124,5 @@
       ]
     }
   ],
-  "tracing_id": "e1915e5b456d82570c1b3b8f990c9352"
+  "tracing_id": "3ec3e8bc7aa52319336c0a59922a821d"
 }

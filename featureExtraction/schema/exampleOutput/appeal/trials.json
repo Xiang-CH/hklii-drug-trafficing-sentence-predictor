@@ -4,28 +4,28 @@
       "charge_type": {
         "charge_no": 1,
         "type": "Actual Trafficking",
-        "defendant_name": "Lau Kam Hung (劉金洪)",
+        "defendant_name": "Lau Kam Hung",
         "defendant_id": 1,
-        "source": "Having pleaded not guilty before a magistrate at his committal on 11 April 2024 to one count of trafficking in dangerous drugs, contrary to section 4(1)(a) and (3) of the Dangerous Drugs Ordinance, Cap 134, the applicant later indicated that he would plead guilty shortly after trial dates were fixed in the High Court."
+        "source": "one count of trafficking in dangerous drugs"
       },
       "drugs": [
         {
           "drug_type": "Methamphetamine",
-          "other_drug_type": "Methamphetamine (\"Ice\")",
+          "other_drug_type": null,
           "quantity": 17.0,
-          "source": "Particulars of the offence are that the defendant on 2 April 2022 ... unlawfully trafficked in dangerous drugs, namely, 17.3g of a crystalline solid containing 17.0g of methamphetamine hydrochloride (commonly known as “ice”) and 14.40g of cannabis in herbal form."
+          "source": "4 re-sealable plastic bags containing totally 17.0 grammes of “Ice”;"
         },
         {
           "drug_type": "Cannabis",
           "other_drug_type": null,
           "quantity": 14.4,
-          "source": "Particulars of the offence are that the defendant on 2 April 2022 ... unlawfully trafficked in dangerous drugs, namely, 17.3g of a crystalline solid containing 17.0g of methamphetamine hydrochloride (commonly known as “ice”) and 14.40g of cannabis in herbal form."
+          "source": "3 plastic bags containing 14.4 grammes of herbal cannabis were also found inside a pouch on a bedside desk"
         }
       ],
       "roles": [
         {
           "role": "Storekeeper",
-          "source": "The judge then applied the 6-step approach of HKSAR v Herry Jane Yusuph, identifying the applicant’s role as a “storekeeper”; and, by arithmetically applying the applicable guidelines, adopted a starting point of 7½ years’ imprisonment for trafficking in 17.0 grammes of “Ice”."
+          "source": "identifying the applicant’s role as a “storekeeper”;"
         }
       ],
       "aggravating_factors": [
@@ -33,13 +33,13 @@
           "factor": "Multiple drugs",
           "other_factor": null,
           "enhancement": 1,
-          "source": "The quantity of herbal cannabis was found to be insignificant such that the judge ignored it when calculating the starting point. However, as trafficking in more than one type of drug was an aggravating factor, the judge enhanced the starting point by 1 month."
+          "source": "trafficking in more than one type of drug was an aggravating factor, the judge enhanced the starting point by 1 month"
         },
         {
           "factor": "Persistent offender",
           "other_factor": null,
           "enhancement": 6,
-          "source": "The judge further found the applicant to be a persistent offender, for which he enhanced the sentence by a further 6 months, taking the overall starting point to 8 years and 1 month’s imprisonment."
+          "source": "the judge further found the applicant to be a persistent offender, for which he enhanced the sentence by a further 6 months"
         }
       ],
       "mitigating_factors": null,
@@ -48,24 +48,24 @@
         "court_type": "High Court",
         "high_court_stage": "After dates fixed",
         "district_court_stage": null,
-        "source": "On 20 September 2024, the defendant’s solicitors wrote to inform the court that the defendant will plead guilty to the count. The defendant did plead guilty on 22 January 2025, admitted to the summary of facts, and was duly convicted."
+        "source": "he would plead guilty shortly after trial dates were fixed in the High Court. On 22 January 2025, he was sentenced ... The defendant did plead guilty on 22 January 2025, admitted to the summary of facts, and was duly convicted."
       },
       "starting_point": {
         "sentence_years": 7,
         "sentence_months": 6,
-        "source": "The judge then applied the 6-step approach of HKSAR v Herry Jane Yusuph, identifying the applicant’s role as a “storekeeper”; and, by arithmetically applying the applicable guidelines, adopted a starting point of 7½ years’ imprisonment for trafficking in 17.0 grammes of “Ice”.",
+        "source": "adopted a starting point of 7½ years’ imprisonment for trafficking in 17.0 grammes of “Ice”",
         "total_months": 90
       },
       "sentence_after_role": {
         "sentence_years": 7,
         "sentence_months": 6,
-        "source": "Inferred as starting point since role adjustment not provided",
+        "source": "based on the summary of facts, the only reasonable inference is that the defendant was in possession of the dangerous drugs as a storekeeper, and he is to be sentenced as such. I adopt a starting point of 7 years and 6 months",
         "total_months": 90
       },
       "notional_sentence": {
         "sentence_years": 8,
         "sentence_months": 1,
-        "source": "The judge further found the applicant to be a persistent offender, for which he enhanced the sentence by a further 6 months, taking the overall starting point to 8 years and 1 month’s imprisonment.",
+        "source": "I will enhance his sentence by 6 months on him being a persistent offender, taking the starting point up to 8 years’ imprisonment. Furthermore ... I will enhance his sentence on this basis by 1 month, taking the total to 8 years and 1 month.",
         "total_months": 97
       },
       "mitigation_reduction": null,
@@ -74,11 +74,11 @@
         "sentence_months": 1,
         "guilty_plea_reduction_years": 2,
         "guilty_plea_reduction_months": 0,
-        "source": "The sole functional mitigating factor was that the applicant had pleaded guilty. However, since he did so about a month after the trial dates were fixed in the High Court, the applicant was given a discount of about 25% for his late plea, in accordance with HKSAR v Ngo Van Nam, resulting in a sentence of 6 years and 1 month’s imprisonment, which the judge considered to be in line with the totality principle.",
+        "source": "the applicant was given a discount of about 25% for his late plea ... resulting in a sentence of 6 years and 1 month’s imprisonment. (CFI: resulting in a post discount sentence of 73 months’ imprisonment.)",
         "total_months": 73,
         "guilty_plea_reduction_total_months": 24
       }
     }
   ],
-  "tracing_id": "b181628207e66df4cb3401780016cd9a"
+  "tracing_id": "eeb2b208209400592f1617a304ea1277"
 }

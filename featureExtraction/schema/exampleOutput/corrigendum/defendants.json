@@ -4,7 +4,7 @@
       "defendant_id": 1,
       "defendant_name": {
         "name": "黃鈺庭",
-        "source": "香港特別行政區 訴 黃鈺庭 （第一被告人）"
+        "source": "香港特別行政區 訴\n\n黃鈺庭\n（第一被告人）"
       },
       "nationality": null,
       "age_at_offence": {
@@ -12,27 +12,20 @@
           17,
           17
         ],
-        "source": "第一被告人犯案時未滿18歲"
+        "source": "利用年輕人犯案（第一被告人犯案時未滿18歲）"
       },
       "age_at_sentencing": {
         "age": 18,
-        "source": "以第一被告人而言，他現年只有18歲。"
+        "source": "他現年只有18歲。"
       },
       "gender": {
         "gender": "Male",
-        "source": "第一被告人...他（文中以「他」稱呼）"
+        "source": "文中多次以「他」稱呼第一被告人"
       },
       "marital_status": null,
       "parental_status": null,
       "household_composition": null,
-      "health_status": {
-        "conditions": [
-          {
-            "type": "Drug addiction",
-            "source": "辯方解釋，案發時第一被告人因為失業而借故外出消遣，繼而開始吸食氯胺酮。"
-          }
-        ]
-      },
+      "health_status": null,
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Lower",
@@ -41,9 +34,12 @@
       "occupation": {
         "occupation_category": "Unemployed",
         "occupation_name": null,
-        "source": "辯方解釋，案發時第一被告人因為失業"
+        "source": "辯方解釋，案發時第一被告人因為失業而借故外出消遣"
       },
-      "monthly_wage": null,
+      "monthly_wage": {
+        "wage": 0,
+        "source": "辯方解釋，案發時第一被告人因為失業而借故外出消遣"
+      },
       "criminal_record": {
         "record": "None",
         "source": "整體而言，兩位被告人均無定罪紀錄。"
@@ -52,7 +48,7 @@
         "habits": [
           "Participation in rehabilitation/self-improvement"
         ],
-        "source": "第一被告人的求情陳辭強調他沒有任何前科，坦白認罪，以及和警方充份合作。"
+        "source": "第一被告人...坦白認罪，以及和警方充份合作。"
       },
       "family_supports": null
     },
@@ -60,14 +56,14 @@
       "defendant_id": 2,
       "defendant_name": {
         "name": "蘇偉強",
-        "source": "香港特別行政區 訴 蘇偉強 （第二被告人）"
+        "source": "香港特別行政區 訴\n\n蘇偉強\n（第二被告人）"
       },
       "nationality": null,
       "age_at_offence": null,
       "age_at_sentencing": null,
       "gender": {
         "gender": "Male",
-        "source": "第二被告人...他（文中以「他」稱呼）"
+        "source": "文中多次以「他」稱呼第二被告人"
       },
       "marital_status": null,
       "parental_status": null,
@@ -75,7 +71,11 @@
       "health_status": null,
       "drug_treatment_participation": null,
       "education_level": null,
-      "occupation": null,
+      "occupation": {
+        "occupation_category": "Other",
+        "occupation_name": "中介/介紹人（介於第一被告人與供貨者之間）",
+        "source": "第二被告人介紹第一被告人派送和出售毒品...第二被告人認為自己有中介人這個參與組織的角色。"
+      },
       "monthly_wage": null,
       "criminal_record": {
         "record": "None",
@@ -85,10 +85,10 @@
       "family_supports": [
         {
           "support": "Letters of support from family",
-          "source": "基於他的求情內容，特別是其家人及朋友對他的正面評價及支持，本席酌情減刑3個月至57個月。"
+          "source": "基於他的求情內容，特別是其家人及朋友對他的正面評價及支持"
         }
       ]
     }
   ],
-  "tracing_id": "365f78df548e04dfc205eb38b5d98161"
+  "tracing_id": "a65eb2de244a9ce8685dc9d9ed510a48"
 }

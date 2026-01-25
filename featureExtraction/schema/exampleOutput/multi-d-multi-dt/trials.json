@@ -19,7 +19,7 @@
       "roles": [
         {
           "role": "Manager/organizer",
-          "source": "Apart from messages with So, the police found a WhatsApp group in Fu’s mobile showing members of the WhatsApp group sending out instructions of customers, their drug order, the price to pay and location of delivery... He handed her a bag... He revealed a drug storage premises in Mongkok to the police... They found a tenancy agreement dated 23 September 2021 signed by Fu and the 2nd defendant, Lam."
+          "source": "Apart from messages with So, the police found a WhatsApp group in Fu’s mobile showing members of the WhatsApp group sending out instructions of customers, their drug order, the price to pay and location of delivery. It would appear that he had made deliveries as well."
         }
       ],
       "aggravating_factors": null,
@@ -27,14 +27,14 @@
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "High Court",
-        "high_court_stage": "First day",
+        "high_court_stage": "During trial",
         "district_court_stage": null,
         "source": "Before his trial, this defendant reconsidered in light of the additional evidence against him and indicated a plea. He has pleaded guilty before me today and admitted the Summary of Facts."
       },
       "starting_point": {
         "sentence_years": 6,
         "sentence_months": 3,
-        "source": "According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months' imprisonment.",
+        "source": "For Fu...According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months’ imprisonment.",
         "total_months": 75
       },
       "sentence_after_role": {
@@ -46,7 +46,7 @@
       "notional_sentence": {
         "sentence_years": 6,
         "sentence_months": 3,
-        "source": "According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months' imprisonment.",
+        "source": "For Fu...According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months’ imprisonment.",
         "total_months": 75
       },
       "mitigation_reduction": null,
@@ -55,7 +55,7 @@
         "sentence_months": 4,
         "guilty_plea_reduction_years": 1,
         "guilty_plea_reduction_months": 11,
-        "source": "I intend to take a starting point of 6 years and 3 months' imprisonment and I will reduce it by 23 months. Fu is sentenced to 4 years and 4 months' imprisonment for Count 1.",
+        "source": "I intend to take a starting point of 6 years and 3 months’ imprisonment and I will reduce it by 23 months. This represents a discount of just over 30 per cent. Fu is sentenced to 4 years and 4 months’ imprisonment for Count 1.",
         "total_months": 52,
         "guilty_plea_reduction_total_months": 23
       }
@@ -73,19 +73,19 @@
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 6.19,
-          "source": "he unlawfully trafficked in 7.2 grammes of a solid containing 6.19 grammes of cocaine"
+          "source": "Fu...he unlawfully trafficked in 7.2 grammes of a solid containing 6.19 grammes of cocaine"
         },
         {
           "drug_type": "Cannabis",
-          "other_drug_type": "THC/CBD",
+          "other_drug_type": null,
           "quantity": 6.12,
-          "source": "and 6.12 grammes of cannabis in herbal form."
+          "source": "Fu...and 6.12 grammes of cannabis in herbal form."
         }
       ],
       "roles": [
         {
           "role": "Manager/organizer",
-          "source": "Fu revealed a drug storage premises in Mongkok to the police... They found a tenancy agreement dated 23 September 2021 signed by Fu and the 2nd defendant, Lam. WhatsApp group showing members... It would appear that he had made deliveries as well."
+          "source": "Apart from messages with So, the police found a WhatsApp group in Fu’s mobile showing members of the WhatsApp group sending out instructions of customers, their drug order, the price to pay and location of delivery. It would appear that he had made deliveries as well."
         }
       ],
       "aggravating_factors": null,
@@ -93,14 +93,14 @@
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "High Court",
-        "high_court_stage": "First day",
+        "high_court_stage": "During trial",
         "district_court_stage": null,
         "source": "Before his trial, this defendant reconsidered in light of the additional evidence against him and indicated a plea. He has pleaded guilty before me today and admitted the Summary of Facts."
       },
       "starting_point": {
         "sentence_years": 6,
         "sentence_months": 3,
-        "source": "According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months' imprisonment.",
+        "source": "For Fu...According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months’ imprisonment.",
         "total_months": 75
       },
       "sentence_after_role": {
@@ -112,7 +112,7 @@
       "notional_sentence": {
         "sentence_years": 6,
         "sentence_months": 3,
-        "source": "According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months' imprisonment.",
+        "source": "For Fu...According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months’ imprisonment.",
         "total_months": 75
       },
       "mitigation_reduction": null,
@@ -121,7 +121,7 @@
         "sentence_months": 4,
         "guilty_plea_reduction_years": 1,
         "guilty_plea_reduction_months": 11,
-        "source": "For Count 2, this defendant is sentenced to 4 years and 4 months' imprisonment.",
+        "source": "For Count 2, I take the same starting point as Count 1 and reduce it by the same discount, 23 months. For Count 2, this defendant is sentenced to 4 years and 4 months’ imprisonment.",
         "total_months": 52,
         "guilty_plea_reduction_total_months": 23
       }
@@ -139,13 +139,13 @@
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 20.44,
-          "source": "On 2 October 2021, at around 1.30 am... She had in her bag 87 plastic bags containing a total of 23.05 grammes of a solid containing a total of 20.44 grammes of cocaine."
+          "source": "On 2 October 2021...She had in her bag 87 plastic bags containing a total of 23.05 grammes of a solid containing a total of 20.44 grammes of cocaine."
         }
       ],
       "roles": [
         {
           "role": "Courier",
-          "source": "She was added to a WhatsApp group and received instructions... She would receive phone calls or messages from drug suppliers to tell her where to pick up the drugs... She then proceeded to make deliveries as instructed all over Kowloon and New Territories."
+          "source": "Under caution at the scene, So admitted delivering drugs for money. ... She would receive phone calls or messages from drug suppliers to tell her where to pick up the drugs."
         }
       ],
       "aggravating_factors": null,
@@ -154,7 +154,7 @@
           "factor": "Assistance - useful",
           "other_factor": null,
           "reduction": 10,
-          "source": "I have been urged to consider increasing her one-third discount for her offer to give evidence against her co-accused and her statement to the police implicating him... She is entitled to a further discount for her cooperation and assistance."
+          "source": "I have received a letter in mitigation...I have been urged to consider increasing her one-third discount for her offer to give evidence against her co-accused and her statement to the police implicating him. Having read the statement, I am sure if this matter had gone to trial, she would have been prepared to give evidence for the prosecution."
         }
       ],
       "guilty_plea": {
@@ -162,7 +162,7 @@
         "court_type": "High Court",
         "high_court_stage": "Up to committal",
         "district_court_stage": null,
-        "source": "The 1st and 2nd defendant of 317/2023 pleaded guilty to their respective charges at the earliest opportunity and were committed to the Court of First Instance for sentence to be dealt with after the trial of their co-accused..."
+        "source": "The 1st and 2nd defendant of 317/2023 pleaded guilty to their respective charges at the earliest opportunity and were committed to the Court of First Instance for sentence..."
       },
       "starting_point": {
         "sentence_years": 5,
@@ -184,7 +184,7 @@
       },
       "mitigation_reduction": {
         "reduction_months": 10,
-        "source": "I have been urged to consider increasing her one-third discount for her offer to give evidence against her co-accused and her statement to the police implicating him... She is entitled to a further discount for her cooperation and assistance."
+        "source": "I have been urged to consider increasing her one-third discount for her offer to give evidence against her co-accused and her statement to the police implicating him. ... She is entitled to a further discount for her cooperation and assistance."
       },
       "final_sentence": {
         "sentence_years": 3,
@@ -220,12 +220,8 @@
       ],
       "roles": [
         {
-          "role": "Courier",
-          "source": "He was on his way to the flat... he was instructed... to collect this cocaine... then he was to take it back to the subdivided unit in Mongkok and repackage the drugs into smaller bags."
-        },
-        {
           "role": "Storekeeper",
-          "source": "They used keys found on Fu to gain access to the premises... When questioned, he said he intended to go into those premises. He was searched and police found keys to the premises as well as five packets in his backpack containing a total of 118 grammes..."
+          "source": "He was to take it back to the subdivided unit in Mongkok and repackage the drugs into smaller bags."
         }
       ],
       "aggravating_factors": null,
@@ -235,12 +231,12 @@
         "court_type": "High Court",
         "high_court_stage": "Up to committal",
         "district_court_stage": null,
-        "source": "The 1st and 2nd defendant of 317/2023 pleaded guilty to their respective charges at the earliest opportunity and were committed to the Court of First Instance for sentence to be dealt with after the trial of their co-accused..."
+        "source": "The 1st and 2nd defendant of 317/2023 pleaded guilty to their respective charges at the earliest opportunity and were committed to the Court of First Instance for sentence..."
       },
       "starting_point": {
         "sentence_years": 9,
         "sentence_months": 6,
-        "source": "For the 2nd defendant, Lam, I will take into account the cocaine found on him and the cocaine found in the premises rented by Fu and Lam which totals 109.19 grammes of cocaine. According to the latest sentencing guidelines, those trafficking in 109.19 grammes of cocaine would attract a mathematical starting point of 9 years and 7 months' imprisonment.",
+        "source": "For the 2nd defendant, Lam, I will take into account the cocaine found on him and the cocaine found in the premises rented by Fu and Lam which totals 109.19 grammes of cocaine. According to the latest sentencing guidelines, those trafficking in 109.19 grammes of cocaine would attract a mathematical starting point of 9 years and 7 months’ imprisonment. ... I intend to take a starting point of 9 years and 6 months’ imprisonment",
         "total_months": 114
       },
       "sentence_after_role": {
@@ -252,23 +248,20 @@
       "notional_sentence": {
         "sentence_years": 9,
         "sentence_months": 6,
-        "source": "I intend to take a starting point of 9 years and 6 months' imprisonment",
+        "source": "I intend to take a starting point of 9 years and 6 months’ imprisonment",
         "total_months": 114
       },
-      "mitigation_reduction": {
-        "reduction_months": 0,
-        "source": "Lam is entitled to the full one-third discount for their pleas of guilty at the earliest opportunity."
-      },
+      "mitigation_reduction": null,
       "final_sentence": {
         "sentence_years": 6,
         "sentence_months": 4,
         "guilty_plea_reduction_years": 3,
         "guilty_plea_reduction_months": 2,
-        "source": "I intend to take a starting point of 9 years and 6 months' imprisonment and reduce it by 38 months to reflect his plea at the earliest opportunity. Lam is sentenced to 6 years and 4 months’ imprisonment.",
+        "source": "I intend to take a starting point of 9 years and 6 months’ imprisonment and reduce it by 38 months to reflect his plea at the earliest opportunity. Lam is sentenced to 6 years and 4 months’ imprisonment.",
         "total_months": 76,
         "guilty_plea_reduction_total_months": 38
       }
     }
   ],
-  "tracing_id": "e1915e5b456d82570c1b3b8f990c9352"
+  "tracing_id": "3ec3e8bc7aa52319336c0a59922a821d"
 }

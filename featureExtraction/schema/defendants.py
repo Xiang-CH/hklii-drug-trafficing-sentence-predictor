@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Optional, List, Union
 from pydantic import BaseModel, Field, ConfigDict, model_validator
 from pydantic_extra_types.country import CountryAlpha2
-from common import source_field
+from schema.common import source_field
 
 
 class NationalityCategory(str, Enum):
@@ -280,7 +280,7 @@ class DefendantProfile(BaseModel):
     nationality: Optional[Nationality] = Field(
         default=None,
         description="Infer nationality if not explicitly stated, "
-        "(e.g., the defendant’s name (if culturally indicative), place of birth, location or system of education). "
+        "(e.g., the defendant's name (if culturally indicative), place of birth, location or system of education). "
         "Do not infer nationality based on the court location or setting.",
     )
 
@@ -303,6 +303,12 @@ class DefendantProfile(BaseModel):
     criminal_record: Optional[CriminalRecordDetail] = Field(default=None)
     positive_habits_after_arrest: Optional[PositiveHabitDetail] = Field(default=None)
     family_supports: Optional[List[FamilySupportDetail]] = Field(default=None)
+
+    @model_validator(mode="after")
+    def set_wage_for_unemployed(self) -> "DefendantProfile":
+        if self.occupation and self.occupation.occupation_category == OccupationCategory.UNEMPLOYED:
+            self.monthly_wage = MonthlyWageDetail(wage=0, source=self.occupation.source)
+        return self
 
 
 class Defendants(BaseModel):

@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Optional, List
 from pydantic import BaseModel, Field, ConfigDict, model_validator, computed_field
-from common import source_field
+from schema.common import source_field
 
 
 class DrugType(str, Enum):

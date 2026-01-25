@@ -6,46 +6,39 @@
         "type": "Actual Trafficking",
         "defendant_name": "劉子健",
         "defendant_id": 1,
-        "source": "被告於2023年3月29日，連同盧健文，分別非法販運內含5.183公斤海洛英鹽酸鹽的6.638公斤混合劑（第一項控罪）與及內含70.013公斤海洛英鹽酸鹽及385克單乙酰嗎啡鹽酸鹽的86.226公斤混合劑（控罪二）。"
+        "source": "控罪詳情\n      被告於2023年3月29日，連同盧健文，分別非法販運內含5.183公斤海洛英鹽酸鹽的6.638公斤混合劑（第一項控罪）..."
       },
       "drugs": [
         {
           "drug_type": "Heroin",
           "other_drug_type": null,
           "quantity": 5183.0,
-          "source": "被告於2023年3月29日，...內含5.183公斤海洛英鹽酸鹽的6.638公斤混合劑（第一項控罪）。"
+          "source": "在橙色袋內搜出十九磚用膠紙包裹的固體，內含5.183公斤海洛英鹽酸鹽的共6.638公斤混合劑。"
         }
       ],
       "roles": [
         {
           "role": "Storekeeper",
-          "source": "辯方指出，被告並非主腦、管理人或組織者，他僅擔任倉管及運輸角色，只是受僱為他人運毒，以獲取報酬。"
+          "source": "辯方指出，被告...僅擔任倉管及運輸角色，只是受僱為他人運毒，以獲取報酬。"
         },
         {
           "role": "Courier",
-          "source": "辯方指出，被告並非主腦、管理人或組織者，他僅擔任倉管及運輸角色，只是受僱為他人運毒，以獲取報酬。"
+          "source": "辯方指出，被告...僅擔任倉管及運輸角色，只是受僱為他人運毒，以獲取報酬。"
         }
       ],
-      "aggravating_factors": [
-        {
-          "factor": "Role of the defendant",
-          "other_factor": null,
-          "enhancement": null,
-          "source": "按上述Herry Jane Yusuph案的案例，被告角色雖並非主腦，但亦積極參與，包括簽予租約，多次把毒品由匯璽運送至美孚再分發給不同人士，角色重要。"
-        }
-      ],
+      "aggravating_factors": null,
       "mitigating_factors": null,
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "High Court",
-        "high_court_stage": "Up to committal",
+        "high_court_stage": "Unknown",
         "district_court_stage": null,
-        "source": "何大律師指出，被告早在2024年5月13日首次在裁判法院已承認兩項控罪及同意相關案情。"
+        "source": "官：\n被告承認兩項「販運危險藥物」罪，違反香港法例第134章《危險藥物條例》第4（1）（a）及（3）條。"
       },
       "starting_point": {
         "sentence_years": 15,
         "sentence_months": 0,
-        "source": "因此，考慮所有上述情節，就首項控罪可予15年監禁為量刑起點，認罪後減為10年監禁。",
+        "source": "因此，考慮所有上述情節，就首項控罪可予15年監禁為量刑起點，認罪後減為10年監禁；",
         "total_months": 180
       },
       "sentence_after_role": {
@@ -57,7 +50,7 @@
       "notional_sentence": {
         "sentence_years": 15,
         "sentence_months": 0,
-        "source": "因此，考慮所有上述情節，就首項控罪可予15年監禁為量刑起點，認罪後減為10年監禁。",
+        "source": "因此，考慮所有上述情節，就首項控罪可予15年監禁為量刑起點，認罪後減為10年監禁；",
         "total_months": 180
       },
       "mitigation_reduction": null,
@@ -66,7 +59,7 @@
         "sentence_months": 0,
         "guilty_plea_reduction_years": 5,
         "guilty_plea_reduction_months": 0,
-        "source": "因此，被告判刑如下：第一項控罪10年監禁，第二項控罪22年監禁，兩項控罪同期執行，總共判以22年監禁。",
+        "source": "因此，被告判刑如下：第一項控罪10年監禁，",
         "total_months": 120,
         "guilty_plea_reduction_total_months": 60
       }
@@ -77,47 +70,40 @@
         "type": "Actual Trafficking",
         "defendant_name": "劉子健",
         "defendant_id": 1,
-        "source": "被告於2023年3月29日，連同盧健文，分別非法販運內含5.183公斤海洛英鹽酸鹽的6.638公斤混合劑（第一項控罪）與及內含70.013公斤海洛英鹽酸鹽及385克單乙酰嗎啡鹽酸鹽的86.226公斤混合劑（控罪二）。"
+        "source": "控罪詳情\n      被告於2023年3月29日，連同盧健文，分別非法販運...內含70.013公斤海洛英鹽酸鹽及385克單乙酰嗎啡鹽酸鹽的86.226公斤混合劑（控罪二）。"
       },
       "drugs": [
         {
           "drug_type": "Heroin",
           "other_drug_type": null,
           "quantity": 70013.0,
-          "source": "在上述床上及上述尼龍袋內發現合共二百四十六磚用膠紙包裹的固體，載有內含70.013公斤海洛英鹽酸鹽及385克單乙酰嗎啡鹽酸鹽的共86.226公斤混合劑。"
+          "source": "在上述床上及上述尼龍袋內發現合共二百四十六磚用膠紙包裹的固體，載有內含70.013公斤海洛英鹽酸鹽及385克單乙酰嗎啡鹽酸鹽的共86.226公斤混合劑，"
         },
         {
-          "drug_type": "Other",
-          "other_drug_type": "Monoacetylmorphine (單乙酰嗎啡鹽酸鹽)",
+          "drug_type": "Morphine",
+          "other_drug_type": null,
           "quantity": 385.0,
-          "source": "在上述床上及上述尼龍袋內發現合共二百四十六磚用膠紙包裹的固體，載有內含70.013公斤海洛英鹽酸鹽及385克單乙酰嗎啡鹽酸鹽的共86.226公斤混合劑。"
+          "source": "在上述床上及上述尼龍袋內發現合共二百四十六磚用膠紙包裹的固體，載有內含70.013公斤海洛英鹽酸鹽及385克單乙酰嗎啡鹽酸鹽的共86.226公斤混合劑，"
         }
       ],
       "roles": [
         {
           "role": "Storekeeper",
-          "source": "辯方指出，被告並非主腦、管理人或組織者，他僅擔任倉管及運輸角色，只是受僱為他人運毒，以獲取報酬。"
+          "source": "辯方指出，被告...僅擔任倉管及運輸角色，只是受僱為他人運毒，以獲取報酬。"
         },
         {
           "role": "Courier",
-          "source": "辯方指出，被告並非主腦、管理人或組織者，他僅擔任倉管及運輸角色，只是受僱為他人運毒，以獲取報酬。"
+          "source": "辯方指出，被告...僅擔任倉管及運輸角色，只是受僱為他人運毒，以獲取報酬。"
         }
       ],
-      "aggravating_factors": [
-        {
-          "factor": "Role of the defendant",
-          "other_factor": null,
-          "enhancement": null,
-          "source": "按上述Herry Jane Yusuph案的案例，被告角色雖並非主腦，但亦積極參與，包括簽予租約，多次把毒品由匯璽運送至美孚再分發給不同人士，角色重要。"
-        }
-      ],
+      "aggravating_factors": null,
       "mitigating_factors": null,
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "High Court",
-        "high_court_stage": "Up to committal",
+        "high_court_stage": "Unknown",
         "district_court_stage": null,
-        "source": "何大律師指出，被告早在2024年5月13日首次在裁判法院已承認兩項控罪及同意相關案情。"
+        "source": "官：\n被告承認兩項「販運危險藥物」罪，違反香港法例第134章《危險藥物條例》第4（1）（a）及（3）條。"
       },
       "starting_point": {
         "sentence_years": 33,
@@ -143,11 +129,11 @@
         "sentence_months": 0,
         "guilty_plea_reduction_years": 11,
         "guilty_plea_reduction_months": 0,
-        "source": "因此，被告判刑如下：第一項控罪10年監禁，第二項控罪22年監禁，兩項控罪同期執行，總共判以22年監禁。",
+        "source": "因此，被告判刑如下：...第二項控罪22年監禁，",
         "total_months": 264,
         "guilty_plea_reduction_total_months": 132
       }
     }
   ],
-  "tracing_id": "4a1e7698b14aae765e126938cb1708a9"
+  "tracing_id": "221ba71d74dee0d90cd8ccbab1104d41"
 }

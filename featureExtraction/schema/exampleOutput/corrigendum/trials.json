@@ -2,164 +2,164 @@
   "trials": [
     {
       "charge_type": {
-        "charge_no": 3,
+        "charge_no": 1,
         "type": "Conspiracy to Traffic",
         "defendant_name": "黃鈺庭",
         "defendant_id": 1,
-        "source": "第11段…第一及第二被告人則一同串謀非法販運危險藥物，即包括證物1的氯胺酮（控罪三）。"
+        "source": "11.  基於以上，第一被告人在案發時非法管有證物2（控罪二），而第一及第二被告人則一同串謀非法販運危險藥物，即包括證物1的氯胺酮（控罪三）。"
       },
       "drugs": [
         {
           "drug_type": "Ketamine",
-          "other_drug_type": null,
+          "other_drug_type": "氯胺酮",
           "quantity": 105.0,
-          "source": "第23段…本席可以以160包（共約105克）氯胺酮計算。"
+          "source": "46.  經小心考慮後，本席接納「招認」是兩位被告人都有作出，所以具備推算起刑點的基礎。如前述，本席亦認為在得到充份資料後，有條件（及責任）作出綜合評訂，以作出有效及公平的推算。以本案來說，本席將繼續以「160包」作為穩妥得出的推算結果.\n56.  基於立體的考量，本席認為較公平的做法是以有限的資料，跟從法律作出推算，不作進一步推論，以示公允。辯方亦再三表示不反對以推算出「160包」來計出105克作結，本案沒有純度上（所謂69%與50%）的差別。"
         }
       ],
       "roles": [
         {
           "role": "Courier",
-          "source": "第7(a)-(h),(j)-(k) 及第9(f)-(i) 顯示第一被告人負責取毒、派送、出售及與顧客交收，為派送/分銷者。"
+          "source": "7. (h)  第一被告人為“So Ken”“放”過毒品4次;  (i)  客人會聯絡第一被告人，雙方會協定數量及交收地點; (j)  第一被告人以每粒港幣350元出售毒品;"
         }
       ],
       "aggravating_factors": [
         {
-          "factor": "Use of minors",
-          "other_factor": null,
+          "factor": "Other",
+          "other_factor": "None specifically quantified; judge noted role differences and use of a young person by the co-accused but did not specify a months enhancement for 黃鈺庭",
           "enhancement": null,
-          "source": "第58-61段 指出本案涉及利用年輕人犯案，並於第61段指加刑起碼10%。"
+          "source": "59.  第一與第二被告人的角色不同，本席認為合適的量刑起點應有6個月的分野.\n60.  本案明顯涉及利用年輕人犯案."
         }
       ],
       "mitigating_factors": [
         {
-          "factor": "Other",
-          "other_factor": "Confession and assisting by identifying/leading to arrest of co-accused",
-          "reduction": 9,
-          "source": "第63-66段及勘誤段落：先因認罪由80月下調約1/3至53月；第64段就「招認」給予3個月減刑；第65段就供出第二被告人另給3個月；勘誤補充另給3個月，合計9個月。"
+          "factor": "Young offender",
+          "other_factor": null,
+          "reduction": null,
+          "source": "13.  以第一被告人而言，他現年只有18歲。"
+        },
+        {
+          "factor": "Assistance - useful",
+          "other_factor": null,
+          "reduction": 6,
+          "source": "14.  ...坦白認罪，以及和警方充份合作。辯方亦強調，第一被告人的合作更導致第二被告人被捕，包括成功在警方安排的認人手續中指出第二被告人.\n65.  為此本席同意減刑3個月（同樣是3.75%）。\n64.  本席就「招認」給予第一被告人3個月的減刑"
         }
       ],
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "District Court",
         "high_court_stage": null,
-        "district_court_stage": "Plea day",
-        "source": "第4段：就控罪二及三，兩名被告人均表示認罪。"
+        "district_court_stage": "Unknown",
+        "source": "4.  就控罪二及三，兩名被告人均表示認罪。"
       },
       "starting_point": {
         "sentence_years": 6,
         "sentence_months": 8,
-        "source": "第62段：以105克毒品份量而定，針對兩名被告人的控罪三的適當的量刑起點便為80個月。",
+        "source": "62.  如上文所述，以105克毒品份量而定，針對兩名被告人的控罪三的適當的量刑起點便為80個月.",
         "total_months": 80
       },
       "sentence_after_role": {
         "sentence_years": 6,
         "sentence_months": 8,
-        "source": "Inferred as starting point since role adjustment not provided",
+        "source": "59.  第一與第二被告人的角色不同，本席認為合適的量刑起點應有6個月的分野.",
         "total_months": 80
       },
       "notional_sentence": {
         "sentence_years": 6,
         "sentence_months": 8,
-        "source": "第62段：以105克…量刑起點為80個月（作為notional sentence/starting point）。",
+        "source": "62.  如上文所述，以105克毒品份量而定，針對兩名被告人的控罪三的適當的量刑起點便為80個月.",
         "total_months": 80
       },
       "mitigation_reduction": {
         "reduction_months": 9,
-        "source": "第63-66段及勘誤段落：先給予因認罪的下調（見guilty_plea），另就招認及供出第二被告人及其他求情內容共減9個月。"
+        "source": "63-66, 勘誤: 63. 本席把第一被告人的80個月，下調約1/3至53個月以反映其認罪.\n64. ...給予第一被告人3個月的減刑...將53個月下調至50個月.\n65. ...為此本席同意減刑3個月.\n勘誤: \"本席就其他求情內容給予3個月進一步減刑\""
       },
       "final_sentence": {
         "sentence_years": 3,
         "sentence_months": 8,
         "guilty_plea_reduction_years": 2,
         "guilty_plea_reduction_months": 3,
-        "source": "第66-70段：綜合…針對第一被告人的控罪三，判刑為44個月即時監禁。 \n（計算：notional 80月 − guilty plea 27月 = 53月；再減其他減刑9月 = 44月）",
+        "source": "66. 綜合以上，針對第一被告人的控罪三，判刑為44個月即時監禁.\n63. 本席把第一被告人的80個月，下調約1/3至53個月以反映其認罪.",
         "total_months": 44,
         "guilty_plea_reduction_total_months": 27
       }
     },
     {
       "charge_type": {
-        "charge_no": 3,
+        "charge_no": 1,
         "type": "Conspiracy to Traffic",
         "defendant_name": "蘇偉強",
         "defendant_id": 2,
-        "source": "第11段…第一及第二被告人則一同串謀非法販運危險藥物，即包括證物1的氯胺酮（控罪三）。"
+        "source": "11.  基於以上，第一被告人在案發時非法管有證物2（控罪二），而第一及第二被告人則一同串謀非法販運危險藥物，即包括證物1的氯胺酮（控罪三）。"
       },
       "drugs": [
         {
           "drug_type": "Ketamine",
-          "other_drug_type": null,
+          "other_drug_type": "氯胺酮",
           "quantity": 105.0,
-          "source": "第23段…本席可以以160包（共約105克）氯胺酮計算。"
+          "source": "46.  經小心考慮後，本席接納「招認」是兩位被告人都有作出...本席將繼續以「160包」作為穩妥得出的推算結果.\n56.  辯方亦再三表示不反對以推算出「160包」來計出105克作結"
         }
       ],
       "roles": [
         {
           "role": "Manager/organizer",
-          "source": "第8-9段及第16段 顯示第二被告人為介紹及安排第一被告人派送、收取部分款項，具中介/組織角色。"
+          "source": "9. (e)  第二被告人知道第一被告人無業，將第一被告人介紹給葉維輝; (i)  第二被告人介紹第一被告人派送和出售毒品，因為第一被告人想賺多些錢;"
         }
       ],
       "aggravating_factors": [
         {
           "factor": "Use of minors",
           "other_factor": null,
-          "enhancement": null,
-          "source": "第58-61段 指出本案涉及利用年輕人犯案，並於第61段指加刑起碼10%。"
-        },
-        {
-          "factor": "Role of the defendant",
-          "other_factor": null,
-          "enhancement": null,
-          "source": "第59段 指出兩被告角色不同，應有6個月分野；第66-67段對第二被告人以較高綜合量刑基準處理。"
+          "enhancement": 8,
+          "source": "60.  本案明顯涉及利用年輕人犯案...61. 本席認為加刑起碼10%才足夠反映利用年青人的加刑因素.\n62.  以105克毒品份量而定...80個月."
         }
       ],
       "mitigating_factors": [
         {
           "factor": "Other",
-          "other_factor": "Guilty plea and positive personal mitigation (family/friends' support)",
+          "other_factor": "Positive character references and family/friends support",
           "reduction": 3,
-          "source": "第67段：他的認罪可把判刑下調至60個月；基於其求情內容…酌情減刑3個月至57個月。"
+          "source": "67.  他的認罪，可把判刑下調至60個月。基於他的求情內容，特別是其家人及朋友對他的正面評價及支持，本席酌情減刑3個月至57個月."
         }
       ],
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "District Court",
         "high_court_stage": null,
-        "district_court_stage": "Plea day",
-        "source": "第4段：就控罪二及三，兩名被告人均表示認罪。"
+        "district_court_stage": "Unknown",
+        "source": "4.  就控罪二及三，兩名被告人均表示認罪。"
       },
       "starting_point": {
         "sentence_years": 6,
         "sentence_months": 8,
-        "source": "第62段：以105克毒品份量而定…量刑起點為80個月（作為基本起刑點）。",
+        "source": "62.  如上文所述，以105克毒品份量而定，針對兩名被告人的控罪三的適當的量刑起點便為80個月.",
         "total_months": 80
       },
       "sentence_after_role": {
         "sentence_years": 7,
-        "sentence_months": 6,
-        "source": "第67段：本席以86個月作為基準以反映他與第一被告人角色上的不同（86個月寫作基準之一）；綜合後以90個月作為綜合量刑基準。",
-        "total_months": 90
+        "sentence_months": 2,
+        "source": "67. 綜合而言，一個90個月的綜合量刑基準才足以反映第二被告人的刑責.",
+        "total_months": 86
       },
       "notional_sentence": {
         "sentence_years": 7,
         "sentence_months": 6,
-        "source": "第67段：綜合而言，一個90個月的綜合量刑基準才足以反映第二被告人的刑責。",
+        "source": "67. 綜合而言，一個90個月的綜合量刑基準才足以反映第二被告人的刑責. (judge then reduced to 60 then 57)",
         "total_months": 90
       },
       "mitigation_reduction": {
         "reduction_months": 3,
-        "source": "第67段：其認罪把判刑下調至60個月；再基於其求情內容酌情減刑3個月至57個月（該3個月為非認罪之其他減刑）。"
+        "source": "67.  他的認罪，可把判刑下調至60個月。基於他的求情內容...本席酌情減刑3個月至57個月."
       },
       "final_sentence": {
         "sentence_years": 4,
         "sentence_months": 9,
         "guilty_plea_reduction_years": 2,
         "guilty_plea_reduction_months": 6,
-        "source": "第67-68段：綜合…最終判第二被告人就控罪三服刑57個月即時監禁。 \n（計算：notional 90月 − guilty plea 30月 = 60月；再減其他減刑3月 = 57月）",
+        "source": "68. 經小心再考慮Herry Jane Yusuph的各步驟後，本席仍然認為，最終判第一及第二被告人，分別就控罪三服刑44及57個月即時監禁是合適的.",
         "total_months": 57,
         "guilty_plea_reduction_total_months": 30
       }
     }
   ],
-  "tracing_id": "365f78df548e04dfc205eb38b5d98161"
+  "tracing_id": "a65eb2de244a9ce8685dc9d9ed510a48"
 }

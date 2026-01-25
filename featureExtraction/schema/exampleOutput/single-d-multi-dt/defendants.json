@@ -4,57 +4,58 @@
       "defendant_id": 1,
       "defendant_name": {
         "name": "劉子健",
-        "source": "案件標題及列明被告姓名：\nHCCC238/2024 香港特別行政區 訴 劉子健"
+        "source": "HCCC238/2024 香港特別行政區 訴 劉子健"
       },
       "nationality": null,
       "age_at_offence": null,
       "age_at_sentencing": {
         "age": 42,
-        "source": "求情段落：被告現年42歲，過往在2004年5月因提供虛假資料予海關，被罰款12,000元。"
+        "source": "被告現年42歲"
       },
       "gender": {
         "gender": "Male",
-        "source": "案情及紀錄多次以「他／他的」稱呼被告，例如：「被告的錄影會面紀錄指出，盧子健是他的中學同學」。"
+        "source": "被告（he/him references and male family descriptors such as 太太、父親、姊姊）"
       },
       "marital_status": {
         "status": "Married",
-        "source": "求情段落：就背景而言，被告43歲，中四學歷，已婚，育有兩子一女，..."
+        "source": "已婚"
       },
       "parental_status": {
         "status": "Parent",
         "custody": null,
-        "source": "求情段落：就背景而言，被告43歲，中四學歷，已婚，育有兩子一女，..."
+        "source": "育有兩子一女"
       },
       "household_composition": null,
       "health_status": null,
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Upper",
-        "source": "求情段落：就背景而言，被告43歲，中四學歷，..."
+        "source": "中四學歷"
       },
       "occupation": {
         "occupation_category": "Elementary occupation",
         "occupation_name": "倉務員",
-        "source": "求情段落：被捕時任職倉務員"
+        "source": "被捕時任職倉務員"
       },
       "monthly_wage": null,
       "criminal_record": {
         "record": "Other offences",
-        "source": "求情段落：過往在2004年5月因提供虛假資料予海關，被罰款12,000元。"
+        "source": "過往在2004年5月因提供虛假資料予海關，被罰款12,000元。"
       },
       "positive_habits_after_arrest": {
         "habits": [
-          "Participation in rehabilitation/self-improvement"
+          "Participation in rehabilitation/self-improvement",
+          "Working"
         ],
-        "source": "求情段落：在被囚期間亦主動協助懲教員處理一切大小事務。"
+        "source": "求情信及牧師信：被告在被囚期間亦主動協助懲教員處理一切大小事務；牧師指被告沒有自怨自艾，沒有逃避，沒有推卸責任，以學習去面對自己，決心改過。"
       },
       "family_supports": [
         {
           "support": "Letters of support from family",
-          "source": "求情段落：辯方亦呈上五封求情信，可見被告有真誠悔意；並描述太太、父親、姊姊及牧師的求情信內容。"
+          "source": "辯方亦呈上五封求情信（包括太太、父親、姊姊及牧師信件）"
         }
       ]
     }
   ],
-  "tracing_id": "4a1e7698b14aae765e126938cb1708a9"
+  "tracing_id": "221ba71d74dee0d90cd8ccbab1104d41"
 }

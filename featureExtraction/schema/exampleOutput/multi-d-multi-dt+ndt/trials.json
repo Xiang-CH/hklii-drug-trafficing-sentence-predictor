@@ -13,15 +13,10 @@
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 2.15,
-          "source": "29. 本案中，警方在第一被告人駕駛的車上和其身上（衞衣前袋及斜孭袋內）找到合共6.73克可卡因（即是控罪一的2.15克及控罪四的4.58克）。"
+          "source": "本案中，警方在第一被告人駕駛的車上和其身上（衞衣前袋及斜孭袋內）找到合共6.73克可卡因（即是控罪一的2.15克及控罪四的4.58克）。"
         }
       ],
-      "roles": [
-        {
-          "role": "Actual trafficker",
-          "source": "31. 本案沒有其他證供顯示第一被告人在這販運活動過程中擔當管理者或組織者的角色。在缺乏其他的證據之下，本席認為以一合共6.73克的可卡因作計算..."
-        }
-      ],
+      "roles": [],
       "aggravating_factors": null,
       "mitigating_factors": null,
       "guilty_plea": {
@@ -29,12 +24,12 @@
         "court_type": "District Court",
         "high_court_stage": null,
         "district_court_stage": "Unknown",
-        "source": "4. 兩人承認全部各自面對的控罪及同意案情，被裁定罪名成立."
+        "source": "兩人承認全部各自面對的控罪及同意案情，被裁定罪名成立。"
       },
       "starting_point": {
         "sentence_years": 4,
         "sentence_months": 0,
-        "source": "31-32. 在缺乏其他的證據之下，本席認為以一合共6.73克的可卡因作計算，根據黃瑞芳案，適當的量刑起點為48個月監禁。",
+        "source": "本席認為以一合共6.73克的可卡因作計算，根據黃瑞芳案，適當的量刑起點為48個月監禁。",
         "total_months": 48
       },
       "sentence_after_role": {
@@ -46,7 +41,7 @@
       "notional_sentence": {
         "sentence_years": 4,
         "sentence_months": 0,
-        "source": "31-32. 在缺乏其他的證據之下，本席認為以一合共6.73克的可卡因作計算，根據黃瑞芳案，適當的量刑起點為48個月監禁。",
+        "source": "本席認為以一合共6.73克的可卡因作計算，根據黃瑞芳案，適當的量刑起點為48個月監禁。",
         "total_months": 48
       },
       "mitigation_reduction": null,
@@ -55,69 +50,9 @@
         "sentence_months": 8,
         "guilty_plea_reduction_years": 1,
         "guilty_plea_reduction_months": 4,
-        "source": "32. 因此，本席就每一項控罪採納48個月監禁為量刑起點。第一被告人適時認罪，獲得三分之一的刑期扣減，每項控罪的刑期下調至32個月。",
+        "source": "因此，本席就每一項控罪採納48個月監禁為量刑起點。第一被告人適時認罪，獲得三分之一的刑期扣減，每項控罪的刑期下調至32個月。",
         "total_months": 32,
         "guilty_plea_reduction_total_months": 16
-      }
-    },
-    {
-      "charge_type": {
-        "charge_no": 1,
-        "type": "Actual Trafficking",
-        "defendant_name": "張曜龍",
-        "defendant_id": 2,
-        "source": "控罪:   [1] 販運危險藥物（Trafficking in a dangerous drug） - 全部被告人"
-      },
-      "drugs": [
-        {
-          "drug_type": "Cocaine",
-          "other_drug_type": null,
-          "quantity": 2.15,
-          "source": "29. 本案中，警方在第一被告人駕駛的車上和其身上（衞衣前袋及斜孭袋內）找到合共6.73克可卡因（即是控罪一的2.15克及控罪四的4.58克）。"
-        }
-      ],
-      "roles": [
-        {
-          "role": "Actual trafficker",
-          "source": "41. 本案沒有證供顯示第二被告人在販運活動中擔演一名管理或組織者，又或是有其他證供顯示第二被告人直接將毒品售賣給他人，否則法庭可將量刑起點相應提高。"
-        }
-      ],
-      "aggravating_factors": null,
-      "mitigating_factors": null,
-      "guilty_plea": {
-        "pleaded_guilty": true,
-        "court_type": "District Court",
-        "high_court_stage": null,
-        "district_court_stage": "Unknown",
-        "source": "4. 兩人承認全部各自面對的控罪及同意案情，被裁定罪名成立."
-      },
-      "starting_point": {
-        "sentence_years": 3,
-        "sentence_months": 2,
-        "source": "41. 以合共4.05克可卡因作計算，屬於販運10克以下的組別，相應的量刑起點是2至5年監禁。...本席就每一項控罪採納38個月監禁為量刑起點。",
-        "total_months": 38
-      },
-      "sentence_after_role": {
-        "sentence_years": 3,
-        "sentence_months": 2,
-        "source": "Inferred as starting point since role adjustment not provided",
-        "total_months": 38
-      },
-      "notional_sentence": {
-        "sentence_years": 3,
-        "sentence_months": 2,
-        "source": "41. 本席就每一項控罪採納38個月監禁為量刑起點。",
-        "total_months": 38
-      },
-      "mitigation_reduction": null,
-      "final_sentence": {
-        "sentence_years": 2,
-        "sentence_months": 1,
-        "guilty_plea_reduction_years": 1,
-        "guilty_plea_reduction_months": 1,
-        "source": "41. 第二被告人適時認罪，獲得三分之一的刑期扣減，刪除小數位之後，刑期下調至25個月，兩項控罪同期執行，總刑期為25個月。",
-        "total_months": 25,
-        "guilty_plea_reduction_total_months": 13
       }
     },
     {
@@ -133,15 +68,10 @@
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 4.58,
-          "source": "29. 本案中，警方在第一被告人駕駛的車上和其身上（衞衣前袋及斜孭袋內）找到合共6.73克可卡因（即是控罪一的2.15克及控罪四的4.58克）。"
+          "source": "本案中，警方在第一被告人駕駛的車上和其身上（衞衣前袋及斜孭袋內）找到合共6.73克可卡因（即是控罪一的2.15克及控罪四的4.58克）。"
         }
       ],
-      "roles": [
-        {
-          "role": "Actual trafficker",
-          "source": "31. 本案沒有其他證供顯示第一被告人在這販運活動過程中擔當管理者或組織者的角色。"
-        }
-      ],
+      "roles": [],
       "aggravating_factors": null,
       "mitigating_factors": null,
       "guilty_plea": {
@@ -149,12 +79,12 @@
         "court_type": "District Court",
         "high_court_stage": null,
         "district_court_stage": "Unknown",
-        "source": "4. 兩人承認全部各自面對的控罪及同意案情，被裁定罪名成立."
+        "source": "兩人承認全部各自面對的控罪及同意案情，被裁定罪名成立。"
       },
       "starting_point": {
         "sentence_years": 4,
         "sentence_months": 0,
-        "source": "31-32. 在缺乏其他的證據之下，本席認為以一合共6.73克的可卡因作計算，根據黃瑞芳案，適當的量刑起點為48個月監禁。",
+        "source": "本席認為以一合共6.73克的可卡因作計算，根據黃瑞芳案，適當的量刑起點為48個月監禁。",
         "total_months": 48
       },
       "sentence_after_role": {
@@ -166,7 +96,7 @@
       "notional_sentence": {
         "sentence_years": 4,
         "sentence_months": 0,
-        "source": "31-32. 在缺乏其他的證據之下，本席認為以一合共6.73克的可卡因作計算，根據黃瑞芳案，適當的量刑起點為48個月監禁。",
+        "source": "本席認為以一合共6.73克的可卡因作計算，根據黃瑞芳案，適當的量刑起點為48個月監禁。",
         "total_months": 48
       },
       "mitigation_reduction": null,
@@ -175,7 +105,7 @@
         "sentence_months": 8,
         "guilty_plea_reduction_years": 1,
         "guilty_plea_reduction_months": 4,
-        "source": "32. 因此，本席就每一項控罪採納48個月監禁為量刑起點。第一被告人適時認罪，獲得三分之一的刑期扣減，每項控罪的刑期下調至32個月。",
+        "source": "因此，本席就每一項控罪採納48個月監禁為量刑起點。第一被告人適時認罪，獲得三分之一的刑期扣減，每項控罪的刑期下調至32個月。",
         "total_months": 32,
         "guilty_plea_reduction_total_months": 16
       }
@@ -193,15 +123,10 @@
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 1.9,
-          "source": "9. 第二被告人的外套右袋內 (1)  一個膠袋，內有16個膠袋，載有內含1.9克可卡因的共2.72克固體（證物16）（控罪五）。\n41. 就第二被告人而言，涉及的危險藥物分別在第一被告人駕駛的車上和第二被告人的外套右袋找到合共4.05克可卡因（即控罪一的2.15克及控罪五的1.9克可卡因）。"
+          "source": "第二被告人的外套右袋內 (1) 一個膠袋，內有16個膠袋，載有內含1.9克可卡因的共2.72克固體（證物16）（控罪五）。"
         }
       ],
-      "roles": [
-        {
-          "role": "Actual trafficker",
-          "source": "41. 本案沒有證供顯示第二被告人在販運活動中擔演一名管理或組織者，又或是有其他證供顯示第二被告人直接將毒品售賣給他人，否則法庭可將量刑起點相應提高。"
-        }
-      ],
+      "roles": [],
       "aggravating_factors": null,
       "mitigating_factors": null,
       "guilty_plea": {
@@ -209,12 +134,12 @@
         "court_type": "District Court",
         "high_court_stage": null,
         "district_court_stage": "Unknown",
-        "source": "4. 兩人承認全部各自面對的控罪及同意案情，被裁定罪名成立."
+        "source": "兩人承認全部各自面對的控罪及同意案情，被裁定罪名成立。"
       },
       "starting_point": {
         "sentence_years": 3,
         "sentence_months": 2,
-        "source": "41. 以合共4.05克可卡因作計算，屬於販運10克以下的組別，相應的量刑起點是2至5年監禁。...本席就每一項控罪採納38個月監禁為量刑起點。",
+        "source": "就第二被告人而言，涉及的危險藥物分別在第一被告人駕駛的車上和第二被告人的外套右袋找到合共4.05克可卡因（即控罪一的2.15克及控罪五的1.9克可卡因）。綜合兩項控罪的可卡因的總重量作計算，屬於販運10克以下的組別，相應的量刑起點是2至5年監禁。...因此，以合共4.05克可卡因作計算，考慮了整體情況之後，本席就每一項控罪採納38個月監禁為量刑起點。",
         "total_months": 38
       },
       "sentence_after_role": {
@@ -226,7 +151,7 @@
       "notional_sentence": {
         "sentence_years": 3,
         "sentence_months": 2,
-        "source": "41. 本席就每一項控罪採納38個月監禁為量刑起點。",
+        "source": "因此，以合共4.05克可卡因作計算，考慮了整體情況之後，本席就每一項控罪採納38個月監禁為量刑起點。",
         "total_months": 38
       },
       "mitigation_reduction": null,
@@ -235,11 +160,11 @@
         "sentence_months": 1,
         "guilty_plea_reduction_years": 1,
         "guilty_plea_reduction_months": 1,
-        "source": "41. 第二被告人適時認罪，獲得三分之一的刑期扣減，刪除小數位之後，刑期下調至25個月，兩項控罪同期執行，總刑期為25個月。",
+        "source": "第二被告人適時認罪，獲得三分之一的刑期扣減，刪除小數位之後，刑期下調至25個月，兩項控罪同期執行，總刑期為25個月。",
         "total_months": 25,
         "guilty_plea_reduction_total_months": 13
       }
     }
   ],
-  "tracing_id": "56688ead18a20670f65ca52405535681"
+  "tracing_id": "e0f99808524403dca7b0e5adb0eeed36"
 }

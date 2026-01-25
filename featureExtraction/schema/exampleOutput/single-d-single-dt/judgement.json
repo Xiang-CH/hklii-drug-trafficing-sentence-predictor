@@ -1,6 +1,6 @@
 {
   "neutral_citation": "[2025] HKCFI 4195",
-  "judge_name": "Woodcock J",
+  "judge_name": "Hon Woodcock J",
   "judgment_date_time": "2025-07-24T09:36:00+08:00",
   "representatives": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "name": "Ms Ling Wai-kai Vickie",
-      "role": "Defence counsel, instructed by DLA"
+      "role": "Counsel for the accused, instructed by DLA"
     }
   ],
   "cases_heard": [
@@ -21,22 +21,26 @@
       "charge_name": "Trafficking in dangerous drugs",
       "offence_date": {
         "date": "2023-11-30",
-        "source": "The particulars of the charge are that the defendant on 30 November 2023, at Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories, unlawfully trafficked in dangerous drugs, namely, 112.35 grammes of a solid containing 85.63 grammes of cocaine and 211.16 grammes of a solid containing 170.37 grammes of ketamine.",
+        "source": "The particulars of the charge are that the defendant on 30 November 2023, at Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories, unlawfully trafficked in dangerous drugs",
         "day_of_week": 4,
         "is_hk_public_holiday": false
       },
-      "offence_time": null,
+      "offence_time": {
+        "time": "18:00:00+08:00",
+        "source": "The police ... gained entry after 6 pm on the offence date.",
+        "time_of_day": "evening"
+      },
       "place_of_offence": {
         "address": "Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories",
         "nature": "Residential building",
         "subDistrict": "Tsing Yi",
-        "source": "The particulars of the charge are that the defendant on 30 November 2023, at Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories, unlawfully trafficked in dangerous drugs, namely, 112.35 grammes of a solid containing 85.63 grammes of cocaine and 211.16 grammes of a solid containing 170.37 grammes of ketamine.",
+        "source": "The particulars of the charge are that the defendant on 30 November 2023, at Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories, unlawfully trafficked in dangerous drugs",
         "district": "Kwai Tsing"
       },
       "cross_border": {
         "cross_border": false,
         "type": null,
-        "source": "No cross-border activity is mentioned in the transcript; the particulars identify a location in Tsing Yi, New Territories."
+        "source": "No cross-border activity mentioned in the judgment"
       },
       "defendants_of_charge": [
         {
@@ -49,17 +53,17 @@
           "reasons_for_offence": [
             {
               "reason": "Financial gain",
-              "source": "He was tempted by an old school friend who promised an easy job for quick and good money. He could store some goods and make some deliveries for $16,000 a month."
+              "source": "He admitted packing and delivering drugs on instructions for monetary rewards."
             },
             {
               "reason": "Coercion",
-              "source": "He tried to return the drugs but was told if he quit the job, he would need to repay $30,000 as compensation. Since he did not have the money, he kept the drugs and followed instructions to repack drugs into smaller packets and make deliveries."
+              "source": "He tried to return the drugs but was told if he quit the job, he would need to repay $30,000 as compensation."
             }
           ],
           "benefits_received": {
             "received": true,
-            "amount": null,
-            "source": "The defendant was arrested and he admitted packing and delivering drugs on instructions for monetary rewards. He admits ... the estimated retail value of the cocaine was $262,113 and the ketamine, $131,342."
+            "amount": 16000.0,
+            "source": "He could store some goods and make some deliveries for $16,000 a month."
           }
         }
       ]
@@ -72,5 +76,5 @@
       "Wong Man-kit"
     ]
   ],
-  "tracing_id": "b8fba0f8b6395ab5d04b584290e4e10f"
+  "tracing_id": "af7a7c1553a813e29752ca8f7f61e302"
 }

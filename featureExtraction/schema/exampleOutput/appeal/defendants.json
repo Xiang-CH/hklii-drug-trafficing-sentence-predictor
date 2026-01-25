@@ -4,70 +4,69 @@
       "defendant_id": 1,
       "defendant_name": {
         "name": "Lau Kam Hung (劉金洪)",
-        "source": "Case title and parties listing: \"LAU KAM HUNG (劉金洪)\""
+        "source": "CACC 28/2025, HKSAR v. LAU KAM HUNG\n\n... and\n\nLau Kam Hung (劉金洪)\nApplicant"
       },
       "nationality": {
         "category": "Mainland Chinese",
         "hk_resident_status": null,
         "foreign_country_code": null,
-        "infer_reason": "Born in Guangzhou and relocated to Hong Kong at age 21; nationality not explicitly stated in the judgment.",
-        "source": "Background and Mitigation: \"The defendant was born in Guangzhou in July 1956 and is 68. He relocated to Hong Kong when he was 21.\""
+        "infer_reason": "Born in Guangzhou and relocated to Hong Kong at age 21, indicating Mainland Chinese origin.",
+        "source": "The defendant was born in Guangzhou in July 1956 and is 68."
       },
       "age_at_offence": {
         "age": 65,
-        "source": "Offence date 2 April 2022 and birth July 1956: \"The defendant was born in Guangzhou in July 1956\"; offence dated at [6],[8] (2 April 2022)."
+        "source": "The defendant was born in Guangzhou in July 1956 and is 68."
       },
       "age_at_sentencing": {
         "age": 68,
-        "source": "Background and Mitigation: \"The defendant was born in Guangzhou in July 1956 and is 68.\" (Sentence dated 22 January 2025)"
+        "source": "The defendant was born in Guangzhou in July 1956 and is 68."
       },
       "gender": {
         "gender": "Male",
-        "source": "Case text refers to the defendant using male references and lists name as \"LAU Kam-hung\"; parties listing and judgment wording (e.g., \"the defendant\", male pronouns implied)."
+        "source": "The defendant was born in Guangzhou in July 1956 and is 68."
       },
       "marital_status": null,
       "parental_status": {
         "status": "Parent",
-        "custody": null,
-        "source": "Background and Mitigation: \"The defendant contributes about RMB800 towards his daughter’s living expenses, who is 18 years old and studying nursing in Guangzhou.\""
+        "custody": "Parent without custody",
+        "source": "The defendant contributes about RMB800 towards his daughter’s living expenses, who is 18 years old and studying nursing in Guangzhou."
       },
       "household_composition": null,
       "health_status": {
         "conditions": [
           {
             "type": "Physical health",
-            "source": "Background and Mitigation: \"The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps. He had undergone angioplasty procedure during his remand. He is constantly exhausted from frequent night time urination, and is in pain most of the time.\""
+            "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps. He had undergone angioplasty procedure during his remand."
+          },
+          {
+            "type": "Drug addiction",
+            "source": "At the time of sentencing, the applicant was a former drug abuser aged 68 ... He has since quit his drug use and plans to be reunited with his daughter in the mainland upon release, and to never return to Hong Kong."
           }
         ]
       },
       "drug_treatment_participation": null,
       "education_level": null,
       "occupation": {
-        "occupation_category": "Craft and related worker",
-        "occupation_name": "Construction site worker (2015)",
-        "source": "Background and Mitigation: \"The defendant was working as a construction site worker in 2015, earning around $30,000...\""
+        "occupation_category": "Other",
+        "occupation_name": "construction site worker (in 2015)",
+        "source": "The defendant was working as a construction site worker in 2015, earning around $30,000, when he suffered a hand injury forcing him to stop."
       },
       "monthly_wage": {
-        "wage": 30000,
-        "source": "Background and Mitigation: \"The defendant was working as a construction site worker in 2015, earning around $30,000...\""
+        "wage": 5300,
+        "source": "He had to rely on CSSA of $5,300 per month for his daily and medical expenses since 2017."
       },
       "criminal_record": {
         "record": "Other offences",
-        "source": "Previous Convictions: detailed list including rape, robbery, assault, indecent assault, managing a vice establishment, criminal intimidation, theft and a 2019 conviction for possession of dangerous drugs (see [13]-[16])."
+        "source": "The defendant has 19 convictions from 6 court appearances. He was convicted in 1979 for 7 charges of theft, together with one of rape and one of robbery ... His last conviction was on 2 October 2019, when he was sentenced to 18 months’ imprisonment for possession of dangerous drugs."
       },
       "positive_habits_after_arrest": {
         "habits": [
           "Participation in rehabilitation/self-improvement"
         ],
-        "source": "Background and Mitigation: \"He has since quit his drug use and plans to be reunited with his daughter in the mainland upon release, and to never return to Hong Kong.\""
+        "source": "He has since quit his drug use and plans to be reunited with his daughter in the mainland upon release, and to never return to Hong Kong."
       },
-      "family_supports": [
-        {
-          "support": "Other",
-          "source": "Background and Mitigation: \"The defendant contributes about RMB800 towards his daughter’s living expenses, who is 18 years old and studying nursing in Guangzhou.\""
-        }
-      ]
+      "family_supports": null
     }
   ],
-  "tracing_id": "b181628207e66df4cb3401780016cd9a"
+  "tracing_id": "eeb2b208209400592f1617a304ea1277"
 }

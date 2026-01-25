@@ -1,23 +1,15 @@
 {
   "neutral_citation": "[2025] HKCA 943",
-  "judge_name": "Hon Macrae VP in Court",
+  "judge_name": "Andrew Macrae",
   "judgment_date_time": "2025-10-17T00:00:00+08:00",
   "representatives": [
     {
-      "name": "Mr Prakash L Daryanani",
-      "role": "SPP, of the Department of Justice, for the Respondent"
+      "name": "Prakash L Daryanani",
+      "role": "SPP, Department of Justice, for the Respondent"
     },
     {
-      "name": "Mr Duncan Percy",
-      "role": "instructed by SH Chan & Co, assigned by the Director of Legal Aid, for the Applicant"
-    },
-    {
-      "name": "Ms Janice KWAN",
-      "role": "SPP of Department of Justice for the Prosecution/ HKSAR"
-    },
-    {
-      "name": "Mr Raymond YU",
-      "role": "instructed by Messrs. Chan & Chan, assigned by D.L.A., for the defendant"
+      "name": "Duncan Percy",
+      "role": "Counsel for the Applicant, instructed by SH Chan & Co, assigned by the Director of Legal Aid"
     }
   ],
   "cases_heard": [
@@ -30,46 +22,50 @@
       "charge_name": "Trafficking in dangerous drugs",
       "offence_date": {
         "date": "2022-04-02",
-        "source": "In the evening of 2 April 2022, during an anti-narcotics operation, the police... (Summary of Facts)",
+        "source": "In the evening of 2 April 2022, during an anti-narcotics operation... (Summary of Facts)",
         "day_of_week": 6,
         "is_hk_public_holiday": false
       },
-      "offence_time": null,
+      "offence_time": {
+        "time": "21:20:00+08:00",
+        "source": "At around 9:20pm, a male and a female appeared on the 21st floor and rang the doorbell of flat 2110",
+        "time_of_day": "evening"
+      },
       "place_of_offence": {
-        "address": "Room 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon",
+        "address": "Room 2110 (flat 2110), 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon",
         "nature": "Residential building",
         "subDistrict": "Tai Kok Tsui",
-        "source": "Particulars of the offence ... on 2 April 2022, at room 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon.",
+        "source": "Particulars of the offence ... at room 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon",
         "district": "Yau Tsim Mong"
       },
       "cross_border": {
         "cross_border": false,
         "type": null,
-        "source": ""
+        "source": "No cross-border activity mentioned in the judgment"
       },
       "defendants_of_charge": [
         {
-          "defendant_name": "Lau Kam Hung (劉金洪)",
+          "defendant_name": "Lau Kam Hung",
           "defendant_id": 1,
           "trafficking_mode": {
             "mode": "Drug houses",
-            "source": "The paraphernalia of the trafficker were found inside the premises, namely two different types of dangerous drugs contained in smaller re-sealable bags of drugs, multiple empty re-sealable plastic bags and an electronic scale... That people would come to the flat to consume or receive drugs was apparent..."
+            "source": "Paraphernalia and packaging found in the flat, visits by others to the flat, and the judge's description of the premises as an active centre for distribution, packaging and consumption"
           },
           "reasons_for_offence": [
             {
               "reason": "Addiction-driven",
-              "source": "the applicant was a former drug abuser aged 68"
-            },
-            {
-              "reason": "Economic hardship",
-              "source": "At 21, he came to Hong Kong in pursuit of a better life. However, marginalised and frustrated by society, he descended into a life of crime and bad habits."
+              "source": "The defendant was a former drug abuser; the defendant claimed the drugs were for his own consumption and would sometimes share them with his friends"
             },
             {
               "reason": "Helping other people",
-              "source": "the applicant said that the “Ice” and cannabis were for his own consumption and occasional sharing with friends."
+              "source": "The defendant admitted he would sometimes share drugs with his friends"
             }
           ],
-          "benefits_received": null
+          "benefits_received": {
+            "received": false,
+            "amount": null,
+            "source": "The sentencing record gives a street value for the drugs (HK$9,895.60 and HK$2,621) but does not state any money was received by the defendant for trafficking"
+          }
         }
       ]
     }
@@ -78,8 +74,8 @@
   "defendants": [
     [
       1,
-      "Lau Kam Hung (劉金洪)"
+      "Lau Kam Hung"
     ]
   ],
-  "tracing_id": "b181628207e66df4cb3401780016cd9a"
+  "tracing_id": "eeb2b208209400592f1617a304ea1277"
 }

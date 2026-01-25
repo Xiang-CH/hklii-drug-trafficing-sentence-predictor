@@ -3,7 +3,7 @@
     {
       "defendant_id": 1,
       "defendant_name": {
-        "name": "Hui Kwai-chung, Dick (許貴仲) (A1)",
+        "name": "Hui Kwai-chung, Dick (許貴仲)",
         "source": "Hui Kwai-chung, Dick (許貴仲) (A1)"
       },
       "nationality": null,
@@ -17,7 +17,7 @@
       },
       "gender": {
         "gender": "Male",
-        "source": "The 1st defendant is 39 years of age. He was 36 years old at the time of the offence."
+        "source": "he"
       },
       "marital_status": {
         "status": "Separated/divorced",
@@ -26,7 +26,7 @@
       "parental_status": null,
       "household_composition": {
         "composition": "Lives with family",
-        "source": "He ... lived together with his family members."
+        "source": "lived together with his family members"
       },
       "health_status": null,
       "drug_treatment_participation": null,
@@ -49,16 +49,17 @@
       },
       "positive_habits_after_arrest": {
         "habits": [
+          "Studying",
           "Participation in rehabilitation/self-improvement"
         ],
-        "source": "He had taken different courses to better equip himself whilst remanded in custody."
+        "source": "he had taken different courses to better equip himself whilst remanded in custody."
       },
       "family_supports": null
     },
     {
       "defendant_id": 2,
       "defendant_name": {
-        "name": "Hong Ka-ming (康家銘) (A2)",
+        "name": "Hong Ka-ming (康家銘)",
         "source": "Hong Ka-ming (康家銘) (A2)"
       },
       "nationality": null,
@@ -72,7 +73,7 @@
       },
       "gender": {
         "gender": "Male",
-        "source": "In respect of the 2nd defendant, he is now 36 years of age. He was 34 years old at the time of the offence."
+        "source": "he"
       },
       "marital_status": {
         "status": "Single",
@@ -84,11 +85,11 @@
         "conditions": [
           {
             "type": "Mental health",
-            "source": "He has a long history of mental illness. He first received psychiatric treatment at the age of 11 and there were multiple psychiatric admissions to various hospitals between year 2009 to 2022."
+            "source": "he has a long history of mental illness. He first received psychiatric treatment at the age of 11 and there were multiple psychiatric admissions to various hospitals between year 2009 to 2022."
           },
           {
             "type": "Drug addiction",
-            "source": "I noted from various psychiatric reports that indeed part of the condition of the 2nd defendant was a result of his own drug abuse."
+            "source": "I noted from various psychiatric reports that ... part of the condition of the 2nd defendant was a result of his own drug abuse."
           }
         ]
       },
@@ -99,8 +100,8 @@
       },
       "occupation": {
         "occupation_category": "Service and sales worker",
-        "occupation_name": "Hairdresser",
-        "source": "He ... worked as a hairdresser."
+        "occupation_name": "hairdresser",
+        "source": "he ... worked as a hairdresser."
       },
       "monthly_wage": null,
       "criminal_record": {
@@ -116,5 +117,5 @@
       ]
     }
   ],
-  "tracing_id": "365aa83bb667339de84b212bf5e12113"
+  "tracing_id": "9d6ef67153e44b1f21d84954c0a0c07d"
 }

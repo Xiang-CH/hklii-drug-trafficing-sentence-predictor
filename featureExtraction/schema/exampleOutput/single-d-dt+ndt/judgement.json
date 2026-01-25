@@ -9,7 +9,7 @@
     },
     {
       "name": "Ms So Pui-man Maria",
-      "role": "Counsel instructed by Ernest Tang, Solicitors, assigned by DLA, for the accused"
+      "role": "Instructed by Ernest Tang, Solicitors, assigned by DLA, for the accused"
     }
   ],
   "cases_heard": [
@@ -27,7 +27,7 @@
       },
       "offence_time": null,
       "place_of_offence": {
-        "address": "",
+        "address": "Yau Ma Tei",
         "nature": "Street",
         "subDistrict": "Yau Ma Tei",
         "source": "In the afternoon on 30 January 2023, the defendant was stopped by police officers in Yau Ma Tei.",
@@ -36,15 +36,15 @@
       "cross_border": {
         "cross_border": false,
         "type": null,
-        "source": "No cross-border activity or import/export mentioned in the transcript."
+        "source": "No cross-border activity mentioned in the transcript."
       },
       "defendants_of_charge": [
         {
           "defendant_name": "Wong Pui-hung",
           "defendant_id": 1,
           "trafficking_mode": {
-            "mode": "Vehicle-based dealing",
-            "source": "Inside the car in question, police officers found a rucksack which contained 43.13 grammes of methamphetamine hydrochloride and various resealable plastic bags."
+            "mode": "Courier delivery",
+            "source": "There is nothing in this case to indicate the defendant’s role beyond a mere courier."
           },
           "reasons_for_offence": null,
           "benefits_received": null
@@ -59,5 +59,5 @@
       "Wong Pui-hung"
     ]
   ],
-  "tracing_id": "b109fddc99a43933d5f192c2a2deb7d6"
+  "tracing_id": "8f3015ccee4a881b8f9b522347e2ef32"
 }

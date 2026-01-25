@@ -30,7 +30,7 @@
       "charge_name": "Conspiracy to traffic in a dangerous drug",
       "offence_date": {
         "date": "2021-10-01",
-        "source": "So has pleaded guilty to conspiracy to traffic in a dangerous drug, namely, cocaine with Fu, the defendant of 316/2023, and other persons unknown, between two dates, 1 and 2 October 2021 in Hong Kong.",
+        "source": "between two dates, 1 and 2 October 2021 in Hong Kong.",
         "day_of_week": 5,
         "is_hk_public_holiday": true
       },
@@ -49,13 +49,45 @@
           "reasons_for_offence": [
             {
               "reason": "Financial gain",
-              "source": "She was added to a WhatsApp group and received instructions through this group. She would receive phone calls or messages from drug suppliers to tell her where to pick up the drugs... This friend’s mother offered her a job to make easy money, delivering drugs as instructed for $1,000 a day."
+              "source": "They were lured into this by the promise of easy money."
             }
           ],
           "benefits_received": {
-            "received": false,
+            "received": true,
             "amount": null,
-            "source": ""
+            "source": "He instructed them to rent the subdivided unit and provided money to buy digital scales and plastic bags."
+          }
+        },
+        {
+          "defendant_name": "So Hoi-yan",
+          "defendant_id": 2,
+          "trafficking_mode": null,
+          "reasons_for_offence": [
+            {
+              "reason": "Financial gain",
+              "source": "This friend’s mother offered her a job to make easy money, delivering drugs as instructed for $1,000 a day."
+            }
+          ],
+          "benefits_received": {
+            "received": true,
+            "amount": 14840.0,
+            "source": "She also had HK$14,840 in cash and two mobile phones."
+          }
+        },
+        {
+          "defendant_name": "Lam Tsz-man",
+          "defendant_id": 3,
+          "trafficking_mode": null,
+          "reasons_for_offence": [
+            {
+              "reason": "Financial gain",
+              "source": "He told the police that both he and Fu met this Siu Wan who offered them both a way to make easy money."
+            }
+          ],
+          "benefits_received": {
+            "received": true,
+            "amount": null,
+            "source": "He instructed them to rent the subdivided unit and provided money to buy digital scales and plastic bags."
           }
         }
       ]
@@ -65,7 +97,7 @@
       "charge_name": "Trafficking in dangerous drugs",
       "offence_date": {
         "date": "2021-10-03",
-        "source": "Fu now pleads guilty to trafficking in dangerous drugs on 3 October 2021 in Room F, 3rd Floor, 59 Prince Edward Road West, Mongkok, Hong Kong, he unlawfully trafficked in 7.2 grammes of a solid containing 6.19 grammes of cocaine and 6.12 grammes of cannabis in herbal form.",
+        "source": "on 3 October 2021 in Room F, 3rd Floor, 59 Prince Edward Road West, Mongkok, Hong Kong, he unlawfully trafficked in 7.2 grammes of a solid containing 6.19 grammes of cocaine and 6.12 grammes of cannabis in herbal form.",
         "day_of_week": 7,
         "is_hk_public_holiday": false
       },
@@ -74,7 +106,7 @@
         "address": "Room F, 3rd Floor, 59 Prince Edward Road West, Mongkok, Hong Kong",
         "nature": "Residential building",
         "subDistrict": "Mong Kok",
-        "source": "Fu now pleads guilty to trafficking in dangerous drugs on 3 October 2021 in Room F, 3rd Floor, 59 Prince Edward Road West, Mongkok, Hong Kong, he unlawfully trafficked in 7.2 grammes of a solid containing 6.19 grammes of cocaine and 6.12 grammes of cannabis in herbal form.",
+        "source": "on 3 October 2021 in Room F, 3rd Floor, 59 Prince Edward Road West, Mongkok, Hong Kong",
         "district": "Yau Tsim Mong"
       },
       "cross_border": {
@@ -90,13 +122,13 @@
           "reasons_for_offence": [
             {
               "reason": "Financial gain",
-              "source": "He told the police that both he and Fu met this Siu Wan who offered them both a way to make easy money. He instructed them to rent the subdivided unit and provided money to buy digital scales and plastic bags."
+              "source": "He told the police that both he and Fu met this Siu Wan who offered them both a way to make easy money."
             }
           ],
           "benefits_received": {
-            "received": false,
+            "received": true,
             "amount": null,
-            "source": ""
+            "source": "He instructed them to rent the subdivided unit and provided money to buy digital scales and plastic bags."
           }
         }
       ]
@@ -106,12 +138,22 @@
       "charge_name": "Conspiracy to traffic in a dangerous drug",
       "offence_date": {
         "date": "2021-10-01",
-        "source": "Count 1 against the 1st defendant, So: So has pleaded guilty to conspiracy to traffic in a dangerous drug, namely, cocaine with Fu, the defendant of 316/2023, and other persons unknown, between two dates, 1 and 2 October 2021 in Hong Kong.",
+        "source": "So has pleaded guilty to conspiracy to traffic in a dangerous drug, namely, cocaine with Fu, the defendant of 316/2023, and other persons unknown, between two dates, 1 and 2 October 2021 in Hong Kong.",
         "day_of_week": 5,
         "is_hk_public_holiday": true
       },
-      "offence_time": null,
-      "place_of_offence": null,
+      "offence_time": {
+        "time": "01:30:00+08:00",
+        "source": "On 2 October 2021, at around 1.30 am, police officers patrolling near the Kwai Shing Circuit stopped and searched a taxi carrying the 1st defendant, So, as a passenger.",
+        "time_of_day": "night"
+      },
+      "place_of_offence": {
+        "address": "Kwai Shing Circuit (stop/search location) and earlier meeting at 59 Prince Edward Road West",
+        "nature": "Street",
+        "subDistrict": "Aberdeen",
+        "source": "On 2 October 2021, at around 1.30 am, police officers patrolling near the Kwai Shing Circuit stopped and searched a taxi carrying the 1st defendant, So... Earlier that day or the day before on 1 October she received two messages ... The defendant, Fu, instructed her to meet him at 59 Prince Edward Road West where he was to replenish her drug supply",
+        "district": "Southern"
+      },
       "cross_border": {
         "cross_border": false,
         "type": null,
@@ -131,7 +173,7 @@
           "benefits_received": {
             "received": true,
             "amount": 14840.0,
-            "source": "On 2 October 2021, at around 1.30 am, police officers... She also had HK$14,840 in cash and two mobile phones."
+            "source": "She also had HK$14,840 in cash and two mobile phones."
           }
         }
       ]
@@ -141,12 +183,18 @@
       "charge_name": "Conspiracy to traffic in dangerous drugs",
       "offence_date": {
         "date": "2021-09-22",
-        "source": "Count 2 against the 2nd defendant only, Lam: Lam has pleaded guilty to conspiracy to traffic in a dangerous drug, namely, cocaine and cannabis in a herbal form with Fu, the defendant of 316/2023, and other persons unknown between 22 September and 3 October 2021, both dates inclusive, in Hong Kong.",
+        "source": "Lam has pleaded guilty to conspiracy to traffic in a dangerous drug, namely, cocaine and cannabis in a herbal form with Fu, the defendant of 316/2023, and other persons unknown between 22 September and 3 October 2021, both dates inclusive, in Hong Kong.",
         "day_of_week": 3,
         "is_hk_public_holiday": true
       },
       "offence_time": null,
-      "place_of_offence": null,
+      "place_of_offence": {
+        "address": "Subdivided unit in Mongkok and collection near Tai Wai MTR Station",
+        "nature": "Residential building",
+        "subDistrict": "Mong Kok",
+        "source": "They found a tenancy agreement dated 23 September 2021 signed by Fu and the 2nd defendant, Lam... he had been instructed by a person named “Siu Wan” at 5.30 earlier that day to collect this cocaine from a place near Tai Wai MTR Station. Then he was to take it back to the subdivided unit in Mongkok and repackage the drugs",
+        "district": "Yau Tsim Mong"
+      },
       "cross_border": {
         "cross_border": false,
         "type": null,
@@ -160,13 +208,13 @@
           "reasons_for_offence": [
             {
               "reason": "Financial gain",
-              "source": "He told the police that both he and Fu met this Siu Wan who offered them both a way to make easy money. He instructed them to rent the subdivided unit and provided money to buy digital scales and plastic bags."
+              "source": "He told the police that both he and Fu met this Siu Wan who offered them both a way to make easy money."
             }
           ],
           "benefits_received": {
-            "received": false,
+            "received": true,
             "amount": null,
-            "source": ""
+            "source": "He instructed them to rent the subdivided unit and provided money to buy digital scales and plastic bags."
           }
         }
       ]
@@ -187,5 +235,5 @@
       "Lam Tsz-man"
     ]
   ],
-  "tracing_id": "e1915e5b456d82570c1b3b8f990c9352"
+  "tracing_id": "3ec3e8bc7aa52319336c0a59922a821d"
 }
