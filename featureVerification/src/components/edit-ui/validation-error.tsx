@@ -8,7 +8,7 @@ export function ValidationErrorsPanel({
   }
 
   return (
-    <div className="p-2 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-lg sticky top-12">
+    <div className="p-2 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-lg sticky top-0 z-100">
       <h3 className="text-red-700 dark:text-red-300 font-medium mb-2 flex flex-col gap-2">
         Validation Errors
       </h3>

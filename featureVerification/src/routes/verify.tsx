@@ -51,11 +51,6 @@ function VerifyPage() {
     <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
       {/* Left Panel - Extracted Data */}
       <div className="w-1/2 border-r border-gray-300 dark:border-gray-700 overflow-y-auto">
-        <div className="px-4 py-2 sticky top-0 bg-white dark:bg-gray-900 border-b border-gray-300 dark:border-gray-700 z-10">
-          <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-            Extracted Data
-          </h1>
-        </div>
         <div className="p-4">
           <EditableDataViewer
             data={{
@@ -75,11 +70,6 @@ function VerifyPage() {
 
       {/* Right Panel - Original HTML */}
       <div className="w-1/2 overflow-y-auto bg-white dark:bg-gray-800">
-        <div className="px-4 py-2 sticky top-0 bg-white dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700 z-10">
-          <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-            Original HTML
-          </h1>
-        </div>
         <HtmlViewer html={htmlContent} highlightedText={highlightedText} />
       </div>
     </div>
