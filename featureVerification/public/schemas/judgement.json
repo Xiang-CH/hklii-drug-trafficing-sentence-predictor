@@ -1,0 +1,586 @@
+{
+  "$defs": {
+    "BenefitsReceivedDetail": {
+      "additionalProperties": false,
+      "properties": {
+        "received": {
+          "description": "Whether benefits were received or to be received for trafficking.",
+          "title": "Received",
+          "type": "boolean"
+        },
+        "amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Amount of benefits received or to be received for trafficking in HKD, excluding the value of the drug itself. Only set to null if benefit amount is not explicitly stated.",
+          "title": "Amount"
+        },
+        "source": {
+          "description": "The exact match source text from which the benefits amount was extracted. Do not include any additional information in the source document.",
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": ["received", "source"],
+      "title": "BenefitsReceivedDetail",
+      "type": "object"
+    },
+    "Charge": {
+      "additionalProperties": false,
+      "properties": {
+        "charge_no": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Charge number (1-indexed), automatically assigned after model creation",
+          "title": "Charge No"
+        },
+        "charge_name": {
+          "$ref": "#/$defs/ChargeName",
+          "description": "Name of the charge (offence), ignore charges not in the enumeration"
+        },
+        "offence_date": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DateDetail"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "offence_time": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TimeDetail"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "place_of_offence": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PlaceOfOffence"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "cross_border": {
+          "$ref": "#/$defs/CrossBorderDetail",
+          "description": "Whether the trafficking involved cross-border activities."
+        },
+        "defendants_of_charge": {
+          "description": "List of charges for each defendant",
+          "items": {
+            "$ref": "#/$defs/ChargeForDefendant"
+          },
+          "title": "Defendants Of Charge",
+          "type": "array"
+        }
+      },
+      "required": ["charge_name", "cross_border", "defendants_of_charge"],
+      "title": "Charge",
+      "type": "object"
+    },
+    "ChargeForDefendant": {
+      "additionalProperties": false,
+      "properties": {
+        "defendant_name": {
+          "description": "Full name of the defendant given the charge as appearing in the judgment",
+          "title": "Defendant Name",
+          "type": "string"
+        },
+        "defendant_id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Defendant ID (1-indexed), automatically assigned based on first appearance order across all charges",
+          "title": "Defendant Id"
+        },
+        "trafficking_mode": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TraffickingMode"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "reasons_for_offence": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/ReasonForOffenceDetail"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reasons For Offence"
+        },
+        "benefits_received": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BenefitsReceivedDetail"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Extract a monetary benefit only if the judgment explicitly says the defendant received: a \u2018payment\u2019, \u2018reward\u2019, \u2018profit\u2019, \u2018proceeds\u2019, \u2018benefit\u2019, \u2018gain\u2019, or \u2018income\u2019 from drug trafficking and for the defendant\u2019s personal benefit (not merely handled or transported).\nIgnore cash simply because it was found on the defendant\u2019s person or in a car/room; Do not infer benefits from drug quantity, street value, or general trafficking profitability; Attribute a benefit solely when the text clearly links that specific benefit to that defendant."
+        }
+      },
+      "required": ["defendant_name"],
+      "title": "ChargeForDefendant",
+      "type": "object"
+    },
+    "ChargeName": {
+      "enum": [
+        "Trafficking in a dangerous drug",
+        "Trafficking in dangerous drugs",
+        "Conspiracy to traffic in a dangerous drug",
+        "Conspiracy to traffic in dangerous drugs"
+      ],
+      "title": "ChargeName",
+      "type": "string"
+    },
+    "CrossBorderDetail": {
+      "additionalProperties": false,
+      "properties": {
+        "cross_border": {
+          "description": "Whether the trafficking involved cross-border activities.",
+          "title": "Cross Border",
+          "type": "boolean"
+        },
+        "type": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ImportExportEnum"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Indicates whether the cross-border trafficking was an import or export. Set to null if not mentioned."
+        },
+        "source": {
+          "description": "The exact match source text from which the cross-border trafficking was extracted. Do not include any additional information in the source document.",
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": ["cross_border", "source"],
+      "title": "CrossBorderDetail",
+      "type": "object"
+    },
+    "DateDetail": {
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "items": {
+                "format": "date",
+                "type": "string"
+              },
+              "type": "array"
+            }
+          ],
+          "description": "The date of offence in ISO 8601 format (YYYY-MM-DD), or a list of two elements if a date range is mentioned",
+          "title": "Date"
+        },
+        "source": {
+          "description": "The exact match source text from which the date was extracted. Do not include any additional information in the source document.",
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": ["date", "source"],
+      "title": "DateDetail",
+      "type": "object"
+    },
+    "ImportExportEnum": {
+      "enum": ["import", "export"],
+      "title": "ImportExportEnum",
+      "type": "string"
+    },
+    "NatureOfPlace": {
+      "enum": [
+        "Residential building",
+        "Commercial building",
+        "Industrial building",
+        "Government or public building",
+        "Entertainment venue",
+        "Street",
+        "Car park or parking lot",
+        "Shopping mall",
+        "Public transport",
+        "Private vehicle",
+        "Restaurant",
+        "Educational institution",
+        "Hospital or medical facility",
+        "Outside methadone clinic",
+        "Recreational area",
+        "Hotel or guesthouse",
+        "Construction site",
+        "Vacant or abandoned property",
+        "Border checkpoint",
+        "Other"
+      ],
+      "title": "NatureOfPlace",
+      "type": "string"
+    },
+    "PlaceOfOffence": {
+      "additionalProperties": false,
+      "properties": {
+        "address": {
+          "description": "The full address of the place of offence",
+          "title": "Address",
+          "type": "string"
+        },
+        "nature": {
+          "$ref": "#/$defs/NatureOfPlace",
+          "description": "The nature of the place of offence."
+        },
+        "subDistrict": {
+          "$ref": "#/$defs/SubDistrict",
+          "description": "The sub-district within the district where the place of offence is located"
+        },
+        "source": {
+          "description": "The exact match source text from which the place of offence was extracted. Do not include any additional information in the source document.",
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": ["address", "nature", "subDistrict", "source"],
+      "title": "PlaceOfOffence",
+      "type": "object"
+    },
+    "ReasonForOffence": {
+      "enum": [
+        "Financial gain",
+        "Economic hardship",
+        "Coercion",
+        "Deception",
+        "Addiction-driven",
+        "Peer influence",
+        "Helping other people",
+        "Other"
+      ],
+      "title": "ReasonForOffence",
+      "type": "string"
+    },
+    "ReasonForOffenceDetail": {
+      "additionalProperties": false,
+      "properties": {
+        "reason": {
+          "$ref": "#/$defs/ReasonForOffence",
+          "description": "Reasons for committing the offence. Financial gain: To obtain money, valuables, or other material benefit primarily for profit or improvement of lifestyle, and not mainly driven by financial difficulties or economic pressure; Economic hardship: Motivated primarily by financial difficulties facing the offender, such as debt, unemployment, inability to meet basic living expenses, or other economic pressures; Coercion: Compelled to commit the offence due to threats, intimidation, or pressure from criminal groups or other parties; Deception: Misled or deceived about the nature or consequences of the activity, leading to involvement in the offence; Addiction-driven: To support the individual's substance abuse or addiction, such as funding personal drug use; Peer influence: Influenced by social pressure or encouragement from peers or associates; Helping other people: Committed with the voluntary intent to assist or benefit another person (e.g., providing resources, support, or fulfilling a request), where this assistance is not driven by the offender's own financial need, coercion, deception, addiction, or peer pressure, and without expectation of material gain; "
+        },
+        "source": {
+          "description": "The exact match source text from which the reasons for committing the offence was extracted. Do not include any additional information in the source document.",
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": ["reason", "source"],
+      "title": "ReasonForOffenceDetail",
+      "type": "object"
+    },
+    "Representative": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "description": "Name of the representative",
+          "title": "Name",
+          "type": "string"
+        },
+        "role": {
+          "description": "Role of the representative in original language of the judgment",
+          "title": "Role",
+          "type": "string"
+        }
+      },
+      "required": ["name", "role"],
+      "title": "Representative",
+      "type": "object"
+    },
+    "SubDistrict": {
+      "enum": [
+        "Kennedy Town",
+        "Shek Tong Tsui",
+        "Sai Ying Pun",
+        "Sheung Wan",
+        "Central",
+        "Admiralty",
+        "Mid-levels",
+        "Peak",
+        "Wan Chai",
+        "Causeway Bay",
+        "Happy Valley",
+        "Tai Hang",
+        "So Kon Po",
+        "Jardine's Lookout",
+        "Tin Hau",
+        "Braemar Hill",
+        "North Point",
+        "Quarry Bay",
+        "Sai Wan Ho",
+        "Shau Kei Wan",
+        "Chai Wan",
+        "Siu Sai Wan",
+        "Pok Fu Lam",
+        "Aberdeen",
+        "Ap Lei Chau",
+        "Wong Chuk Hang",
+        "Shouson Hill",
+        "Repulse Bay",
+        "Chung Hom Kok",
+        "Stanley",
+        "Tai Tam",
+        "Shek O",
+        "Tsim Sha Tsui",
+        "Yau Ma Tei",
+        "West Kowloon Reclamation",
+        "King's Park",
+        "Mong Kok",
+        "Tai Kok Tsui",
+        "Mei Foo",
+        "Lai Chi Kok",
+        "Cheung Sha Wan",
+        "Sham Shui Po",
+        "Shek Kip Mei",
+        "Yau Yat Tsuen",
+        "Tai Wo Ping",
+        "Stonecutters Island",
+        "Hung Hom",
+        "To Kwa Wan",
+        "Ma Tau Kok",
+        "Ma Tau Wai",
+        "Kai Tak",
+        "Kowloon City",
+        "Ho Man Tin",
+        "Kowloon Tong",
+        "Beacon Hill",
+        "San Po Kong",
+        "Wong Tai Sin",
+        "Tung Tau",
+        "Wang Tau Hom",
+        "Lok Fu",
+        "Diamond Hill",
+        "Tsz Wan Shan",
+        "Ngau Chi Wan",
+        "Ping Shek",
+        "Kowloon Bay",
+        "Ngau Tau Kok",
+        "Jordan Valley",
+        "Kwun Tong",
+        "Sau Mau Ping",
+        "Lam Tin",
+        "Yau Tong",
+        "Lei Yue Mun",
+        "Kwai Chung",
+        "Tsing Yi",
+        "Tsuen Wan",
+        "Lei Muk Shue",
+        "Ting Kau",
+        "Sham Tseng",
+        "Tsing Lung Tau",
+        "Ma Wan",
+        "Sunny Bay",
+        "Tai Lam Chung",
+        "So Kwun Wat",
+        "Tuen Mun",
+        "Lam Tei",
+        "Hung Shui Kiu",
+        "Ha Tsuen",
+        "Lau Fau Shan",
+        "Tin Shui Wai",
+        "Yuen Long",
+        "San Tin",
+        "Lok Ma Chau",
+        "Kam Tin",
+        "Shek Kong",
+        "Pat Heung",
+        "Fanling",
+        "Luen Wo Hui",
+        "Sheung Shui",
+        "Shek Wu Hui",
+        "Sha Tau Kok",
+        "Luk Keng",
+        "Wu Kau Tang",
+        "Tai Po Market",
+        "Tai Po",
+        "Tai Po Kau",
+        "Tai Mei Tuk",
+        "Shuen Wan",
+        "Cheung Muk Tau",
+        "Kei Ling Ha",
+        "Tai Wai",
+        "Sha Tin",
+        "Fo Tan",
+        "Ma Liu Shui",
+        "Wu Kai Sha",
+        "Ma On Shan",
+        "Clear Water Bay",
+        "Sai Kung",
+        "Tai Mong Tsai",
+        "Tseung Kwan O",
+        "Hang Hau",
+        "Tiu Keng Leng",
+        "Ma Yau Tong",
+        "Cheung Chau",
+        "Peng Chau",
+        "Lantau Island",
+        "Tung Chung",
+        "Lamma Island"
+      ],
+      "title": "SubDistrict",
+      "type": "string"
+    },
+    "TimeDetail": {
+      "additionalProperties": false,
+      "properties": {
+        "time": {
+          "description": "The time offence in ISO 8601 format (HH:MM:SS), if no timezone is specified, it is assumed to be in UTC +8 timezone",
+          "format": "time",
+          "title": "Time",
+          "type": "string"
+        },
+        "source": {
+          "description": "The exact match source text from which the time was extracted. Do not include any additional information in the source document.",
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": ["time", "source"],
+      "title": "TimeDetail",
+      "type": "object"
+    },
+    "TraffickingMode": {
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "$ref": "#/$defs/TraffickingModeEnum",
+          "description": "The mode of drug trafficking. Options include:'Street-level dealing' (Selling drugs directly to users in public spaces like streets, parks, or clubs); 'Social supply' (Sharing or selling drugs within social circles); 'Courier delivery' (Transporting drugs personally from one location to another including delivering them directly to buyers); 'Parcel delivery' (Shipping drugs through postal or courier services); 'Drug houses' (Operating from fixed locations (e.g., apartments or houses) where buyers visit to purchase drugs); 'Vehicle-based dealing' (Conducting drug transactions from cars, either through drive-by exchanges, quick meetings in parking lots, or mobile delivery to buyers); 'Vehicle concealment' (Hiding drugs in vehicles); 'Mule trafficking' (Using individuals to transport drugs across borders); 'Drug repackaging or storage' (Repackaging or storing drugs in specific locations before distribution); 'Maritime transport'; 'Festival or event dealing' (Selling drugs at music festivals, raves, or large gatherings where drug use is prevalent); 'Online trafficking' (Selling and distributing drugs through internet platforms), or 'Other'."
+        },
+        "source": {
+          "description": "The exact match source text from which the mode of drug trafficking was extracted. Do not include any additional information in the source document.",
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": ["mode", "source"],
+      "title": "TraffickingMode",
+      "type": "object"
+    },
+    "TraffickingModeEnum": {
+      "enum": [
+        "Street-level dealing",
+        "Social supply",
+        "Courier delivery",
+        "Parcel delivery",
+        "Drug houses",
+        "Vehicle-based dealing",
+        "Vehicle concealment",
+        "Mule trafficking",
+        "Drug repackaging or storage",
+        "Maritime transport",
+        "Festival or event dealing",
+        "Online trafficking",
+        "Other"
+      ],
+      "title": "TraffickingModeEnum",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "neutral_citation": {
+      "description": "Neutral citation of the case in the format <[year] court number>",
+      "title": "Neutral Citation",
+      "type": "string"
+    },
+    "judge_name": {
+      "description": "Name of the judge presiding over the case",
+      "title": "Judge Name",
+      "type": "string"
+    },
+    "judgment_date_time": {
+      "description": "Date and time of the judgment in ISO 8601 format",
+      "format": "date-time",
+      "title": "Judgment Date Time",
+      "type": "string"
+    },
+    "representatives": {
+      "description": "List of legal representatives involved in the case",
+      "items": {
+        "$ref": "#/$defs/Representative"
+      },
+      "title": "Representatives",
+      "type": "array"
+    },
+    "cases_heard": {
+      "description": "List of cases heard in the judgment in the format <case_type case_no/year>, e.g. HCCC 100/2024 at least one case must be present",
+      "items": {
+        "type": "string"
+      },
+      "title": "Cases Heard",
+      "type": "array"
+    },
+    "charges": {
+      "description": "List of charges in the case",
+      "items": {
+        "$ref": "#/$defs/Charge"
+      },
+      "title": "Charges",
+      "type": "array"
+    }
+  },
+  "required": [
+    "neutral_citation",
+    "judge_name",
+    "judgment_date_time",
+    "representatives",
+    "cases_heard",
+    "charges"
+  ],
+  "title": "Judgement",
+  "type": "object"
+}

@@ -1,0 +1,137 @@
+{
+  "defendants": [
+    {
+      "defendant_id": 1,
+      "defendant_name": {
+        "name": "曾浩然",
+        "source": "曾浩然\n（第一被告人）"
+      },
+      "nationality": {
+        "category": "Hong Kong resident",
+        "hk_resident_status": "N/A",
+        "foreign_country_code": null,
+        "infer_reason": null,
+        "source": "第一被告人現年26歲，香港出生"
+      },
+      "age_at_offence": {
+        "age": 24,
+        "source": "案發時，他年僅24歲"
+      },
+      "age_at_sentencing": {
+        "age": 26,
+        "source": "第一被告人現年26歲"
+      },
+      "gender": null,
+      "marital_status": {
+        "status": "Single",
+        "source": "第一被告人未婚"
+      },
+      "parental_status": null,
+      "household_composition": {
+        "composition": "Lives with non-family",
+        "source": "他無業，與女友同住"
+      },
+      "health_status": {
+        "conditions": [
+          {
+            "name": "大麻（快速口腔液測試呈陽性反應）",
+            "type": "Drug addiction",
+            "source": "第一被告人在現場進行快速口腔液測試，結果對大麻呈陽性反應"
+          }
+        ]
+      },
+      "drug_treatment_participation": {
+        "participated": true,
+        "source": "第一被告人在此期間接受教會傳道人的輔導"
+      },
+      "education_level": {
+        "level": "Secondary - Lower",
+        "source": "接受教育程度至中三"
+      },
+      "occupation": {
+        "occupation_category": "Craft and related worker",
+        "occupation_name": "電梯維修",
+        "source": "入讀職業訓練學院並修讀為期約4年半的電梯維修兼讀課程，隨後從事相關維修行業"
+      },
+      "monthly_wage": {
+        "wage": 20000,
+        "source": "每月收入約為港幣2萬元"
+      },
+      "criminal_records": [
+        {
+          "record": "None",
+          "source": "第一被告人過往沒有任何刑事定罪紀錄"
+        }
+      ],
+      "positive_habits_after_arrest": [
+        {
+          "habit": "Participation in rehabilitation/self-improvement",
+          "source": "第一被告人在此期間接受教會傳道人的輔導，並希望於刑期結束後能盡快尋求一份穩定的工作"
+        }
+      ],
+      "family_supports": [
+        {
+          "support": "Letters of support from family",
+          "source": "辯方向法庭提交了第一被告人及其父母的求情信以供考慮。"
+        },
+        {
+          "support": "Family presence in court",
+          "source": "第一被告人的父親今天到庭旁聽。"
+        }
+      ]
+    },
+    {
+      "defendant_id": 2,
+      "defendant_name": {
+        "name": "張曜龍",
+        "source": "張曜龍\n（第二被告人）"
+      },
+      "nationality": {
+        "category": "Hong Kong resident",
+        "hk_resident_status": "N/A",
+        "foreign_country_code": null,
+        "infer_reason": null,
+        "source": "第二被告人現年23歲，香港出生，無刑事定罪紀錄"
+      },
+      "age_at_offence": null,
+      "age_at_sentencing": {
+        "age": 23,
+        "source": "第二被告人現年23歲"
+      },
+      "gender": null,
+      "marital_status": {
+        "status": "Single",
+        "source": "經歷口供提及第二被告人未婚"
+      },
+      "parental_status": null,
+      "household_composition": {
+        "composition": "Lives with family",
+        "source": "經歷口供提及...被捕之後與母親同住"
+      },
+      "health_status": null,
+      "drug_treatment_participation": null,
+      "education_level": {
+        "level": "Secondary - Lower",
+        "source": "經歷口供提及...接受教育程度至中三"
+      },
+      "occupation": {
+        "occupation_category": "Clerical support worker",
+        "occupation_name": "倉務員",
+        "source": "第二被告人之前任職倉務員"
+      },
+      "monthly_wage": {
+        "wage": 8000,
+        "source": "第二被告人之前任職倉務員的每月收入為8,000元"
+      },
+      "criminal_records": [
+        {
+          "record": "None",
+          "source": "第二被告人過往沒有任何刑事定罪紀錄"
+        }
+      ],
+      "positive_habits_after_arrest": null,
+      "family_supports": null
+    }
+  ],
+  "tracing_id": "f43fe9caa3ed0b9c447ac20fbc1ce6cb"
+}
