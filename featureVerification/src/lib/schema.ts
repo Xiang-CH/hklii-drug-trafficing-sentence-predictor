@@ -774,7 +774,7 @@ export const COMPUTED_FIELDS = [
 ]
 
 // Schema mapping for field names
-export const FIELD_SCHEMAS: Record<string, z.ZodTypeAny> = {
+export const FIELD_SCHEMAS: Partial<Record<string, z.ZodTypeAny>> = {
   // Trial schemas
   trials: TrialSchema,
   drugs: DrugDetailSchema,
@@ -803,6 +803,7 @@ export const FIELD_SCHEMAS: Record<string, z.ZodTypeAny> = {
   charges: ChargeSchema,
   representatives: RepresentativeSchema,
   defendants_of_charge: ChargeForDefendantSchema,
+  cases_heard: z.string().regex(/^[A-Z]+\s+\d+\/\d{4}$/),
 
   // Defendant schemas
   defendants: DefendantProfileSchema,
@@ -852,23 +853,20 @@ export function isFieldNullable(
     const shape = parentSchema.shape
     const fieldSchema = shape[fieldName] as z.ZodTypeAny
 
-    if (fieldSchema) {
-      // Check if the field itself is nullable or optional
-      if (
-        fieldSchema instanceof z.ZodNullable ||
-        fieldSchema instanceof z.ZodOptional
-      ) {
-        return true
-      }
+    // Check if the field itself is nullable or optional
+    if (
+      fieldSchema instanceof z.ZodNullable ||
+      fieldSchema instanceof z.ZodOptional
+    ) {
+      return true
+    }
 
-      // Check if it's a default with nullable inner type
-      if (fieldSchema instanceof z.ZodDefault) {
-        const innerType = (fieldSchema as any)._def.innerType
-        return (
-          innerType instanceof z.ZodNullable ||
-          innerType instanceof z.ZodOptional
-        )
-      }
+    // Check if it's a default with nullable inner type
+    if (fieldSchema instanceof z.ZodDefault) {
+      const innerType = (fieldSchema as any)._def.innerType
+      return (
+        innerType instanceof z.ZodNullable || innerType instanceof z.ZodOptional
+      )
     }
   }
 
@@ -891,9 +889,7 @@ export function getDefaultValueForField(
       const shape = parentSchema.shape
       const parentFieldSchema = shape[fieldName] as z.ZodTypeAny
 
-      if (parentFieldSchema) {
-        schema = unwrapSchema(parentFieldSchema)
-      }
+      schema = unwrapSchema(parentFieldSchema)
     }
   }
 

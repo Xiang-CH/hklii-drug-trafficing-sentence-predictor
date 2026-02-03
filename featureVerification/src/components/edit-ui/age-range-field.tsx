@@ -53,7 +53,7 @@ export function AgeRangeField({
           onCheckedChange={(checked) => {
             if (checked && !isRange) {
               // Convert single age to range
-              onChange([value as number, value as number])
+              onChange([value, value])
             } else if (!checked && isRange) {
               // Convert range to single age (use first age)
               onChange(value[0])
@@ -96,7 +96,7 @@ export function AgeRangeField({
           type="number"
           min={0}
           max={120}
-          value={value as number}
+          value={value}
           onChange={(e) => {
             const newValue = parseInt(e.target.value) || 0
             onChange(newValue)
