@@ -5,7 +5,7 @@
   "representatives": [
     {
       "name": "譚皓",
-      "role": "律政司署理高級檢控官，代表香港特別行政區"
+      "role": "署理高級檢控官"
     },
     {
       "name": "許浩銘",
@@ -17,8 +17,7 @@
     }
   ],
   "cases_heard": [
-    "DCCC 1077/2024",
-    "HKDC 1339/2025"
+    "DCCC 1077/2024"
   ],
   "charges": [
     {
@@ -26,20 +25,20 @@
       "charge_name": "Trafficking in a dangerous drug",
       "offence_date": {
         "date": "2023-12-31",
-        "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
+        "source": "2023年12月31日凌晨2時07分左右",
         "day_of_week": 7,
         "is_hk_public_holiday": false
       },
       "offence_time": {
         "time": "02:07:00+08:00",
-        "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
+        "source": "2023年12月31日凌晨2時07分左右",
         "time_of_day": "night"
       },
       "place_of_offence": {
-        "address": "元朗八鄉錦田公路AD1688號燈柱附近（警方路障截停登記號碼YW3947私家車）",
+        "address": "元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車",
         "nature": "Street",
-        "subDistrict": "Pat Heung",
-        "source": "警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
+        "subDistrict": "Yuen Long",
+        "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
         "district": "Yuen Long"
       },
       "cross_border": {
@@ -69,20 +68,20 @@
       "charge_name": "Trafficking in a dangerous drug",
       "offence_date": {
         "date": "2023-12-31",
-        "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
+        "source": "2023年12月31日凌晨2時07分左右",
         "day_of_week": 7,
         "is_hk_public_holiday": false
       },
       "offence_time": {
         "time": "02:07:00+08:00",
-        "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
+        "source": "2023年12月31日凌晨2時07分左右",
         "time_of_day": "night"
       },
       "place_of_offence": {
-        "address": "元朗八鄉錦田公路AD1688號燈柱附近（警方路障截停登記號碼YW3947私家車）",
+        "address": "元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車",
         "nature": "Street",
-        "subDistrict": "Pat Heung",
-        "source": "警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
+        "subDistrict": "Yuen Long",
+        "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
         "district": "Yuen Long"
       },
       "cross_border": {
@@ -105,20 +104,20 @@
       "charge_name": "Trafficking in a dangerous drug",
       "offence_date": {
         "date": "2023-12-31",
-        "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
+        "source": "2023年12月31日凌晨2時07分左右",
         "day_of_week": 7,
         "is_hk_public_holiday": false
       },
       "offence_time": {
         "time": "02:07:00+08:00",
-        "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
+        "source": "2023年12月31日凌晨2時07分左右",
         "time_of_day": "night"
       },
       "place_of_offence": {
-        "address": "元朗八鄉錦田公路AD1688號燈柱附近（警方路障截停登記號碼YW3947私家車）",
+        "address": "元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車",
         "nature": "Street",
-        "subDistrict": "Pat Heung",
-        "source": "警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
+        "subDistrict": "Yuen Long",
+        "source": "2023年12月31日凌晨2時07分左右，警方在元朗八鄉錦田公路AD1688號燈柱附近的警方路障截停登記號碼YW3947私家車。",
         "district": "Yuen Long"
       },
       "cross_border": {
@@ -148,5 +147,5 @@
       "name": "張曜龍"
     }
   ],
-  "tracing_id": "4154f670a0aeffebb39d9b1e8e2b78cd"
+  "tracing_id": "c7c8b5d7ca055b497b05fe3451d33d31"
 }

@@ -25,7 +25,7 @@
         "composition": "Lives with family",
         "source": "lived together with his family members"
       },
-      "health_status": null,
+      "health_conditions": null,
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Lower",
@@ -46,12 +46,12 @@
           "source": "He has a total of three criminal convictions for the offence of gambling in a gambling establishment."
         }
       ],
-      "positive_habits_after_arrest": {
-        "habits": [
-          "Studying"
-        ],
-        "source": "the 1st defendant had taken different courses to better equip himself whilst remanded in custody."
-      },
+      "positive_habits_after_arrest": [
+        {
+          "habit": "Studying",
+          "source": "the 1st defendant had taken different courses to better equip himself whilst remanded in custody."
+        }
+      ],
       "family_supports": null
     },
     {
@@ -76,20 +76,13 @@
       },
       "parental_status": null,
       "household_composition": null,
-      "health_status": {
-        "conditions": [
-          {
-            "name": "mental illness",
-            "type": "Mental health",
-            "source": "he has a long history of mental illness."
-          },
-          {
-            "name": "drug abuse",
-            "type": "Drug addiction",
-            "source": "indeed part of the condition of the 2nd defendant was a result of his own drug abuse."
-          }
-        ]
-      },
+      "health_conditions": [
+        {
+          "name": "mental illness",
+          "type": "Mental health",
+          "source": "he has a long history of mental illness."
+        }
+      ],
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Lower",
@@ -111,14 +104,10 @@
       "family_supports": [
         {
           "support": "Letters of support from family",
-          "source": "A total of three mitigation letters respectively prepared by the mother"
-        },
-        {
-          "support": "Other",
-          "source": "A total of three mitigation letters respectively prepared by the mother, a friend of the 2nd defendant and also by a pastor"
+          "source": "A total of three mitigation letters respectively prepared by the mother, a friend of the 2nd defendant and also by a pastor were submitted to urge for leniency."
         }
       ]
     }
   ],
-  "tracing_id": "7dae97f86f8b9c3042e1fdd95cfced0c"
+  "tracing_id": "d9e183b2f10a33c4ed1c776ac70aab0d"
 }

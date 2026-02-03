@@ -10,12 +10,12 @@
         "category": "Mainland Chinese",
         "hk_resident_status": null,
         "foreign_country_code": null,
-        "infer_reason": null,
-        "source": "The defendant was born in Guangzhou in July 1956"
+        "infer_reason": "Born in Guangzhou and relocated to Hong Kong at 21",
+        "source": "The defendant was born in Guangzhou in July 1956 and is 68.  He relocated to Hong Kong when he was 21."
       },
       "age_at_offence": {
         "age": 65,
-        "source": "The defendant was born in Guangzhou in July 1956 and is 68."
+        "source": "the defendant on 2 April 2022"
       },
       "age_at_sentencing": {
         "age": 68,
@@ -29,120 +29,127 @@
       "parental_status": {
         "status": "Parent",
         "custody": null,
-        "source": "The defendant contributes about RMB800 towards his daughter’s living expenses, who is 18 years old and studying nursing in Guangzhou."
+        "source": "The defendant contributes about RMB800 towards his daughter’s living expenses, who is 18 years old"
       },
       "household_composition": null,
-      "health_status": {
-        "conditions": [
-          {
-            "name": "Former drug abuser",
-            "type": "Drug addiction",
-            "source": "At the time of sentencing, the applicant was a former drug abuser aged 68"
-          },
-          {
-            "name": "Cardiac disease",
-            "type": "Physical health",
-            "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps."
-          },
-          {
-            "name": "Diabetes",
-            "type": "Physical health",
-            "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps."
-          },
-          {
-            "name": "Kidney problems",
-            "type": "Physical health",
-            "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps."
-          },
-          {
-            "name": "Hernia",
-            "type": "Physical health",
-            "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps."
-          },
-          {
-            "name": "Polyps",
-            "type": "Physical health",
-            "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps."
-          },
-          {
-            "name": "Hand injury",
-            "type": "Physical health",
-            "source": "The defendant was working as a construction site worker in 2015, earning around $30,000, when he suffered a hand injury forcing him to stop."
-          }
-        ]
-      },
+      "health_conditions": [
+        {
+          "name": "Drug abuse (former drug abuser)",
+          "type": "Drug addiction",
+          "source": "At the time of sentencing, the applicant was a former drug abuser aged 68"
+        },
+        {
+          "name": "cardiac disease",
+          "type": "Physical health",
+          "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps."
+        },
+        {
+          "name": "diabetes",
+          "type": "Physical health",
+          "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps."
+        },
+        {
+          "name": "kidney problems",
+          "type": "Physical health",
+          "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps."
+        },
+        {
+          "name": "hernia",
+          "type": "Physical health",
+          "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps."
+        },
+        {
+          "name": "polyps",
+          "type": "Physical health",
+          "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps."
+        },
+        {
+          "name": "hand injury",
+          "type": "Physical health",
+          "source": "The defendant was working as a construction site worker in 2015, earning around $30,000, when he suffered a hand injury forcing him to stop."
+        }
+      ],
       "drug_treatment_participation": null,
       "education_level": null,
       "occupation": {
-        "occupation_category": "Craft and related worker",
+        "occupation_category": "Other",
         "occupation_name": "construction site worker",
-        "source": "The defendant was working as a construction site worker in 2015, earning around $30,000, when he suffered a hand injury forcing him to stop."
+        "source": "The defendant was working as a construction site worker in 2015, earning around $30,000"
       },
       "monthly_wage": {
-        "wage": 30000,
-        "source": "The defendant was working as a construction site worker in 2015, earning around $30,000"
+        "wage": 5300,
+        "source": "had to rely on CSSA of $5,300 per month for his daily and medical expenses since 2017."
       },
       "criminal_records": [
         {
           "record": "Other offences",
-          "source": "7 counts of theft"
-        },
-        {
-          "record": "Other offences",
-          "source": "Rape"
-        },
-        {
-          "record": "Other offences",
-          "source": "Robbery"
-        },
-        {
-          "record": "Other offences",
-          "source": "Assault with intent to rob"
-        },
-        {
-          "record": "Other offences",
-          "source": "Indecent assault"
-        },
-        {
-          "record": "Other offences",
-          "source": "Rape"
-        },
-        {
-          "record": "Other offences",
-          "source": "Managing a vice establishment"
-        },
-        {
-          "record": "Other offences",
-          "source": "Assault occasioning actual bodily harm"
-        },
-        {
-          "record": "Other offences",
-          "source": "Criminal intimidation"
-        },
-        {
-          "record": "Other offences",
-          "source": "Assaulting a police officer"
-        },
-        {
-          "record": "Other offences",
-          "source": "Failing to surrender to custody"
-        },
-        {
-          "record": "Other offences",
-          "source": "Breach of suspended sentence"
-        },
-        {
-          "record": "Other offences",
-          "source": "Breach of condition of stay"
+          "source": "At the time of sentencing, the applicant was a former drug abuser aged 68, with 20 previous convictions"
         },
         {
           "record": "Dangerous drug offences",
-          "source": "Possession of dangerous drugs"
+          "source": "2/10/2019          | Possession of dangerous drugs          | 18 months’ imprisonment"
+        },
+        {
+          "record": "Other offences",
+          "source": "3/4/1979           | 7 counts of theft"
+        },
+        {
+          "record": "Other offences",
+          "source": "3/4/1979           | Rape"
+        },
+        {
+          "record": "Other offences",
+          "source": "3/4/1979           | Robbery"
+        },
+        {
+          "record": "Other offences",
+          "source": "21/7/1986          | Assault with intent to rob"
+        },
+        {
+          "record": "Other offences",
+          "source": "21/7/1986          | Indecent assault"
+        },
+        {
+          "record": "Other offences",
+          "source": "21/7/1986          | Rape"
+        },
+        {
+          "record": "Other offences",
+          "source": "14/2/1996          | Managing a vice establishment"
+        },
+        {
+          "record": "Other offences",
+          "source": "18/7/2008          | Assault occasioning actual bodily harm"
+        },
+        {
+          "record": "Other offences",
+          "source": "18/7/2008          | Criminal intimidation"
+        },
+        {
+          "record": "Other offences",
+          "source": "18/7/2008          | Assaulting a police officer"
+        },
+        {
+          "record": "Other offences",
+          "source": "18/7/2008          | Failing to surrender to custody"
+        },
+        {
+          "record": "Other offences",
+          "source": "18/7/2008          | Breach of suspended sentence"
+        },
+        {
+          "record": "Other offences",
+          "source": "9/12/2009          | Breach of condition of stay"
         }
       ],
-      "positive_habits_after_arrest": null,
+      "positive_habits_after_arrest": [
+        {
+          "habit": "Participation in rehabilitation/self-improvement",
+          "source": "He has since quit his drug use"
+        }
+      ],
       "family_supports": null
     }
   ],
-  "tracing_id": "8234bd6308e13a83e60a9452d9859ced"
+  "tracing_id": "98d567a6597cdc66e0a1a980a00ac497"
 }

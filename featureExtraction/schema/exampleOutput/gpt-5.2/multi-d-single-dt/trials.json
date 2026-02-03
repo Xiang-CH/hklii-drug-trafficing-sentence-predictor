@@ -13,7 +13,7 @@
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 31.4,
-          "source": "a total of 42 grammes of a solid containing 31.4 grammes of cocaine narcotic."
+          "source": "the police found a paper wrapping containing two plastic bags containing a total of 42 grammes of a solid containing 31.4 grammes of cocaine narcotic."
         }
       ],
       "roles": [
@@ -28,7 +28,7 @@
           "factor": "Assistance - useful",
           "other_factor": null,
           "reduction": null,
-          "source": "I am agreeable to give him a slight further discount for the information provided to the police. So he would be entitled to 36 per cent discount in total including his assistance and also his plea of guilty."
+          "source": "In any event, having considered all the circumstances, I am agreeable to give him a slight further discount for the information provided to the police. So he would be entitled to 36 per cent discount in total including his assistance and also his plea of guilty."
         }
       ],
       "guilty_plea": {
@@ -53,7 +53,7 @@
       "notional_sentence": {
         "sentence_years": 6,
         "sentence_months": 7,
-        "source": "I consider that the appropriate starting point should be 6 years and 7 months’ imprisonment.\nIn respect of this case, there is no other aggravating feature.",
+        "source": "I consider that the appropriate starting point should be 6 years and 7 months’ imprisonment.",
         "total_months": 79
       },
       "mitigation_reduction": null,
@@ -80,13 +80,13 @@
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 31.4,
-          "source": "a total of 42 grammes of a solid containing 31.4 grammes of cocaine narcotic."
+          "source": "the police found a paper wrapping containing two plastic bags containing a total of 42 grammes of a solid containing 31.4 grammes of cocaine narcotic."
         }
       ],
       "roles": [
         {
-          "role": "Storekeeper",
-          "source": "He also hired the room for a period of 2 years, apparently on behalf of the drug trafficking syndicate. He admitted under caution that he had rented the room and he did not lock it, apparently for the purpose of allowing others to use it whenever they wanted."
+          "role": "Manager/organizer",
+          "source": "The only reasonable inference is that he made those calls either to give instructions to the 1st defendant or to check his progress so that he could report to the people higher in the hierarchy of the trafficking syndicate. He also hired the room for a period of 2 years, apparently on behalf of the drug trafficking syndicate."
         }
       ],
       "aggravating_factors": null,
@@ -101,7 +101,7 @@
           "factor": "Assistance - limited",
           "other_factor": null,
           "reduction": null,
-          "source": "the 2nd defendant had provided a written statement to the police in his attempt to assist the authorities, but it did not result in anything fruitful and it was considered to be not of practical use to the prosecution."
+          "source": "he had provided a written statement to the police in his attempt to assist the authorities, but it did not result in anything fruitful and it was considered to be not of practical use to the prosecution."
         }
       ],
       "guilty_plea": {
@@ -126,7 +126,7 @@
       "notional_sentence": {
         "sentence_years": 6,
         "sentence_months": 8,
-        "source": "Having considered all the circumstances of the conspiracy, I consider the appropriate starting point for the 2nd defendant will be 6 years and 8 months’ imprisonment.",
+        "source": "I consider the appropriate starting point for the 2nd defendant will be 6 years and 8 months’ imprisonment.",
         "total_months": 80
       },
       "mitigation_reduction": {
@@ -144,5 +144,5 @@
       }
     }
   ],
-  "tracing_id": "7dae97f86f8b9c3042e1fdd95cfced0c"
+  "tracing_id": "d9e183b2f10a33c4ed1c776ac70aab0d"
 }

@@ -1,22 +1,22 @@
 {
   "neutral_citation": "[2025] HKCFI 4253",
-  "judge_name": "Hon Woodcock J",
+  "judge_name": "Woodcock J",
   "judgment_date_time": "2025-08-25T10:02:00+08:00",
   "representatives": [
     {
-      "name": "Mr David Boyton",
+      "name": "David Boyton",
       "role": "on fiat, for HKSAR"
     },
     {
-      "name": "Mr Antonio Tsui",
+      "name": "Antonio Tsui",
       "role": "instructed by Huen & Cheung, assigned by DLA, for the accused in HCCC 316/2023"
     },
     {
-      "name": "Ms Tso Yin-chee Denise",
+      "name": "Tso Yin-chee Denise",
       "role": "instructed by K Y Woo & Co LLP, assigned by DLA, for the 1st accused in HCCC 317/2023"
     },
     {
-      "name": "Miss Emily Cheung",
+      "name": "Emily Cheung",
       "role": "instructed by Wong & Tang, assigned by DLA, for the 2nd accused in HCCC 317/2023"
     }
   ],
@@ -34,7 +34,10 @@
           "2021-10-02"
         ],
         "source": "between 1 and 2 October 2021",
-        "day_of_week": 5,
+        "day_of_week": [
+          5,
+          6
+        ],
         "is_hk_public_holiday": true
       },
       "offence_time": null,
@@ -42,23 +45,30 @@
         "address": "Hong Kong",
         "nature": "Other",
         "subDistrict": "Lantau Island",
-        "source": "in Hong Kong",
+        "source": "between 1 and 2 October 2021 in Hong Kong.",
         "district": "Islands"
       },
       "cross_border": {
         "cross_border": false,
         "type": null,
-        "source": "in Hong Kong"
+        "source": "between 1 and 2 October 2021 in Hong Kong."
       },
       "defendants_of_charge": [
         {
           "defendant_name": "So Hoi-yan",
           "defendant_id": 1,
-          "trafficking_mode": null,
+          "trafficking_mode": {
+            "mode": "Courier delivery",
+            "source": "delivering drugs as instructed for\n$1,000 a day"
+          },
           "reasons_for_offence": [
             {
               "reason": "Financial gain",
-              "source": "offered her a job to make easy money, delivering drugs as instructed for $1,000 a day"
+              "source": "admitted delivering drugs for money"
+            },
+            {
+              "reason": "Financial gain",
+              "source": "offered her a job to make easy money, delivering drugs as instructed for\n$1,000 a day"
             }
           ],
           "benefits_received": {
@@ -66,31 +76,32 @@
             "amount": 1000.0,
             "source": "delivering drugs as instructed for\n$1,000 a day"
           }
-        },
-        {
-          "defendant_name": "Fu Chun-wah",
-          "defendant_id": 2,
-          "trafficking_mode": null,
-          "reasons_for_offence": [
-            {
-              "reason": "Financial gain",
-              "source": "All were lured into this by the promise of easy money."
-            }
-          ],
-          "benefits_received": null
         }
       ]
     },
     {
       "charge_no": 2,
-      "charge_name": "Conspiracy to traffic in a dangerous drug",
+      "charge_name": "Conspiracy to traffic in dangerous drugs",
       "offence_date": {
         "date": [
           "2021-09-22",
           "2021-10-03"
         ],
         "source": "between 22 September and 3 October 2021, both dates inclusive",
-        "day_of_week": 3,
+        "day_of_week": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
         "is_hk_public_holiday": true
       },
       "offence_time": null,
@@ -98,31 +109,22 @@
         "address": "Hong Kong",
         "nature": "Other",
         "subDistrict": "Lantau Island",
-        "source": "in Hong Kong",
+        "source": "between 22 September and 3 October 2021, both dates inclusive, in Hong Kong.",
         "district": "Islands"
       },
       "cross_border": {
         "cross_border": false,
         "type": null,
-        "source": "in Hong Kong"
+        "source": "between 22 September and 3 October 2021, both dates inclusive, in Hong Kong."
       },
       "defendants_of_charge": [
         {
           "defendant_name": "Lam Tsz-man",
-          "defendant_id": 3,
-          "trafficking_mode": null,
-          "reasons_for_offence": [
-            {
-              "reason": "Financial gain",
-              "source": "offered them both a way to make easy money"
-            }
-          ],
-          "benefits_received": null
-        },
-        {
-          "defendant_name": "Fu Chun-wah",
           "defendant_id": 2,
-          "trafficking_mode": null,
+          "trafficking_mode": {
+            "mode": "Drug repackaging or storage",
+            "source": "Then he was to take it back to the subdivided unit in Mongkok and repackage the drugs into smaller bags."
+          },
           "reasons_for_offence": [
             {
               "reason": "Financial gain",
@@ -135,6 +137,52 @@
     },
     {
       "charge_no": 3,
+      "charge_name": "Conspiracy to traffic in a dangerous drug",
+      "offence_date": {
+        "date": [
+          "2021-10-01",
+          "2021-10-02"
+        ],
+        "source": "between 1 and 2 October 2021",
+        "day_of_week": [
+          5,
+          6
+        ],
+        "is_hk_public_holiday": true
+      },
+      "offence_time": null,
+      "place_of_offence": {
+        "address": "Hong Kong",
+        "nature": "Other",
+        "subDistrict": "Lantau Island",
+        "source": "between 1 and 2 October 2021 in Hong Kong.",
+        "district": "Islands"
+      },
+      "cross_border": {
+        "cross_border": false,
+        "type": null,
+        "source": "between 1 and 2 October 2021 in Hong Kong."
+      },
+      "defendants_of_charge": [
+        {
+          "defendant_name": "Fu Chun-wah",
+          "defendant_id": 3,
+          "trafficking_mode": {
+            "mode": "Other",
+            "source": "Fu now pleads guilty to conspiracy to traffic in a dangerous drug, namely, cocaine with So and Lam and other persons unknown between 1 and 2 October 2021 in Hong Kong."
+          },
+          "reasons_for_offence": [
+            {
+              "reason": "Financial gain",
+              "source": "letter from this defendant expressing genuine remorse and regret for being greedy"
+            }
+          ],
+          "benefits_received": null
+        }
+      ]
+    },
+    {
+      "charge_no": 4,
       "charge_name": "Trafficking in dangerous drugs",
       "offence_date": {
         "date": "2021-10-03",
@@ -158,7 +206,7 @@
       "defendants_of_charge": [
         {
           "defendant_name": "Fu Chun-wah",
-          "defendant_id": 2,
+          "defendant_id": 3,
           "trafficking_mode": {
             "mode": "Drug repackaging or storage",
             "source": "After his arrest, Fu revealed a drug storage premises in Mongkok to the police."
@@ -166,7 +214,7 @@
           "reasons_for_offence": [
             {
               "reason": "Financial gain",
-              "source": "All were lured into this by the promise of easy money."
+              "source": "letter from this defendant expressing genuine remorse and regret for being greedy"
             }
           ],
           "benefits_received": null
@@ -182,12 +230,12 @@
     },
     {
       "id": 2,
-      "name": "Fu Chun-wah"
+      "name": "Lam Tsz-man"
     },
     {
       "id": 3,
-      "name": "Lam Tsz-man"
+      "name": "Fu Chun-wah"
     }
   ],
-  "tracing_id": "8805023bc4cb33d716ebc5ad98cad341"
+  "tracing_id": "7ea10cc54e12425239ba4374b205f001"
 }

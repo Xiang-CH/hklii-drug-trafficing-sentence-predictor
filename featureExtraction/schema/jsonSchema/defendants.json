@@ -284,13 +284,17 @@
                 "positive_habits_after_arrest": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/PositiveHabitDetail"
+                            "items": {
+                                "$ref": "#/$defs/PositiveHabitDetail"
+                            },
+                            "type": "array"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "default": null
+                    "default": null,
+                    "title": "Positive Habits After Arrest"
                 },
                 "family_supports": {
                     "anyOf": [
@@ -739,12 +743,8 @@
         "PositiveHabitDetail": {
             "additionalProperties": false,
             "properties": {
-                "habits": {
-                    "items": {
-                        "$ref": "#/$defs/PositiveHabit"
-                    },
-                    "title": "Habits",
-                    "type": "array"
+                "habit": {
+                    "$ref": "#/$defs/PositiveHabit"
                 },
                 "source": {
                     "description": "The exact match source text from which the positive habits was extracted. Do not include any additional information in the source document.",
@@ -753,7 +753,7 @@
                 }
             },
             "required": [
-                "habits",
+                "habit",
                 "source"
             ],
             "title": "PositiveHabitDetail",

@@ -6,14 +6,14 @@
         "type": "Conspiracy to Traffic",
         "defendant_name": "So Hoi-yan",
         "defendant_id": 1,
-        "source": "Count 1 against the 1st defendant, So So has pleaded guilty to conspiracy to traffic in a dangerous drug, namely, cocaine with Fu, the defendant of 316/2023, and other persons unknown, between two dates, 1 and 2 October 2021 in Hong Kong."
+        "source": "Count 1 against the 1st defendant, So\nSo has pleaded guilty to conspiracy to traffic in a dangerous drug, namely, cocaine with Fu, the defendant of 316/2023, and other persons unknown, between two dates, 1 and 2 October 2021 in Hong Kong."
       },
       "drugs": [
         {
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 20.44,
-          "source": "She had in her bag 87 plastic bags containing a total of 23.05 grammes of a solid containing a total of 20.44 grammes of cocaine."
+          "source": "she had in her bag 87 plastic bags containing a total of 23.05 grammes of a solid containing a total of 20.44 grammes of cocaine."
         }
       ],
       "roles": [
@@ -33,14 +33,8 @@
         {
           "factor": "Assistance - useful",
           "other_factor": null,
-          "reduction": null,
-          "source": "After the trial for Fu had been set down, So gave a statement to the police, implicating Fu and agreeing to give evidence against him in his trial. It was this new development that prompted Fu to change his plea and indicate a plea of guilty."
-        },
-        {
-          "factor": "Rehabilitation programme",
-          "other_factor": null,
-          "reduction": null,
-          "source": "I have received a letter in mitigation and evidence of her further recent vocational training to set herself up in employment in the future."
+          "reduction": 10,
+          "source": "So went on to assist the police and agreed to be a prosecution witness against Fu. Her statement was very damning evidence against him. Although she did not ultimately need to give evidence during his trial, I have no doubt that she would have done so without reluctance and come up to proof. She is entitled to a further discount for her cooperation and assistance."
         }
       ],
       "guilty_plea": {
@@ -53,7 +47,7 @@
       "starting_point": {
         "sentence_years": 5,
         "sentence_months": 9,
-        "source": "For the 1st defendant, So, I will take into account the drugs found on her in her bag and that was 20.44 grammes of cocaine. Now according to the latest sentencing guidelines, those trafficking in 20.44 grammes of cocaine would attract a mathematical starting point of 5 years and 9 months\u0002 imprisonment.",
+        "source": "For the 1st defendant, So, I will take into account the drugs found on her in her bag and that was 20.44 grammes of cocaine. Now according to the latest sentencing guidelines, those trafficking in 20.44 grammes of cocaine would attract a mathematical starting point of 5 years and 9 months’ imprisonment.",
         "total_months": 69
       },
       "sentence_after_role": {
@@ -65,18 +59,21 @@
       "notional_sentence": {
         "sentence_years": 5,
         "sentence_months": 9,
-        "source": "For the 1st defendant, So, I will take into account the drugs found on her in her bag and that was 20.44 grammes of cocaine. Now according to the latest sentencing guidelines, those trafficking in 20.44 grammes of cocaine would attract a mathematical starting point of 5 years and 9 months\u0002 imprisonment.",
+        "source": "For the 1st defendant, So, I will take into account the drugs found on her in her bag and that was 20.44 grammes of cocaine. Now according to the latest sentencing guidelines, those trafficking in 20.44 grammes of cocaine would attract a mathematical starting point of 5 years and 9 months’ imprisonment.",
         "total_months": 69
       },
-      "mitigation_reduction": null,
+      "mitigation_reduction": {
+        "reduction_months": 10,
+        "source": "So went on to assist the police and agreed to be a prosecution witness against Fu. ... She is entitled to a further discount for her cooperation and assistance."
+      },
       "final_sentence": {
         "sentence_years": 3,
         "sentence_months": 0,
-        "guilty_plea_reduction_years": 2,
-        "guilty_plea_reduction_months": 9,
-        "source": "Therefore, for 317/2023, Count 1 against the 1st defendant, So, I intend to take a starting point of 5 years and 9 months and I will reduce it to 3 years\u0002 imprisonment. This reflects a discount of about 48 per cent.",
+        "guilty_plea_reduction_years": 1,
+        "guilty_plea_reduction_months": 11,
+        "source": "Therefore, for 317/2023, Count 1 against the 1st defendant, So, I intend to take a starting point of 5 years and 9 months and I will reduce it to 3 years’ imprisonment. This reflects a discount of about 48 per cent.",
         "total_months": 36,
-        "guilty_plea_reduction_total_months": 33
+        "guilty_plea_reduction_total_months": 23
       }
     },
     {
@@ -85,26 +82,20 @@
         "type": "Conspiracy to Traffic",
         "defendant_name": "Lam Tsz-man",
         "defendant_id": 2,
-        "source": "Count 2 against the 2nd defendant only, Lam Lam has pleaded guilty to conspiracy to traffic in a dangerous drug, namely, cocaine and cannabis in a herbal form with Fu, the defendant of 316/2023, and other persons unknown between 22 September and 3 October 2021, both dates inclusive, in Hong Kong."
+        "source": "Count 2 against the 2nd defendant only, Lam\nLam has pleaded guilty to conspiracy to traffic in a dangerous drug, namely, cocaine and cannabis in a herbal form with Fu, the defendant of 316/2023, and other persons unknown between 22 September and 3 October 2021, both dates inclusive, in Hong Kong."
       },
       "drugs": [
         {
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 109.19,
-          "source": "I will take into account the cocaine found on him and the cocaine found in the premises rented by Fu and Lam which totals 109.19 grammes of cocaine."
-        },
-        {
-          "drug_type": "Cannabis",
-          "other_drug_type": null,
-          "quantity": 6.12,
-          "source": "They searched the premises and found 41 plastic bags containing a total of 7.2 grammes of a solid containing 6.19 grammes of cocaine and two plastic bags containing a total of 6.12 grammes of cannabis in herbal form."
+          "source": "For the 2nd defendant, Lam, I will take into account the cocaine found on him and the cocaine found in the premises rented by Fu and Lam which totals 109.19 grammes of cocaine. There is 6 grammes of herbal cannabis, which I consider de minimis in the circumstances and therefore ignore it."
         }
       ],
       "roles": [
         {
           "role": "Storekeeper",
-          "source": "He was to take it back to the subdivided unit in Mongkok and repackage the drugs into smaller bags. They searched the premises and found ... a tenancy agreement dated 23 September 2021 signed by Fu and the 2nd defendant, Lam, of 317/2023."
+          "source": "He instructed them to rent the subdivided unit and provided money to buy digital scales and plastic bags. Both these defendants did as instructed. He was on his way to the flat when he was arrested by the police. ... he was searched and police found keys to the premises as well as five packets in his backpack containing a total of 118 grammes of a solid containing 103 grammes of cocaine."
         }
       ],
       "aggravating_factors": null,
@@ -121,12 +112,12 @@
         "court_type": "High Court",
         "high_court_stage": "Up to committal",
         "district_court_stage": null,
-        "source": "The 1st and 2nd defendant of 317/2023 pleaded guilty to their respective charges at the earliest opportunity and were committed to the Court of First Instance for sentence to be dealt with after the trial of their co-accused..."
+        "source": "The 1st and 2nd defendant of 317/2023 pleaded guilty to their respective charges at the earliest opportunity and were committed to the Court of First Instance for sentence to be dealt with after the trial of their co-accused, the defendant of 316/2023 who had pleaded not guilty."
       },
       "starting_point": {
         "sentence_years": 9,
         "sentence_months": 6,
-        "source": "According to the latest sentencing guidelines, those trafficking in 109.19 grammes of cocaine would attract a mathematical starting point of 9 years and 7 months\u0002 imprisonment.",
+        "source": "Count 2 against the 2nd defendant, Lam. I intend to take a starting point of 9 years and 6 months’ imprisonment and reduce it by 38 months to reflect his plea at the earliest opportunity.",
         "total_months": 114
       },
       "sentence_after_role": {
@@ -138,7 +129,7 @@
       "notional_sentence": {
         "sentence_years": 9,
         "sentence_months": 6,
-        "source": "According to the latest sentencing guidelines, those trafficking in 109.19 grammes of cocaine would attract a mathematical starting point of 9 years and 7 months\u0002 imprisonment.",
+        "source": "Count 2 against the 2nd defendant, Lam. I intend to take a starting point of 9 years and 6 months’ imprisonment and reduce it by 38 months to reflect his plea at the earliest opportunity.",
         "total_months": 114
       },
       "mitigation_reduction": null,
@@ -147,7 +138,7 @@
         "sentence_months": 4,
         "guilty_plea_reduction_years": 3,
         "guilty_plea_reduction_months": 2,
-        "source": "Therefore, for 317/2023, ... Count 2 against the 2nd defendant, Lam. I intend to take a starting point of 9 years and 6 months' imprisonment and reduce it by 38 months to reflect his plea at the earliest opportunity. Lam is sentenced to 6 years and 4 months' imprisonment.",
+        "source": "Count 2 against the 2nd defendant, Lam. I intend to take a starting point of 9 years and 6 months’ imprisonment and reduce it by 38 months to reflect his plea at the earliest opportunity. Lam is sentenced to 6 years and 4 months’ imprisonment.",
         "total_months": 76,
         "guilty_plea_reduction_total_months": 38
       }
@@ -158,20 +149,20 @@
         "type": "Conspiracy to Traffic",
         "defendant_name": "Fu Chun-wah",
         "defendant_id": 3,
-        "source": "Count 1 against the defendant, Fu Fu now pleads guilty to conspiracy to traffic in a dangerous drug, namely, cocaine with So and Lam and other persons unknown between 1 and 2 October 2021 in Hong Kong."
+        "source": "Count 1 against the defendant, Fu\nFu now pleads guilty to conspiracy to traffic in a dangerous drug, namely, cocaine with So and Lam and other persons unknown between 1 and 2 October 2021 in Hong Kong."
       },
       "drugs": [
         {
           "drug_type": "Cocaine",
           "other_drug_type": null,
-          "quantity": 20.44,
-          "source": "For Fu, there is 20.44 grammes of cocaine he admits he delivered to So in relation to the 1st count he faces."
+          "quantity": 26.63,
+          "source": "For Fu, there is 20.44 grammes of cocaine he admits he delivered to So in relation to the 1st count he faces. In relation to the 2nd count, which is not conspiracy but trafficking, there was 6.19 grammes of cocaine found in those rented premises. As far as he is concerned, I can quantify a total of 26.63 grammes of cocaine."
         }
       ],
       "roles": [
         {
-          "role": "Actual trafficker",
-          "source": "Apart from messages with So, the police found a WhatsApp group in Fu\u0002s mobile showing members of the WhatsApp group sending out instructions of customers, their drug order, the price to pay and location of delivery. It would appear that he had made deliveries as well."
+          "role": "Manager/organizer",
+          "source": "Apart from messages with So, the police found a WhatsApp group in Fu’s mobile showing members of the WhatsApp group sending out instructions of customers, their drug order, the price to pay and location of delivery. It would appear that he had made deliveries as well. His first message appears on this WhatsApp group on 1 October 2021, two days before his arrest."
         }
       ],
       "aggravating_factors": null,
@@ -194,12 +185,12 @@
         "court_type": "High Court",
         "high_court_stage": "After dates fixed",
         "district_court_stage": null,
-        "source": "Before his trial, this defendant reconsidered in light of the additional evidence against him and indicated a plea. He has pleaded guilty before me today and admitted the Summary of Facts."
+        "source": "Before his trial, this defendant reconsidered in light of the additional evidence against him and indicated a plea. He has pleaded guilty before me today and admitted the Summary of Facts. I convicted him accordingly."
       },
       "starting_point": {
         "sentence_years": 6,
         "sentence_months": 3,
-        "source": "For Fu, there is 20.44 grammes of cocaine he admits he delivered to So in relation to the 1st count he faces. In relation to the 2nd count, which is not conspiracy but trafficking, there was 6.19 grammes of cocaine found in those rented premises. As far as he is concerned, I can quantify a total of 26.63 grammes of cocaine. According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months\u0002 imprisonment.",
+        "source": "For Fu, ... As far as he is concerned, I can quantify a total of 26.63 grammes of cocaine. According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months’ imprisonment.",
         "total_months": 75
       },
       "sentence_after_role": {
@@ -211,7 +202,7 @@
       "notional_sentence": {
         "sentence_years": 6,
         "sentence_months": 3,
-        "source": "According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months\u0002 imprisonment.",
+        "source": "For Fu, ... As far as he is concerned, I can quantify a total of 26.63 grammes of cocaine. According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months’ imprisonment.",
         "total_months": 75
       },
       "mitigation_reduction": null,
@@ -220,7 +211,7 @@
         "sentence_months": 4,
         "guilty_plea_reduction_years": 1,
         "guilty_plea_reduction_months": 11,
-        "source": "Therefore, for 316/2023, Count 1 against Fu. I intend to take a starting point of 6 years and 3 months' imprisonment and I will reduce it by 23 months. This represents a discount of just over 30 per cent. Fu is sentenced to 4 years and 4 months' imprisonment for Count 1.",
+        "source": "Therefore, for 316/2023, Count 1 against Fu. I intend to take a starting point of 6 years and 3 months’ imprisonment and I will reduce it by 23 months. This represents a discount of just over 30 per cent. Fu is sentenced to 4 years and 4 months’ imprisonment for Count 1.",
         "total_months": 52,
         "guilty_plea_reduction_total_months": 23
       }
@@ -231,26 +222,26 @@
         "type": "Actual Trafficking",
         "defendant_name": "Fu Chun-wah",
         "defendant_id": 3,
-        "source": "Count 2 Fu now pleads guilty to trafficking in dangerous drugs on 3 October 2021 in Room F, 3rd Floor, 59 Prince Edward Road West, Mongkok, Hong Kong, he unlawfully trafficked in 7.2 grammes of a solid containing 6.19 grammes of cocaine and 6.12 grammes of cannabis in herbal form."
+        "source": "Count 2\nFu now pleads guilty to trafficking in dangerous drugs on 3 October 2021 in Room F, 3rd Floor, 59 Prince Edward Road West, Mongkok, Hong Kong, he unlawfully trafficked in 7.2 grammes of a solid containing 6.19 grammes of cocaine and 6.12 grammes of cannabis in herbal form."
       },
       "drugs": [
         {
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 6.19,
-          "source": "They searched the premises and found 41 plastic bags containing a total of 7.2 grammes of a solid containing 6.19 grammes of cocaine and two plastic bags containing a total of 6.12 grammes of cannabis in herbal form."
+          "source": "Fu now pleads guilty to trafficking in dangerous drugs on 3 October 2021 in Room F, 3rd Floor, 59 Prince Edward Road West, Mongkok, Hong Kong, he unlawfully trafficked in 7.2 grammes of a solid containing 6.19 grammes of cocaine and 6.12 grammes of cannabis in herbal form."
         },
         {
           "drug_type": "Cannabis",
           "other_drug_type": null,
           "quantity": 6.12,
-          "source": "They searched the premises and found ... two plastic bags containing a total of 6.12 grammes of cannabis in herbal form."
+          "source": "Fu now pleads guilty to trafficking in dangerous drugs on 3 October 2021 in Room F, 3rd Floor, 59 Prince Edward Road West, Mongkok, Hong Kong, he unlawfully trafficked in 7.2 grammes of a solid containing 6.19 grammes of cocaine and 6.12 grammes of cannabis in herbal form."
         }
       ],
       "roles": [
         {
-          "role": "Storekeeper",
-          "source": "After his arrest, Fu revealed a drug storage premises in Mongkok to the police. The police obtained a search warrant and visited that location. They used keys found on Fu to gain access to the premises. It was a subdivided unit with a toilet, kitchen and a bed."
+          "role": "Manager/organizer",
+          "source": "Apart from messages with So, the police found a WhatsApp group in Fu’s mobile showing members of the WhatsApp group sending out instructions of customers, their drug order, the price to pay and location of delivery. It would appear that he had made deliveries as well."
         }
       ],
       "aggravating_factors": null,
@@ -273,12 +264,12 @@
         "court_type": "High Court",
         "high_court_stage": "After dates fixed",
         "district_court_stage": null,
-        "source": "Before his trial, this defendant reconsidered in light of the additional evidence against him and indicated a plea. He has pleaded guilty before me today and admitted the Summary of Facts."
+        "source": "Before his trial, this defendant reconsidered in light of the additional evidence against him and indicated a plea. He has pleaded guilty before me today and admitted the Summary of Facts. I convicted him accordingly."
       },
       "starting_point": {
         "sentence_years": 6,
         "sentence_months": 3,
-        "source": "According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months\u0002 imprisonment.",
+        "source": "For Fu, ... As far as he is concerned, I can quantify a total of 26.63 grammes of cocaine. According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months’ imprisonment.",
         "total_months": 75
       },
       "sentence_after_role": {
@@ -290,7 +281,7 @@
       "notional_sentence": {
         "sentence_years": 6,
         "sentence_months": 3,
-        "source": "According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months\u0002 imprisonment.",
+        "source": "For Fu, ... As far as he is concerned, I can quantify a total of 26.63 grammes of cocaine. According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months’ imprisonment.",
         "total_months": 75
       },
       "mitigation_reduction": null,
@@ -299,11 +290,11 @@
         "sentence_months": 4,
         "guilty_plea_reduction_years": 1,
         "guilty_plea_reduction_months": 11,
-        "source": "For Count 2, I take the same starting point as Count 1 and reduce it by the same discount, 23 months. For Count 2, this defendant is sentenced to 4 years and 4 months' imprisonment.",
+        "source": "For Count 2, I take the same starting point as Count 1 and reduce it by the same discount, 23 months. For Count 2, this defendant is sentenced to 4 years and 4 months’ imprisonment.",
         "total_months": 52,
         "guilty_plea_reduction_total_months": 23
       }
     }
   ],
-  "tracing_id": "66808346b5b4300fc1e6c71467f91453"
+  "tracing_id": "2b2657ae654a0f11ef94c0b130447a18"
 }

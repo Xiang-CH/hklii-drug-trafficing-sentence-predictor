@@ -9,32 +9,28 @@
       "nationality": null,
       "age_at_offence": {
         "age": 21,
-        "source": "after all, he was 21 years old at the time"
+        "source": "After all, he was 21 years old at the time, not a very young teenager."
       },
       "age_at_sentencing": {
         "age": 23,
-        "source": "The defendant is now 23 years old"
+        "source": "The defendant is now 23 years old and had a clear record."
       },
       "gender": {
         "gender": "Male",
-        "source": "after all, he was 21 years old at the time"
+        "source": "He was committed to the Court of First Instance for sentence."
       },
       "marital_status": null,
-      "parental_status": {
-        "status": "No children",
-        "custody": null,
-        "source": "The defendant lived there with his parents and younger brother."
-      },
+      "parental_status": null,
       "household_composition": {
         "composition": "Lives with family",
         "source": "Defendant lived there with his parents and younger brother."
       },
-      "health_status": null,
+      "health_conditions": null,
       "drug_treatment_participation": null,
       "education_level": null,
       "occupation": {
         "occupation_category": "Unemployed",
-        "occupation_name": null,
+        "occupation_name": "Elevator repair apprentice; construction worker (previously); unemployed at time of arrest",
         "source": "After finishing school, he became an elevator repair apprentice and had a full-time job, but the COVID pandemic affected his employment and he was made redundant. He did work for some time in 2022 as a construction worker. But at the time of his arrest, he was unemployed."
       },
       "monthly_wage": {
@@ -56,5 +52,5 @@
       ]
     }
   ],
-  "tracing_id": "3ac88b1cc58a31e38fcde87f5b357337"
+  "tracing_id": "ac738cdf06f49c179ce457795e5ff414"
 }

@@ -5,7 +5,7 @@
   "representatives": [
     {
       "name": "黎靖頎",
-      "role": "律政司高級檢控官"
+      "role": "律政司高級檢控官，代表香港特別行政區"
     },
     {
       "name": "何偉健",
@@ -26,21 +26,21 @@
         "is_hk_public_holiday": false
       },
       "offence_time": {
-        "time": "09:00:00Z",
-        "source": "控罪一，2023年3月29日上午九時許，盧健文駕駛黑色七人車YL7934進入美孚19座，被告下車進入19座，其後警員發現被告從20樓行落19樓梯間，孭著黑色斜孭袋及黑色背囊，手持橙色購物袋。",
+        "time": "09:00:00+08:00",
+        "source": "控罪一，2023年3月29日上午九時許",
         "time_of_day": "morning"
       },
       "place_of_offence": {
-        "address": "美孚新邨19座（及20樓梯間）",
+        "address": "美孚19座",
         "nature": "Residential building",
         "subDistrict": "Mei Foo",
-        "source": "控罪一，2023年3月29日上午九時許，盧健文駕駛黑色七人車YL7934進入美孚19座，被告下車進入19座，其後警員發現被告從20樓行落19樓梯間，孭著黑色斜孭袋及黑色背囊，手持橙色購物袋。",
+        "source": "盧健文駕駛黑色七人車YL7934進入美孚19座，被告下車進入19座",
         "district": "Sham Shui Po"
       },
       "cross_border": {
         "cross_border": false,
         "type": null,
-        "source": "\u0000"
+        "source": "<no cross-border activity mentioned>"
       },
       "defendants_of_charge": [
         {
@@ -48,12 +48,16 @@
           "defendant_id": 1,
           "trafficking_mode": {
             "mode": "Courier delivery",
-            "source": "被告其後將毒品親手交給客人或將毒品放在草叢內"
+            "source": "最初那次是2023年2月，盧駕駛YL7934載被告到匯璽，被告上樓拿毒品，盧則在車上等候...盧駕駛YL7934帶被告到交貨地點，被告其後將毒品親手交給客人或將毒品放在草叢內"
           },
           "reasons_for_offence": [
             {
+              "reason": "Financial gain",
+              "source": "被告在警誡下說：「我因為爭人錢，等錢使，所以幫人帶呢袋毒品，之後會收到5,000蚊報酬」"
+            },
+            {
               "reason": "Economic hardship",
-              "source": "被告在警誡下說：\"我因為爭人錢，等錢使，所以幫人帶呢袋毒品，之後會收到5,000蚊報酬\""
+              "source": "錄影會面紀錄指出，盧知道被告欠人錢，自2022年12月或2023年1月起招募他販運毒品"
             }
           ],
           "benefits_received": {
@@ -69,7 +73,7 @@
       "charge_name": "Trafficking in dangerous drugs",
       "offence_date": {
         "date": "2023-03-29",
-        "source": "被告於2023年3月29日，連同盧健文，分別非法販運...內含70.013公斤海洛英鹽酸鹽及385克單乙酰嗎啡鹽酸鹽的86.226公斤混合劑（控罪二）",
+        "source": "被告於2023年3月29日，分別非法販運...內含70.013公斤海洛英鹽酸鹽及385克單乙酰嗎啡鹽酸鹽的86.226公斤混合劑（控罪二）",
         "day_of_week": 3,
         "is_hk_public_holiday": false
       },
@@ -78,13 +82,13 @@
         "address": "深水埗匯璽1B座25樓D室",
         "nature": "Residential building",
         "subDistrict": "Sham Shui Po",
-        "source": "控罪二，警員隨後帶同被告及盧子健到深水埗匯璽1B座25樓D室(「D室」)。被告在警誡下自願提供D室大門密碼，警員用該密碼進入D室。D室面積約一百平方呎，單位頗為空檔，只有少量傢俬。D室客廳有一張床，該床旁邊有兩個尼龍袋。警員在上述床上及上述尼龍袋內發現合共二百四十六磚用膠紙包裹的固體，載有內含70.013公斤海洛英鹽酸鹽及385克單乙酰嗎啡鹽酸鹽的共86.226公斤混合劑。",
+        "source": "警員隨後帶同被告及盧子健到深水埗匯璽1B座25樓D室(「D室」)",
         "district": "Sham Shui Po"
       },
       "cross_border": {
         "cross_border": false,
         "type": null,
-        "source": "\u0000"
+        "source": "<no cross-border activity mentioned>"
       },
       "defendants_of_charge": [
         {
@@ -92,12 +96,16 @@
           "defendant_id": 1,
           "trafficking_mode": {
             "mode": "Courier delivery",
-            "source": "他按盧的指示將多磚毒品從D室搬到C室大約三次，一次搬了二十六磚，第三次搬了二十或二十四磚。盧載他往返匯璽與美孚新邨。盧通常致電他表示翌日有工作，翌日早上他便會到旺角登上其私家車，盧亦會載他到美孚新邨拿毒品，然後載他去將毒品交給客人。"
+            "source": "盧載他往返匯璽與美孚新邨...盧通常致電他表示翌日有工作，翌日早上他便會到旺角登上其私家車，盧亦會載他到美孚新邨拿毒品，然後載他去將毒品交給客人"
           },
           "reasons_for_offence": [
             {
+              "reason": "Financial gain",
+              "source": "在他身上發現的現金港幣5,000元是當日販運毒品工作所得的報酬"
+            },
+            {
               "reason": "Economic hardship",
-              "source": "被告在警誡下說：\"我因為爭人錢，等錢使，所以幫人帶呢袋毒品，之後會收到5,000蚊報酬\""
+              "source": "錄影會面紀錄指出，盧知道被告欠人錢，自2022年12月或2023年1月起招募他販運毒品"
             }
           ],
           "benefits_received": {
@@ -116,5 +124,5 @@
       "name": "劉子健"
     }
   ],
-  "tracing_id": "030f7251e288b02c94a92b23705c5d95"
+  "tracing_id": "f12d24eb2a0b176fffea09410802a329"
 }

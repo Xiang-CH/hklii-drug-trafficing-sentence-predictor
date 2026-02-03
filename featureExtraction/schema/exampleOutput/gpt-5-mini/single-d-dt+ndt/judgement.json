@@ -1,6 +1,6 @@
 {
   "neutral_citation": "[2025] HKCFI 4709",
-  "judge_name": "Andrew Chan J",
+  "judge_name": "Hon Andrew Chan J",
   "judgment_date_time": "2025-07-24T09:42:00+08:00",
   "representatives": [
     {
@@ -18,10 +18,10 @@
   "charges": [
     {
       "charge_no": 1,
-      "charge_name": "Trafficking in a dangerous drug",
+      "charge_name": "Trafficking in dangerous drugs",
       "offence_date": {
         "date": "2023-01-30",
-        "source": "In the afternoon on 30 January 2023",
+        "source": "In the afternoon on 30 January 2023, the defendant was stopped by police officers in Yau Ma Tei.",
         "day_of_week": 1,
         "is_hk_public_holiday": false
       },
@@ -30,7 +30,7 @@
         "address": "Yau Ma Tei",
         "nature": "Street",
         "subDistrict": "Yau Ma Tei",
-        "source": "stopped by police officers in Yau Ma Tei",
+        "source": "In the afternoon on 30 January 2023, the defendant was stopped by police officers in Yau Ma Tei.",
         "district": "Yau Tsim Mong"
       },
       "cross_border": {
@@ -44,7 +44,7 @@
           "defendant_id": 1,
           "trafficking_mode": {
             "mode": "Courier delivery",
-            "source": "There is nothing in this case to indicate the defendant’s role beyond a mere courier."
+            "source": "There is nothing in this case to indicate the defendant\u0019s role beyond a mere courier."
           },
           "reasons_for_offence": null,
           "benefits_received": null
@@ -59,5 +59,5 @@
       "name": "Wong Pui-hung"
     }
   ],
-  "tracing_id": "5ab995dfec23b2ad109aa854bee0c4e6"
+  "tracing_id": "6b84b536b43df4d56a726967f386c57a"
 }

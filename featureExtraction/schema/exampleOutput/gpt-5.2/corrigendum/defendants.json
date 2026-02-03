@@ -10,21 +10,19 @@
       "age_at_offence": null,
       "age_at_sentencing": {
         "age": 18,
-        "source": "他現年只有18歲"
+        "source": "他現年只有18歲。"
       },
       "gender": null,
       "marital_status": null,
       "parental_status": null,
       "household_composition": null,
-      "health_status": {
-        "conditions": [
-          {
-            "name": "吸食氯胺酮",
-            "type": "Drug addiction",
-            "source": "繼而開始吸食氯胺酮"
-          }
-        ]
-      },
+      "health_conditions": [
+        {
+          "name": "吸食氯胺酮",
+          "type": "Drug addiction",
+          "source": "繼而開始吸食氯胺酮"
+        }
+      ],
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Lower",
@@ -33,11 +31,11 @@
       "occupation": {
         "occupation_category": "Unemployed",
         "occupation_name": null,
-        "source": "第二被告人知道第一被告人無業"
+        "source": "案發時第一被告人因為失業"
       },
       "monthly_wage": {
         "wage": 0,
-        "source": "第二被告人知道第一被告人無業"
+        "source": "案發時第一被告人因為失業"
       },
       "criminal_records": [
         {
@@ -61,15 +59,7 @@
       "marital_status": null,
       "parental_status": null,
       "household_composition": null,
-      "health_status": {
-        "conditions": [
-          {
-            "name": "沒有吸毒習慣",
-            "type": "Drug addiction",
-            "source": "第二被告人沒有吸毒習慣"
-          }
-        ]
-      },
+      "health_conditions": null,
       "drug_treatment_participation": null,
       "education_level": null,
       "occupation": null,
@@ -77,21 +67,21 @@
       "criminal_records": [
         {
           "record": "None",
-          "source": "兩位被告人均無定罪紀錄"
+          "source": "整體而言，兩位被告人均無定罪紀錄。"
         }
       ],
       "positive_habits_after_arrest": null,
       "family_supports": [
         {
-          "support": "Letters of support from family",
-          "source": "辯方更依賴大量求情信"
+          "support": "Other",
+          "source": "辯方更依賴大量求情信，以支持第二被告人減刑陳辭。"
         },
         {
           "support": "Other",
-          "source": "其家人及朋友對他的正面評價及支持"
+          "source": "特別是其家人及朋友對他的正面評價及支持"
         }
       ]
     }
   ],
-  "tracing_id": "e3185f92210dc9799d69c243a39dd1c8"
+  "tracing_id": "4543540e7286e3799e02a4d412e06d7c"
 }

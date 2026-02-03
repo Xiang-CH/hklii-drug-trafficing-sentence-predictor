@@ -14,12 +14,12 @@
       },
       "gender": {
         "gender": "Male",
-        "source": "He was holding a car key at the time."
+        "source": "Prior to his arrest, he was unemployed."
       },
       "marital_status": null,
       "parental_status": null,
       "household_composition": null,
-      "health_status": null,
+      "health_conditions": null,
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Upper",
@@ -37,11 +37,11 @@
       "criminal_records": [
         {
           "record": "Drug trafficking",
-          "source": "In particular, he has four trafficking in dangerous drugs and eight possession in dangerous drugs records."
+          "source": "he has four trafficking in dangerous drugs and eight possession in dangerous drugs records."
         },
         {
           "record": "Dangerous drug offences",
-          "source": "In particular, he has four trafficking in dangerous drugs and eight possession in dangerous drugs records."
+          "source": "he has four trafficking in dangerous drugs and eight possession in dangerous drugs records."
         },
         {
           "record": "Other offences",
@@ -52,5 +52,5 @@
       "family_supports": null
     }
   ],
-  "tracing_id": "5ab995dfec23b2ad109aa854bee0c4e6"
+  "tracing_id": "6b84b536b43df4d56a726967f386c57a"
 }

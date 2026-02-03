@@ -1,4 +1,4 @@
-import { array, z } from 'zod'
+import { z } from 'zod'
 import Holidays from 'date-holidays'
 import {
   districts,
@@ -387,9 +387,22 @@ export const DateDetailInputSchema = z.object({
 })
 
 export const DateDetailSchema = DateDetailInputSchema.transform((data) => {
-  const dateObj = Array.isArray(data.date)
-    ? new Date(data.date[0])
-    : new Date(data.date)
+  if(Array.isArray(data.date)){
+    const days = data.date.map((dateStr) => {
+      const dateObj = new Date(dateStr)
+      return dateObj.getDay() === 0 ? 7 : dateObj.getDay()
+    })
+    const isHoliday = data.date.some((dateStr) => {
+      const dateObj = new Date(dateStr)
+      return hd.isHoliday(dateObj)
+    })
+    return {
+      ...data,
+      day_of_week: days,
+      is_hk_public_holiday: isHoliday,
+    }
+  }
+  const dateObj = new Date(data.date)
   return {
     ...data,
     day_of_week: dateObj.getDay() === 0 ? 7 : dateObj.getDay(),
@@ -663,14 +676,10 @@ export const ParentalStatusSchema = z.object({
   source: z.string(),
 })
 
-export const HealthStatusConditionSchema = z.object({
+export const HealthConditionSchema = z.object({
   name: z.string(),
   type: HealthStatusTypeSchema,
   source: z.string(),
-})
-
-export const HealthStatusSchema = z.object({
-  conditions: z.array(HealthStatusConditionSchema),
 })
 
 export const OccupationSchema = z.object({
@@ -740,7 +749,7 @@ export const DefendantProfileSchema = z.object({
   parental_status: ParentalStatusSchema.nullable().default(null),
   household_composition:
     HouseholdCompositionDetailSchema.nullable().default(null),
-  health_status: HealthStatusSchema.nullable().default(null),
+  health_conditions: z.array(HealthConditionSchema).nullable().default(null),
   drug_treatment_participation:
     DrugTreatmentDetailSchema.nullable().default(null),
   education_level: EducationLevelDetailSchema.nullable().default(null),
@@ -815,7 +824,7 @@ export const FIELD_SCHEMAS: Partial<Record<string, z.ZodTypeAny>> = {
   marital_status: MaritalStatusDetailSchema,
   parental_status: ParentalStatusSchema,
   household_composition: HouseholdCompositionDetailSchema,
-  health_status: HealthStatusSchema,
+  health_conditions: HealthConditionSchema,
   drug_treatment_participation: DrugTreatmentDetailSchema,
   education_level: EducationLevelDetailSchema,
   occupation: OccupationSchema,
@@ -823,7 +832,6 @@ export const FIELD_SCHEMAS: Partial<Record<string, z.ZodTypeAny>> = {
   criminal_records: CriminalRecordDetailSchema,
   positive_habits_after_arrest: PositiveHabitDetailSchema,
   family_supports: FamilySupportDetailSchema,
-  conditions: HealthStatusConditionSchema,
 }
 
 const FIELD_IS_ARRAY: Array<string> = [
@@ -838,7 +846,7 @@ const FIELD_IS_ARRAY: Array<string> = [
   'family_supports',
   'reasons_for_offence',
   'representatives',
-  'conditions',
+  'health_conditions'
 ]
 
 // Function to check if a field is nullable in the schema
@@ -1025,7 +1033,7 @@ export const ENUM_OPTIONS: Record<string, Array<string>> = {
   education_level_level: getEnumValues(EducationLevelSchema),
   occupation_occupation_category: getEnumValues(OccupationCategorySchema),
   criminal_records_record: getEnumValues(CriminalRecordSchema),
-  conditions_type: getEnumValues(HealthStatusTypeSchema),
+  health_conditions_type: getEnumValues(HealthStatusTypeSchema),
   positive_habits_after_arrest_habit: getEnumValues(PositiveHabitSchema),
   family_supports_support: getEnumValues(FamilySupportSchema),
 }

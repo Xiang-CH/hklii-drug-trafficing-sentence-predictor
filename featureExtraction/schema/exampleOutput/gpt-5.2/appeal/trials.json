@@ -6,40 +6,40 @@
         "type": "Actual Trafficking",
         "defendant_name": "Lau Kam Hung (劉金洪)",
         "defendant_id": 1,
-        "source": "one count of trafficking in dangerous drugs, contrary to section 4(1)(a) and (3) of the Dangerous Drugs Ordinance, Cap 134"
+        "source": "Having pleaded not guilty before a magistrate at his committal on 11 April 2024 to one count of trafficking in dangerous drugs"
       },
       "drugs": [
         {
           "drug_type": "Methamphetamine",
           "other_drug_type": null,
           "quantity": 17.0,
-          "source": "17.3g of a crystalline solid containing 17.0g of methamphetamine hydrochloride (commonly known as “ice”)  and 14.40g of cannabis in herbal form."
+          "source": "The defendant was charged with trafficking in the 17.0 grammes of “Ice” and 14.4 grammes of herbal cannabis found inside the Flat"
         },
         {
           "drug_type": "Cannabis",
           "other_drug_type": null,
           "quantity": 14.4,
-          "source": "17.3g of a crystalline solid containing 17.0g of methamphetamine hydrochloride (commonly known as “ice”)  and 14.40g of cannabis in herbal form."
+          "source": "The defendant was charged with trafficking in the 17.0 grammes of “Ice” and 14.4 grammes of herbal cannabis found inside the Flat"
         }
       ],
       "roles": [
         {
           "role": "Storekeeper",
-          "source": "Based on the summary of facts, the only reasonable inference is that the defendant was in possession of the dangerous drugs as a storekeeper, and he is to be sentenced as such."
+          "source": "identifying the applicant’s role as a “storekeeper”"
         }
       ],
       "aggravating_factors": [
         {
-          "factor": "Persistent offender",
-          "other_factor": null,
-          "enhancement": 6,
-          "source": "As such, I will enhance his sentence by 6 months on him being a persistent offender, taking the starting point up to 8 years’ imprisonment."
-        },
-        {
           "factor": "Multiple drugs",
           "other_factor": null,
           "enhancement": 1,
-          "source": "the fact that the defendant was trafficking in more than one type of dangerous drugs is an aggravating factor.  Given the relatively small quantity of herbal cannabis involved, I will enhance his sentence on this basis by 1 month, taking the total to 8 years and 1 month."
+          "source": "as trafficking in more than one type of drug was an aggravating factor, the judge enhanced the starting point by 1 month"
+        },
+        {
+          "factor": "Persistent offender",
+          "other_factor": null,
+          "enhancement": 6,
+          "source": "The judge further found the applicant to be a persistent offender, for which he enhanced the sentence by a further 6 months"
         }
       ],
       "mitigating_factors": [
@@ -47,7 +47,13 @@
           "factor": "Self-consumption",
           "other_factor": null,
           "reduction": null,
-          "source": "I find that the defendant should not be granted any reduction in sentence on the basis of a significant proportion of the dangerous drugs being for his self-consumption."
+          "source": "the contention that he consumed a significant portion of the drugs himself... Accordingly, he declined to give the applicant any reduction in sentence for this factor"
+        },
+        {
+          "factor": "Medical conditions",
+          "other_factor": null,
+          "reduction": null,
+          "source": "Acknowledging the applicant’s humble background and the difficulties he had encountered in life, including various health issues"
         }
       ],
       "guilty_plea": {
@@ -55,12 +61,12 @@
         "court_type": "High Court",
         "high_court_stage": "After dates fixed",
         "district_court_stage": null,
-        "source": "Trial dates were fixed on 21 August 2024... On 20 September 2024, the defendant’s solicitors wrote to inform the court that the defendant will plead guilty to the count. 4. The defendant did plead guilty on 22 January 2025"
+        "source": "the applicant later indicated that he would plead guilty shortly after trial dates were fixed in the High Court"
       },
       "starting_point": {
         "sentence_years": 7,
         "sentence_months": 6,
-        "source": "I adopt a starting point of 7 years and 6 months, being the arithmetical application of the tariff.",
+        "source": "adopted a starting point of 7½ years’ imprisonment for trafficking in 17.0 grammes of “Ice”",
         "total_months": 90
       },
       "sentence_after_role": {
@@ -72,7 +78,7 @@
       "notional_sentence": {
         "sentence_years": 8,
         "sentence_months": 1,
-        "source": "I will enhance his sentence by 6 months on him being a persistent offender, taking the starting point up to 8 years’ imprisonment. ... I will enhance his sentence on this basis by 1 month, taking the total to 8 years and 1 month.",
+        "source": "enhance the sentence accordingly... by 1 month, taking the total to 8 years and 1 month",
         "total_months": 97
       },
       "mitigation_reduction": null,
@@ -81,11 +87,11 @@
         "sentence_months": 1,
         "guilty_plea_reduction_years": 2,
         "guilty_plea_reduction_months": 0,
-        "source": "I find that the defendant should be granted a discount of about 25% for his plea, resulting in a post discount sentence of 73 months’ imprisonment... The defendant is sentenced to 6 years 1 month’s imprisonment.",
+        "source": "resulting in a sentence of 6 years and 1 month’s imprisonment",
         "total_months": 73,
         "guilty_plea_reduction_total_months": 24
       }
     }
   ],
-  "tracing_id": "8234bd6308e13a83e60a9452d9859ced"
+  "tracing_id": "98d567a6597cdc66e0a1a980a00ac497"
 }

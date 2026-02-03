@@ -4,7 +4,7 @@
       "defendant_id": 1,
       "defendant_name": {
         "name": "劉子健",
-        "source": "訴\n\n劉子健"
+        "source": "劉子健"
       },
       "nationality": null,
       "age_at_offence": null,
@@ -23,14 +23,14 @@
         "source": "育有兩子一女"
       },
       "household_composition": null,
-      "health_status": null,
+      "health_conditions": null,
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Upper",
         "source": "中四學歷"
       },
       "occupation": {
-        "occupation_category": "Clerical support worker",
+        "occupation_category": "Craft and related worker",
         "occupation_name": "倉務員",
         "source": "被捕時任職倉務員"
       },
@@ -41,14 +41,23 @@
           "source": "過往在2004年5月因提供虛假資料予海關，被罰款12,000元。"
         }
       ],
-      "positive_habits_after_arrest": null,
+      "positive_habits_after_arrest": [
+        {
+          "habit": "Participation in rehabilitation/self-improvement",
+          "source": "在被囚期間亦主動協助懲教員處理一切大小事務。"
+        }
+      ],
       "family_supports": [
         {
           "support": "Letters of support from family",
           "source": "辯方亦呈上五封求情信"
+        },
+        {
+          "support": "Other",
+          "source": "就牧師的信件而言亦指，被告沒有自怨自艾，沒有逃避，沒有推卸責任，以學習去面對自己，決心改過"
         }
       ]
     }
   ],
-  "tracing_id": "f0a9dd617ea07b72c7aea2d5f8ee5f8e"
+  "tracing_id": "54d38026c28b0c7d105fe443a93c352d"
 }

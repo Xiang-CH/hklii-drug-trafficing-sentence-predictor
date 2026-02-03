@@ -3,19 +3,19 @@
     {
       "defendant_id": 1,
       "defendant_name": {
-        "name": "Lau Kam Hung",
+        "name": "Lau Kam Hung (劉金洪)",
         "source": "Lau Kam Hung (劉金洪)"
       },
       "nationality": {
         "category": "Mainland Chinese",
         "hk_resident_status": null,
         "foreign_country_code": null,
-        "infer_reason": "Born in Guangzhou (Mainland China).",
+        "infer_reason": "Born in Guangzhou (Mainland China); birthplace indicates Mainland Chinese nationality",
         "source": "The defendant was born in Guangzhou in July 1956 and is 68."
       },
       "age_at_offence": {
         "age": 65,
-        "source": "The defendant was born in Guangzhou in July 1956 and is 68. Particulars of the offence are that the defendant on 2 April 2022, at room 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon, unlawfully trafficked in dangerous drugs, namely, 17.3g of a crystalline solid containing 17.0g of methamphetamine hydrochloride (commonly known as “ice”) and 14.40g of cannabis in herbal form."
+        "source": "The defendant was born in Guangzhou in July 1956 and is 68."
       },
       "age_at_sentencing": {
         "age": 68,
@@ -32,69 +32,85 @@
         "source": "The defendant contributes about RMB800 towards his daughter’s living expenses, who is 18 years old and studying nursing in Guangzhou."
       },
       "household_composition": null,
-      "health_status": {
-        "conditions": [
-          {
-            "name": "Cardiac disease",
-            "type": "Physical health",
-            "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps. He had undergone angioplasty procedure during his remand."
-          },
-          {
-            "name": "Diabetes",
-            "type": "Physical health",
-            "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps. He had undergone angioplasty procedure during his remand."
-          },
-          {
-            "name": "Kidney problems",
-            "type": "Physical health",
-            "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps. He had undergone angioplasty procedure during his remand."
-          },
-          {
-            "name": "Hernia",
-            "type": "Physical health",
-            "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps. He had undergone angioplasty procedure during his remand."
-          },
-          {
-            "name": "Polyps",
-            "type": "Physical health",
-            "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps. He had undergone angioplasty procedure during his remand."
-          },
-          {
-            "name": "Angioplasty (procedure undergone during remand)",
-            "type": "Physical health",
-            "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps. He had undergone angioplasty procedure during his remand."
-          }
-        ]
-      },
+      "health_conditions": [
+        {
+          "name": "Cardiac disease",
+          "type": "Physical health",
+          "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps."
+        },
+        {
+          "name": "Diabetes",
+          "type": "Physical health",
+          "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps."
+        },
+        {
+          "name": "Kidney problems",
+          "type": "Physical health",
+          "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps."
+        },
+        {
+          "name": "Hernia",
+          "type": "Physical health",
+          "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps."
+        },
+        {
+          "name": "Polyps",
+          "type": "Physical health",
+          "source": "The defendant suffers from cardiac disease, diabetes, kidney problems, hernia and polyps."
+        },
+        {
+          "name": "Angioplasty (procedure undergone)",
+          "type": "Physical health",
+          "source": "He had undergone angioplasty procedure during his remand."
+        },
+        {
+          "name": "Former drug abuse",
+          "type": "Drug addiction",
+          "source": "At the time of sentencing, the applicant was a former drug abuser aged 68, with 20 previous convictions, for which he has served more than 20 years in prison as follows"
+        }
+      ],
       "drug_treatment_participation": null,
       "education_level": null,
       "occupation": {
-        "occupation_category": "Unemployed",
-        "occupation_name": null,
-        "source": "The defendant was working as a construction site worker in 2015, earning around $30,000, when he suffered a hand injury forcing him to stop. His health had since deteriorated and had to rely on CSSA of $5,300 per month for his daily and medical expenses since 2017."
+        "occupation_category": "Craft and related worker",
+        "occupation_name": "construction site worker",
+        "source": "The defendant was working as a construction site worker in 2015, earning around $30,000, when he suffered a hand injury forcing him to stop."
       },
       "monthly_wage": {
-        "wage": 0,
-        "source": "The defendant was working as a construction site worker in 2015, earning around $30,000, when he suffered a hand injury forcing him to stop. His health had since deteriorated and had to rely on CSSA of $5,300 per month for his daily and medical expenses since 2017."
+        "wage": 5300,
+        "source": "had to rely on CSSA of $5,300 per month for his daily and medical expenses since 2017."
       },
       "criminal_records": [
         {
-          "record": "Dangerous drug offences",
-          "source": "His last conviction was on 2 October 2019, when he was sentenced to 18 months’ imprisonment for possession of dangerous drugs."
+          "record": "Other offences",
+          "source": "The defendant has 19 convictions from 6 court appearances. He was convicted in 1979 for 7 charges of theft, together with one of rape and one of robbery, and sentenced to a total of 9 years imprisonment."
         },
         {
           "record": "Other offences",
-          "source": "The defendant has 19 convictions from 6 court appearances. He was convicted in 1979 for 7 charges of theft, together with one of rape and one of robbery, and sentenced to a total of 9 years imprisonment."
+          "source": "His next convictions were for assault with intent to rob, indecent assault, and rape, and he was sentenced to a total of 12 years’ imprisonment."
+        },
+        {
+          "record": "Other offences",
+          "source": "In July 2008 convictions for assault occasioning actual bodily harm, criminal intimidation, and assaulting a police officer."
+        },
+        {
+          "record": "Dangerous drug offences",
+          "source": "His last conviction was on 2 October 2019, when he was sentenced to 18 months’ imprisonment for possession of dangerous drugs."
         }
       ],
-      "positive_habits_after_arrest": {
-        "habits": [
-          "Participation in rehabilitation/self-improvement"
-        ],
-        "source": "He has since quit his drug use and plans to be reunited with his daughter in the mainland upon release, and to never return to Hong Kong."
-      },
-      "family_supports": null
+      "positive_habits_after_arrest": [
+        {
+          "habit": "Participation in rehabilitation/self-improvement",
+          "source": "He has since quit his drug use and plans to be reunited with his daughter in the mainland upon release, and to never return to Hong Kong."
+        }
+      ],
+      "family_supports": [
+        {
+          "support": "Other",
+          "source": "The defendant contributes about RMB800 towards his daughter’s living expenses, who is 18 years old and studying nursing in Guangzhou."
+        }
+      ]
     }
   ],
-  "tracing_id": "afe0c91c6b775d55e828428bb3cf0f04"
+  "tracing_id": "3d5c3ac3377d19cc28f082c7b5b592c0"
 }

@@ -21,7 +21,7 @@
       "charge_name": "Trafficking in dangerous drugs",
       "offence_date": {
         "date": "2023-11-30",
-        "source": "The particulars of the charge are that the defendant on 30 November 2023, at Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories, unlawfully trafficked in dangerous drugs, namely, 112.35 grammes of a solid containing 85.63 grammes of cocaine and 211.16 grammes of a solid containing 170.37 grammes of ketamine.",
+        "source": "on 30 November 2023",
         "day_of_week": 4,
         "is_hk_public_holiday": false
       },
@@ -30,7 +30,7 @@
         "address": "Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories",
         "nature": "Residential building",
         "subDistrict": "Tsing Yi",
-        "source": "The particulars of the charge are that the defendant on 30 November 2023, at Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories, unlawfully trafficked in dangerous drugs, namely, 112.35 grammes of a solid containing 85.63 grammes of cocaine and 211.16 grammes of a solid containing 170.37 grammes of ketamine.",
+        "source": "at Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories",
         "district": "Kwai Tsing"
       },
       "cross_border": {
@@ -44,12 +44,16 @@
           "defendant_id": 1,
           "trafficking_mode": {
             "mode": "Courier delivery",
-            "source": "The defendant was arrested and he admitted packing and delivering drugs on instructions for monetary rewards."
+            "source": "he admitted packing and delivering drugs on instructions for monetary rewards."
           },
           "reasons_for_offence": [
             {
               "reason": "Financial gain",
               "source": "He could store some goods and make some deliveries for $16,000 a month."
+            },
+            {
+              "reason": "Economic hardship",
+              "source": "the COVID pandemic affected his employment and he was made redundant... at the time of his arrest, he was unemployed."
             },
             {
               "reason": "Coercion",
@@ -72,5 +76,5 @@
       "name": "Wong Man-kit"
     }
   ],
-  "tracing_id": "3ac88b1cc58a31e38fcde87f5b357337"
+  "tracing_id": "ac738cdf06f49c179ce457795e5ff414"
 }

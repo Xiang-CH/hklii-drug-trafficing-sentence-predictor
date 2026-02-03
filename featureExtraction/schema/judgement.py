@@ -101,10 +101,15 @@ class DateDetail(BaseModel):
 
     @computed_field
     @property
-    def day_of_week(self) -> int:
+    def day_of_week(self) -> int | List[int]:
         """Automatically computed day of the week from the date (1=Monday, 7=Sunday)."""
         if isinstance(self.date, list):
-            return self.date[0].weekday() + 1
+            current = self.date[0]
+            days = []
+            while current <= self.date[1]:
+                days.append(current.weekday() + 1)
+                current += timedelta(days=1)
+            return days
         return self.date.weekday() + 1
 
     @computed_field

@@ -13,33 +13,16 @@
           "drug_type": "Ketamine",
           "other_drug_type": null,
           "quantity": 105.0,
-          "source": "辯方亦再三表示不反對以推算出「160包」來計出105克作結...本席認為最終接納以105克作為判刑的事實基礎才是合適。"
+          "source": "經政府化驗所檢驗及證實：\n\n(i)  證物1為13個膠袋，載有內含8.54克氯胺酮的共10.3克固體（控罪三針對的部分毒品）；"
         }
       ],
       "roles": [
         {
           "role": "Courier",
-          "source": "案情指...一個叫“So Ken”的人叫第一被告人出售和派送毒品；"
-        },
-        {
-          "role": "Actual trafficker",
-          "source": "客人會聯絡第一被告人，雙方會協定數量及交收地點；\n第一被告人以每粒港幣350元出售毒品；"
+          "source": "“So Ken”會致電叫第一被告人拿取氯胺酮；\n(c)  第一被告人在新龍圍公廁外面的垃圾桶拿取40包氯胺酮；\n...\n(i)  客人會聯絡第一被告人，雙方會協定數量及交收地點；"
         }
       ],
-      "aggravating_factors": [
-        {
-          "factor": "Other",
-          "other_factor": "涉案有幕後主腦、活動有組織成份和部署",
-          "enhancement": null,
-          "source": "本案的嚴重處在於串謀販毒的罪行中必然涉及兩人之外，有幕後主腦存在相信是明顯不過。有人租下涉案單位，可見是次販毒活動有不少組織成份和部署。"
-        },
-        {
-          "factor": "Other",
-          "other_factor": "涉及「招認」推算毒品份量的不確定性（法庭最終仍採105克）",
-          "enhancement": null,
-          "source": "本席亦接納第一被告人所指，本案有其「不確定性」...本席認為最終接納以105克作為判刑的事實基礎才是合適。"
-        }
-      ],
+      "aggravating_factors": null,
       "mitigating_factors": [
         {
           "factor": "Young offender",
@@ -48,22 +31,22 @@
           "source": "以第一被告人而言，他現年只有18歲。"
         },
         {
-          "factor": "Assistance - limited",
+          "factor": "Assistance - useful",
           "other_factor": null,
           "reduction": 3,
-          "source": "就第一被告人的「招認」及指控第二被告人...本席就「招認」給予第一被告人3個月的減刑...所以將53個月下調至50個月。"
+          "source": "就第一被告人的「招認」及指控第二被告人，本席認為是2個減刑要素...本席就「招認」給予第一被告人3個月的減刑（即80個月之中的3.75%）便足夠。"
         },
         {
           "factor": "Assistance - useful",
           "other_factor": null,
           "reduction": 3,
-          "source": "另外，第一被告人供出第二被告人並導致警方可把第二被告人繩之於法...本席同意減刑3個月（同樣是3.75%）。"
+          "source": "另外，第一被告人供出第二被告人並導致警方可把第二被告人繩之於法...為此本席同意減刑3個月（同樣是3.75%）。"
         },
         {
           "factor": "Other",
-          "other_factor": "其他求情內容（鼓勵改過自新）",
+          "other_factor": "其他求情內容（鼓勵第一被告人改過自新）",
           "reduction": 3,
-          "source": "本席就其他求情內容給予3個月進一步減刑，以鼓勵第一被告人改過自新。"
+          "source": "本席就其他求情內容給予3個月進一步減刑，以鼓勵第一被告人改過自新.[1]"
         }
       ],
       "guilty_plea": {
@@ -88,12 +71,12 @@
       "notional_sentence": {
         "sentence_years": 6,
         "sentence_months": 8,
-        "source": "如上文所述...控罪三的適當的量刑起點便為80個月。",
+        "source": "如上文所述，以105克毒品份量而定，針對兩名被告人的控罪三的適當的量刑起點便為80個月。",
         "total_months": 80
       },
       "mitigation_reduction": {
         "reduction_months": 9,
-        "source": "本席就「招認」給予第一被告人3個月的減刑...本席同意減刑3個月...本席就其他求情內容給予3個月進一步減刑"
+        "source": "本席把第一被告人的80個月，下調約1/3至53個月以反映其認罪。\n\n就第一被告人的「招認」及指控第二被告人...本席就「招認」給予第一被告人3個月的減刑...所以將53個月下調至50個月。\n\n另外，第一被告人供出第二被告人...本席同意減刑3個月...\n\n本席就其他求情內容給予3個月進一步減刑..."
       },
       "final_sentence": {
         "sentence_years": 3,
@@ -118,33 +101,33 @@
           "drug_type": "Ketamine",
           "other_drug_type": null,
           "quantity": 105.0,
-          "source": "辯方亦再三表示不反對以推算出「160包」來計出105克作結...本席認為最終接納以105克作為判刑的事實基礎才是合適。"
+          "source": "以105克毒品份量而定，針對兩名被告人的控罪三的適當的量刑起點便為80個月。"
         }
       ],
       "roles": [
         {
-          "role": "Other",
-          "source": "第二被告人承認自己有中介人這個參與組織的角色。"
+          "role": "Manager/organizer",
+          "source": "第二被告人介紹第一被告人派送和出售毒品...第二被告人承認自己有中介人這個參與組織的角色。"
         }
       ],
       "aggravating_factors": [
         {
           "factor": "Use of minors",
           "other_factor": null,
-          "enhancement": 0,
+          "enhancement": null,
           "source": "本案明顯涉及利用年輕人犯案。...本席認為加刑起碼10%才足夠反映利用年青人的加刑因素。"
         },
         {
           "factor": "Role of the defendant",
           "other_factor": null,
-          "enhancement": 10,
-          "source": "至於第二被告人，本席以86個月作為基準以反映他與第一被告人角色上的不同。...綜合而言，一個90個月的綜合量刑基準才足以反映第二被告人的刑責。"
+          "enhancement": null,
+          "source": "第一與第二被告人的角色不同，本席認為合適的量刑起點應有6個月的分野。"
         }
       ],
       "mitigating_factors": [
         {
           "factor": "Other",
-          "other_factor": "家人及朋友對其正面評價及支持（酌情減刑）",
+          "other_factor": "家人及朋友對他的正面評價及支持",
           "reduction": 3,
           "source": "基於他的求情內容，特別是其家人及朋友對他的正面評價及支持，本席酌情減刑3個月至57個月。"
         }
@@ -163,10 +146,10 @@
         "total_months": 80
       },
       "sentence_after_role": {
-        "sentence_years": 6,
-        "sentence_months": 8,
-        "source": "Inferred as starting point since role adjustment not provided",
-        "total_months": 80
+        "sentence_years": 7,
+        "sentence_months": 6,
+        "source": "綜合而言，一個90個月的綜合量刑基準才足以反映第二被告人的刑責。",
+        "total_months": 90
       },
       "notional_sentence": {
         "sentence_years": 7,
@@ -176,14 +159,14 @@
       },
       "mitigation_reduction": {
         "reduction_months": 3,
-        "source": "基於他的求情內容...本席酌情減刑3個月至57個月。"
+        "source": "基於他的求情內容，特別是其家人及朋友對他的正面評價及支持，本席酌情減刑3個月至57個月。"
       },
       "final_sentence": {
         "sentence_years": 4,
         "sentence_months": 9,
         "guilty_plea_reduction_years": 2,
         "guilty_plea_reduction_months": 6,
-        "source": "經小心考慮後...他的認罪，可把判刑下調至60個月...酌情減刑3個月至57個月。",
+        "source": "經小心考慮後，本席認為...一個90個月的綜合量刑基準...他的認罪，可把判刑下調至60個月...減刑3個月至57個月。",
         "total_months": 57,
         "guilty_plea_reduction_total_months": 30
       }
@@ -194,67 +177,7 @@
         "type": "Actual Trafficking",
         "defendant_name": "黃鈺庭",
         "defendant_id": 1,
-        "source": "控罪一是有關他販運8.54克氯胺酮"
-      },
-      "drugs": [
-        {
-          "drug_type": "Ketamine",
-          "other_drug_type": null,
-          "quantity": 8.54,
-          "source": "本案涉及兩名被告人，第一被告人原本面對三項控罪：控罪一是有關他販運8.54克氯胺酮"
-        }
-      ],
-      "roles": [
-        {
-          "role": "Other",
-          "source": "控罪一是有關他販運8.54克氯胺酮"
-        }
-      ],
-      "aggravating_factors": null,
-      "mitigating_factors": null,
-      "guilty_plea": {
-        "pleaded_guilty": false,
-        "court_type": null,
-        "high_court_stage": null,
-        "district_court_stage": null,
-        "source": "控方人員專業及公正地決定不會就控罪一提出檢控。"
-      },
-      "starting_point": {
-        "sentence_years": 3,
-        "sentence_months": 7,
-        "source": "獨立來看，原本控罪一涉案8.54克氯胺酮。根據Hii Siew Cheng一案，量刑起點應為43個月。",
-        "total_months": 43
-      },
-      "sentence_after_role": {
-        "sentence_years": 3,
-        "sentence_months": 7,
-        "source": "Inferred as starting point since role adjustment not provided",
-        "total_months": 43
-      },
-      "notional_sentence": {
-        "sentence_years": 3,
-        "sentence_months": 7,
-        "source": "獨立來看，原本控罪一涉案8.54克氯胺酮...量刑起點應為43個月。",
-        "total_months": 43
-      },
-      "mitigation_reduction": null,
-      "final_sentence": {
-        "sentence_years": 3,
-        "sentence_months": 7,
-        "guilty_plea_reduction_years": null,
-        "guilty_plea_reduction_months": null,
-        "source": "控方人員專業及公正地決定不會就控罪一提出檢控。",
-        "total_months": 43,
-        "guilty_plea_reduction_total_months": null
-      }
-    },
-    {
-      "charge_type": {
-        "charge_no": 2,
-        "type": "Actual Trafficking",
-        "defendant_name": "黃鈺庭",
-        "defendant_id": 1,
-        "source": "控罪三是有關他與第二被告人串謀干犯販運危險藥物罪，當中所指的涉案毒品還包括控罪一中針對第一被告人的那部分的氯胺酮。"
+        "source": "控罪二有關第一被告人管有0.34克氯胺酮"
       },
       "drugs": [
         {
@@ -264,17 +187,12 @@
           "source": "證物2為一個膠盒，載有內含0.34克氯胺酮的0.42克固體（控罪二）。"
         }
       ],
-      "roles": [
-        {
-          "role": "Other",
-          "source": "控罪二有關第一被告人管有0.34克氯胺酮"
-        }
-      ],
+      "roles": [],
       "aggravating_factors": null,
       "mitigating_factors": [
         {
           "factor": "Other",
-          "other_factor": "同樣適用的部分求情因素",
+          "other_factor": "按比例就同樣適用的部分求情因素",
           "reduction": 1,
           "source": "合適的量刑起點定為6個月，因認罪，減至4個月，亦按比例就同樣適用的部分求情因素減刑1個月。"
         }
@@ -306,7 +224,7 @@
       },
       "mitigation_reduction": {
         "reduction_months": 1,
-        "source": "亦按比例就同樣適用的部分求情因素減刑1個月。"
+        "source": "合適的量刑起點定為6個月，因認罪，減至4個月，亦按比例就同樣適用的部分求情因素減刑1個月。"
       },
       "final_sentence": {
         "sentence_years": 0,
@@ -317,7 +235,62 @@
         "total_months": 3,
         "guilty_plea_reduction_total_months": 2
       }
+    },
+    {
+      "charge_type": {
+        "charge_no": 3,
+        "type": "Actual Trafficking",
+        "defendant_name": "黃鈺庭",
+        "defendant_id": 1,
+        "source": "第一被告人原本面對三項控罪：控罪一是有關他販運8.54克氯胺酮"
+      },
+      "drugs": [
+        {
+          "drug_type": "Ketamine",
+          "other_drug_type": null,
+          "quantity": 8.54,
+          "source": "第一被告人原本面對三項控罪：控罪一是有關他販運8.54克氯胺酮"
+        }
+      ],
+      "roles": [],
+      "aggravating_factors": null,
+      "mitigating_factors": null,
+      "guilty_plea": {
+        "pleaded_guilty": false,
+        "court_type": null,
+        "high_court_stage": null,
+        "district_court_stage": null,
+        "source": "控方人員專業及公正地決定不會就控罪一提出檢控。"
+      },
+      "starting_point": {
+        "sentence_years": 3,
+        "sentence_months": 7,
+        "source": "獨立來看，原本控罪一涉案8.54克氯胺酮。根據Hii Siew Cheng一案，量刑起點應為43個月。",
+        "total_months": 43
+      },
+      "sentence_after_role": {
+        "sentence_years": 3,
+        "sentence_months": 7,
+        "source": "Inferred as starting point since role adjustment not provided",
+        "total_months": 43
+      },
+      "notional_sentence": {
+        "sentence_years": 3,
+        "sentence_months": 7,
+        "source": "獨立來看，原本控罪一涉案8.54克氯胺酮。根據Hii Siew Cheng一案，量刑起點應為43個月。",
+        "total_months": 43
+      },
+      "mitigation_reduction": null,
+      "final_sentence": {
+        "sentence_years": 0,
+        "sentence_months": 0,
+        "guilty_plea_reduction_years": null,
+        "guilty_plea_reduction_months": null,
+        "source": "控方人員專業及公正地決定不會就控罪一提出檢控。",
+        "total_months": 0,
+        "guilty_plea_reduction_total_months": null
+      }
     }
   ],
-  "tracing_id": "e3185f92210dc9799d69c243a39dd1c8"
+  "tracing_id": "4543540e7286e3799e02a4d412e06d7c"
 }

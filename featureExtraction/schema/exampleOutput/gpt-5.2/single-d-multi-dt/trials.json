@@ -38,7 +38,7 @@
       "starting_point": {
         "sentence_years": 15,
         "sentence_months": 0,
-        "source": "因此，考慮所有上述情節，就首項控罪可予15年監禁為量刑起點",
+        "source": "因此，考慮所有上述情節，就首項控罪可予15年監禁為量刑起點，認罪後減為10年監禁；",
         "total_months": 180
       },
       "sentence_after_role": {
@@ -50,7 +50,7 @@
       "notional_sentence": {
         "sentence_years": 15,
         "sentence_months": 0,
-        "source": "因此，考慮所有上述情節，就首項控罪可予15年監禁為量刑起點",
+        "source": "因此，考慮所有上述情節，就首項控罪可予15年監禁為量刑起點，認罪後減為10年監禁；",
         "total_months": 180
       },
       "mitigation_reduction": null,
@@ -108,7 +108,7 @@
       "starting_point": {
         "sentence_years": 33,
         "sentence_months": 0,
-        "source": "次項控罪則以33年監禁為量刑起點",
+        "source": "次項控罪則以33年監禁為量刑起點，認罪後減為22年監禁。",
         "total_months": 396
       },
       "sentence_after_role": {
@@ -120,7 +120,7 @@
       "notional_sentence": {
         "sentence_years": 33,
         "sentence_months": 0,
-        "source": "次項控罪則以33年監禁為量刑起點",
+        "source": "次項控罪則以33年監禁為量刑起點，認罪後減為22年監禁。",
         "total_months": 396
       },
       "mitigation_reduction": null,
@@ -135,5 +135,5 @@
       }
     }
   ],
-  "tracing_id": "f0a9dd617ea07b72c7aea2d5f8ee5f8e"
+  "tracing_id": "54d38026c28b0c7d105fe443a93c352d"
 }

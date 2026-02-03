@@ -29,21 +29,53 @@
           "2022-12-27"
         ],
         "source": "on an unknown date between December 2022 and the 27th day of December 2022",
-        "day_of_week": 4,
+        "day_of_week": [
+          4,
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          1,
+          2
+        ],
         "is_hk_public_holiday": true
       },
-      "offence_time": null,
+      "offence_time": {
+        "time": "01:20:00+08:00",
+        "source": "at about 1.20 am on 27 December 2022",
+        "time_of_day": "night"
+      },
       "place_of_offence": {
         "address": "Room 606D, Block B, Yau Tong Industrial City in Kwun Tong",
         "nature": "Industrial building",
         "subDistrict": "Yau Tong",
-        "source": "at about 1.20 am on 27 December 2022, the police arrived at Room 606D, Block B, Yau Tong Industrial City in Kwun Tong",
+        "source": "the police arrived at Room 606D, Block B, Yau Tong Industrial City in Kwun Tong",
         "district": "Kwun Tong"
       },
       "cross_border": {
         "cross_border": false,
         "type": null,
-        "source": "in a room in Yau Tong, they conspired to unlawfully traffic in cocaine"
+        "source": "in a room in Yau Tong, they conspired to unlawfully traffic in cocaine."
       },
       "defendants_of_charge": [
         {
@@ -51,30 +83,22 @@
           "defendant_id": 1,
           "trafficking_mode": {
             "mode": "Courier delivery",
-            "source": "Counsel said that his role was more like a courier taking the drug from the Lei Yue Mun Plaza back to the room."
+            "source": "his role was more like a courier taking the drug from the Lei Yue Mun Plaza back to the room"
           },
           "reasons_for_offence": [
             {
               "reason": "Economic hardship",
               "source": "Because the 1st defendant was indebted so he agreed."
-            },
-            {
-              "reason": "Financial gain",
-              "source": "Counsel said he committed the present offence to earn quick money."
             }
           ],
-          "benefits_received": {
-            "received": false,
-            "amount": null,
-            "source": "The acquaintance said that he would be remunerated afterwards."
-          }
+          "benefits_received": null
         },
         {
           "defendant_name": "Hong Ka-ming (康家銘) (A2)",
           "defendant_id": 2,
           "trafficking_mode": {
             "mode": "Drug repackaging or storage",
-            "source": "Police enquiry also revealed that in late December 2022, the 2nd defendant signed a tenancy agreement to rent the room..."
+            "source": "the 2nd defendant signed a tenancy agreement to rent the room ... At all material times, 1st defendant and the 2nd defendant conspired together to unlawfully traffic in cocaine."
           },
           "reasons_for_offence": null,
           "benefits_received": null
@@ -93,5 +117,5 @@
       "name": "Hong Ka-ming (康家銘) (A2)"
     }
   ],
-  "tracing_id": "7dae97f86f8b9c3042e1fdd95cfced0c"
+  "tracing_id": "d9e183b2f10a33c4ed1c776ac70aab0d"
 }

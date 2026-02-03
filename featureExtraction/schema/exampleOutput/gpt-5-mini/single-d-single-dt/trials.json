@@ -6,7 +6,7 @@
         "type": "Actual Trafficking",
         "defendant_name": "Wong Man-kit",
         "defendant_id": 1,
-        "source": "The defendant pleaded guilty to one count of trafficking in dangerous drugs on 20 February 2025."
+        "source": "Offence:  \nTrafficking in dangerous drugs (販運危險藥物)"
       },
       "drugs": [
         {
@@ -44,19 +44,19 @@
       "starting_point": {
         "sentence_years": 10,
         "sentence_months": 0,
-        "source": "I find the mathematical starting point of 10 years’ imprisonment appropriate in this case.",
+        "source": "I am satisfied that the role of the defendant is one of storekeeper and courier. I find the mathematical starting point of 10 years’ imprisonment appropriate in this case.",
         "total_months": 120
       },
       "sentence_after_role": {
         "sentence_years": 10,
         "sentence_months": 0,
-        "source": "Inferred as starting point since role adjustment not provided",
+        "source": "I am satisfied that the role of the defendant is one of storekeeper and courier. I find the mathematical starting point of 10 years’ imprisonment appropriate in this case.",
         "total_months": 120
       },
       "notional_sentence": {
         "sentence_years": 10,
         "sentence_months": 0,
-        "source": "I find the mathematical starting point of 10 years’ imprisonment appropriate in this case.",
+        "source": "I am satisfied that the role of the defendant is one of storekeeper and courier. I find the mathematical starting point of 10 years’ imprisonment appropriate in this case.",
         "total_months": 120
       },
       "mitigation_reduction": null,
@@ -65,11 +65,11 @@
         "sentence_months": 8,
         "guilty_plea_reduction_years": 3,
         "guilty_plea_reduction_months": 4,
-        "source": "Accordingly, the defendant is sentenced to a total of 6 years and 8 months’ imprisonment.",
+        "source": "The defendant pleaded guilty at the earliest opportunity and is entitled to a full one-third discount. I will take the starting point of 10 years and reduce it by one-third. The defendant is sentenced to a total of 6 years and 8 months’ imprisonment.",
         "total_months": 80,
         "guilty_plea_reduction_total_months": 40
       }
     }
   ],
-  "tracing_id": "3ac88b1cc58a31e38fcde87f5b357337"
+  "tracing_id": "ac738cdf06f49c179ce457795e5ff414"
 }

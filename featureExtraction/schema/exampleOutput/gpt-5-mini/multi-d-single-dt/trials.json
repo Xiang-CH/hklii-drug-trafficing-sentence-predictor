@@ -13,7 +13,7 @@
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 31.4,
-          "source": "the police found a paper wrapping containing two plastic bags containing a total of 42 grammes of a solid containing 31.4 grammes of cocaine narcotic."
+          "source": "the police found a paper wrapping containing two plastic bags containing a total of 42 grammes of a solid containing 31.4 grammes of cocaine narcotic. This is Exhibit E1."
         }
       ],
       "roles": [
@@ -27,8 +27,8 @@
         {
           "factor": "Assistance - useful",
           "other_factor": null,
-          "reduction": 3,
-          "source": "the prosecution confirmed that as a result of checking or enquiry of that telephone number, they identified a certain person and eventually, about 152.26 grammes of cocaine was found at that person’s home."
+          "reduction": null,
+          "source": "I am agreeable to give him a slight further discount for the information provided to the police. So he would be entitled to 36 per cent discount in total including his assistance and also his plea of guilty."
         }
       ],
       "guilty_plea": {
@@ -56,18 +56,15 @@
         "source": "So for 31.4 grammes of cocaine narcotics, on a mathematical calculation, the starting point would be one of 6 years and 7 months’ imprisonment.",
         "total_months": 79
       },
-      "mitigation_reduction": {
-        "reduction_months": 3,
-        "source": "So he would be entitled to 36 per cent discount in total including his assistance and also his plea of guilty. The resulting sentence for the 1st defendant is 4 years and 2 months’ imprisonment."
-      },
+      "mitigation_reduction": null,
       "final_sentence": {
         "sentence_years": 4,
         "sentence_months": 2,
-        "guilty_plea_reduction_years": 2,
-        "guilty_plea_reduction_months": 2,
+        "guilty_plea_reduction_years": null,
+        "guilty_plea_reduction_months": null,
         "source": "So he would be entitled to 36 per cent discount in total including his assistance and also his plea of guilty. The resulting sentence for the 1st defendant is 4 years and 2 months’ imprisonment.",
         "total_months": 50,
-        "guilty_plea_reduction_total_months": 26
+        "guilty_plea_reduction_total_months": null
       }
     },
     {
@@ -83,13 +80,13 @@
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 31.4,
-          "source": "the police found a paper wrapping containing two plastic bags containing a total of 42 grammes of a solid containing 31.4 grammes of cocaine narcotic."
+          "source": "the police found a paper wrapping containing two plastic bags containing a total of 42 grammes of a solid containing 31.4 grammes of cocaine narcotic. This is Exhibit E1."
         }
       ],
       "roles": [
         {
           "role": "Storekeeper",
-          "source": "he had signed a tenancy agreement to rent the room at the monthly rental of $4,800 for a period of two years from 28 December 2022."
+          "source": "he had rented the room and did not lock it, apparently for the purpose of allowing others to use it whenever they wanted."
         }
       ],
       "aggravating_factors": null,
@@ -98,7 +95,7 @@
           "factor": "Medical conditions",
           "other_factor": null,
           "reduction": 1,
-          "source": "In his mitigation, counsel for the 2nd defendant Mr Clement Lau informed this court that he has a long history of mental illness."
+          "source": "I would take that into account as a matter of leniency and grant him a further discount of 1 month."
         }
       ],
       "guilty_plea": {
@@ -128,7 +125,7 @@
       },
       "mitigation_reduction": {
         "reduction_months": 1,
-        "source": "I would take that into account as a matter of leniency and grant him a further discount of 1 month. So the sentence in respect of the 2nd defendant is 4 years and 4 months’ imprisonment."
+        "source": "I would take that into account as a matter of leniency and grant him a further discount of 1 month."
       },
       "final_sentence": {
         "sentence_years": 4,
@@ -141,5 +138,5 @@
       }
     }
   ],
-  "tracing_id": "065936cc47e045741d0d51b47ba6bd45"
+  "tracing_id": "5212478f8180691e72a755d99b30716c"
 }

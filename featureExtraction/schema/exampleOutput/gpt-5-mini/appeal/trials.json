@@ -4,28 +4,28 @@
       "charge_type": {
         "charge_no": 1,
         "type": "Actual Trafficking",
-        "defendant_name": "Lau Kam Hung",
+        "defendant_name": "LAU Kam-hung (劉金洪)",
         "defendant_id": 1,
-        "source": "Having pleaded not guilty before a magistrate at his committal on 11 April 2024 to one count of trafficking in dangerous drugs, contrary to section 4(1)(a) and (3) of the Dangerous Drugs Ordinance, Cap 134, the applicant later indicated that he would plead guilty shortly after trial dates were fixed in the High Court."
+        "source": "pleaded not guilty before a magistrate at his committal on 11 April 2024 to one count of trafficking in dangerous drugs, contrary to section 4(1)(a) and (3) of the Dangerous Drugs Ordinance, Cap 134"
       },
       "drugs": [
         {
           "drug_type": "Methamphetamine",
           "other_drug_type": null,
           "quantity": 17.0,
-          "source": "The applicant was charged with trafficking in 17.0 grammes of “Ice” and 14.4 grammes of herbal cannabis found inside the Flat, the street value of which was HK$9,895.60 and HK$2,621 respectively."
+          "source": "4 resealable plastic bags containing a total of 17.3g of a crystalline solid containing 17.0g of methamphetamine hydrochloride (commonly known as “ice”)"
         },
         {
           "drug_type": "Cannabis",
           "other_drug_type": null,
           "quantity": 14.4,
-          "source": "The applicant was charged with trafficking in 17.0 grammes of “Ice” and 14.4 grammes of herbal cannabis found inside the Flat, the street value of which was HK$9,895.60 and HK$2,621 respectively."
+          "source": "3 re-sealable plastic bags were found from a pouch on the bedside desk, with 3 resealable plastic bags containing 14.4 grammes of cannabis in herbal form"
         }
       ],
       "roles": [
         {
           "role": "Storekeeper",
-          "source": "Based on the summary of facts, the only reasonable inference is that the defendant was in possession of the dangerous drugs as a storekeeper."
+          "source": "Based on the summary of facts, the only reasonable inference is that the defendant was in possession of the dangerous drugs as a storekeeper"
         }
       ],
       "aggravating_factors": [
@@ -33,52 +33,68 @@
           "factor": "Multiple drugs",
           "other_factor": null,
           "enhancement": 1,
-          "source": "Furthermore, as mentioned above, the fact that the defendant was trafficking in more than one type of dangerous drugs is an aggravating factor. Given the relatively small quantity of herbal cannabis involved, I will enhance his sentence on this basis by 1 month, taking the total to 8 years and 1 month."
+          "source": "trafficking in more than one type of dangerous drugs was an aggravating factor, the judge enhanced the starting point by 1 month"
         },
         {
           "factor": "Persistent offender",
           "other_factor": null,
           "enhancement": 6,
-          "source": "The defendant has a number of convictions for very serious offences. Although this is his first conviction for trafficking in dangerous drugs, and his only other drug related conviction was in 2019 for simple possession, I find that I must place more weight on the need to deter the defendant from committing further offences in the future when sentencing. As such, I will enhance his sentence by 6 months on him being a persistent offender, taking the starting point up to 8 years' imprisonment."
+          "source": "The defendant has a number of convictions for very serious offences... I find that I must place more weight on the need to deter the defendant from committing further offences in the future when sentencing... I will enhance his sentence by 6 months on him being a persistent offender"
         }
       ],
-      "mitigating_factors": null,
+      "mitigating_factors": [
+        {
+          "factor": "Self-consumption",
+          "other_factor": null,
+          "reduction": null,
+          "source": "the contention that he consumed a significant portion of the drugs himself... the judge found the claim to be unsubstantiated, indeed contradicted by the evidence. Accordingly, he declined to give the applicant any reduction in sentence for this factor"
+        },
+        {
+          "factor": "Medical conditions",
+          "other_factor": null,
+          "reduction": null,
+          "source": "Acknowledging the applicant’s humble background and the difficulties he had encountered in life, including various health issues, the judge dealt with the major aspect of mitigation"
+        }
+      ],
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "High Court",
         "high_court_stage": "After dates fixed",
         "district_court_stage": null,
-        "source": "Here the defendant indicated through his solicitors his intention to plead guilty about 1 month after the trial dates were fixed. The defendant did plead guilty on 22 January 2025, admitted to the summary of facts, and was duly convicted."
+        "source": "On 20 September 2024, the defendant’s solicitors wrote to inform the court that the defendant will plead guilty to the count. The defendant did plead guilty on 22 January 2025, admitted to the summary of facts, and was duly convicted."
       },
       "starting_point": {
         "sentence_years": 7,
         "sentence_months": 6,
-        "source": "Step 3: Based on my finding of the defendant’s role and culpability, I adopt a starting point of 7 years and 6 months, being the arithmetical application of the tariff.",
+        "source": "I adopt a starting point of 7 years and 6 months, being the arithmetical application of the tariff.",
         "total_months": 90
       },
       "sentence_after_role": {
         "sentence_years": 7,
         "sentence_months": 6,
-        "source": "Inferred as starting point since role adjustment not provided",
+        "source": "Based on my finding of the defendant’s role and culpability, I adopt a starting point of 7 years and 6 months",
         "total_months": 90
       },
       "notional_sentence": {
         "sentence_years": 8,
         "sentence_months": 1,
-        "source": "The defendant has a number of convictions for very serious offences ... I will enhance his sentence by 6 months on him being a persistent offender, taking the starting point up to 8 years' imprisonment. Furthermore ... I will enhance his sentence on this basis by 1 month, taking the total to 8 years and 1 month.",
+        "source": "I will enhance his sentence by 6 months on him being a persistent offender... I will enhance his sentence on this basis by 1 month, taking the total to 8 years and 1 month.",
         "total_months": 97
       },
-      "mitigation_reduction": null,
+      "mitigation_reduction": {
+        "reduction_months": 0,
+        "source": "I find that there are no mitigating factors that would justify a reduction in sentence apart from the defendant’s plea of guilty."
+      },
       "final_sentence": {
         "sentence_years": 6,
         "sentence_months": 1,
         "guilty_plea_reduction_years": 2,
         "guilty_plea_reduction_months": 0,
-        "source": "I find that the defendant should be granted a discount of about 25% for his plea, resulting in a post discount sentence of 73 months' imprisonment. The defendant is sentenced to 6 years 1 month's imprisonment.",
+        "source": "I find that the defendant should be granted a discount of about 25% for his plea, resulting in a post discount sentence of 73 months’ imprisonment. The defendant is sentenced to 6 years 1 month’s imprisonment.",
         "total_months": 73,
         "guilty_plea_reduction_total_months": 24
       }
     }
   ],
-  "tracing_id": "afe0c91c6b775d55e828428bb3cf0f04"
+  "tracing_id": "3d5c3ac3377d19cc28f082c7b5b592c0"
 }

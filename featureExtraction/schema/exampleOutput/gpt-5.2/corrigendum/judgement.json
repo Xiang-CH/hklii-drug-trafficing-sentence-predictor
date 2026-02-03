@@ -4,15 +4,15 @@
   "judgment_date_time": "2025-04-30T12:17:00+08:00",
   "representatives": [
     {
-      "name": "伍宇鍔",
+      "name": "伍宇鍔先生",
       "role": "為外聘律師，代表香港特別行政區"
     },
     {
-      "name": "馬明俊",
+      "name": "馬明俊先生",
       "role": "由法律援助署委派的柯玉華律師事務所延聘，代表第一被告人"
     },
     {
-      "name": "陳文輝",
+      "name": "陳文輝先生",
       "role": "由鄧卓熹黃汝仲律師行延聘，代表第二被告人"
     }
   ],
@@ -23,28 +23,13 @@
     {
       "charge_no": 1,
       "charge_name": "Conspiracy to traffic in a dangerous drug",
-      "offence_date": {
-        "date": "2024-01-30",
-        "source": "2024年1月30日上午9時45分左右",
-        "day_of_week": 2,
-        "is_hk_public_holiday": false
-      },
-      "offence_time": {
-        "time": "10:46:00+08:00",
-        "source": "於同日上午10時46分左右",
-        "time_of_day": "morning"
-      },
-      "place_of_offence": {
-        "address": "大埔區一帶；第一被告人住所",
-        "nature": "Residential building",
-        "subDistrict": "Tai Po",
-        "source": "2024年1月30日上午9時45分左右，警方在大埔區一帶展開反罪惡巡邏。於同日上午10時46分左右，警員見到第一被告人離開一幢大廈...經初步查問後，警員帶第一被告人到其住所進一步調查。",
-        "district": "Tai Po"
-      },
+      "offence_date": null,
+      "offence_time": null,
+      "place_of_offence": null,
       "cross_border": {
         "cross_border": false,
         "type": null,
-        "source": "案情指，2024年1月30日上午9時45分左右，警方在大埔區一帶展開反罪惡巡邏。"
+        "source": "而第一及第二被告人則一同串謀非法販運危險藥物，即包括證物1的氯胺酮（控罪三）。"
       },
       "defendants_of_charge": [
         {
@@ -52,22 +37,22 @@
           "defendant_id": 1,
           "trafficking_mode": {
             "mode": "Courier delivery",
-            "source": "一個叫“So Ken”的人叫第一被告人出售和派送毒品；...客人會聯絡第一被告人，雙方會協定數量及交收地點；"
+            "source": "一個叫“So Ken”的人叫第一被告人出售和派送毒品；… 客人會聯絡第一被告人，雙方會協定數量及交收地點；"
           },
           "reasons_for_offence": [
             {
               "reason": "Economic hardship",
-              "source": "辯方解釋，案發時第一被告人因為失業而借故外出消遣"
+              "source": "辯方解釋，案發時第一被告人因為失業…"
             },
             {
               "reason": "Financial gain",
-              "source": "他結識了第二被告人，亦從對方口中知道了幫忙出售及派送氯胺酮可以賺取金錢的門路。"
+              "source": "亦從對方口中知道了幫忙出售及派送氯胺酮可以賺取金錢的門路。"
             }
           ],
           "benefits_received": {
             "received": true,
             "amount": 4000.0,
-            "source": "其中港幣10,000元交給“So Ken”，第一被告人保留港幣4,000元；"
+            "source": "第一被告人保留港幣4,000元；"
           }
         },
         {
@@ -75,14 +60,9 @@
           "defendant_id": 2,
           "trafficking_mode": {
             "mode": "Other",
-            "source": "第二被告人介紹第一被告人派送和出售毒品"
+            "source": "第二被告人承認自己有中介人這個參與組織的角色。"
           },
-          "reasons_for_offence": [
-            {
-              "reason": "Financial gain",
-              "source": "第二被告人介紹第一被告人派送和出售毒品，因為第一被告人想賺多些錢；"
-            }
-          ],
+          "reasons_for_offence": null,
           "benefits_received": {
             "received": true,
             "amount": 4000.0,
@@ -94,47 +74,60 @@
     {
       "charge_no": 2,
       "charge_name": "Trafficking in a dangerous drug",
-      "offence_date": {
-        "date": "2024-01-30",
-        "source": "2024年1月30日上午9時45分左右",
-        "day_of_week": 2,
-        "is_hk_public_holiday": false
-      },
-      "offence_time": {
-        "time": "10:46:00+08:00",
-        "source": "於同日上午10時46分左右",
-        "time_of_day": "morning"
-      },
-      "place_of_offence": {
-        "address": "第一被告人住所",
-        "nature": "Residential building",
-        "subDistrict": "Tai Po",
-        "source": "經初步查問後，警員帶第一被告人到其住所進一步調查。他們抵達後發現...警方進一步搜查，發現一個灰色盒，載有懷疑危險藥物（“證物2”）。",
-        "district": "Tai Po"
-      },
+      "offence_date": null,
+      "offence_time": null,
+      "place_of_offence": null,
       "cross_border": {
         "cross_border": false,
         "type": null,
-        "source": "2024年1月30日上午9時45分左右，警方在大埔區一帶展開反罪惡巡邏。"
+        "source": "本案涉及兩名被告人…控罪一是有關他販運8.54克氯胺酮…控方人員…決定不會就控罪一提出檢控。"
       },
       "defendants_of_charge": [
         {
           "defendant_name": "黃鈺庭",
           "defendant_id": 1,
           "trafficking_mode": null,
-          "reasons_for_offence": [
-            {
-              "reason": "Addiction-driven",
-              "source": "他表示管有該些毒品自用"
-            },
-            {
-              "reason": "Economic hardship",
-              "source": "案發時第一被告人因為失業而借故外出消遣，繼而開始吸食氯胺酮。"
-            }
-          ],
+          "reasons_for_offence": null,
           "benefits_received": null
         }
       ]
+    },
+    {
+      "charge_no": 3,
+      "charge_name": "Trafficking in a dangerous drug",
+      "offence_date": null,
+      "offence_time": null,
+      "place_of_offence": null,
+      "cross_border": {
+        "cross_border": false,
+        "type": null,
+        "source": "他表示管有該些毒品自用，又說“食唔曬就會拎出去賣”。"
+      },
+      "defendants_of_charge": [
+        {
+          "defendant_name": "黃鈺庭",
+          "defendant_id": 1,
+          "trafficking_mode": {
+            "mode": "Drug repackaging or storage",
+            "source": "第一被告人住所房內床邊有一個可再封口透明膠袋，內有13個可再封口透明膠袋（“證物1”）。"
+          },
+          "reasons_for_offence": null,
+          "benefits_received": null
+        }
+      ]
+    },
+    {
+      "charge_no": 4,
+      "charge_name": "Trafficking in dangerous drugs",
+      "offence_date": null,
+      "offence_time": null,
+      "place_of_offence": null,
+      "cross_border": {
+        "cross_border": false,
+        "type": null,
+        "source": "控罪:  [2] 管有危險藥物 (Possession of a dangerous drug)  [3] 串謀販運危險藥物 (Conspiracy to traffic in a dangerous drug)"
+      },
+      "defendants_of_charge": []
     }
   ],
   "court": "HKDC",
@@ -148,5 +141,5 @@
       "name": "蘇偉強"
     }
   ],
-  "tracing_id": "e3185f92210dc9799d69c243a39dd1c8"
+  "tracing_id": "4543540e7286e3799e02a4d412e06d7c"
 }

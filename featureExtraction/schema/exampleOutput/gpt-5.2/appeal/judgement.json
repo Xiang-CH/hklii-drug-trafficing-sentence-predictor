@@ -1,6 +1,6 @@
 {
   "neutral_citation": "[2025] HKCA 943",
-  "judge_name": "Macrae VP",
+  "judge_name": "Hon Macrae VP",
   "judgment_date_time": "2025-10-17T00:00:00+08:00",
   "representatives": [
     {
@@ -22,20 +22,20 @@
       "charge_name": "Trafficking in dangerous drugs",
       "offence_date": {
         "date": "2022-04-02",
-        "source": "in the evening of 2 April 2022",
+        "source": "In the evening of 2 April 2022",
         "day_of_week": 6,
         "is_hk_public_holiday": false
       },
       "offence_time": {
         "time": "20:30:00+08:00",
-        "source": "at around 8:30pm",
+        "source": "laying ambush at a staircase on the 21st floor at around 8:30pm",
         "time_of_day": "evening"
       },
       "place_of_offence": {
         "address": "room 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon",
         "nature": "Residential building",
         "subDistrict": "Tai Kok Tsui",
-        "source": "at room 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon",
+        "source": "the defendant on 2 April 2022, at room 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon",
         "district": "Yau Tsim Mong"
       },
       "cross_border": {
@@ -49,12 +49,12 @@
           "defendant_id": 1,
           "trafficking_mode": {
             "mode": "Drug repackaging or storage",
-            "source": "from a metal box on a table, (a)  4 resealable plastic bags containing a total of 17.3g ... (b)  An electronic scale, (c)  a resealable plastic bag containing multiple smaller resealable plastic bags"
+            "source": "from a metal box on a table, (a)  4 resealable plastic bags ... (b)  An electronic scale, (c)  a resealable plastic bag containing multiple smaller resealable plastic bags"
           },
           "reasons_for_offence": [
             {
               "reason": "Economic hardship",
-              "source": "turning to gambling, which led to debts, which in turn resulted in his commission of the previous offences."
+              "source": "the difficulties he faced as a young immigrant contributed to him turning to gambling, which led to debts"
             },
             {
               "reason": "Addiction-driven",
@@ -73,5 +73,5 @@
       "name": "Lau Kam Hung (劉金洪)"
     }
   ],
-  "tracing_id": "8234bd6308e13a83e60a9452d9859ced"
+  "tracing_id": "98d567a6597cdc66e0a1a980a00ac497"
 }

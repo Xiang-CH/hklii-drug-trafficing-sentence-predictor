@@ -50,6 +50,27 @@
           "benefits_received": null
         }
       ]
+    },
+    {
+      "charge_no": 2,
+      "charge_name": "Trafficking in dangerous drugs",
+      "offence_date": null,
+      "offence_time": null,
+      "place_of_offence": null,
+      "cross_border": {
+        "cross_border": false,
+        "type": null,
+        "source": "(2) Possession of a dangerous drug (管有危險藥物)"
+      },
+      "defendants_of_charge": [
+        {
+          "defendant_name": "Wong Pui-hung",
+          "defendant_id": 1,
+          "trafficking_mode": null,
+          "reasons_for_offence": null,
+          "benefits_received": null
+        }
+      ]
     }
   ],
   "court": "HKCFI",
@@ -59,5 +80,5 @@
       "name": "Wong Pui-hung"
     }
   ],
-  "tracing_id": "69627025830d4ca263dc34ef74a03f93"
+  "tracing_id": "bc6b2ee991b03ee0f895199ae6396f7c"
 }

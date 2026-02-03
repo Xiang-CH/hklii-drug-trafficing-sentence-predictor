@@ -8,6 +8,7 @@ dependencies = [
     "beautifulsoup4>=4.14.3",
     "holidays>=0.89",
     "langfuse>=3.12.0",
+    "lxml>=6.0.2",
     "openai>=2.15.0",
     "pandas>=2.3.3",
     "pycountry>=24.6.1",

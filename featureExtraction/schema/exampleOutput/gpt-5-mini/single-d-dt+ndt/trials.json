@@ -13,7 +13,7 @@
           "drug_type": "Methamphetamine",
           "other_drug_type": null,
           "quantity": 43.13,
-          "source": "Inside the car in question, police officers found a rucksack which contained 43.13 grammes of methamphetamine hydrochloride and various resealable plastic bags."
+          "source": "a rucksack which contained 43.13 grammes of methamphetamine hydrochloride and various resealable plastic bags."
         }
       ],
       "roles": [
@@ -45,15 +45,15 @@
         "total_months": 111
       },
       "sentence_after_role": {
-        "sentence_years": 10,
+        "sentence_years": 9,
         "sentence_months": 3,
-        "source": "There is nothing in this case to indicate the defendant’s role beyond a mere courier. However, this is not the defendant’s first trafficking record. As such, an additional 1 year will be added.",
-        "total_months": 123
+        "source": "Inferred as starting point since role adjustment not provided",
+        "total_months": 111
       },
       "notional_sentence": {
         "sentence_years": 10,
         "sentence_months": 3,
-        "source": "Starting point for trafficking in 43.13 grammes of methamphetamine hydrochloride based on quantity alone will be 9 years and 3 months’ imprisonment. There is nothing in this case to indicate the defendant’s role beyond a mere courier. However, this is not the defendant’s first trafficking record. As such, an additional 1 year will be added.",
+        "source": "Starting point for trafficking in 43.13 grammes of methamphetamine hydrochloride based on quantity alone will be 9 years and 3 months’ imprisonment. However, this is not the defendant’s first trafficking record. As such, an additional 1 year will be added.",
         "total_months": 123
       },
       "mitigation_reduction": null,
@@ -68,5 +68,5 @@
       }
     }
   ],
-  "tracing_id": "5ab995dfec23b2ad109aa854bee0c4e6"
+  "tracing_id": "6b84b536b43df4d56a726967f386c57a"
 }

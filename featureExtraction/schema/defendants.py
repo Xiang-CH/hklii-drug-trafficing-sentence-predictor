@@ -107,7 +107,8 @@ class Nationality(BaseModel):
         default=None,
         description="Required if category is Hong Kong resident. "
         "To infer Hong Kong permanent resident status (b2), look for indications such as "
-        "references to living in Hong Kong for seven or more years, or possession of a Hong Kong permanent identity card.",
+        "references to living in Hong Kong for seven or more years, or possession of a Hong Kong permanent identity card."
+        "Only choose N/A but cannot infer status.",
     )
     foreign_country_code: Optional[CountryAlpha2] = Field(
         default=None,
@@ -167,20 +168,12 @@ class ParentalStatus(BaseModel):
     source: str = source_field("parental status")
 
 
-class HealthStatusCondition(BaseModel):
+class HealthCondition(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     name: str = Field(description="Name of the health condition")
     type: HealthStatusType = Field(description="Type of health status")
     source: str = source_field("health status")
-
-
-class HealthStatus(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-
-    conditions: List[HealthStatusCondition] = Field(
-        description="List of health status items found in the judgment"
-    )
 
 
 class Occupation(BaseModel):
@@ -299,7 +292,9 @@ class DefendantProfile(BaseModel):
     marital_status: Optional[MaritalStatusDetail] = Field(default=None)
     parental_status: Optional[ParentalStatus] = Field(default=None)
     household_composition: Optional[HouseholdCompositionDetail] = Field(default=None)
-    health_status: Optional[HealthStatus] = Field(default=None)
+    health_conditions: Optional[List[HealthCondition]] = Field(
+        description="List of health conditions found in the judgment"
+    )
     drug_treatment_participation: Optional[DrugTreatmentDetail] = Field(default=None)
     education_level: Optional[EducationLevelDetail] = Field(default=None)
     occupation: Optional[Occupation] = Field(default=None)

@@ -21,8 +21,8 @@ langfuse = Langfuse()
 
 RERUN_ALL = False
 MAX_RETRIES = 5
-# MODEL = "gpt-5-mini"
-MODEL = "gpt-5.2"
+MODEL = "gpt-5-mini"
+# MODEL = "gpt-5.2"
 
 judgement_base_path = "sampleJudgments"
 judgement_types = [

@@ -23,9 +23,9 @@
       "parental_status": null,
       "household_composition": {
         "composition": "Lives with non-family",
-        "source": "She had moved in with a friend and her family."
+        "source": "She was living with a friend from September 2021 and not at home."
       },
-      "health_status": null,
+      "health_conditions": null,
       "drug_treatment_participation": null,
       "education_level": null,
       "occupation": null,
@@ -36,13 +36,12 @@
           "source": "In June 2018, she was given a police superintendent’s caution for the offences of common assault and theft. In November 2018, she was sentenced to 24 months’ probation for the offences of wounding with intent to do grievous bodily harm and criminal damage. That probation order was subsequently extended for a further 6 months which would indicate trouble from her during the probation period and a breach of that probation."
         }
       ],
-      "positive_habits_after_arrest": {
-        "habits": [
-          "Studying",
-          "Participation in rehabilitation/self-improvement"
-        ],
-        "source": "I have received a letter in mitigation and evidence of her further recent vocational training to set herself up in employment in the future. She went on to assist the police and agreed to be a prosecution witness against Fu."
-      },
+      "positive_habits_after_arrest": [
+        {
+          "habit": "Studying",
+          "source": "I have received a letter in mitigation and evidence of her further recent vocational training to set herself up in employment in the future."
+        }
+      ],
       "family_supports": null
     },
     {
@@ -59,17 +58,14 @@
       "age_at_sentencing": null,
       "gender": {
         "gender": "Male",
-        "source": "He was on his way to the flat when he was arrested by the police."
+        "source": "When questioned, he said he intended to go into those premises."
       },
       "marital_status": null,
       "parental_status": null,
       "household_composition": null,
-      "health_status": null,
+      "health_conditions": null,
       "drug_treatment_participation": null,
-      "education_level": {
-        "level": "Secondary - Upper",
-        "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences and still is a student in a vocational education course."
-      },
+      "education_level": null,
       "occupation": {
         "occupation_category": "Student",
         "occupation_name": null,
@@ -104,15 +100,12 @@
       "age_at_sentencing": null,
       "gender": {
         "gender": "Male",
-        "source": "He handed her a bag which she checked and counted, she said contained a total of 95 bags of cocaine."
+        "source": "Fu was traced through his messages to her and on the following day, at about 2.50 pm on 3 October, the police, having obtained a search warrant, located and arrested Fu at home in Aberdeen."
       },
       "marital_status": null,
       "parental_status": null,
-      "household_composition": {
-        "composition": "Lives with non-family",
-        "source": "They found a tenancy agreement dated 23 September 2021 signed by Fu and the 2nd defendant, Lam. It was a subdivided unit with a toilet, kitchen and a bed."
-      },
-      "health_status": null,
+      "household_composition": null,
+      "health_conditions": null,
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Upper",
@@ -121,7 +114,7 @@
       "occupation": {
         "occupation_category": "Student",
         "occupation_name": null,
-        "source": "Fu of 316/2023 was also 18 at the time of these offences. Fu was also still a student and I granted him bail to give him a chance to complete his HKDSE examinations..."
+        "source": "Fu of 316/2023 was also 18 at the time of these offences. Fu was also still a student and I granted him bail to give him a chance to complete his HKDSE examinations and support his mother whilst she received chemotherapy treatment for cancer."
       },
       "monthly_wage": null,
       "criminal_records": [
@@ -135,13 +128,9 @@
         {
           "support": "Letters of support from family",
           "source": "I have a letter from his mother who accepts he must bear responsibility for his mistakes but sees the good in him."
-        },
-        {
-          "support": "Other",
-          "source": "I have also a letter from a social worker."
         }
       ]
     }
   ],
-  "tracing_id": "66808346b5b4300fc1e6c71467f91453"
+  "tracing_id": "2b2657ae654a0f11ef94c0b130447a18"
 }

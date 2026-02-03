@@ -6,20 +6,20 @@
         "type": "Actual Trafficking",
         "defendant_name": "Wong Man-kit",
         "defendant_id": 1,
-        "source": "The defendant pleaded guilty to one count of trafficking in dangerous drugs"
+        "source": "The defendant pleaded guilty to one count of trafficking in dangerous drugs on 20 February 2025."
       },
       "drugs": [
         {
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 85.63,
-          "source": "112.35 grammes of a solid containing 85.63 grammes of cocaine"
+          "source": "...unlawfully trafficked in dangerous drugs, namely, 112.35 grammes of a solid containing 85.63 grammes of cocaine..."
         },
         {
           "drug_type": "Ketamine",
           "other_drug_type": null,
           "quantity": 170.37,
-          "source": "211.16 grammes of a solid containing 170.37 grammes of ketamine"
+          "source": "...and 211.16 grammes of a solid containing 170.37 grammes of ketamine."
         }
       ],
       "roles": [
@@ -37,26 +37,26 @@
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "High Court",
-        "high_court_stage": "Up to committal",
+        "high_court_stage": "After committal",
         "district_court_stage": null,
-        "source": "The defendant pleaded guilty to one count of trafficking in dangerous drugs on 20 February 2025. He was committed to the Court of First Instance for sentence."
+        "source": "The defendant pleaded guilty to one count of trafficking in dangerous drugs on 20 February 2025. He was committed to the Court of First Instance for sentence. Today he confirms his plea..."
       },
       "starting_point": {
         "sentence_years": 10,
-        "sentence_months": 1,
-        "source": "After the conversion, I calculate a total of 128.22 grammes of cocaine, which will mathematically attract a starting point of 10 years and 1 month imprisonment.",
-        "total_months": 121
+        "sentence_months": 0,
+        "source": "...I calculate a total of 128.22 grammes of cocaine, which will mathematically attract a starting point of 10 years and 1 month imprisonment.\nI am satisfied that the role of the defendant is one of storekeeper and courier... I find the mathematical starting point of 10 years’ imprisonment appropriate in this case.",
+        "total_months": 120
       },
       "sentence_after_role": {
         "sentence_years": 10,
         "sentence_months": 0,
-        "source": "I find the mathematical starting point of 10 years’ imprisonment appropriate in this case.",
+        "source": "Inferred as starting point since role adjustment not provided",
         "total_months": 120
       },
       "notional_sentence": {
         "sentence_years": 10,
         "sentence_months": 0,
-        "source": "I find the mathematical starting point of 10 years’ imprisonment appropriate in this case.",
+        "source": "I find the mathematical starting point of 10 years’ imprisonment appropriate in this case.\nFourth and fifth steps require me to consider whether there are any aggravating factors or any exceptional mitigating factors. I see no such factors in this case.",
         "total_months": 120
       },
       "mitigation_reduction": null,
@@ -65,11 +65,11 @@
         "sentence_months": 8,
         "guilty_plea_reduction_years": 3,
         "guilty_plea_reduction_months": 4,
-        "source": "I will take the starting point of 10 years and reduce it by one-third. The defendant is sentenced to 6 years and 8 months’ imprisonment.",
+        "source": "The defendant pleaded guilty at the earliest opportunity and is entitled to a full one-third discount. I will take the starting point of 10 years and reduce it by one-third. The defendant is sentenced to 6 years and 8 months’ imprisonment.",
         "total_months": 80,
         "guilty_plea_reduction_total_months": 40
       }
     }
   ],
-  "tracing_id": "813dc3b6b1b1584c1ce4941fc214f4f0"
+  "tracing_id": "5a72300bcec4a5e5d3236724c20f6616"
 }

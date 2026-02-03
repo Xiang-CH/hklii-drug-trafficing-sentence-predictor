@@ -21,7 +21,7 @@
       "charge_name": "Trafficking in dangerous drugs",
       "offence_date": {
         "date": "2023-11-30",
-        "source": "on 30 November 2023",
+        "source": "the defendant on 30 November 2023",
         "day_of_week": 4,
         "is_hk_public_holiday": false
       },
@@ -36,7 +36,7 @@
       "cross_border": {
         "cross_border": false,
         "type": null,
-        "source": "on 30 November 2023, at Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories, unlawfully trafficked in dangerous drugs"
+        "source": "the defendant on 30 November 2023, at Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories, unlawfully trafficked in dangerous drugs"
       },
       "defendants_of_charge": [
         {
@@ -44,22 +44,18 @@
           "defendant_id": 1,
           "trafficking_mode": {
             "mode": "Drug repackaging or storage",
-            "source": "On a table on the defendant’s lower bunk bed, the police found the drugs in numerous plastic bags of different weights, electric scales, empty plastic resealable bags, and other paraphernalia needed to weigh and package drugs"
+            "source": "On a table on the defendant’s lower bunk bed, the police found the drugs in numerous plastic bags of different weights, electric scales, empty plastic resealable bags, and other paraphernalia needed to weigh and package drugs, ultimately for distribution."
           },
           "reasons_for_offence": [
             {
               "reason": "Financial gain",
               "source": "He was tempted by an old school friend who promised an easy job for quick and good money. He could store some goods and make some deliveries for $16,000 a month."
-            },
-            {
-              "reason": "Coercion",
-              "source": "he was told if he quit the job, he would need to repay $30,000 as compensation. Since he did not have the money, he kept the drugs and followed instructions"
             }
           ],
           "benefits_received": {
             "received": true,
             "amount": 16000.0,
-            "source": "store some goods and make some deliveries for $16,000 a month"
+            "source": "He could store some goods and make some deliveries for $16,000 a month."
           }
         }
       ]
@@ -72,5 +68,5 @@
       "name": "Wong Man-kit"
     }
   ],
-  "tracing_id": "813dc3b6b1b1584c1ce4941fc214f4f0"
+  "tracing_id": "5a72300bcec4a5e5d3236724c20f6616"
 }

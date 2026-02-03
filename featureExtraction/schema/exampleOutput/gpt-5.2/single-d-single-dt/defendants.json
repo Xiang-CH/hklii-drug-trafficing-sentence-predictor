@@ -25,7 +25,7 @@
         "composition": "Lives with family",
         "source": "Defendant lived there with his parents and younger brother."
       },
-      "health_status": null,
+      "health_conditions": null,
       "drug_treatment_participation": null,
       "education_level": null,
       "occupation": {
@@ -34,8 +34,8 @@
         "source": "After finishing school, he became an elevator repair apprentice"
       },
       "monthly_wage": {
-        "wage": 0,
-        "source": "But at the time of his arrest, he was unemployed."
+        "wage": 16000,
+        "source": "make some deliveries for $16,000 a month"
       },
       "criminal_records": [
         {
@@ -47,14 +47,10 @@
       "family_supports": [
         {
           "support": "Letters of support from family",
-          "source": "I do have a mitigation letter from the defendant’s parents who are very supportive"
-        },
-        {
-          "support": "Other",
-          "source": "I have a letter from the defendant who deeply regrets committing this offence and disappointing his family."
+          "source": "I do have a mitigation letter from the defendant’s parents who are very supportive and accept the defendant’s remorse as genuine."
         }
       ]
     }
   ],
-  "tracing_id": "813dc3b6b1b1584c1ce4941fc214f4f0"
+  "tracing_id": "5a72300bcec4a5e5d3236724c20f6616"
 }

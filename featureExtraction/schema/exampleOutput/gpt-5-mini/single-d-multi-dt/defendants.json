@@ -4,33 +4,33 @@
       "defendant_id": 1,
       "defendant_name": {
         "name": "劉子健",
-        "source": "香港特別行政區 訴 劉子健"
+        "source": "劉子健"
       },
       "nationality": null,
       "age_at_offence": null,
       "age_at_sentencing": {
         "age": 42,
-        "source": "被告現年42歲，過往在2004年5月因提供虛假資料予海關，被罰款12,000元。"
+        "source": "被告現年42歲"
       },
       "gender": {
         "gender": "Male",
-        "source": "被告其姊姊亦指他是好老公、好爸爸"
+        "source": "他首次上去C室時，盧亦有一同上去一次，之後他便自行上去C室."
       },
       "marital_status": {
         "status": "Married",
-        "source": "被告43歲，中四學歷，已婚，育有兩子一女"
+        "source": "已婚，育有兩子一女"
       },
       "parental_status": {
         "status": "Parent",
         "custody": null,
-        "source": "被告43歲，中四學歷，已婚，育有兩子一女"
+        "source": "已婚，育有兩子一女"
       },
       "household_composition": null,
-      "health_status": null,
+      "health_conditions": null,
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Upper",
-        "source": "被告43歲，中四學歷，已婚，育有兩子一女"
+        "source": "中四學歷"
       },
       "occupation": {
         "occupation_category": "Elementary occupation",
@@ -41,23 +41,22 @@
       "criminal_records": [
         {
           "record": "Other offences",
-          "source": "過往在2004年5月因提供虛假資料予海關，被罰款12,000元。"
+          "source": "過往在2004年5月因提供虛假資料予海關，被罰款12,000元."
         }
       ],
-      "positive_habits_after_arrest": {
-        "habits": [
-          "Working",
-          "Participation in rehabilitation/self-improvement"
-        ],
-        "source": "在被囚期間亦主動協助懲教員處理一切大小事務。"
-      },
+      "positive_habits_after_arrest": [
+        {
+          "habit": "Participation in rehabilitation/self-improvement",
+          "source": "在被囚期間亦主動協助懲教員處理一切大小事務."
+        }
+      ],
       "family_supports": [
         {
           "support": "Letters of support from family",
-          "source": "辯方亦呈上五封求情信，可見被告有真誠悔意，望法院採納較低量刑起點。被告的太太求情信指出，被告是盡責、脾氣很好、樂於助人的人，任勞任怨的丈夫和爸爸，對長輩孝順，孩子都很尊敬及愛戴他，明白他干犯了此事嚴重的錯誤，他亦承諾不會再犯。"
+          "source": "辯方亦呈上五封求情信"
         }
       ]
     }
   ],
-  "tracing_id": "030f7251e288b02c94a92b23705c5d95"
+  "tracing_id": "f12d24eb2a0b176fffea09410802a329"
 }

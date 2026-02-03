@@ -1,18 +1,18 @@
 {
   "neutral_citation": "[2025] HKDC 600",
-  "judge_name": "陳永豪",
-  "judgment_date_time": "2025-04-30T00:00:00Z",
+  "judge_name": "區域法院暫委法官陳永豪",
+  "judgment_date_time": "2025-04-30T00:00:00+08:00",
   "representatives": [
     {
-      "name": "伍宇鍔",
+      "name": "伍宇鍔先生",
       "role": "為外聘律師，代表香港特別行政區"
     },
     {
-      "name": "馬明俊",
+      "name": "馬明俊先生",
       "role": "由法律援助署委派的柯玉華律師事務所延聘，代表第一被告人"
     },
     {
-      "name": "陳文輝",
+      "name": "陳文輝先生",
       "role": "由鄧卓熹黃汝仲律師行延聘，代表第二被告人"
     }
   ],
@@ -25,26 +25,16 @@
       "charge_name": "Conspiracy to traffic in a dangerous drug",
       "offence_date": {
         "date": "2024-01-30",
-        "source": "2024年1月30日上午9時45分左右",
+        "source": "案情指，2024年1月30日上午9時45分左右，警方在大埔區一帶展開反罪惡巡邏。",
         "day_of_week": 2,
         "is_hk_public_holiday": false
       },
-      "offence_time": {
-        "time": "09:45:00Z",
-        "source": "2024年1月30日上午9時45分左右",
-        "time_of_day": "morning"
-      },
-      "place_of_offence": {
-        "address": "大埔區一帶",
-        "nature": "Other",
-        "subDistrict": "Tai Po",
-        "source": "警方在大埔區一帶展開反罪惡巡邏",
-        "district": "Tai Po"
-      },
+      "offence_time": null,
+      "place_of_offence": null,
       "cross_border": {
         "cross_border": false,
         "type": null,
-        "source": "未有提及跨境活動"
+        "source": ""
       },
       "defendants_of_charge": [
         {
@@ -52,41 +42,41 @@
           "defendant_id": 1,
           "trafficking_mode": {
             "mode": "Courier delivery",
-            "source": "(a) 一個叫“So Ken”的人叫第一被告人出售和派送毒品；"
+            "source": "一個叫“So Ken”的人叫第一被告人出售和派送毒品；"
           },
           "reasons_for_offence": [
             {
               "reason": "Financial gain",
-              "source": "結識了第二被告人，亦從對方口中知道了幫忙出售及派送氯胺酮可以賺取金錢的門路"
+              "source": "他結識了第二被告人，亦從對方口中知道了幫忙出售及派送氯胺酮可以賺取金錢的門路。"
             },
             {
               "reason": "Addiction-driven",
-              "source": "繼而開始吸食氯胺酮"
+              "source": "第一被告人隨即被拘捕，在警誡下，他表示管有該些毒品自用，又說“食唔曬就會拎出去賣”。"
             }
           ],
           "benefits_received": {
             "received": true,
             "amount": 4000.0,
-            "source": "其中港幣10,000元交給“So Ken”，第一被告人保留港幣4,000元"
+            "source": "(f) 其中港幣10,000元交給“So Ken”，第一被告人保留港幣4,000元；"
           }
         },
         {
           "defendant_name": "蘇偉強",
           "defendant_id": 2,
           "trafficking_mode": {
-            "mode": "Other",
-            "source": "(i) 第二被告人介紹第一被告人派送和出售毒品，因為第一被告人想賺多些錢；"
+            "mode": "Courier delivery",
+            "source": "第二被告人介紹第一被告人派送和出售毒品，因為第一被告人想賺多些錢；"
           },
           "reasons_for_offence": [
             {
               "reason": "Financial gain",
-              "source": "每“送”一包，第一被告人會保留港幣80元，第二被告人會獲得港幣20元，餘數會交給葉維輝"
+              "source": "每包氯胺酮價格港幣350元。每“送”一包，第一被告人會保留港幣80元，第二被告人會獲得港幣20元，餘數會交給葉維輝；"
             }
           ],
           "benefits_received": {
             "received": true,
             "amount": 4000.0,
-            "source": "控方在較後階段補充，第二被告人從第一被告人一方收過3至4次錢，每次$1,200但總數不超過$4,000。"
+            "source": "[1] 控方在較後階段補充，第二被告人從第一被告人一方收過3至4次錢，每次$1,200但總數不超過$4,000。"
           }
         }
       ]
@@ -103,5 +93,5 @@
       "name": "蘇偉強"
     }
   ],
-  "tracing_id": "fb7bdc6106a46c46ab44a2bc552dc086"
+  "tracing_id": "8d5fb54f9fcc2f71f323e398d3f262fb"
 }

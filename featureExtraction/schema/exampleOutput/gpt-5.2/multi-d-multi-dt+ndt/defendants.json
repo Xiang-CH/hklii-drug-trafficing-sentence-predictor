@@ -21,7 +21,10 @@
         "age": 26,
         "source": "第一被告人現年26歲"
       },
-      "gender": null,
+      "gender": {
+        "gender": "Male",
+        "source": "他無業，與女友同住"
+      },
       "marital_status": {
         "status": "Single",
         "source": "第一被告人未婚"
@@ -31,17 +34,20 @@
         "composition": "Lives with non-family",
         "source": "他無業，與女友同住"
       },
-      "health_status": {
-        "conditions": [
-          {
-            "name": "大麻（快速口腔液測試呈陽性反應）",
-            "type": "Drug addiction",
-            "source": "第一被告人在現場進行快速口腔液測試，結果對大麻呈陽性反應"
-          }
-        ]
-      },
+      "health_conditions": [
+        {
+          "name": "心理壓力",
+          "type": "Mental health",
+          "source": "並因此承受心理壓力"
+        },
+        {
+          "name": "大麻（體內驗出9-四氫大麻酚）",
+          "type": "Drug addiction",
+          "source": "結果對大麻呈陽性反應"
+        }
+      ],
       "drug_treatment_participation": {
-        "participated": true,
+        "participated": false,
         "source": "第一被告人在此期間接受教會傳道人的輔導"
       },
       "education_level": {
@@ -49,9 +55,9 @@
         "source": "接受教育程度至中三"
       },
       "occupation": {
-        "occupation_category": "Craft and related worker",
+        "occupation_category": "Plant and machine operator and assembler",
         "occupation_name": "電梯維修",
-        "source": "入讀職業訓練學院並修讀為期約4年半的電梯維修兼讀課程，隨後從事相關維修行業"
+        "source": "隨後從事相關維修行業"
       },
       "monthly_wage": {
         "wage": 20000,
@@ -60,15 +66,15 @@
       "criminal_records": [
         {
           "record": "None",
-          "source": "第一被告人過往沒有任何刑事定罪紀錄"
+          "source": "第一被告人過往沒有任何刑事定罪紀錄。"
         }
       ],
-      "positive_habits_after_arrest": {
-        "habits": [
-          "Participation in rehabilitation/self-improvement"
-        ],
-        "source": "第一被告人在此期間接受教會傳道人的輔導，並希望於刑期結束後能盡快尋求一份穩定的工作"
-      },
+      "positive_habits_after_arrest": [
+        {
+          "habit": "Participation in rehabilitation/self-improvement",
+          "source": "第一被告人在此期間接受教會傳道人的輔導"
+        }
+      ],
       "family_supports": [
         {
           "support": "Letters of support from family",
@@ -91,12 +97,12 @@
         "hk_resident_status": "N/A",
         "foreign_country_code": null,
         "infer_reason": null,
-        "source": "第二被告人現年23歲，香港出生，無刑事定罪紀錄"
+        "source": "第二被告人現年23歲，香港出生"
       },
       "age_at_offence": null,
       "age_at_sentencing": {
         "age": 23,
-        "source": "第二被告人現年23歲"
+        "source": "第二被告人現年23歲，香港出生"
       },
       "gender": null,
       "marital_status": {
@@ -106,13 +112,13 @@
       "parental_status": null,
       "household_composition": {
         "composition": "Lives with family",
-        "source": "經歷口供提及...被捕之後與母親同住"
+        "source": "被捕之後與母親同住"
       },
-      "health_status": null,
+      "health_conditions": null,
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Lower",
-        "source": "經歷口供提及...接受教育程度至中三"
+        "source": "接受教育程度至中三"
       },
       "occupation": {
         "occupation_category": "Clerical support worker",
@@ -126,12 +132,12 @@
       "criminal_records": [
         {
           "record": "None",
-          "source": "第二被告人過往沒有任何刑事定罪紀錄"
+          "source": "第二被告人過往沒有任何刑事定罪紀錄。"
         }
       ],
       "positive_habits_after_arrest": null,
       "family_supports": null
     }
   ],
-  "tracing_id": "f43fe9caa3ed0b9c447ac20fbc1ce6cb"
+  "tracing_id": "90a3b7001d84a830810799f41152f55e"
 }

@@ -6,7 +6,7 @@
         "type": "Actual Trafficking",
         "defendant_name": "劉子健",
         "defendant_id": 1,
-        "source": "[1] 販運危險藥物（Trafficking in a dangerous drug）"
+        "source": "販運危險藥物（Trafficking in a dangerous drug）"
       },
       "drugs": [
         {
@@ -19,11 +19,11 @@
       "roles": [
         {
           "role": "Storekeeper",
-          "source": "辯方指出，被告早在……他僅擔任倉管及運輸角色，只是受僱為他人運毒，以獲取報酬。"
+          "source": "辯方指出，被告的警誡口供及錄影會面當中已提述他並非主腦、管理人或組織者，他僅擔任倉管及運輸角色，只是受僱為他人運毒，以獲取報酬。"
         },
         {
           "role": "Courier",
-          "source": "被告角色雖並非主腦，但亦積極參與，包括簽予租約，多次把毒品由匯璽運送至美孚再分發給不同人士，角色重要。"
+          "source": "辯方指出，被告的警誡口供及錄影會面當中已提述他並非主腦、管理人或組織者，他僅擔任倉管及運輸角色，只是受僱為他人運毒，以獲取報酬。"
         }
       ],
       "aggravating_factors": [
@@ -37,9 +37,9 @@
       "mitigating_factors": [
         {
           "factor": "Other",
-          "other_factor": "早已認罪、悔意及無涉毒品之前科（一般背景求情）",
+          "other_factor": "Character references, remorse and family support (letters and submissions)",
           "reduction": null,
-          "source": "畢竟被告已盡早認罪，省卻審訊時間，過往亦並無任何涉及毒品的案底。被告求情信亦指出，明言自己知錯及悔改，家人亦非常支持他改過自新。"
+          "source": "被告求情信亦指出，明言自己知錯及悔改，家人亦非常支持他改過自新。"
         }
       ],
       "guilty_plea": {
@@ -47,12 +47,12 @@
         "court_type": "High Court",
         "high_court_stage": "Up to committal",
         "district_court_stage": null,
-        "source": "何大律師求情指出，被告早在2024年5月13日首次在裁判法院已承認兩項控罪及同意相關案情。/ 被告承認兩項「販運危險藥物」罪。"
+        "source": "被告早在2024年5月13日首次在裁判法院已承認兩項控罪及同意相關案情。"
       },
       "starting_point": {
         "sentence_years": 15,
         "sentence_months": 0,
-        "source": "因此，考慮所有上述情節，就首項控罪可予15年監禁為量刑起點，認罪後減為10年監禁。",
+        "source": "因此，考慮所有上述情節，就首項控罪可予15年監禁為量刑起點，認罪後減為10年監禁；次項控罪則以33年監禁為量刑起點，認罪後減為22年監禁。",
         "total_months": 180
       },
       "sentence_after_role": {
@@ -64,7 +64,7 @@
       "notional_sentence": {
         "sentence_years": 15,
         "sentence_months": 0,
-        "source": "因此，考慮所有上述情節，就首項控罪可予15年監禁為量刑起點，認罪後減為10年監禁。",
+        "source": "因此，考慮所有上述情節，就首項控罪可予15年監禁為量刑起點，認罪後減為10年監禁；次項控罪則以33年監禁為量刑起點，認罪後減為22年監禁。",
         "total_months": 180
       },
       "mitigation_reduction": null,
@@ -73,7 +73,7 @@
         "sentence_months": 0,
         "guilty_plea_reduction_years": 5,
         "guilty_plea_reduction_months": 0,
-        "source": "因此，被告判刑如下：第一項控罪10年監禁，第二項控罪22年監禁，兩項控罪同期執行，總共判以22年監禁。",
+        "source": "因此，考慮所有上述情節，就首項控罪可予15年監禁為量刑起點，認罪後減為10年監禁；次項控罪則以33年監禁為量刑起點，認罪後減為22年監禁。",
         "total_months": 120,
         "guilty_plea_reduction_total_months": 60
       }
@@ -84,7 +84,7 @@
         "type": "Actual Trafficking",
         "defendant_name": "劉子健",
         "defendant_id": 1,
-        "source": "[2] 販運危險藥物（Trafficking in dangerous drugs）"
+        "source": "販運危險藥物（Trafficking in dangerous drugs）"
       },
       "drugs": [
         {
@@ -103,33 +103,33 @@
       "roles": [
         {
           "role": "Storekeeper",
-          "source": "辯方指出，被告早在……他僅擔任倉管及運輸角色，只是受僱為他人運毒，以獲取報酬。"
+          "source": "辯方指出，被告的警誡口供及錄影會面當中已提述他並非主腦、管理人或組織者，他僅擔任倉管及運輸角色，只是受僱為他人運毒，以獲取報酬。"
         },
         {
           "role": "Courier",
-          "source": "被告角色雖並非主腦，但亦積極參與，包括簽予租約，多次把毒品由匯璽運送至美孚再分發給不同人士，角色重要。"
+          "source": "辯方指出，被告的警誡口供及錄影會面當中已提述他並非主腸、管理人或組織者，他僅擔任倉管及運輸角色，只是受僱為他人運毒，以獲取報酬。"
         }
       ],
       "aggravating_factors": [
+        {
+          "factor": "Multiple drugs",
+          "other_factor": null,
+          "enhancement": null,
+          "source": "內含70.013公斤海洛英鹽酸鹽及385克單乙酰嗎啡鹽酸鹽的86.226公斤混合劑（控罪二）"
+        },
         {
           "factor": "Role of the defendant",
           "other_factor": null,
           "enhancement": null,
           "source": "被告角色雖並非主腦，但亦積極參與，包括簽予租約，多次把毒品由匯璽運送至美孚再分發給不同人士，角色重要。"
-        },
-        {
-          "factor": "Multiple drugs",
-          "other_factor": null,
-          "enhancement": null,
-          "source": "內含70.013公斤海洛英鹽酸鹽及385克單乙酰嗎啡鹽酸鹽的86.226公斤混合劑（控罪二）。"
         }
       ],
       "mitigating_factors": [
         {
           "factor": "Other",
-          "other_factor": "早已認罪、悔意及無涉毒品之前科（一般背景求情）",
+          "other_factor": "Character references, remorse and family support (letters and submissions)",
           "reduction": null,
-          "source": "畢竟被告已盡早認罪，省卻審訊時間，過往亦並無任何涉及毒品的案底。被告求情信亦指出，明言自己知錯及悔改，家人亦非常支持他改過自新。"
+          "source": "被告求情信亦指出，明言自己知錯及悔改，家人亦非常支持他改過自新。"
         }
       ],
       "guilty_plea": {
@@ -137,12 +137,12 @@
         "court_type": "High Court",
         "high_court_stage": "Up to committal",
         "district_court_stage": null,
-        "source": "何大律師求情指出，被告早在2024年5月13日首次在裁判法院已承認兩項控罪及同意相關案情。/ 被告承認兩項「販運危險藥物」罪。"
+        "source": "被告早在2024年5月13日首次在裁判法院已承認兩項控罪及同意相關案情。"
       },
       "starting_point": {
         "sentence_years": 33,
         "sentence_months": 0,
-        "source": "因此，考慮所有上述情節，次項控罪則以33年監禁為量刑起點，認罪後減為22年監禁。",
+        "source": "因此，考慮所有上述情節，就首項控罪可予15年監禁為量刑起點，認罪後減為10年監禁；次項控罪則以33年監禁為量刑起點，認罪後減為22年監禁。",
         "total_months": 396
       },
       "sentence_after_role": {
@@ -154,7 +154,7 @@
       "notional_sentence": {
         "sentence_years": 33,
         "sentence_months": 0,
-        "source": "因此，考慮所有上述情節，次項控罪則以33年監禁為量刑起點，認罪後減為22年監禁。",
+        "source": "因此，考慮所有上述情節，就首項控罪可予15年監禁為量刑起點，認罪後減為10年監禁；次項控罪則以33年監禁為量刑起點，認罪後減為22年監禁。",
         "total_months": 396
       },
       "mitigation_reduction": null,
@@ -163,11 +163,11 @@
         "sentence_months": 0,
         "guilty_plea_reduction_years": 11,
         "guilty_plea_reduction_months": 0,
-        "source": "因此，被告判刑如下：第一項控罪10年監禁，第二項控罪22年監禁，兩項控罪同期執行，總共判以22年監禁。",
+        "source": "因此，考慮所有上述情節，就首項控罪可予15年監禁為量刑起點，認罪後減為10年監禁；次項控罪則以33年監禁為量刑起點，認罪後減為22年監禁。",
         "total_months": 264,
         "guilty_plea_reduction_total_months": 132
       }
     }
   ],
-  "tracing_id": "030f7251e288b02c94a92b23705c5d95"
+  "tracing_id": "f12d24eb2a0b176fffea09410802a329"
 }

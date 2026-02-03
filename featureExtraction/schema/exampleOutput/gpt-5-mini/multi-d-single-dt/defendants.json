@@ -3,17 +3,23 @@
     {
       "defendant_id": 1,
       "defendant_name": {
-        "name": "Hui Kwai-chung, Dick (許貴仲) (A1)",
+        "name": "Hui Kwai-chung, Dick",
         "source": "Hui Kwai-chung, Dick (許貴仲) (A1)"
       },
-      "nationality": null,
+      "nationality": {
+        "category": "Hong Kong resident",
+        "hk_resident_status": "N/A",
+        "foreign_country_code": null,
+        "infer_reason": "Inferred from local education reference ('Form 3') and activities/residence in Hong Kong (rented room, arrests and locations mentioned).",
+        "source": "He has studied up to Form 3 level."
+      },
       "age_at_offence": {
         "age": 36,
-        "source": "The 1st defendant is 39 years of age. He was 36 years old at the time of the offence."
+        "source": "He was 36 years old at the time of the offence."
       },
       "age_at_sentencing": {
         "age": 39,
-        "source": "The 1st defendant is 39 years of age. He was 36 years old at the time of the offence."
+        "source": "The 1st defendant is 39 years of age."
       },
       "gender": {
         "gender": "Male",
@@ -28,7 +34,7 @@
         "composition": "Lives with family",
         "source": "He was divorced and lived together with his family members."
       },
-      "health_status": null,
+      "health_conditions": null,
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Lower",
@@ -49,29 +55,38 @@
           "source": "He has a total of three criminal convictions for the offence of gambling in a gambling establishment."
         }
       ],
-      "positive_habits_after_arrest": {
-        "habits": [
-          "Studying",
-          "Participation in rehabilitation/self-improvement"
-        ],
-        "source": "he had taken different courses to better equip himself whilst remanded in custody."
-      },
+      "positive_habits_after_arrest": [
+        {
+          "habit": "Studying",
+          "source": "he had taken different courses to better equip himself whilst remanded in custody."
+        },
+        {
+          "habit": "Participation in rehabilitation/self-improvement",
+          "source": "he had taken different courses to better equip himself whilst remanded in custody."
+        }
+      ],
       "family_supports": null
     },
     {
       "defendant_id": 2,
       "defendant_name": {
-        "name": "Hong Ka-ming (康家銘) (A2)",
+        "name": "Hong Ka-ming",
         "source": "Hong Ka-ming (康家銘) (A2)"
       },
-      "nationality": null,
+      "nationality": {
+        "category": "Hong Kong resident",
+        "hk_resident_status": "N/A",
+        "foreign_country_code": null,
+        "infer_reason": "Inferred from local education reference ('Form 3') and residence/activities in Hong Kong (rented room, calls and arrest).",
+        "source": "He has attained Form 3 education."
+      },
       "age_at_offence": {
         "age": 34,
-        "source": "In respect of the 2nd defendant, he is now 36 years of age. He was 34 years old at the time of the offence."
+        "source": "He was 34 years old at the time of the offence."
       },
       "age_at_sentencing": {
         "age": 36,
-        "source": "In respect of the 2nd defendant, he is now 36 years of age. He was 34 years old at the time of the offence."
+        "source": "In respect of the 2nd defendant, he is now 36 years of age."
       },
       "gender": {
         "gender": "Male",
@@ -83,20 +98,18 @@
       },
       "parental_status": null,
       "household_composition": null,
-      "health_status": {
-        "conditions": [
-          {
-            "name": "Long history of mental illness; multiple psychiatric admissions",
-            "type": "Mental health",
-            "source": "In his mitigation, counsel for the 2nd defendant Mr Clement Lau informed this court that he has a long history of mental illness. He first received psychiatric treatment at the age of 11 and there were multiple psychiatric admissions to various hospitals between year 2009 to 2022."
-          },
-          {
-            "name": "History of drug abuse (contributed to psychiatric condition)",
-            "type": "Drug addiction",
-            "source": "I noted from various psychiatric reports that had been submitted by counsel that indeed part of the condition of the 2nd defendant was a result of his own drug abuse."
-          }
-        ]
-      },
+      "health_conditions": [
+        {
+          "name": "Long history of mental illness with multiple psychiatric admissions",
+          "type": "Mental health",
+          "source": "In his mitigation, counsel for the 2nd defendant Mr Clement Lau informed this court that he has a long history of mental illness. He first received psychiatric treatment at the age of 11 and there were multiple psychiatric admissions to various hospitals between year 2009 to 2022."
+        },
+        {
+          "name": "History of drug abuse (partly contributing to psychiatric condition)",
+          "type": "Drug addiction",
+          "source": "I noted from various psychiatric reports that had been submitted by counsel that indeed part of the condition of the 2nd defendant was a result of his own drug abuse. In any event, counsel informed me that he is now clear of the drug usage."
+        }
+      ],
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Lower",
@@ -123,5 +136,5 @@
       ]
     }
   ],
-  "tracing_id": "065936cc47e045741d0d51b47ba6bd45"
+  "tracing_id": "5212478f8180691e72a755d99b30716c"
 }
