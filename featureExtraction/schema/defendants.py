@@ -302,7 +302,9 @@ class DefendantProfile(BaseModel):
         default=None, description="null means not mentioned at all; use 0 if unemployed"
     )
     criminal_records: Optional[List[CriminalRecordDetail]] = Field(default=None)
-    positive_habits_after_arrest: Optional[List[PositiveHabitDetail]] = Field(default=None)
+    positive_habits_after_arrest: Optional[List[PositiveHabitDetail]] = Field(
+        default=None
+    )
     family_supports: Optional[List[FamilySupportDetail]] = Field(default=None)
 
     @model_validator(mode="after")
