@@ -55,14 +55,14 @@ export const Route = createFileRoute('/admin/api/judgements')({
         }
 
         const extractedIds = await extractedCollection.distinct(
-          'source_judgement_id'
+          'source_judgement_id',
         )
         const processedIds = extractedIds
           .filter(Boolean)
           .map((id) => (id instanceof ObjectId ? id : new ObjectId(id)))
 
         const verifiedIds = await verifiedCollection.distinct(
-          'source_judgement_id'
+          'source_judgement_id',
         )
         const verifiedObjectIds = verifiedIds
           .filter(Boolean)
@@ -84,10 +84,16 @@ export const Route = createFileRoute('/admin/api/judgements')({
           .collection('users')
           .find({ _id: { $in: assigneeIds.map((id) => new ObjectId(id)) } })
           .toArray()
-        const assigneeMap = assignees.reduce((acc, user) => {
-          acc[user._id.toHexString()] = { username: user.username, name: user.name }
-          return acc
-        }, {} as Record<string, { username: string; name: string }>)
+        const assigneeMap = assignees.reduce(
+          (acc, user) => {
+            acc[user._id.toHexString()] = {
+              username: user.username,
+              name: user.name,
+            }
+            return acc
+          },
+          {} as Record<string, { username: string; name: string }>,
+        )
 
         const cursor = judgementsCollection
           .find(match)
@@ -96,10 +102,15 @@ export const Route = createFileRoute('/admin/api/judgements')({
           .limit(PAGE_SIZE)
 
         const items = (await cursor.toArray()).map((doc) => {
-          const id = doc._id instanceof ObjectId ? doc._id.toHexString() : `${doc._id}`
+          const id =
+            doc._id instanceof ObjectId ? doc._id.toHexString() : `${doc._id}`
           const isProcessed = processedIds.some((pid) => pid.equals(doc._id))
-          const isVerified = verifiedObjectIds.some((vid) => vid.equals(doc._id))
-          const assignee = doc.assigned_to ? assigneeMap[doc.assigned_to] : undefined
+          const isVerified = verifiedObjectIds.some((vid) =>
+            vid.equals(doc._id),
+          )
+          const assignee = doc.assigned_to
+            ? assigneeMap[doc.assigned_to]
+            : undefined
 
           return {
             id,
@@ -113,7 +124,7 @@ export const Route = createFileRoute('/admin/api/judgements')({
               doc.updatedAt?.toString?.() ??
               doc.updated_at?.toString?.() ??
               null,
-            assignee
+            assignee,
           } satisfies JudgementListItem
         })
 
@@ -122,4 +133,3 @@ export const Route = createFileRoute('/admin/api/judgements')({
     },
   },
 })
-

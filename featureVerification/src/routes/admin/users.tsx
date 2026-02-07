@@ -1,7 +1,10 @@
 import * as React from 'react'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useForm } from '@tanstack/react-form'
+import type { UseMutationResult } from '@tanstack/react-query'
+import type { UserType } from '@/lib/auth'
 import { authClient } from '@/lib/auth-client'
-import { UserType } from '@/lib/auth'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import {
@@ -13,13 +16,6 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { Pagination } from '@/components/pagination'
-import { redirect } from '@tanstack/react-router'
-import {
-  useMutation,
-  useQuery,
-  useQueryClient,
-  type UseMutationResult,
-} from '@tanstack/react-query'
 import {
   Select,
   SelectContent,
@@ -27,8 +23,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { useForm } from '@tanstack/react-form'
-import { useNavigate } from '@tanstack/react-router'
 
 type UsersSearchParams = {
   page: number
@@ -75,7 +69,7 @@ export const Route = createFileRoute('/admin/users')({
   },
   beforeLoad: async () => {
     const session = await authClient.getSession()
-    if (!session?.data?.user) {
+    if (!session.data?.user) {
       throw redirect({ to: '/login', search: { redirect: '/admin/users' } })
     }
     if (session.data.user.role !== 'admin') {
@@ -110,7 +104,7 @@ function UsersComponent() {
   const queryClient = useQueryClient()
   const { data: users } = useQuery({
     queryKey: ['users', page],
-    initialData: response?.data?.users ?? [],
+    initialData: response.data.users,
     queryFn: () => getUsers(page).then((res) => res.data?.users ?? []),
   })
 
@@ -131,14 +125,14 @@ function UsersComponent() {
     UserMutationVariables,
     { previousUsers?: unknown }
   >({
-    mutationFn: async ({
-      userId,
-      data,
-    }: UserMutationVariables) => {
+    mutationFn: async ({ userId, data }: UserMutationVariables) => {
       if (userId) {
         await authClient.admin.updateUser({ userId, data })
       } else {
-        await authClient.admin.createUser({...data, data: {username: data.username}})
+        await authClient.admin.createUser({
+          ...data,
+          data: { username: data.username },
+        })
       }
     },
     onMutate: async (newUser) => {
@@ -154,7 +148,7 @@ function UsersComponent() {
       })
       return { previousUsers }
     },
-    onError: (err, _,  context) => {
+    onError: (err, _, context) => {
       console.error('Error updating user:', err)
       queryClient.setQueryData(['users', page], context?.previousUsers) // rollback to previous users on error
     },
@@ -163,12 +157,12 @@ function UsersComponent() {
     },
   })
 
-  async function startEdit(user: UserType) {
+  function startEdit(user: UserType) {
     setErrorMsg(null)
     setEditingId(user.id)
     setEditingValues({
-      name: user.name ?? '',
-      email: user.email ?? '',
+      name: user.name,
+      email: user.email,
       username: user.username ?? '',
     })
   }
@@ -200,8 +194,6 @@ function UsersComponent() {
       setLoadingId(null)
     }
   }
-
-
 
   return (
     <div className="container mx-auto p-6 max-w-5xl">
@@ -297,9 +289,7 @@ function UsersComponent() {
                   </span>
                 </TableCell>
                 <TableCell className="text-muted-foreground">
-                  {user.createdAt
-                    ? new Date(user.createdAt).toLocaleDateString('en-US')
-                    : '-'}
+                  {new Date(user.createdAt).toLocaleDateString('en-US')}
                 </TableCell>
                 <TableCell>
                   {editingId === user.id ? (
@@ -340,7 +330,7 @@ function UsersComponent() {
       <div className="mt-4 flex justify-end">
         <Pagination
           currentPage={page}
-          totalPages={Math.ceil((response?.data?.total ?? 0) / USERS_PER_PAGE)}
+          totalPages={Math.ceil(response.data.total / USERS_PER_PAGE)}
           callback={(newPage) => {
             navigate({
               search: (prev) => ({
@@ -376,7 +366,7 @@ function CreateUserForm({
     onSubmitInvalid(props) {
       console.log('CreateUserForm submit invalid', props)
     },
-    onSubmit: async (values) => {
+    onSubmit: (values) => {
       console.log('CreateUserForm submit values', values.value)
       const data = { ...values.value, password: values.value.username }
       updateUserMutation.mutateAsync({ data, userId: undefined })
@@ -385,29 +375,36 @@ function CreateUserForm({
 
   React.useEffect(() => {
     if (form.state.values.name && !editedUsername) {
-      form.setFieldValue('username', form.state.values.name.toLowerCase().replace(/\s+/g, '.'))
+      form.setFieldValue(
+        'username',
+        form.state.values.name.toLowerCase().replace(/\s+/g, '.'),
+      )
     }
   }, [form.state.values.name])
 
   form.Subscribe
 
   return (
-    <form onSubmit={(e) => {
-          e.preventDefault()
-          e.stopPropagation()
-          form.handleSubmit()
-        }}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        form.handleSubmit()
+      }}
+    >
       <div className="mb-4 rounded-md border p-4">
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-5">
-      
           <form.Field
             name="name"
             listeners={{
-              onChange: ({value}) => {
+              onChange: ({ value }) => {
                 if (!editedUsername) {
-                  form.setFieldValue('username', value.toLowerCase().replace(/\s+/g, '-'))
+                  form.setFieldValue(
+                    'username',
+                    value.toLowerCase().replace(/\s+/g, '-'),
+                  )
                 }
-              }
+              },
             }}
             children={(field) => (
               <Input
@@ -441,7 +438,10 @@ function CreateUserForm({
                 minLength={5}
                 name={field.name}
                 value={field.state.value}
-                onBlur={() => {field.handleBlur(); setEditedUsername(true)}}
+                onBlur={() => {
+                  field.handleBlur()
+                  setEditedUsername(true)
+                }}
                 onChange={(e) => field.handleChange(e.target.value)}
               />
             )}
@@ -469,9 +469,7 @@ function CreateUserForm({
           />
         </div>
         <div className="mt-3 flex items-center gap-2 w-full justify-end">
-          <Button type="submit">
-            Create
-          </Button>
+          <Button type="submit">Create</Button>
         </div>
       </div>
     </form>

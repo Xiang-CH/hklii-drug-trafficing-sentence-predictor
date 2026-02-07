@@ -22,7 +22,12 @@ export function Pagination({
       <PaginationComponent>
         <PaginationContent>
           <PaginationItem>
-            <PaginationLink isActive onClick={() => {callback?.(1)}}>
+            <PaginationLink
+              isActive
+              onClick={() => {
+                callback(1)
+              }}
+            >
               1
             </PaginationLink>
           </PaginationItem>
@@ -55,10 +60,7 @@ export function Pagination({
   )
 
   const siblingsEnd = Math.min(
-    Math.max(
-      currentPage + siblingCount,
-      boundaryCount + siblingCount * 2 + 2,
-    ),
+    Math.max(currentPage + siblingCount, boundaryCount + siblingCount * 2 + 2),
     endPages.length > 0 ? endPages[0] - 2 : totalPages - 1,
   )
 
@@ -70,14 +72,20 @@ export function Pagination({
       <PaginationContent>
         {currentPage > 1 && (
           <PaginationItem>
-            <PaginationPrevious onClick={() => {callback?.(currentPage - 1)}} />
+            <PaginationPrevious
+              onClick={() => {
+                callback(currentPage - 1)
+              }}
+            />
           </PaginationItem>
-        ) }
+        )}
         {startPages.map((page) => (
           <PaginationItem key={page}>
             <PaginationLink
               isActive={page === currentPage}
-              onClick={() => {callback?.(page)}}
+              onClick={() => {
+                callback(page)
+              }}
             >
               {page}
             </PaginationLink>
@@ -88,12 +96,15 @@ export function Pagination({
             <PaginationEllipsis />
           </PaginationItem>
         )}
-        {(!showStartEllipsis && boundaryCount + 1 < siblingsStart) &&
+        {!showStartEllipsis &&
+          boundaryCount + 1 < siblingsStart &&
           createRange(boundaryCount + 1, siblingsStart - 1).map((page) => (
             <PaginationItem key={page}>
               <PaginationLink
                 isActive={page === currentPage}
-                onClick={() => {callback?.(page)}}
+                onClick={() => {
+                  callback(page)
+                }}
               >
                 {page}
               </PaginationLink>
@@ -103,7 +114,9 @@ export function Pagination({
           <PaginationItem key={page}>
             <PaginationLink
               isActive={page === currentPage}
-              onClick={() => {callback?.(page)}}
+              onClick={() => {
+                callback(page)
+              }}
             >
               {page}
             </PaginationLink>
@@ -114,22 +127,29 @@ export function Pagination({
             <PaginationEllipsis />
           </PaginationItem>
         )}
-        {(!showEndEllipsis && siblingsEnd + 1 < totalPages - boundaryCount + 1) &&
-          createRange(siblingsEnd + 1, totalPages - boundaryCount).map((page) => (
-            <PaginationItem key={page}>
-              <PaginationLink
-                isActive={page === currentPage}
-                onClick={() => {callback?.(page)}}
-              >
-                {page}
-              </PaginationLink>
-            </PaginationItem>
-          ))}
+        {!showEndEllipsis &&
+          siblingsEnd + 1 < totalPages - boundaryCount + 1 &&
+          createRange(siblingsEnd + 1, totalPages - boundaryCount).map(
+            (page) => (
+              <PaginationItem key={page}>
+                <PaginationLink
+                  isActive={page === currentPage}
+                  onClick={() => {
+                    callback(page)
+                  }}
+                >
+                  {page}
+                </PaginationLink>
+              </PaginationItem>
+            ),
+          )}
         {endPages.map((page) => (
           <PaginationItem key={page}>
             <PaginationLink
               isActive={page === currentPage}
-              onClick={() => {callback?.(page)}}
+              onClick={() => {
+                callback(page)
+              }}
             >
               {page}
             </PaginationLink>
@@ -137,7 +157,11 @@ export function Pagination({
         ))}
         {currentPage < totalPages && (
           <PaginationItem>
-            <PaginationNext onClick={() => {callback?.(currentPage + 1)}}  />
+            <PaginationNext
+              onClick={() => {
+                callback(currentPage + 1)
+              }}
+            />
           </PaginationItem>
         )}
       </PaginationContent>

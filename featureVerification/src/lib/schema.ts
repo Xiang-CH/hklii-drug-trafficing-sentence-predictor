@@ -387,7 +387,7 @@ export const DateDetailInputSchema = z.object({
 })
 
 export const DateDetailSchema = DateDetailInputSchema.transform((data) => {
-  if(Array.isArray(data.date)){
+  if (Array.isArray(data.date)) {
     const days = data.date.map((dateStr) => {
       const dateObj = new Date(dateStr)
       return dateObj.getDay() === 0 ? 7 : dateObj.getDay()
@@ -846,7 +846,7 @@ const FIELD_IS_ARRAY: Array<string> = [
   'family_supports',
   'reasons_for_offence',
   'representatives',
-  'health_conditions'
+  'health_conditions',
 ]
 
 // Function to check if a field is nullable in the schema

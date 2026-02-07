@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router'
+import { useQuery } from '@tanstack/react-query'
+import type { JudgementListItem } from './api/judgements'
 import { authClient } from '@/lib/auth-client'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -19,8 +21,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { useQuery } from '@tanstack/react-query'
-import { type JudgementListItem } from './api/judgements'
 
 type JudgementsSearchParams = {
   page: number
@@ -30,7 +30,7 @@ type JudgementsSearchParams = {
 
 type JudgementResponse = {
   total: number
-  items: JudgementListItem[]
+  items: Array<JudgementListItem>
 }
 
 const JUDGEMENTS_PER_PAGE = 20
@@ -61,13 +61,16 @@ export const Route = createFileRoute('/admin/judgements')({
     return {
       page: search.page ? parseInt(search.page) : 1,
       status: (search.status as JudgementsSearchParams['status']) ?? 'all',
-      search: search.search ?? '',
+      search: search.search,
     }
   },
-  beforeLoad: async ( query ) => {
+  beforeLoad: async (query) => {
     const session = await authClient.getSession()
-    if (!session?.data?.user) {
-      throw redirect({ to: '/login', search: { redirect: `/admin/judgements?${query.toString()}` } })
+    if (!session.data?.user) {
+      throw redirect({
+        to: '/login',
+        search: { redirect: `/admin/judgements?${query.toString()}` },
+      })
     }
     if (session.data.user.role !== 'admin') {
       throw redirect({ to: '/' })
@@ -99,7 +102,7 @@ function JudgementsComponent() {
     queryFn: () => getJudgements({ page, status, search }),
   })
 
-  const totalPages = Math.ceil((data?.total ?? 0) / JUDGEMENTS_PER_PAGE)
+  const totalPages = Math.ceil(data.total / JUDGEMENTS_PER_PAGE)
 
   return (
     <div className="container mx-auto p-6 max-w-6xl">
@@ -156,7 +159,7 @@ function JudgementsComponent() {
         </div>
       </div>
 
-      {data?.items?.length ? (
+      {data.items.length ? (
         <Table>
           <TableHeader>
             <TableRow>
@@ -176,20 +179,18 @@ function JudgementsComponent() {
                 <TableCell>
                   <span
                     className={`inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ${
-                        row.verified
+                      row.verified
                         ? 'bg-green-100 text-green-800'
                         : row.processed
-                        ? 'bg-yellow-100 text-yellow-800'
-                        : 'bg-muted text-muted-foreground'
+                          ? 'bg-yellow-100 text-yellow-800'
+                          : 'bg-muted text-muted-foreground'
                     }`}
                   >
                     {row.processed ? 'Processed' : 'Unprocessed'}
                   </span>
                 </TableCell>
                 <TableCell className="text-muted-foreground">
-                  {row.assignee
-                    ? row.assignee.name
-                    : '-'}
+                  {row.assignee ? row.assignee.name : '-'}
                 </TableCell>
               </TableRow>
             ))}
@@ -202,14 +203,18 @@ function JudgementsComponent() {
       )}
 
       <div className="mt-4 flex justify-end">
-        <Pagination currentPage={page} totalPages={totalPages} callback={(newPage) => {
-          navigate({
-            search: (prev) => ({
-              ...prev,
-              page: newPage,
-            }),
-          })
-        }} />
+        <Pagination
+          currentPage={page}
+          totalPages={totalPages}
+          callback={(newPage) => {
+            navigate({
+              search: (prev) => ({
+                ...prev,
+                page: newPage,
+              }),
+            })
+          }}
+        />
       </div>
     </div>
   )

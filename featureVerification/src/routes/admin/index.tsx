@@ -1,6 +1,11 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { Link, createFileRoute } from '@tanstack/react-router'
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 
 export const Route = createFileRoute('/admin/')({
   component: AdminComponent,
@@ -23,7 +28,9 @@ function AdminComponent() {
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 p-6">
       <div className="flex flex-col gap-2">
-        <h1 className="text-3xl font-semibold tracking-tight">Admin Dashboard</h1>
+        <h1 className="text-3xl font-semibold tracking-tight">
+          Admin Dashboard
+        </h1>
         <p className="text-sm text-muted-foreground">
           Quick access to administrative tools and data management.
         </p>

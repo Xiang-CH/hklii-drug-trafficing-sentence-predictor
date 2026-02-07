@@ -7,13 +7,12 @@ import {
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
-import Header from '@/components/header'
-
 import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
 
 import appCss from '../styles.css?url'
 
 import type { QueryClient } from '@tanstack/react-query'
+import Header from '@/components/header'
 
 interface MyRouterContext {
   queryClient: QueryClient

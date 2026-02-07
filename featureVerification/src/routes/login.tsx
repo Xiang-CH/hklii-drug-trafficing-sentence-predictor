@@ -1,4 +1,4 @@
-import { createFileRoute, useSearch, useNavigate } from '@tanstack/react-router'
+import { createFileRoute, useNavigate, useSearch } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
 import { authClient } from '@/lib/auth-client'
 import { Button } from '@/components/ui/button'
@@ -131,7 +131,9 @@ function BetterAuthDemo() {
   return (
     <div className="flex justify-center py-10 px-4">
       <div className="w-full max-w-md p-6">
-        <h1 className="text-lg font-semibold leading-none tracking-tight">Sign in</h1>
+        <h1 className="text-lg font-semibold leading-none tracking-tight">
+          Sign in
+        </h1>
         <p className="text-sm text-neutral-500 dark:text-neutral-400 mt-2 mb-6">
           {useUsername
             ? 'Enter your username below to login to your account'
@@ -157,7 +159,10 @@ function BetterAuthDemo() {
 
           {useUsername ? (
             <div className="grid gap-2">
-              <label htmlFor="username" className="text-sm font-medium leading-none">
+              <label
+                htmlFor="username"
+                className="text-sm font-medium leading-none"
+              >
                 Username
               </label>
               <Input
@@ -170,7 +175,10 @@ function BetterAuthDemo() {
             </div>
           ) : (
             <div className="grid gap-2">
-              <label htmlFor="email" className="text-sm font-medium leading-none">
+              <label
+                htmlFor="email"
+                className="text-sm font-medium leading-none"
+              >
                 Email
               </label>
               <Input
@@ -206,11 +214,7 @@ function BetterAuthDemo() {
             </div>
           )}
 
-          <Button
-            type="submit"
-            disabled={loading}
-            className="w-full"
-          >
+          <Button type="submit" disabled={loading} className="w-full">
             {loading ? (
               <span className="flex items-center justify-center gap-2">
                 <span className="h-4 w-4 animate-spin rounded-full border-2 border-neutral-400 border-t-white dark:border-neutral-600 dark:border-t-neutral-900" />
