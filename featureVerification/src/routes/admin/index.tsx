@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/react-router'
+import { Link, createFileRoute, redirect } from '@tanstack/react-router'
 
 import {
   Card,
@@ -6,8 +6,12 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { requireAdminAuth } from '@/lib/auth-client'
 
 export const Route = createFileRoute('/admin/')({
+  beforeLoad: async () => {
+    await requireAdminAuth('/admin')
+  },
   component: AdminComponent,
 })
 

@@ -4,7 +4,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useForm } from '@tanstack/react-form'
 import type { UseMutationResult } from '@tanstack/react-query'
 import type { UserType } from '@/lib/auth'
-import { authClient } from '@/lib/auth-client'
+import { authClient, requireAdminAuth } from '@/lib/auth-client'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import {
@@ -68,16 +68,7 @@ export const Route = createFileRoute('/admin/users')({
     }
   },
   beforeLoad: async ({ search }) => {
-    const session = await authClient.getSession()
-    if (!session.data?.user) {
-      throw redirect({
-        to: '/login',
-        search: { redirect: `/admin/users?page=${search.page}` },
-      })
-    }
-    if (session.data.user.role !== 'admin') {
-      throw redirect({ to: '/' })
-    }
+    await requireAdminAuth(`/admin/users?page=${search.page}`)
   },
   loaderDeps: ({ search }) => ({
     page: search.page,

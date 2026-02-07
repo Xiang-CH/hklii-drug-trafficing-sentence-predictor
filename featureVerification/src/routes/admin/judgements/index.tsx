@@ -7,7 +7,7 @@ import {
 } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
 import type { JudgementListItem } from '@/routes/api/judgements/$'
-import { authClient } from '@/lib/auth-client'
+import { authClient, requireAdminAuth } from '@/lib/auth-client'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import {
@@ -70,13 +70,7 @@ export const Route = createFileRoute('/admin/judgements/')({
     }
   },
   beforeLoad: async ({ location }) => {
-    const session = await authClient.getSession()
-    if (!session.data?.user) {
-      throw redirect({ to: '/login', search: { redirect: location.href } })
-    }
-    if (session.data.user.role !== 'admin') {
-      throw redirect({ to: '/' })
-    }
+    await requireAdminAuth(location.href)
   },
   loaderDeps: ({ search }) => ({
     page: search.page,
