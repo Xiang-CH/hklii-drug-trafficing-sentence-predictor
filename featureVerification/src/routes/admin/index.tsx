@@ -1,31 +1,49 @@
-import { Link, createFileRoute, redirect } from '@tanstack/react-router'
+import { Link, createFileRoute } from '@tanstack/react-router'
 
+import { createServerFn } from '@tanstack/react-start'
 import {
   Card,
+  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
 import { requireAdminAuth } from '@/lib/auth-client'
+import { db } from '@/lib/db'
+
+const fetchAdminStats = createServerFn().handler(async () => {
+  const usersCollection = db.collection('user')
+  const judgementsCollection = db.collection('judgement-html')
+
+  const userCount = await usersCollection.countDocuments()
+  const judgmentCount = await judgementsCollection.countDocuments()
+
+  return { userCount, judgmentCount }
+})
 
 export const Route = createFileRoute('/admin/')({
   beforeLoad: async () => {
     await requireAdminAuth('/admin')
   },
   component: AdminComponent,
+  loader: async () => fetchAdminStats(),
 })
 
 function AdminComponent() {
+  const { userCount, judgmentCount } = Route.useLoaderData()
+
   const adminLinks = [
     {
       title: 'Users',
       description: 'Manage user accounts, roles, and access.',
       to: '/admin/users',
+      count: userCount,
     },
     {
       title: 'Judgements',
       description: 'Review and maintain judgement records.',
       to: '/admin/judgements',
+      count: judgmentCount,
     },
   ]
 
@@ -47,6 +65,11 @@ function AdminComponent() {
                 <CardTitle>{link.title}</CardTitle>
                 <CardDescription>{link.description}</CardDescription>
               </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Total {link.title.toLowerCase()}: {link.count}
+                </p>
+              </CardContent>
             </Card>
           </Link>
         ))}

@@ -7,7 +7,7 @@ import {
 } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
 import type { JudgementListItem } from '@/routes/api/judgements/$'
-import { authClient, requireAdminAuth } from '@/lib/auth-client'
+import { requireAdminAuth } from '@/lib/auth-client'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import {

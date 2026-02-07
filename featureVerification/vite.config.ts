@@ -13,7 +13,6 @@ const config = defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
-    extensions: ['.tsx', '.ts', '.jsx', '.js'],
   },
   plugins: [
     devtools(),

@@ -80,8 +80,6 @@ export default function Header() {
             <span className="font-medium">Admin</span>
           </Link>
 
-          
-
           <Link
             to="/login"
             onClick={() => setIsOpen(false)}
@@ -94,7 +92,6 @@ export default function Header() {
             <Globe size={20} />
             <span className="font-medium">Login</span>
           </Link>
-
         </nav>
 
         <div className="p-4 border-t border-gray-700 bg-gray-800 flex flex-col gap-2">
