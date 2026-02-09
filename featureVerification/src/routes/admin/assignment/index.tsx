@@ -47,6 +47,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { Pagination } from '@/components/pagination'
+import { set } from 'zod'
 
 type AssignmentSearchParams = {
   page?: number
@@ -146,7 +147,7 @@ function AssignmentComponent() {
 
   const [searchText, setSearchText] = React.useState(search ?? '')
   const [selectedUser, setSelectedUser] = React.useState<AssignmentUser | null>(
-    null,
+    null
   )
   const [selectedJudgements, setSelectedJudgements] = React.useState<
     Set<string>
@@ -165,9 +166,9 @@ function AssignmentComponent() {
     ])
     if (username && initialData.users.length > 0) {
       const user = initialData.users.find((u) => u.username === username)
-      if (user) {
-        setSelectedUser(user)
-      }
+      setSelectedUser(user || null)
+    } else {
+      setSelectedUser(null)
     }
   }, [username, initialData.users])
 
@@ -399,7 +400,7 @@ function AssignmentComponent() {
                           ...prev,
                           username:
                             prev.username === user.username
-                              ? null
+                              ? undefined
                               : user.username,
                         }),
                       })
