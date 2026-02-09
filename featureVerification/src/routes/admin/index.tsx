@@ -16,9 +16,9 @@ const fetchAdminStats = createServerFn().handler(async () => {
   const judgementsCollection = db.collection('judgement-html')
 
   const userCount = await usersCollection.countDocuments()
-  const judgmentCount = await judgementsCollection.countDocuments()
+  const judgementCount = await judgementsCollection.countDocuments()
 
-  return { userCount, judgmentCount }
+  return { userCount, judgementCount }
 })
 
 export const Route = createFileRoute('/admin/')({
@@ -30,7 +30,7 @@ export const Route = createFileRoute('/admin/')({
 })
 
 function AdminComponent() {
-  const { userCount, judgmentCount } = Route.useLoaderData()
+  const { userCount, judgementCount } = Route.useLoaderData()
 
   const adminLinks = [
     {
@@ -43,7 +43,7 @@ function AdminComponent() {
       title: 'Judgements',
       description: 'Review and maintain judgement records.',
       to: '/admin/judgements',
-      count: judgmentCount,
+      count: judgementCount,
     },
     {
       title: 'Assignment',
