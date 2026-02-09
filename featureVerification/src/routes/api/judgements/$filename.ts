@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { auth } from '@/lib/auth'
 import { db } from '@/lib/db'
+import { authMiddleware } from '@/middleware/auth'
 
 export type JudgementDetail = {
   id: string
@@ -17,14 +18,9 @@ export type JudgementDetail = {
 
 export const Route = createFileRoute('/api/judgements/$filename')({
   server: {
+    middleware: [authMiddleware],
     handlers: {
-      GET: async ({ request, params }) => {
-        const headers = Object.fromEntries(request.headers.entries())
-        const session = await auth.api.getSession({ headers })
-        if (!session?.user || session.user.role !== 'admin') {
-          return new Response('Unauthorized', { status: 401 })
-        }
-
+      GET: async ({ params }) => {
         const judgementsCollection = db.collection('judgement-html')
         const doc = await judgementsCollection.findOne({
           filename: params.filename,

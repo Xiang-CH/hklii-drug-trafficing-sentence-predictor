@@ -3,6 +3,7 @@ import { ObjectId } from 'mongodb'
 import { auth } from '@/lib/auth'
 import { db } from '@/lib/db'
 import { getUserAssignmentCounts } from '@/server/assignment'
+import { authMiddleware } from '@/middleware/auth'
 
 export type AssignmentUser = {
   id: string
@@ -36,14 +37,9 @@ const PAGE_SIZE = 50
 
 export const Route = createFileRoute('/api/assignment/$')({
   server: {
+    middleware: [authMiddleware],
     handlers: {
       GET: async ({ request }) => {
-        const headers = Object.fromEntries(request.headers.entries())
-        const session = await auth.api.getSession({ headers })
-        if (!session?.user || session.user.role !== 'admin') {
-          return new Response('Unauthorized', { status: 401 })
-        }
-
         const url = new URL(
           request.url.startsWith('http')
             ? request.url
@@ -164,12 +160,6 @@ export const Route = createFileRoute('/api/assignment/$')({
       },
 
       POST: async ({ request }) => {
-        const headers = Object.fromEntries(request.headers.entries())
-        const session = await auth.api.getSession({ headers })
-        if (!session?.user || session.user.role !== 'admin') {
-          return new Response('Unauthorized', { status: 401 })
-        }
-
         const body = await request.json()
         const { judgementIds, userId, action } = body as {
           judgementIds: Array<string>

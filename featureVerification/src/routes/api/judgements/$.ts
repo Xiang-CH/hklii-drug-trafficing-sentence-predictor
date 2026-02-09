@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { ObjectId } from 'mongodb'
 import { auth } from '@/lib/auth'
 import { db } from '@/lib/db'
+import { authMiddleware } from '@/middleware/auth'
 
 export type JudgementListItem = {
   id: string
@@ -27,14 +28,9 @@ function normalizeString(value: string | null) {
 
 export const Route = createFileRoute('/api/judgements/$')({
   server: {
+    middleware: [authMiddleware],
     handlers: {
       GET: async ({ request }) => {
-        const headers = Object.fromEntries(request.headers.entries())
-        const session = await auth.api.getSession({ headers })
-        if (!session?.user || session.user.role !== 'admin') {
-          return new Response('Unauthorized', { status: 401 })
-        }
-        // console.log('request.url', request.url)
         const url = new URL(
           request.url.startsWith('http')
             ? request.url
