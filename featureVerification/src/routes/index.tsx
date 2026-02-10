@@ -50,7 +50,7 @@ function UserDashboard() {
               Please sign in to view your verification dashboard
             </p>
             <div className="flex justify-center">
-              <Link to="/login">
+              <Link to="/login" search={{ redirect: '/' }}>
                 <Button>Sign In</Button>
               </Link>
             </div>
