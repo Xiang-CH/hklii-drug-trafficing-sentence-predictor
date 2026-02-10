@@ -8,11 +8,9 @@ export const authMiddleware = createMiddleware().server(
     const headers = getRequestHeaders()
     const session = await auth.api.getSession({ headers })
 
-    console.log(JSON.stringify({ headers }, null, 2))
-    request.headers.get('referer') &&
-      console.log('Referer:', request.headers.get('referer'))
-    const path = new URL(request.headers.get('referer') || '').pathname
-    console.log('Auth Middleware:', path)
+    const referer = request.headers.get('referer') 
+    const path = referer ? new URL(referer).pathname : '/'
+    // console.log('Auth Middleware:', path)
 
     if (!session) {
       throw redirect({ to: '/login', search: { redirect: path } })
