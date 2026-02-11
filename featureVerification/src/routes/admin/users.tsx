@@ -7,6 +7,8 @@ import {
 } from '@tanstack/react-router'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useForm } from '@tanstack/react-form'
+import { Trash } from 'lucide-react'
+import { toast } from 'sonner'
 import type { UseMutationResult } from '@tanstack/react-query'
 import type { UserType } from '@/lib/auth'
 import type { UserAssignmentCounts } from '@/server/assignment'
@@ -31,6 +33,12 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { getUserAssignmentCounts } from '@/server/assignment'
+import { deleteUser } from '@/server/user'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
 
 type UsersSearchParams = {
   page: number
@@ -205,14 +213,31 @@ function UsersComponent() {
           username: editingValues.username,
         },
       })
-      // await authClient.admin.updateUser({ userId: userId, data: { name: editingValues.name, email: editingValues.email, username: editingValues.username } })
-      // refresh page to reload loader data
-      // window.location.href = `/admin/users?page=${page}`
       cancelEdit()
     } catch (err: any) {
       setErrorMsg(err?.message || 'Failed to update user')
     } finally {
       setLoadingId(null)
+    }
+  }
+
+  async function handleDeleteUser() {
+    if (!editingId) return
+
+    if (
+      localAssignmentCounts[editingId]?.verification &&
+      localAssignmentCounts[editingId].verification > 0
+    ) {
+      toast.error('Cannot delete user with active verification assignments')
+      return
+    }
+
+    try {
+      await deleteUser({ data: editingId })
+      queryClient.invalidateQueries({ queryKey: ['users', page] })
+      toast.success('User deleted successfully')
+    } catch (err: any) {
+      toast.error(err?.message || 'Failed to delete user')
     }
   }
 
@@ -246,9 +271,9 @@ function UsersComponent() {
               <TableHead className="w-[19%]">Email</TableHead>
               <TableHead className="w-[14%]">Username</TableHead>
               <TableHead className="w-[10%]">Role</TableHead>
-              <TableHead className="w-[10%]">Assigned</TableHead>
-              <TableHead className="w-[10%]">Verified</TableHead>
-              <TableHead className="w-[15%]">Actions</TableHead>
+              <TableHead className="w-[8%]">Assigned</TableHead>
+              <TableHead className="w-[8%]">Verified</TableHead>
+              <TableHead className="w-[19%]">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -354,11 +379,58 @@ function UsersComponent() {
                       <Button variant="ghost" onClick={cancelEdit} size="sm">
                         Cancel
                       </Button>
+                      {!localAssignmentCounts[user.id]?.verification && (
+                        <Popover>
+                          <PopoverTrigger asChild>
+                            <Button
+                              variant="destructive"
+                              size="sm"
+                              className="rounded-md"
+                            >
+                              <Trash className="h-4 w-4" />
+                            </Button>
+                          </PopoverTrigger>
+                          <PopoverContent className="w-auto p-4">
+                            <div className="flex flex-col items-start gap-2">
+                              <p>Are you sure you want to delete this user?</p>
+                              {localAssignmentCounts[user.id]?.assignment && (
+                                <p className="text-sm text-muted-foreground">
+                                  This user has{' '}
+                                  {localAssignmentCounts[user.id]?.assignment}{' '}
+                                  assignments. Assignments will be unassigned
+                                  upon deletion.
+                                </p>
+                              )}
+                              <div className="flex w-full justify-end gap-2">
+                                <Button
+                                  variant="outline"
+                                  onClick={() => {
+                                    cancelEdit()
+                                  }}
+                                  size="sm"
+                                >
+                                  Cancel
+                                </Button>
+                                <Button
+                                  variant="destructive"
+                                  onClick={() => {
+                                    handleDeleteUser()
+                                    cancelEdit()
+                                  }}
+                                  size="sm"
+                                >
+                                  Delete
+                                </Button>
+                              </div>
+                            </div>
+                          </PopoverContent>
+                        </Popover>
+                      )}
                     </div>
                   ) : (
                     <div className="flex items-center gap-1">
                       <Button
-                        variant="secondary"
+                        variant="outline"
                         onClick={() => startEdit(user)}
                         size="sm"
                       >
