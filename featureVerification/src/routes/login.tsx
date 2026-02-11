@@ -1,9 +1,20 @@
 import { createFileRoute, useNavigate, useSearch } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
+import { toast } from 'sonner'
+import { Eye, EyeOff } from 'lucide-react'
+
 import { authClient } from '@/lib/auth-client'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Switch } from '@/components/ui/switch'
+import {
+  Popover,
+  PopoverContent,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from '@/components/ui/popover'
 
 type LoginSearchParams = {
   redirect?: string
@@ -28,6 +39,8 @@ function BetterAuthDemo() {
   const [loading, setLoading] = useState(false)
   const params = useSearch({ from: '/login' })
   const navigate = useNavigate()
+  const [openChangePassword, setOpenChangePassword] = useState(false)
+  const [showPasswords, setShowPasswords] = useState(false)
 
   useEffect(() => {
     if (session?.user && params.redirect) {
@@ -52,7 +65,7 @@ function BetterAuthDemo() {
               Welcome back
             </h1>
             <p className="text-sm text-neutral-500 dark:text-neutral-400">
-              You're signed in as {session.user.email}
+              You're signed in as {session.user.username || session.user.email}
             </p>
           </div>
 
@@ -76,12 +89,139 @@ function BetterAuthDemo() {
             </div>
           </div>
 
-          <button
-            onClick={() => authClient.signOut()}
-            className="w-full h-9 px-4 text-sm font-medium border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-          >
-            Sign out
-          </button>
+          <div className="flex flex-col gap-2">
+            <Popover
+              open={openChangePassword}
+              onOpenChange={setOpenChangePassword}
+            >
+              <PopoverTrigger asChild>
+                <Button className="w-full h-9 px-4 text-sm font-medium border rounded-md">
+                  Change Password
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent>
+                <PopoverHeader>
+                  <PopoverTitle>Change Password</PopoverTitle>
+                  <PopoverDescription>
+                    Enter your new password below.
+                  </PopoverDescription>
+                </PopoverHeader>
+                <form
+                  className="flex flex-col gap-2 mt-2"
+                  onSubmit={(e) => {
+                    e.preventDefault()
+                    const formData = new FormData(e.currentTarget)
+                    const currentPassword = formData.get(
+                      'currentPassword',
+                    ) as string
+                    const newPassword = formData.get('newPassword') as string
+                    const confirmPassword = formData.get(
+                      'confirmPassword',
+                    ) as string
+                    if (newPassword !== confirmPassword) {
+                      toast.warning('Passwords do not match')
+                      return
+                    }
+                    authClient
+                      .changePassword({
+                        newPassword,
+                        currentPassword,
+                        revokeOtherSessions: true,
+                      })
+                      .then(({ error: changePasswordError }) => {
+                        if (changePasswordError) {
+                          toast.error(
+                            changePasswordError.message ||
+                              'Failed to update password',
+                          )
+                        } else {
+                          toast.success('Password updated successfully')
+                          setOpenChangePassword(false)
+                        }
+                      })
+                      .catch(() => {
+                        setError('Failed to update password')
+                      })
+                  }}
+                >
+                  <div className="relative">
+                    <Input
+                      placeholder="Current Password"
+                      type={showPasswords ? 'text' : 'password'}
+                      name="currentPassword"
+                      required
+                      minLength={5}
+                      className="pr-10"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPasswords(!showPasswords)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
+                    >
+                      {showPasswords ? (
+                        <EyeOff className="h-4 w-4" />
+                      ) : (
+                        <Eye className="h-4 w-4" />
+                      )}
+                    </button>
+                  </div>
+                  <div className="relative">
+                    <Input
+                      placeholder="New Password"
+                      type={showPasswords ? 'text' : 'password'}
+                      name="newPassword"
+                      required
+                      minLength={5}
+                      className="pr-10"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPasswords(!showPasswords)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
+                    >
+                      {showPasswords ? (
+                        <EyeOff className="h-4 w-4" />
+                      ) : (
+                        <Eye className="h-4 w-4" />
+                      )}
+                    </button>
+                  </div>
+                  <div className="relative">
+                    <Input
+                      placeholder="Confirm Password"
+                      type={showPasswords ? 'text' : 'password'}
+                      name="confirmPassword"
+                      required
+                      minLength={5}
+                      className="pr-10"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPasswords(!showPasswords)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
+                    >
+                      {showPasswords ? (
+                        <EyeOff className="h-4 w-4" />
+                      ) : (
+                        <Eye className="h-4 w-4" />
+                      )}
+                    </button>
+                  </div>
+                  <Button type="submit" className="w-full items-end">
+                    Update Password
+                  </Button>
+                </form>
+              </PopoverContent>
+            </Popover>
+
+            <Button
+              onClick={() => authClient.signOut()}
+              variant="secondary"
+              className="w-full h-9 px-4 text-sm font-medium border"
+            >
+              Sign out
+            </Button>
+          </div>
 
           <p className="text-xs text-center text-neutral-400 dark:text-neutral-500">
             Built with{' '}
