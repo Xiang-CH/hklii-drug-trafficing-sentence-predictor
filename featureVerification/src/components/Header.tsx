@@ -1,11 +1,23 @@
 import { Link } from '@tanstack/react-router'
 
 import { useState } from 'react'
-import { Globe, Home, Menu, Network, X } from 'lucide-react'
+import {
+  Globe,
+  Home,
+  Menu,
+  Network,
+  Users,
+  FileText,
+  ClipboardList,
+  X,
+} from 'lucide-react'
 import BetterAuthHeader from '../integrations/better-auth/header-user.tsx'
+import { authClient } from '@/lib/auth-client'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const { data: session } = authClient.useSession()
+  const isAdmin = session?.user.role === 'admin'
 
   return (
     <>
@@ -54,18 +66,63 @@ export default function Header() {
             <span className="font-medium">Home</span>
           </Link>
 
-          <Link
-            to="/admin"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-            activeProps={{
-              className:
-                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-            }}
-          >
-            <Network size={20} />
-            <span className="font-medium">Admin</span>
-          </Link>
+          {isAdmin && (
+            <>
+              <Link
+                to="/admin"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
+                activeProps={{
+                  className:
+                    'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
+                }}
+              >
+                <Network size={20} />
+                <span className="font-medium">Admin</span>
+              </Link>
+
+              <div className="ml-6 flex flex-col gap-1 mb-2">
+                <Link
+                  to="/admin/users"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-800 transition-colors text-sm"
+                  activeProps={{
+                    className:
+                      'flex items-center gap-3 p-2 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors text-sm',
+                  }}
+                >
+                  <Users size={16} />
+                  <span>Users</span>
+                </Link>
+
+                <Link
+                  to="/admin/judgements"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-800 transition-colors text-sm"
+                  activeProps={{
+                    className:
+                      'flex items-center gap-3 p-2 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors text-sm',
+                  }}
+                >
+                  <FileText size={16} />
+                  <span>Judgements</span>
+                </Link>
+
+                <Link
+                  to="/admin/assignment"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-800 transition-colors text-sm"
+                  activeProps={{
+                    className:
+                      'flex items-center gap-3 p-2 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors text-sm',
+                  }}
+                >
+                  <ClipboardList size={16} />
+                  <span>Assignment</span>
+                </Link>
+              </div>
+            </>
+          )}
 
           <Link
             to="/login"

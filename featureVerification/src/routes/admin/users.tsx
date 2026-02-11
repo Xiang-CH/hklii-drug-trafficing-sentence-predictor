@@ -41,7 +41,7 @@ import {
 } from '@/components/ui/popover'
 
 type UsersSearchParams = {
-  page: number
+  page?: number
 }
 
 type UserMutationVariables =
@@ -90,7 +90,7 @@ export const Route = createFileRoute('/admin/users')({
     page: search.page,
   }),
   loader: async (deps) => {
-    const { page } = deps.deps
+    const { page = 1 } = deps.deps
     const response = await getUsers(page)
     const assignmentCounts = await getUserAssignmentCounts()
     return { response, assignmentCounts }
@@ -100,7 +100,7 @@ export const Route = createFileRoute('/admin/users')({
 function UsersComponent() {
   const { response, assignmentCounts } = Route.useLoaderData()
   const navigate = useNavigate({ from: '/admin/users' })
-  const { page } = Route.useSearch()
+  const { page = 1 } = Route.useSearch()
 
   if (response.error) {
     return (
