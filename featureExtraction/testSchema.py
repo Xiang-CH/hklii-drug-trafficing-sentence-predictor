@@ -92,6 +92,7 @@ def extract_single_schema(
     base_prompt = config["prompt"]
 
     last_error = None
+    last_raw_output = None
     for attempt in range(MAX_RETRIES):
         try:
             error_context = ""
@@ -137,17 +138,22 @@ def extract_single_schema(
                 },
             )
 
+            # Capture raw output before validation
+            raw_output = response.output or None
+            last_raw_output = raw_output  # Store for error logging
+
             # Check if parsing succeeded
             if response.output_parsed is None:
                 # Check for refusal
                 if hasattr(response, "refusal") and response.refusal:
+                    last_raw_output = response.refusal
                     raise ValueError(
                         f"Model refused to generate output: {response.refusal}"
                     )
+        
                 # Check raw output for debugging
-                raw_output = getattr(response, "output_text", None) or getattr(
-                    response, "output", None
-                )
+                raw_output = raw_output or getattr(response, "output", None)
+                last_raw_output = raw_output
                 raise ValueError(f"Failed to parse response. Raw output: {raw_output}")
 
             output_dict = response.output_parsed.model_dump(mode="json")
@@ -162,9 +168,14 @@ def extract_single_schema(
             return response.output_parsed  # Return for use in subsequent extractions
 
         except (OpenAIError, ValidationError, ValueError) as e:
-            # print(f"Attempt {attempt + 1} failed for {schema_name}: {str(e)}")
-            if isinstance(e, ValidationError):
-                last_error = str(e)
+            last_error = str(e)
+            # Always log something as output, even if it's just the error message
+            trace_output = last_raw_output if last_raw_output is not None else f"Error: {last_error}"
+            langfuse.update_current_span(
+                metadata={
+                    f"error_output_{attempt + 1}": trace_output,
+                },
+            )
             if attempt == MAX_RETRIES - 1:
                 print(
                     f"Failed to extract {schema_name} for {judgement_type} after {MAX_RETRIES} attempts: {last_error}"

@@ -1,23 +1,23 @@
 {
   "neutral_citation": "[2025] HKCA 943",
-  "judge_name": "Andrew Macrae",
+  "judge_name": "Andrew Macrae VP",
   "judgment_date_time": "2025-10-17T00:00:00+08:00",
   "representatives": [
     {
       "name": "Prakash L Daryanani",
-      "role": "Mr Prakash L Daryanani SPP, of the Department of Justice, for the Respondent"
+      "role": "SPP, of the Department of Justice, for the Respondent"
     },
     {
       "name": "Duncan Percy",
-      "role": "Mr Duncan Percy, instructed by SH Chan & Co, assigned by the Director of Legal Aid, for the Applicant"
+      "role": "Instructed by SH Chan & Co, assigned by the Director of Legal Aid, for the Applicant"
     },
     {
       "name": "Janice KWAN",
-      "role": "Ms. Janice KWAN, SPP of Department of Justice for the Prosecution/ HKSAR"
+      "role": "SPP of Department of Justice for the Prosecution/ HKSAR"
     },
     {
       "name": "Raymond YU",
-      "role": "Mr. Raymond YU instructed by Messrs. Chan & Chan, assigned by D.L.A., for the defendant"
+      "role": "Instructed by Messrs. Chan & Chan, assigned by D.L.A., for the defendant"
     }
   ],
   "cases_heard": [
@@ -36,37 +36,37 @@
       },
       "offence_time": {
         "time": "21:20:00+08:00",
-        "source": "At around 9:20pm",
+        "source": "at around 9:20pm",
         "time_of_day": "evening"
       },
       "place_of_offence": {
         "address": "Room 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon",
         "nature": "Residential building",
         "subDistrict": "Tai Kok Tsui",
-        "source": "room 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon",
+        "source": "the defendant on 2 April 2022, at room 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon",
         "district": "Yau Tsim Mong"
       },
       "cross_border": {
         "cross_border": false,
         "type": null,
-        "source": "No cross-border activity is mentioned in the judgment"
+        "source": ""
       },
       "defendants_of_charge": [
         {
-          "defendant_name": "LAU Kam-hung (劉金洪)",
+          "defendant_name": "Lau Kam Hung",
           "defendant_id": 1,
           "trafficking_mode": {
             "mode": "Drug houses",
-            "source": "from a metal box on a table, (a) 4 resealable plastic bags containing a total of 17.3g of a crystalline solid containing 17.0g of methamphetamine hydrochloride (E4), (b) An electronic scale, (c) a resealable plastic bag containing multiple smaller resealable plastic bags, and (d) 2 glass bottles each with a straw attached thereto (which resembled pipes for smoking of drugs)"
+            "source": "This was ... a rather more active, albeit on a small scale, centre for the distribution, packaging and consumption of different dangerous drugs"
           },
           "reasons_for_offence": [
             {
               "reason": "Addiction-driven",
-              "source": "the defendant was a former drug abuser aged 68"
+              "source": "the defendant claimed that the 'pork' (colloquial term for methamphetamine) and 'weed' (colloquial term for cannabis) were for his own consumption, and he would sometimes share them with his friends."
             },
             {
-              "reason": "Helping other people",
-              "source": "he would sometimes share them with his friends"
+              "reason": "Economic hardship",
+              "source": "the difficulties he faced as a young immigrant contributed to him turning to gambling, which led to debts"
             }
           ],
           "benefits_received": null
@@ -78,8 +78,8 @@
   "defendants": [
     {
       "id": 1,
-      "name": "LAU Kam-hung (劉金洪)"
+      "name": "Lau Kam Hung"
     }
   ],
-  "tracing_id": "3d5c3ac3377d19cc28f082c7b5b592c0"
+  "tracing_id": "c9762301d232fd22be74ca8b5752ad1a"
 }

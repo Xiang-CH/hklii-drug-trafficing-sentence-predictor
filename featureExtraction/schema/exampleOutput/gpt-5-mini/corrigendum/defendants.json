@@ -4,12 +4,21 @@
       "defendant_id": 1,
       "defendant_name": {
         "name": "黃鈺庭",
-        "source": "黃鈺庭（第一被告人）"
+        "source": "香港特別行政區 訴\n\n黃鈺庭\n（第一被告人）"
       },
-      "nationality": null,
+      "nationality": {
+        "category": "Hong Kong resident",
+        "hk_resident_status": "N/A",
+        "foreign_country_code": null,
+        "infer_reason": "Inferred from references to completion of '中三學歷' in 2021 (Hong Kong secondary education terminology) and other contextual indicators in the judgment.",
+        "source": "以第一被告人而言，他現年只有18歲。他在2021年完成中三學歷，之後展開工作生涯。"
+      },
       "age_at_offence": {
-        "age": 17,
-        "source": "利用年輕人犯案（第一被告人犯案時未滿18歲）"
+        "age": [
+          17,
+          18
+        ],
+        "source": "以第一被告人而言，他現年只有18歲。 (Offence occurred on 30 January 2024; sentencing 30 April 2025 — age at sentencing given as 18, so age at offence estimated as 17–18.)"
       },
       "age_at_sentencing": {
         "age": 18,
@@ -24,29 +33,29 @@
       "household_composition": null,
       "health_conditions": [
         {
-          "name": "Use of ketamine",
+          "name": "Ketamine use",
           "type": "Drug addiction",
-          "source": "辯方解釋，案發時第一被告人因為失業而借故外出消遣，繼而開始吸食氯胺酮。"
+          "source": "案發時第一被告人因為失業而借故外出消遣，繼而開始吸食氯胺酮。"
         }
       ],
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Lower",
-        "source": "他在2021年完成中三學歷，之後展開工作生涯。"
+        "source": "他在2021年完成中三學歷。"
       },
       "occupation": {
         "occupation_category": "Unemployed",
         "occupation_name": null,
-        "source": "案發時第一被告人因為失業而借故外出消遣"
+        "source": "辯方解釋，案發時第一被告人因為失業而借故外出消遣。"
       },
       "monthly_wage": {
         "wage": 0,
-        "source": "案發時第一被告人因為失業而借故外出消遣"
+        "source": "辯方解釋，案發時第一被告人因為失業而借故外出消遣。"
       },
       "criminal_records": [
         {
           "record": "None",
-          "source": "兩位被告人均無定罪紀錄。"
+          "source": "整體而言，兩位被告人均無定罪紀錄。"
         }
       ],
       "positive_habits_after_arrest": null,
@@ -56,14 +65,20 @@
       "defendant_id": 2,
       "defendant_name": {
         "name": "蘇偉強",
-        "source": "蘇偉強（第二被告人）"
+        "source": "香港特別行政區 訴\n\n蘇偉強\n（第二被告人）"
       },
-      "nationality": null,
+      "nationality": {
+        "category": "Hong Kong resident",
+        "hk_resident_status": "N/A",
+        "foreign_country_code": null,
+        "infer_reason": "Inferred from local mobile number prefix (69XX XXXX) used in the judgment and the contextual setting of the case.",
+        "source": "第二被告人的流動電話號碼一樣為第一被告人所指的69XX XXXX；（控方調查發現第二被告人就是“So Ken”）"
+      },
       "age_at_offence": null,
       "age_at_sentencing": null,
       "gender": {
         "gender": "Male",
-        "source": "第二被告人在其後進行的警誡會面中表示："
+        "source": "在警誡下，第二被告人說他會就介紹工作給第一被告人而“從中抽水”。"
       },
       "marital_status": null,
       "parental_status": null,
@@ -76,17 +91,17 @@
       "criminal_records": [
         {
           "record": "None",
-          "source": "兩位被告人均無定罪紀錄。"
+          "source": "整體而言，兩位被告人均無定罪紀錄。"
         }
       ],
       "positive_habits_after_arrest": null,
       "family_supports": [
         {
           "support": "Letters of support from family",
-          "source": "基於他的求情內容，特別是其家人及朋友對他的正面評價及支持，本席酌情減刑3個月。"
+          "source": "基於他的求情內容，特別是其家人及朋友對他的正面評價及支持，本席酌情減刑3個月至57個月。"
         }
       ]
     }
   ],
-  "tracing_id": "8d5fb54f9fcc2f71f323e398d3f262fb"
+  "tracing_id": "ddb5baefe22a61c4e1999414cbfe3b70"
 }

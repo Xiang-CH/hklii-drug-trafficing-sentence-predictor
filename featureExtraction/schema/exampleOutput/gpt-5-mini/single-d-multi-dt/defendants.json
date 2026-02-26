@@ -4,33 +4,39 @@
       "defendant_id": 1,
       "defendant_name": {
         "name": "劉子健",
-        "source": "劉子健"
+        "source": "訴\n\n劉子健"
       },
-      "nationality": null,
+      "nationality": {
+        "category": "Hong Kong resident",
+        "hk_resident_status": "N/A",
+        "foreign_country_code": null,
+        "infer_reason": "Presence of Hong Kong residential documents, local tenancy and local transport card usage indicate residence in Hong Kong (e.g. Mei Foo resident pass, tenancy of local units, Octopus card).",
+        "source": "被告身上亦撿獲現金港幣13,420元、一張美孚新邨一期住戶證、一部流動電話、兩條鎖匙。"
+      },
       "age_at_offence": null,
       "age_at_sentencing": {
         "age": 42,
-        "source": "被告現年42歲"
+        "source": "被告現年42歲，過往在2004年5月因提供虛假資料予海關，被罰款12,000元。"
       },
       "gender": {
         "gender": "Male",
-        "source": "他首次上去C室時，盧亦有一同上去一次，之後他便自行上去C室."
+        "source": "其姊姊亦指他是好老公、好爸爸，在收押所期間已看見了他改變很多，真心悔改。"
       },
       "marital_status": {
         "status": "Married",
-        "source": "已婚，育有兩子一女"
+        "source": "就背景而言，被告43歲，中四學歷，已婚，育有兩子一女，..."
       },
       "parental_status": {
         "status": "Parent",
         "custody": null,
-        "source": "已婚，育有兩子一女"
+        "source": "就背景而言，被告43歲，中四學歷，已婚，育有兩子一女，..."
       },
       "household_composition": null,
       "health_conditions": null,
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Upper",
-        "source": "中四學歷"
+        "source": "就背景而言，被告43歲，中四學歷，已婚，育有兩子一女，..."
       },
       "occupation": {
         "occupation_category": "Elementary occupation",
@@ -41,22 +47,22 @@
       "criminal_records": [
         {
           "record": "Other offences",
-          "source": "過往在2004年5月因提供虛假資料予海關，被罰款12,000元."
+          "source": "過往在2004年5月因提供虛假資料予海關，被罰款12,000元。"
         }
       ],
       "positive_habits_after_arrest": [
         {
           "habit": "Participation in rehabilitation/self-improvement",
-          "source": "在被囚期間亦主動協助懲教員處理一切大小事務."
+          "source": "在被囚期間亦主動協助懲教員處理一切大小事務。"
         }
       ],
       "family_supports": [
         {
           "support": "Letters of support from family",
-          "source": "辯方亦呈上五封求情信"
+          "source": "辯方亦呈上五封求情信，可見被告有真誠悔意，望法院採納較低量刑起點。"
         }
       ]
     }
   ],
-  "tracing_id": "f12d24eb2a0b176fffea09410802a329"
+  "tracing_id": "cd04fe576a08014fcc997596212d6e57"
 }

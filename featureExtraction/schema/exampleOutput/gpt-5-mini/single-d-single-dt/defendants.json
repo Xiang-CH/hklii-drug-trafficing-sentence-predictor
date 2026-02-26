@@ -6,18 +6,24 @@
         "name": "Wong Man-kit",
         "source": "Wong Man-kit"
       },
-      "nationality": null,
+      "nationality": {
+        "category": "Hong Kong resident",
+        "hk_resident_status": "N/A",
+        "foreign_country_code": null,
+        "infer_reason": "Lives at a Hong Kong public housing address given in the particulars (Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi) and is described as living with his parents and brother in that address.",
+        "source": "Room 1140, Hong Tai House, Cheung Hong Estate, Tsing Yi, New Territories"
+      },
       "age_at_offence": {
         "age": 21,
-        "source": "After all, he was 21 years old at the time, not a very young teenager."
+        "source": "he was 21 years old at the time"
       },
       "age_at_sentencing": {
         "age": 23,
-        "source": "The defendant is now 23 years old and had a clear record."
+        "source": "The defendant is now 23 years old"
       },
       "gender": {
         "gender": "Male",
-        "source": "He was committed to the Court of First Instance for sentence."
+        "source": "he admitted packing and delivering drugs on instructions for monetary rewards."
       },
       "marital_status": null,
       "parental_status": null,
@@ -30,12 +36,12 @@
       "education_level": null,
       "occupation": {
         "occupation_category": "Unemployed",
-        "occupation_name": "Elevator repair apprentice; construction worker (previously); unemployed at time of arrest",
-        "source": "After finishing school, he became an elevator repair apprentice and had a full-time job, but the COVID pandemic affected his employment and he was made redundant. He did work for some time in 2022 as a construction worker. But at the time of his arrest, he was unemployed."
+        "occupation_name": null,
+        "source": "But at the time of his arrest, he was unemployed."
       },
       "monthly_wage": {
         "wage": 0,
-        "source": "After finishing school, he became an elevator repair apprentice and had a full-time job, but the COVID pandemic affected his employment and he was made redundant. He did work for some time in 2022 as a construction worker. But at the time of his arrest, he was unemployed."
+        "source": "But at the time of his arrest, he was unemployed."
       },
       "criminal_records": [
         {
@@ -52,5 +58,5 @@
       ]
     }
   ],
-  "tracing_id": "ac738cdf06f49c179ce457795e5ff414"
+  "tracing_id": "46baa001043d086265178324166b086f"
 }

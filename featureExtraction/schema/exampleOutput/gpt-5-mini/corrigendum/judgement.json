@@ -25,16 +25,26 @@
       "charge_name": "Conspiracy to traffic in a dangerous drug",
       "offence_date": {
         "date": "2024-01-30",
-        "source": "案情指，2024年1月30日上午9時45分左右，警方在大埔區一帶展開反罪惡巡邏。",
+        "source": "案情指，2024年1月30日上午9時45分左右，警方在大埔區一帶展開反罪惡巡邏。於同日上午10時46分左右，警員見到第一被告人離開一幢大廈，形迹可疑，於是截停第一被告人查問。經初步查問後，警員帶第一被告人到其住所進一步調查。",
         "day_of_week": 2,
         "is_hk_public_holiday": false
       },
-      "offence_time": null,
-      "place_of_offence": null,
+      "offence_time": {
+        "time": "09:45:00+08:00",
+        "source": "案情指，2024年1月30日上午9時45分左右",
+        "time_of_day": "morning"
+      },
+      "place_of_offence": {
+        "address": "",
+        "nature": "Residential building",
+        "subDistrict": "Tai Po",
+        "source": "警方在大埔區一帶展開反罪惡巡邏。經初步查問後，警員帶第一被告人到其住所進一步調查。",
+        "district": "Tai Po"
+      },
       "cross_border": {
         "cross_border": false,
         "type": null,
-        "source": ""
+        "source": "判詞未有提及任何跨境活動或進出口情況。"
       },
       "defendants_of_charge": [
         {
@@ -42,41 +52,49 @@
           "defendant_id": 1,
           "trafficking_mode": {
             "mode": "Courier delivery",
-            "source": "一個叫“So Ken”的人叫第一被告人出售和派送毒品；"
+            "source": "(c) 第一被告人在新龍圍公廁外面的垃圾桶拿取40包氯胺酮; (i) 客人會聯絡第一被告人，雙方會協定數量及交收地點; (h) 第一被告人為“So Ken”“放”過毒品4次;"
           },
           "reasons_for_offence": [
             {
-              "reason": "Financial gain",
-              "source": "他結識了第二被告人，亦從對方口中知道了幫忙出售及派送氯胺酮可以賺取金錢的門路。"
+              "reason": "Economic hardship",
+              "source": "他現年只有18歲...案發時第一被告人因為失業而借故外出消遣，之後展開吸食氯胺酮。"
             },
             {
               "reason": "Addiction-driven",
-              "source": "第一被告人隨即被拘捕，在警誡下，他表示管有該些毒品自用，又說“食唔曬就會拎出去賣”。"
+              "source": "第一被告人在警誡下，他表示管有該些毒品自用，又說“食唔曬就會拎出去賣”。"
+            },
+            {
+              "reason": "Financial gain",
+              "source": "第一被告人以港幣14,000元的價格出售該40包氯胺酮；第一被告人保留港幣4,000元。"
             }
           ],
           "benefits_received": {
             "received": true,
             "amount": 4000.0,
-            "source": "(f) 其中港幣10,000元交給“So Ken”，第一被告人保留港幣4,000元；"
+            "amount_type": "total",
+            "amount_type_other": null,
+            "source": "其中港幣10,000元交給“So Ken”，第一被告人保留港幣4,000元；"
           }
         },
         {
           "defendant_name": "蘇偉強",
           "defendant_id": 2,
           "trafficking_mode": {
-            "mode": "Courier delivery",
-            "source": "第二被告人介紹第一被告人派送和出售毒品，因為第一被告人想賺多些錢；"
+            "mode": "Other",
+            "source": "第二被告人介紹第一被告人派送和出售毒品，因為第一被告人想賺多些錢；第二被告人稱自己會就介紹工作給第一被告人而“從中抽水”。"
           },
           "reasons_for_offence": [
             {
               "reason": "Financial gain",
-              "source": "每包氯胺酮價格港幣350元。每“送”一包，第一被告人會保留港幣80元，第二被告人會獲得港幣20元，餘數會交給葉維輝；"
+              "source": "第二被告人會就介紹工作給第一被告人而“從中抽水”；9(h) 指每“送”一包，第二被告人會獲得港幣20元。"
             }
           ],
           "benefits_received": {
             "received": true,
             "amount": 4000.0,
-            "source": "[1] 控方在較後階段補充，第二被告人從第一被告人一方收過3至4次錢，每次$1,200但總數不超過$4,000。"
+            "amount_type": "total",
+            "amount_type_other": null,
+            "source": "控方在較後階段補充，第二被告人從第一被告人一方收過3至4次錢，每次$1,200但總數不超過$4,000。"
           }
         }
       ]
@@ -93,5 +111,5 @@
       "name": "蘇偉強"
     }
   ],
-  "tracing_id": "8d5fb54f9fcc2f71f323e398d3f262fb"
+  "tracing_id": "ddb5baefe22a61c4e1999414cbfe3b70"
 }

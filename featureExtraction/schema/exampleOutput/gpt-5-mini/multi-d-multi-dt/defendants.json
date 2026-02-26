@@ -33,7 +33,7 @@
       "criminal_records": [
         {
           "record": "Other offences",
-          "source": "In June 2018, she was given a police superintendent’s caution for the offences of common assault and theft. In November 2018, she was sentenced to 24 months’ probation for the offences of wounding with intent to do grievous bodily harm and criminal damage. That probation order was subsequently extended for a further 6 months which would indicate trouble from her during the probation period and a breach of that probation."
+          "source": "In June 2018, she was given a police superintendent’s caution for the offences of common assault and theft. In November 2018, she was sentenced to 24 months’ probation for the offences of wounding with intent to do grievous bodily harm and criminal damage. That probation order was subsequently extended for a further 6 months"
         }
       ],
       "positive_habits_after_arrest": [
@@ -53,16 +53,19 @@
       "nationality": null,
       "age_at_offence": {
         "age": 18,
-        "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences and still is a student in a vocational education course."
+        "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences"
       },
       "age_at_sentencing": null,
       "gender": {
         "gender": "Male",
-        "source": "When questioned, he said he intended to go into those premises."
+        "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences and still is a student in a vocational education course. He had a clear record at the time of his arrest."
       },
       "marital_status": null,
       "parental_status": null,
-      "household_composition": null,
+      "household_composition": {
+        "composition": "Lives with non-family",
+        "source": "They found a tenancy agreement dated 23 September 2021 signed by Fu and the 2nd defendant, Lam, of 317/2023."
+      },
       "health_conditions": null,
       "drug_treatment_participation": null,
       "education_level": null,
@@ -100,21 +103,21 @@
       "age_at_sentencing": null,
       "gender": {
         "gender": "Male",
-        "source": "Fu was traced through his messages to her and on the following day, at about 2.50 pm on 3 October, the police, having obtained a search warrant, located and arrested Fu at home in Aberdeen."
+        "source": "Fu of 316/2023 was also 18 at the time of these offences. Fu was also still a student and I granted him bail to give him a chance to complete his HKDSE examinations and support his mother whilst she received chemotherapy treatment for cancer."
       },
       "marital_status": null,
       "parental_status": null,
-      "household_composition": null,
+      "household_composition": {
+        "composition": "Lives with non-family",
+        "source": "They found a tenancy agreement dated 23 September 2021 signed by Fu and the 2nd defendant, Lam, of 317/2023."
+      },
       "health_conditions": null,
       "drug_treatment_participation": null,
-      "education_level": {
-        "level": "Secondary - Upper",
-        "source": "I granted him bail to give him a chance to complete his HKDSE examinations and support his mother whilst she received chemotherapy treatment for cancer."
-      },
+      "education_level": null,
       "occupation": {
         "occupation_category": "Student",
         "occupation_name": null,
-        "source": "Fu of 316/2023 was also 18 at the time of these offences. Fu was also still a student and I granted him bail to give him a chance to complete his HKDSE examinations and support his mother whilst she received chemotherapy treatment for cancer."
+        "source": "Fu of 316/2023 was also 18 at the time of these offences. Fu was also still a student and I granted him bail to give him a chance to complete his HKDSE examinations"
       },
       "monthly_wage": null,
       "criminal_records": [
@@ -132,5 +135,5 @@
       ]
     }
   ],
-  "tracing_id": "2b2657ae654a0f11ef94c0b130447a18"
+  "tracing_id": "f3ec06c03040485379752781db72cd70"
 }

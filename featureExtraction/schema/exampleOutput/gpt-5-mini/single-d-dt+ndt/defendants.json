@@ -10,11 +10,11 @@
       "age_at_offence": null,
       "age_at_sentencing": {
         "age": 45,
-        "source": "The defendant is 45"
+        "source": "The defendant is 45 and educated up to secondary school level."
       },
       "gender": {
         "gender": "Male",
-        "source": "Prior to his arrest, he was unemployed."
+        "source": "He was holding a car key at the time."
       },
       "marital_status": null,
       "parental_status": null,
@@ -23,7 +23,7 @@
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Upper",
-        "source": "educated up to secondary school level."
+        "source": "The defendant is 45 and educated up to secondary school level."
       },
       "occupation": {
         "occupation_category": "Unemployed",
@@ -37,20 +37,16 @@
       "criminal_records": [
         {
           "record": "Drug trafficking",
-          "source": "he has four trafficking in dangerous drugs and eight possession in dangerous drugs records."
+          "source": "In particular, he has four trafficking in dangerous drugs and eight possession in dangerous drugs records."
         },
         {
           "record": "Dangerous drug offences",
-          "source": "he has four trafficking in dangerous drugs and eight possession in dangerous drugs records."
-        },
-        {
-          "record": "Other offences",
-          "source": "He has 25 criminal convictions with multiple offences."
+          "source": "In particular, he has four trafficking in dangerous drugs and eight possession in dangerous drugs records."
         }
       ],
       "positive_habits_after_arrest": null,
       "family_supports": null
     }
   ],
-  "tracing_id": "6b84b536b43df4d56a726967f386c57a"
+  "tracing_id": "d117ffe1cd39be33785c26b8233a90a3"
 }

@@ -60,18 +60,22 @@
         ],
         "is_hk_public_holiday": true
       },
-      "offence_time": null,
+      "offence_time": {
+        "time": "01:20:00+08:00",
+        "source": "at about 1.20 am on 27 December 2022",
+        "time_of_day": "night"
+      },
       "place_of_offence": {
-        "address": "Room 606D, Block B, Yau Tong Industrial City in Kwun Tong",
+        "address": "Room 606D, Block B, Yau Tong Industrial City, Kwun Tong",
         "nature": "Industrial building",
         "subDistrict": "Kwun Tong",
-        "source": "at about 1.20 am on 27 December 2022, the police arrived at Room 606D, Block B, Yau Tong Industrial City in Kwun Tong",
+        "source": "Room 606D, Block B, Yau Tong Industrial City in Kwun Tong",
         "district": "Kwun Tong"
       },
       "cross_border": {
         "cross_border": false,
         "type": null,
-        "source": "No cross-border activities mentioned in the transcript"
+        "source": ""
       },
       "defendants_of_charge": [
         {
@@ -79,12 +83,12 @@
           "defendant_id": 1,
           "trafficking_mode": {
             "mode": "Courier delivery",
-            "source": "he was only a cog in the machine and played a very small role... his role was more like a courier taking the drug from the Lei Yue Mun Plaza back to the room."
+            "source": "his role was more like a courier taking the drug from the Lei Yue Mun Plaza back to the room"
           },
           "reasons_for_offence": [
             {
               "reason": "Economic hardship",
-              "source": "Because the 1st defendant was indebted so he agreed. ... he owed debts in the region of $300,000. Counsel said he committed the present offence to earn quick money."
+              "source": "because the 1st defendant was indebted so he agreed"
             }
           ],
           "benefits_received": null
@@ -93,8 +97,8 @@
           "defendant_name": "Hong Ka-ming",
           "defendant_id": 2,
           "trafficking_mode": {
-            "mode": "Drug houses",
-            "source": "he had rented the room and did not lock it, apparently for the purpose of allowing others to use it whenever they wanted. He also hired the room for a period of 2 years, apparently on behalf of the drug trafficking syndicate."
+            "mode": "Drug repackaging or storage",
+            "source": "the 2nd defendant signed a tenancy agreement to rent the room ... he had rented the room and did not lock it, apparently for the purpose of allowing others to use it whenever they wanted"
           },
           "reasons_for_offence": null,
           "benefits_received": null
@@ -113,5 +117,5 @@
       "name": "Hong Ka-ming"
     }
   ],
-  "tracing_id": "5212478f8180691e72a755d99b30716c"
+  "tracing_id": "8c3fa4dfa9f2d52e0789570f40f63864"
 }
