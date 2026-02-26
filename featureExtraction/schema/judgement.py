@@ -207,6 +207,14 @@ class ReasonForOffenceDetail(BaseModel):
     source: str = source_field("reasons for committing the offence")
 
 
+class BenefitsReceivedType(str, Enum):
+    PER_DAY = "per day"
+    PER_MONTH = "per month"
+    PER_INSTANCE = "per instance"
+    TOTAL = "total"
+    OTHER = "other"
+
+
 class BenefitsReceivedDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
@@ -218,7 +226,29 @@ class BenefitsReceivedDetail(BaseModel):
         description="Amount of benefits received or to be received for trafficking in HKD, "
         "excluding the value of the drug itself. Only set to null if benefit amount is not explicitly stated.",
     )
+    amount_type: Optional[BenefitsReceivedType] = Field(
+        default=None,
+        description="Indicates how the benefit amount is specified, "
+        "Must be present if amount is specified, otherwise set to null.",
+    )
+    amount_type_other: Optional[str] = Field(
+        default=None,
+        description="Description of the amount type if amount_type is 'Other'",
+    )
     source: str = source_field("benefits amount")
+
+    @model_validator(mode="after")
+    def validate_conditional_fields(self):
+        if self.amount is not None and self.amount_type is None:
+            raise ValueError("amount_type is required when amount is specified")
+        if (
+            self.amount_type == BenefitsReceivedType.OTHER
+            and self.amount_type_other is None
+        ):
+            raise ValueError(
+                "amount_type_other is required when amount_type is 'Other'"
+            )
+        return self
 
 
 class ImportExportEnum(str, Enum):
