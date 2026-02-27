@@ -38,7 +38,10 @@ export function SubdistrictSelect({
                   <SelectLabel>{district}</SelectLabel>
                   <div className="ml-2">
                     {districtToSubDistricts[district].map((subdistrict) => (
-                      <SelectItem key={`${district}-${subdistrict}`} value={subdistrict}>
+                      <SelectItem
+                        key={`${district}-${subdistrict}`}
+                        value={subdistrict}
+                      >
                         {subdistrict}
                       </SelectItem>
                     ))}

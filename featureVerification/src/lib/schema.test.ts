@@ -61,7 +61,9 @@ describe('getDefaultValueForFieldSchema', () => {
     expect(getDefaultValueForFieldSchema(z.number(), 'any')).toBe(0)
     expect(getDefaultValueForFieldSchema(z.boolean(), 'any')).toBe(false)
     expect(getDefaultValueForFieldSchema(enumSchema, 'any')).toBe('A')
-    expect(getDefaultValueForFieldSchema(z.array(z.string()), 'any')).toEqual([])
+    expect(getDefaultValueForFieldSchema(z.array(z.string()), 'any')).toEqual(
+      [],
+    )
 
     // Object branch delegates to getDefaultValueForField(fieldName)
     expect(getDefaultValueForFieldSchema(objectSchema, 'guilty_plea')).toEqual(

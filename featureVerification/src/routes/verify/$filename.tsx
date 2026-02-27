@@ -20,7 +20,10 @@ import {
   markAsVerified,
   saveVerificationProgress,
 } from '@/server/user-judgements'
-import { applyNotGivenToPayload, deriveNotGivenMapFromPayload } from '@/lib/not-given'
+import {
+  applyNotGivenToPayload,
+  deriveNotGivenMapFromPayload,
+} from '@/lib/not-given'
 
 export const Route = createFileRoute('/verify/$filename')({
   component: VerifyJudgementPage,
@@ -81,10 +84,9 @@ function VerifyJudgementPage() {
           JSON.stringify(sourceData.judgement) ||
         JSON.stringify(defendantsData) !==
           JSON.stringify(sourceData.defendants) ||
-        JSON.stringify(trialsData) !==
-          JSON.stringify(sourceData.trials)
-        // TODO: No unsaved notification for Not Given Checkbox
-        // Object.values(notGivenMap).some(Boolean)
+        JSON.stringify(trialsData) !== JSON.stringify(sourceData.trials)
+      // TODO: No unsaved notification for Not Given Checkbox
+      // Object.values(notGivenMap).some(Boolean)
       setHasUnsavedChanges(hasChanges)
     }
   }, [judgementData, defendantsData, trialsData, judgement, notGivenMap])
@@ -96,9 +98,9 @@ function VerifyJudgementPage() {
         {
           judgement: judgementData,
           defendants: defendantsData,
-          trials: trialsData
+          trials: trialsData,
         },
-        notGivenMap
+        notGivenMap,
       )
 
       return saveVerificationProgress({

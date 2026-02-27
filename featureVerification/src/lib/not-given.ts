@@ -175,9 +175,9 @@ export function applyNotGivenToPayload<T extends object>(
     // console.log(`Applying not given to path: ${path}, schema is array: ${fieldSchema instanceof z.ZodArray}`)
     const { fieldName, parentFieldName } = getLastStringTokens(tokens)
     // console.log(`Applying not given to path: ${path}, fieldName: ${fieldName}, parentFieldName: ${parentFieldName}`)
-    const defaultValue = fieldSchema? 
-      getDefaultValueForFieldSchema(fieldSchema, fieldName) : 
-      getDefaultValueForField(fieldName || '', parentFieldName || '')
+    const defaultValue = fieldSchema
+      ? getDefaultValueForFieldSchema(fieldSchema, fieldName)
+      : getDefaultValueForField(fieldName || '', parentFieldName || '')
 
     // console.log(`Applying not given to path: ${path}, defaultValue: ${defaultValue}`)
     setAtPath(cloned, tokens, defaultValue)

@@ -19,7 +19,7 @@ interface EditableDataObjectProps {
   isComputed?: boolean // Whether this field is computed/read-only
   path?: string
   notGivenMap?: Record<string, boolean>
-  onToggleNotGiven?: (path: string, next: boolean)=> void
+  onToggleNotGiven?: (path: string, next: boolean) => void
   disabled?: boolean
 }
 
@@ -38,7 +38,7 @@ export function EditableDataObject({
 }: EditableDataObjectProps) {
   const isFieldComputed =
     isComputed || COMPUTED_FIELDS.includes(fieldName || '')
-  
+
   const isDisabled = disabled || !!notGivenMap[path]
   const canEdit = isEditing && !isFieldComputed && !isDisabled
 
@@ -65,7 +65,7 @@ export function EditableDataObject({
     // For array items or nested fields, use parent context to infer schema
     const schemaKey = fieldName || parentField
 
-    console.log("Schema:" + schemaKey)
+    console.log('Schema:' + schemaKey)
 
     if (!schemaKey) {
       onChange('')
@@ -232,7 +232,7 @@ export function EditableDataObject({
           const entryNotGiven = !!notGivenMap[entryPath]
           const entryDisabled = disabled || entryNotGiven
 
-          const isNullable = isFieldNullable(key, fieldName || parentField )
+          const isNullable = isFieldNullable(key, fieldName || parentField)
           const hasValue = value !== null && value !== undefined
           const isMandatoryField = isMandatoryNotGivenField(key)
           const showNotGivenToggle = !isEntryComputed && isMandatoryField
@@ -262,17 +262,21 @@ export function EditableDataObject({
                     onToggle={(next) => onToggleNotGiven(entryPath, next)}
                   />
                 )}
-                {isEditing && isNullable && hasValue && !isEntryComputed && !entryNotGiven && (
-                  <button
-                    onClick={() => {
-                      onChange({ ...data, [key]: null })
-                    }}
-                    className="text-xs text-red-500 hover:text-red-700 hover:underline"
-                    title="Set to null"
-                  >
-                    Clear
-                  </button>
-                )}
+                {isEditing &&
+                  isNullable &&
+                  hasValue &&
+                  !isEntryComputed &&
+                  !entryNotGiven && (
+                    <button
+                      onClick={() => {
+                        onChange({ ...data, [key]: null })
+                      }}
+                      className="text-xs text-red-500 hover:text-red-700 hover:underline"
+                      title="Set to null"
+                    >
+                      Clear
+                    </button>
+                  )}
               </div>
               <div className={`${isArray ? 'ml-6 mt-1' : 'ml-2'} flex-1`}>
                 {key === 'source' && typeof value === 'string' ? (

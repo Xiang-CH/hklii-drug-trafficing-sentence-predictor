@@ -19,7 +19,7 @@ export function EditableDataSection({
   isEditing,
   onChange,
   notGivenMap,
-  onToggleNotGiven
+  onToggleNotGiven,
 }: EditableDataSectionProps) {
   const [isExpanded, setIsExpanded] = useState(true)
 

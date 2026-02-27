@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react'
 import { Edit2 } from 'lucide-react'
 import { EditableDataSection, ValidationErrorsPanel } from './edit-ui'
 import type * as z from 'zod'
-import { 
-  DefendantsSchema, 
-  JudgementSchema, 
-  MANDATORY_NOT_GIVEN_FIELDS, 
-  TrialsSchema 
+import {
+  DefendantsSchema,
+  JudgementSchema,
+  MANDATORY_NOT_GIVEN_FIELDS,
+  TrialsSchema,
 } from '@/lib/schema'
 
 interface EditableDataViewerProps {
@@ -37,7 +37,7 @@ export default function EditableDataViewer({
   onSourceHover,
   onDataChange,
   onNotGivenChange,
-  notGivenMap
+  notGivenMap,
 }: EditableDataViewerProps) {
   const [localData, setLocalData] = useState(data)
   const [validationErrors, setValidationErrors] = useState<
@@ -112,27 +112,33 @@ export default function EditableDataViewer({
     }
 
     // Mandatory field validation
-    const checkMandatoryFields = (data: any, basePath: string, section: string) => {
+    const checkMandatoryFields = (
+      data: any,
+      basePath: string,
+      section: string,
+    ) => {
       if (!data || typeof data !== 'object') return
       for (const key of Object.keys(data)) {
         const currentPath = basePath ? `${basePath}.${key}` : key
         const value = data[key]
-        
+
         if (MANDATORY_NOT_GIVEN_FIELDS.includes(key)) {
           // console.log("not given map", currentNotGivenMap)
           // console.log("current path", currentPath)
 
           const isNotGiven = currentNotGivenMap[currentPath]
-          const hasValue = value !== null && value !== undefined && 
+          const hasValue =
+            value !== null &&
+            value !== undefined &&
             !(typeof value === 'object' && Object.keys(value).length === 0) &&
             !(Array.isArray(value) && value.length === 0)
-          
+
           if (!hasValue && !isNotGiven) {
             // if (!errors[section]) errors[section] = []
             errors[section].push(`${key} is required, or mark as "Not Given"`)
           }
         }
-        
+
         if (value && typeof value === 'object') {
           if (Array.isArray(value)) {
             value.forEach((item, index) => {
