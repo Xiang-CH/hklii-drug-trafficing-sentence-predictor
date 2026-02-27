@@ -6,11 +6,32 @@ interface HtmlViewerProps {
   highlightedText: string | null
 }
 
+function sanitizeJudgementHtml(rawHtml: string) {
+  // Legacy source files often contain full documents with head/scripts/stylesheets.
+  // Strip document-level wrappers so we render a stable body fragment in React.
+  return rawHtml
+    .replaceAll(/<\?xml[\s\S]*?\?>/gi, '')
+    .replaceAll(/<!doctype[\s\S]*?>/gi, '')
+    .replaceAll(/<head[\s\S]*?<\/head>/gi, '')
+    .replaceAll(/<html[^>]*>/gi, '')
+    .replaceAll(/<\/html>/gi, '')
+    .replaceAll(/<body[^>]*>/gi, '')
+    .replaceAll(/<\/body>/gi, '')
+    .replaceAll(/<script[\s\S]*?<\/script>/gi, '')
+    .replaceAll(/<link\b[^>]*>/gi, '')
+    .replaceAll(/<meta\b[^>]*>/gi, '')
+    .replaceAll(/<object[\s\S]*?<\/object>/gi, '')
+    .replaceAll(/<style[\s\S]*?<\/style>/gi, '')
+    .replaceAll(/<link[\s\S]*?\/?>/gi, '')
+    .replaceAll(/<img[^>]*>/gi, '')
+    .replaceAll(/<script[\s\S]*?<\/script>/gi, '')
+}
+
 export default function HtmlViewer({ html, highlightedText }: HtmlViewerProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const highlightedRef = useRef<number | null>(null)
 
-  const htmlContent = html.replace(/<img[^>]*>/g, '')
+  const htmlContent = sanitizeJudgementHtml(html)
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -47,6 +68,7 @@ export default function HtmlViewer({ html, highlightedText }: HtmlViewerProps) {
   return (
     <div
       ref={containerRef}
+      suppressHydrationWarning
       className="judgment p-6 prose prose-sm max-w-none dark:prose-invert"
       dangerouslySetInnerHTML={{ __html: htmlContent }}
       style={{
