@@ -5,7 +5,6 @@ import {
   CheckCircle2,
   Circle,
   FileText,
-  Loader2,
 } from 'lucide-react'
 import type { UserJudgement } from '@/server/user-judgements'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -25,7 +24,7 @@ export const Route = createFileRoute('/')({
 function UserDashboard() {
   const { data: session } = authClient.useSession()
 
-  const { data: judgements, isLoading: judgementsLoading } = useQuery({
+  const { data: judgements } = useQuery({
     queryKey: ['user-judgements'],
     queryFn: () => getUserAssignedJudgements(),
     initialData: Route.useLoaderData(),
