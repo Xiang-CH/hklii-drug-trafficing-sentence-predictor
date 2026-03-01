@@ -150,7 +150,7 @@ def extract_single_schema(
                     raise ValueError(
                         f"Model refused to generate output: {response.refusal}"
                     )
-        
+
                 # Check raw output for debugging
                 raw_output = raw_output or getattr(response, "output", None)
                 last_raw_output = raw_output
@@ -170,7 +170,11 @@ def extract_single_schema(
         except (OpenAIError, ValidationError, ValueError) as e:
             last_error = str(e)
             # Always log something as output, even if it's just the error message
-            trace_output = last_raw_output if last_raw_output is not None else f"Error: {last_error}"
+            trace_output = (
+                last_raw_output
+                if last_raw_output is not None
+                else f"Error: {last_error}"
+            )
             langfuse.update_current_span(
                 metadata={
                     f"error_output_{attempt + 1}": trace_output,

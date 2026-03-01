@@ -27,12 +27,18 @@ MODEL = os.getenv("MODEL", "gpt-5-mini")
 
 # 0 means no limit
 EXTRACT_LIMIT = int(os.getenv("EXTRACT_LIMIT", "0"))
+# Judgements that must be included even when EXTRACT_LIMIT is set.
+MUST_INCLUDE_TRIALS: list[str] = ["[2021] HKDC 1500"]
+
+
+PREPEND = "You are Judgement Information Extraction Bot: extract only objective, non‑opinionated case metadata for an academic social‑science study that improves public welfare;\n\n"
 
 # Define schemas with their specific prompts in sequence order
 SCHEMA_CONFIGS = {
     "judgement": {
         "model": Judgement,
-        "prompt": (
+        "prompt": PREPEND
+        + (
             "Extract the judgement metadata according to the provided schema. "
             "There may be multiple charges in a single defendant; single charge for multiple defendants; "
             "or multiple charges for multiple defendants; etc. So ensure to capture all charges and link them to the correct defendants. "
@@ -42,7 +48,8 @@ SCHEMA_CONFIGS = {
     },
     "defendants": {
         "model": Defendants,
-        "prompt": (
+        "prompt": PREPEND
+        + (
             "Extract all defendant information according to the provided schema. "
             "Here are the list of defendant ids and names: \n{defendant_ids_and_names}.\n\n "
             "If a feature is not mentioned in the case, set the corresponding field to null, "
@@ -51,7 +58,8 @@ SCHEMA_CONFIGS = {
     },
     "trials": {
         "model": Trials,
-        "prompt": (
+        "prompt": PREPEND
+        + (
             "Extract all trial information according to the provided schema. "
             "You need to extract the information for each charge to defendant pair separately. "
             "Here are the list of charge to defendant mappings extracted from the judgement: \n{charge_to_defendants}.\n\n "
@@ -121,8 +129,18 @@ def extract_single_schema(
             response = client.responses.parse(
                 name=f"{schema_name}-extraction-{attempt + 1}",
                 model=MODEL,
-                instructions=base_prompt,
-                input=full_input,
+                input=[
+                    {
+                        "role": "system",
+                        "content": base_prompt,
+                    },
+                    {
+                        "role": "user",
+                        "content": full_input,
+                    },
+                ],
+                # instructions=base_prompt,
+                # input=full_input,
                 text_format=schema_model,
                 metadata={
                     "judgement_type": judgement_type,
@@ -158,6 +176,7 @@ def extract_single_schema(
         except (OpenAIError, ValidationError, ValueError) as e:
             # print(f"Attempt {attempt + 1} failed for {schema_name}: {str(e)}")
             if isinstance(e, ValidationError):
+                # print(f"Validation error: {e.json()}")
                 last_error = str(e)
             if attempt == MAX_RETRIES - 1:
                 print(
@@ -251,27 +270,52 @@ def should_skip_extraction(source_id) -> bool:
     )
 
 
+def build_must_include_filter(must_include_trials: list[str]) -> dict | None:
+    if not must_include_trials:
+        return None
+
+    return {"trial": {"$in": must_include_trials}}
+
+
 if __name__ == "__main__":
     filter = {
         "_id": {"$nin": extracted_features_collection.distinct("source_judgement_id")}
     }
-    judgement_count = judgements_collection.count_documents(filter)
+    must_include_filter = build_must_include_filter(MUST_INCLUDE_TRIALS)
+
+    must_include_docs = []
+    if must_include_filter:
+        must_include_docs = list(
+            judgements_collection.find({"$and": [filter, must_include_filter]})
+        )
+
+    must_include_ids = {doc["_id"] for doc in must_include_docs if doc.get("_id")}
+
+    normal_filter = filter.copy()
+    if must_include_ids:
+        normal_filter = {"$and": [filter, {"_id": {"$nin": list(must_include_ids)}}]}
+
+    normal_total = judgements_collection.count_documents(normal_filter)
+    judgement_count = normal_total + len(must_include_docs)
     print(
         f"Found {judgement_count} unprocessed judgement records in judgement-html collection."
     )
+    if MUST_INCLUDE_TRIALS:
+        print(
+            f"Must-include configured: matched {len(must_include_docs)} records from {len(MUST_INCLUDE_TRIALS)} trial values."
+        )
 
-    cursor = judgements_collection.find(filter)
+    cursor = judgements_collection.find(normal_filter)
     if EXTRACT_LIMIT > 0:
         cursor = cursor.limit(EXTRACT_LIMIT)
 
     processed = 0
     skipped = 0
+    docs_to_process = must_include_docs + list(cursor)
     for judgement_doc in tqdm(
-        cursor,
+        docs_to_process,
         desc="Judgements",
-        total=min(judgement_count, EXTRACT_LIMIT)
-        if EXTRACT_LIMIT > 0
-        else judgement_count,
+        total=len(docs_to_process),
     ):
         source_id = judgement_doc.get("_id")
         if source_id is None:
