@@ -9,6 +9,32 @@ pnpm install
 pnpm dev
 ```
 
+# Environment Variables
+
+```
+# Better Auth configuration
+BETTER_AUTH_URL=<App URL>
+BETTER_AUTH_SECRET=<Better Auth Secret>
+AUTH_ADMIN_EMAIL="admin@admin.com" // Default admin email
+AUTH_ADMIN_PASSWORD="admin" // Default admin password
+
+# Mongo DB
+DB_MONGODB_URI=<mongodb connection string>
+DB_NAME="drug-sentencing-predictor"
+```
+
+# Serving For Production
+To serve the production build of this application:
+
+```bash
+docker build -t feature-verification .
+docker run -p 8220:3000 -p 27017:27017 feature-verification
+```
+Change 8220 to your desired port if you want to serve on a different port. 
+The application will be available at `http://localhost:8220`.
+
+Change 27017 to your mongodb port if you want to serve mongodb on a different port. The application is configured to connect to mongodb at `mongodb://localhost:27017` so make sure to update the `DB_MONGODB_URI` environment variable in your `.env.local` file if you change the mongodb port.
+
 # Building For Production
 
 To build this application for production:
@@ -57,28 +83,6 @@ pnpm dlx shadcn@latest add button
 
 2. Visit the [Better Auth documentation](https://www.better-auth.com) to unlock the full potential of authentication in your app.
 
-### Adding a Database (Optional)
-
-Better Auth can work in stateless mode, but to persist user data, add a database:
-
-```typescript
-// src/lib/auth.ts
-import { betterAuth } from 'better-auth'
-import { Pool } from 'pg'
-
-export const auth = betterAuth({
-  database: new Pool({
-    connectionString: process.env.DATABASE_URL,
-  }),
-  // ... rest of config
-})
-```
-
-Then run migrations:
-
-```bash
-npx @better-auth/cli migrate
-```
 
 ## Routing
 
