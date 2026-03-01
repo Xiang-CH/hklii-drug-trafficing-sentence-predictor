@@ -9,6 +9,14 @@ import {
   TrialsSchema,
 } from '@/lib/schema'
 
+export type UndoOperation =
+  | { type: 'clear'; path: string; previousValue: any }
+  | { type: 'remove'; path: string; index: number; removedItem: any }
+
+export interface UndoState {
+  operation: UndoOperation | null
+}
+
 interface EditableDataViewerProps {
   data: {
     judgement: any
@@ -44,6 +52,25 @@ export default function EditableDataViewer({
     Record<string, Array<string>>
   >({})
   const [isEditing, setIsEditing] = useState(true)
+  const [lastCleared, setLastCleared] = useState<UndoState>({
+    operation: null,
+  })
+
+  const handleClearField = (path: string, previousValue: any) => {
+    setLastCleared({ operation: { type: 'clear', path, previousValue } })
+  }
+
+  const handleUndoClear = () => {
+    setLastCleared({ operation: null })
+  }
+
+  const handleRemoveItem = (path: string, index: number, removedItem: any) => {
+    setLastCleared({ operation: { type: 'remove', path, index, removedItem } })
+  }
+
+  const handleUndoRemove = () => {
+    setLastCleared({ operation: null })
+  }
 
   const handleToggleNotGiven = (path: string, next: boolean) => {
     const updated = { ...notGivenMap, [path]: next }
@@ -53,7 +80,7 @@ export default function EditableDataViewer({
     if (isEditing) {
       setValidationErrors(errors)
     }
-    if (Object.keys(errors).length === 0) {
+    if (Object.values(errors).every((arr) => arr.length === 0)) {
       onDataChange?.(localData, false)
     } else {
       onDataChange?.(localData, true)
@@ -70,10 +97,17 @@ export default function EditableDataViewer({
     dataToValidate: typeof localData,
     overrideNotGivenMap?: Record<string, boolean>,
   ): {
-    errors: Record<string, Array<string>>
+    errors: Record<'judgement' | 'defendants' | 'trials', Array<string>>
     transformedData: typeof localData
   } => {
-    const errors: Record<string, Array<string>> = {}
+    const errors: Record<
+      'judgement' | 'defendants' | 'trials',
+      Array<string>
+    > = {
+      judgement: [],
+      defendants: [],
+      trials: [],
+    }
     const transformedData = { ...dataToValidate }
     const currentNotGivenMap = overrideNotGivenMap ?? notGivenMap
 
@@ -115,7 +149,7 @@ export default function EditableDataViewer({
     const checkMandatoryFields = (
       data: any,
       basePath: string,
-      section: string,
+      section: 'judgement' | 'defendants' | 'trials',
     ) => {
       if (!data || typeof data !== 'object') return
       for (const key of Object.keys(data)) {
@@ -170,7 +204,7 @@ export default function EditableDataViewer({
       setValidationErrors(errors)
     }
 
-    if (Object.keys(errors).length === 0) {
+    if (Object.values(errors).every((arr) => arr.length === 0)) {
       onDataChange?.(transformedData, false)
     } else {
       onDataChange?.(transformedData, true)
@@ -223,6 +257,11 @@ export default function EditableDataViewer({
           }
           notGivenMap={notGivenMap}
           onToggleNotGiven={handleToggleNotGiven}
+          lastCleared={lastCleared}
+          onClearField={handleClearField}
+          onUndoClear={handleUndoClear}
+          onRemoveItem={handleRemoveItem}
+          onUndoRemove={handleUndoRemove}
         />
       )}
       {localData.defendants && (
@@ -236,6 +275,11 @@ export default function EditableDataViewer({
           }
           notGivenMap={notGivenMap}
           onToggleNotGiven={handleToggleNotGiven}
+          lastCleared={lastCleared}
+          onClearField={handleClearField}
+          onUndoClear={handleUndoClear}
+          onRemoveItem={handleRemoveItem}
+          onUndoRemove={handleUndoRemove}
         />
       )}
       {localData.trials && (
@@ -249,6 +293,11 @@ export default function EditableDataViewer({
           }
           notGivenMap={notGivenMap}
           onToggleNotGiven={handleToggleNotGiven}
+          lastCleared={lastCleared}
+          onClearField={handleClearField}
+          onUndoClear={handleUndoClear}
+          onRemoveItem={handleRemoveItem}
+          onUndoRemove={handleUndoRemove}
         />
       )}
       <div className="flex items-center gap-2">

@@ -101,7 +101,9 @@ export function DateRangeField({
           <PopoverContent className="w-auto p-0">
             <Calendar
               mode="range"
-              defaultMonth={defaultMonth || (value[0] ? new Date(value[0]) : new Date())}
+              defaultMonth={
+                defaultMonth || (value[0] ? new Date(value[0]) : new Date())
+              }
               selected={
                 value[0] && value[1]
                   ? { from: new Date(value[0]), to: new Date(value[1]) }
@@ -143,12 +145,14 @@ export function DateRangeField({
           <PopoverContent className="w-auto p-0">
             <Calendar
               mode="single"
-              defaultMonth={defaultMonth || (value ? new Date(value) : new Date())}
+              defaultMonth={
+                defaultMonth || (value ? new Date(value) : new Date())
+              }
               selected={value ? new Date(value) : undefined}
               onSelect={(date) => {
                 const dateStr = date ? format(date, 'yyyy-MM-dd') : ''
                 onChange(dateStr)
-              }} 
+              }}
               captionLayout="dropdown"
             />
           </PopoverContent>

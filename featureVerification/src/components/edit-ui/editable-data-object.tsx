@@ -3,6 +3,7 @@ import { AgeRangeField } from './age-range-field'
 import { EditableField } from './editable-field'
 import { SourceField } from './source-field'
 import { EditableSourceField } from './editable-source-field'
+import type { UndoState } from '@/components/editable-data-viewer'
 import {
   COMPUTED_FIELDS,
   getDefaultValueForField,
@@ -16,12 +17,17 @@ interface EditableDataObjectProps {
   isEditing: boolean
   onChange: (data: any) => void
   fieldName?: string
-  parentField?: string // Parent field name to determine enum context
-  isComputed?: boolean // Whether this field is computed/read-only
+  parentField?: string
+  isComputed?: boolean
   path?: string
   notGivenMap?: Record<string, boolean>
   onToggleNotGiven?: (path: string, next: boolean) => void
   disabled?: boolean
+  lastCleared?: UndoState
+  onClearField?: (path: string, previousValue: any) => void
+  onUndoClear?: () => void
+  onRemoveItem?: (path: string, index: number, removedItem: any) => void
+  onUndoRemove?: () => void
 }
 
 export function EditableDataObject({
@@ -36,6 +42,11 @@ export function EditableDataObject({
   notGivenMap = {},
   onToggleNotGiven,
   disabled = false,
+  lastCleared = { operation: null },
+  onClearField,
+  onUndoClear,
+  onRemoveItem,
+  onUndoRemove,
 }: EditableDataObjectProps) {
   const isFieldComputed =
     isComputed || COMPUTED_FIELDS.includes(fieldName || '')
@@ -63,34 +74,46 @@ export function EditableDataObject({
   }
 
   function handleSetValue() {
-    // For array items or nested fields, use parent context to infer schema
     const schemaKey = fieldName || parentField
-
-    console.log('Schema:' + schemaKey)
 
     if (!schemaKey) {
       onChange('')
       return
     }
 
-    // Get the default value based on the field schema
-    // Pass parentField to help resolve array item types
-    // TODO: Some field name cannot be matched
     const defaultValue = getDefaultValueForField(schemaKey, parentField, true)
     onChange(defaultValue)
   }
 
   if (data === null || data === undefined) {
+    const clearOp =
+      lastCleared.operation?.type === 'clear' &&
+      lastCleared.operation.path === path
+        ? lastCleared.operation
+        : null
     return (
       <div>
         <span className="text-gray-400 italic">Not Specified</span>
         {isEditing && !isFieldComputed && (
-          <button
-            onClick={handleSetValue}
-            className="ml-2 text-blue-500 hover:text-blue-700 text-xs"
-          >
-            Set Value
-          </button>
+          <>
+            <button
+              onClick={handleSetValue}
+              className="ml-2 text-blue-500 hover:text-blue-700 text-xs"
+            >
+              Set Value
+            </button>
+            {clearOp && onUndoClear && (
+              <button
+                onClick={() => {
+                  onChange(clearOp.previousValue)
+                  onUndoClear()
+                }}
+                className="ml-2 text-green-600 hover:text-green-700 text-xs underline"
+              >
+                Undo
+              </button>
+            )}
+          </>
         )}
       </div>
     )
@@ -159,6 +182,12 @@ export function EditableDataObject({
       )
     }
 
+    const removeOp =
+      lastCleared.operation?.type === 'remove' &&
+      lastCleared.operation.path === path
+        ? lastCleared.operation
+        : null
+
     return (
       <div className="ml-2 space-y-2">
         {data.map((item, index) => (
@@ -173,6 +202,9 @@ export function EditableDataObject({
               {canEdit && (
                 <button
                   onClick={() => {
+                    if (onRemoveItem) {
+                      onRemoveItem(path, index, item)
+                    }
                     const newData = [...data]
                     newData.splice(index, 1)
                     onChange(newData)
@@ -198,24 +230,43 @@ export function EditableDataObject({
               path={`${path}[${index}]`}
               notGivenMap={notGivenMap}
               onToggleNotGiven={onToggleNotGiven}
+              lastCleared={lastCleared}
+              onClearField={onClearField}
+              onUndoClear={onUndoClear}
+              onRemoveItem={onRemoveItem}
+              onUndoRemove={onUndoRemove}
             />
           </div>
         ))}
-        {canEdit && (
-          <button
-            onClick={() => {
-              // Get default value for array items
-              const defaultItem = getDefaultValueForField(
-                fieldName || '',
-                parentField,
-              )
-              onChange([...data, defaultItem])
-            }}
-            className="text-blue-500 hover:text-blue-700 text-sm ml-3"
-          >
-            + Add Item
-          </button>
-        )}
+        <div className="flex items-center gap-2">
+          {canEdit && (
+            <button
+              onClick={() => {
+                const defaultItem = getDefaultValueForField(
+                  fieldName || '',
+                  parentField,
+                )
+                onChange([...data, defaultItem])
+              }}
+              className="text-blue-500 hover:text-blue-700 text-sm ml-3"
+            >
+              + Add Item
+            </button>
+          )}
+          {removeOp && onUndoRemove && (
+            <button
+              onClick={() => {
+                const newData = [...data]
+                newData.splice(removeOp.index, 0, removeOp.removedItem)
+                onChange(newData)
+                onUndoRemove()
+              }}
+              className="text-green-600 hover:text-green-700 text-sm underline"
+            >
+              Undo: restore item at index {removeOp.index}
+            </button>
+          )}
+        </div>
       </div>
     )
   }
@@ -270,6 +321,9 @@ export function EditableDataObject({
                   !entryNotGiven && (
                     <button
                       onClick={() => {
+                        if (onClearField) {
+                          onClearField(entryPath, value)
+                        }
                         onChange({ ...data, [key]: null })
                       }}
                       className="text-xs text-red-500 hover:text-red-700 hover:underline"
@@ -306,6 +360,11 @@ export function EditableDataObject({
                     notGivenMap={notGivenMap}
                     onToggleNotGiven={onToggleNotGiven}
                     disabled={entryDisabled}
+                    lastCleared={lastCleared}
+                    onClearField={onClearField}
+                    onUndoClear={onUndoClear}
+                    onRemoveItem={onRemoveItem}
+                    onUndoRemove={onUndoRemove}
                   />
                 )}
               </div>

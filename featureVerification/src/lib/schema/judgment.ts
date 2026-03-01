@@ -189,7 +189,7 @@ export const CrossBorderDetailSchema = z.object({
 
 export const ChargeForDefendantSchema = z.object({
   defendant_name: z.string(),
-  defendant_id: z.number().nullable().default(null),
+  defendant_id: z.number(),
   trafficking_mode: TraffickingModeSchema.nullable().default(null),
   reasons_for_offence: z
     .array(ReasonForOffenceDetailSchema)

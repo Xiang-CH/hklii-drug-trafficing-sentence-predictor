@@ -1,9 +1,12 @@
 export function ValidationErrorsPanel({
   validationErrors,
 }: {
-  validationErrors: Record<string, Array<string>>
+  validationErrors: Record<'judgement' | 'defendants' | 'trials', Array<string>>
 }) {
-  if (Object.keys(validationErrors).length === 0) {
+  if (
+    Object.values(validationErrors).filter((errors) => errors.length > 0)
+      .length === 0
+  ) {
     return null
   }
 
@@ -12,18 +15,21 @@ export function ValidationErrorsPanel({
       <h3 className="text-red-700 dark:text-red-300 font-medium mb-2 flex flex-col gap-2">
         Validation Errors
       </h3>
-      {Object.entries(validationErrors).map(([section, errors]) => (
-        <div key={section}>
-          <span className="font-medium text-red-600 dark:text-red-400">
-            {section}:
-          </span>
-          <ul className="ml-4 text-sm text-red-600 dark:text-red-400">
-            {errors.map((error, idx) => (
-              <li key={idx}>• {error}</li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      {Object.entries(validationErrors).map(
+        ([section, errors]) =>
+          errors.length > 0 && (
+            <div key={section}>
+              <span className="font-medium text-red-600 dark:text-red-400">
+                {section}:
+              </span>
+              <ul className="ml-4 text-sm text-red-600 dark:text-red-400">
+                {errors.map((error, idx) => (
+                  <li key={idx}>• {error}</li>
+                ))}
+              </ul>
+            </div>
+          ),
+      )}
     </div>
   )
 }

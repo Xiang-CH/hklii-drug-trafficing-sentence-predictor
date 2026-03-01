@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { ChevronDown, ChevronRight } from 'lucide-react'
 import { EditableDataObject } from './editable-data-object'
+import type { UndoState } from '@/components/editable-data-viewer'
 
 interface EditableDataSectionProps {
   title: string
@@ -10,6 +11,11 @@ interface EditableDataSectionProps {
   onChange: (data: any) => void
   notGivenMap: Record<string, boolean>
   onToggleNotGiven: (path: string, next: boolean) => void
+  lastCleared: UndoState
+  onClearField: (path: string, previousValue: any) => void
+  onUndoClear: () => void
+  onRemoveItem: (path: string, index: number, removedItem: any) => void
+  onUndoRemove: () => void
 }
 
 export function EditableDataSection({
@@ -20,6 +26,11 @@ export function EditableDataSection({
   onChange,
   notGivenMap,
   onToggleNotGiven,
+  lastCleared,
+  onClearField,
+  onUndoClear,
+  onRemoveItem,
+  onUndoRemove,
 }: EditableDataSectionProps) {
   const [isExpanded, setIsExpanded] = useState(true)
 
@@ -49,6 +60,11 @@ export function EditableDataSection({
             path={rootPath}
             notGivenMap={notGivenMap}
             onToggleNotGiven={onToggleNotGiven}
+            lastCleared={lastCleared}
+            onClearField={onClearField}
+            onUndoClear={onUndoClear}
+            onRemoveItem={onRemoveItem}
+            onUndoRemove={onUndoRemove}
           />
         </div>
       )}

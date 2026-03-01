@@ -1,11 +1,6 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
-import {
-  AlertCircle,
-  CheckCircle2,
-  Circle,
-  FileText,
-} from 'lucide-react'
+import { AlertCircle, CheckCircle2, Circle, FileText } from 'lucide-react'
 import type { UserJudgement } from '@/server/user-judgements'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
