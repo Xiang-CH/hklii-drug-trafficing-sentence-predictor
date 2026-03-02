@@ -73,15 +73,17 @@ export const Route = createFileRoute('/api/assignment/$')({
 
         // Fetch judgements
         const judgementsCollection = db.collection('judgement-html')
-        const match: Record<string, unknown> = {}
+        const filters: Array<Record<string, unknown>> = []
 
         if (search) {
-          match.$or = [
-            { trial: { $regex: search, $options: 'i' } },
-            { appeal: { $regex: search, $options: 'i' } },
-            { corrigendum: { $regex: search, $options: 'i' } },
-            { filename: { $regex: search, $options: 'i' } },
-          ]
+          filters.push({
+            $or: [
+              { trial: { $regex: search, $options: 'i' } },
+              { appeal: { $regex: search, $options: 'i' } },
+              { corrigendum: { $regex: search, $options: 'i' } },
+              { filename: { $regex: search, $options: 'i' } },
+            ],
+          })
         }
 
         if (username && assignedFilter === 'assigned') {
@@ -90,21 +92,29 @@ export const Route = createFileRoute('/api/assignment/$')({
             { projection: { _id: 1 } },
           )
           if (userId) {
-            match.$or = [
-              { assigned_to: new ObjectId(userId._id) },
-              { assigned_to: userId._id.toHexString() },
-            ]
+            filters.push({
+              $or: [
+                { assigned_to: userId._id },
+                { assigned_to: userId._id.toHexString() },
+              ],
+            })
           } else {
-            match.assigned_to = { $exists: true, $ne: null }
+            filters.push({ assigned_to: { $exists: true, $ne: null } })
           }
         } else if (assignedFilter === 'assigned') {
-          match.assigned_to = { $exists: true, $ne: null }
+          filters.push({ assigned_to: { $exists: true, $ne: null } })
         } else if (assignedFilter === 'unassigned') {
-          match.$or = [
-            { assigned_to: { $exists: false } },
-            { assigned_to: null },
-          ]
+          filters.push({
+            $or: [{ assigned_to: { $exists: false } }, { assigned_to: null }],
+          })
         }
+
+        const match =
+          filters.length === 0
+            ? {}
+            : filters.length === 1
+              ? filters[0]
+              : { $and: filters }
 
         const total = await judgementsCollection.countDocuments(match)
 
