@@ -265,6 +265,30 @@ class MonthlyWageDetail(BaseModel):
 
     source: str = source_field("monthly wage")
 
+class GovernmentSubsidyEnum(str, Enum):
+    CSSA = "CSSA"
+    OTHER = "Other"
+
+class GovernmentSubsidyRecipient(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    scheme_type: GovernmentSubsidyEnum = Field(
+        description="Type of the government subsidy the defendant is a recipient of "
+        "(e.g., CSSA: Comprehensive Social Security Assistance, or other specific subsidy scheme)."
+    )
+
+    other_scheme: Optional[str] = Field(
+        default=None,
+        description="If scheme_type is 'Other', specify the name of the subsidy scheme."
+    )
+
+    @model_validator(mode="after")
+    def validate_other_scheme(cls, v):
+        if v.scheme_type == GovernmentSubsidyEnum.OTHER and not v.other_scheme:
+            raise ValueError("other_scheme must be specified if scheme_type is 'Other'")
+        return v
+    
+    source: str = source_field("government subsidy recipient")
 
 class CriminalRecordDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
@@ -316,6 +340,9 @@ class DefendantProfile(BaseModel):
     occupation: Optional[Occupation] = Field(default=None)
     monthly_wage: Optional[MonthlyWageDetail] = Field(
         default=None, description="null means not mentioned at all; use 0 if unemployed"
+    )
+    government_subsidy_recipient: Optional[GovernmentSubsidyRecipient] = Field( 
+        default=None
     )
     criminal_records: Optional[List[CriminalRecordDetail]] = Field(default=None)
     positive_habits_after_arrest: Optional[List[PositiveHabitDetail]] = Field(

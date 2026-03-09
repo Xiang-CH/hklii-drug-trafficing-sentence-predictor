@@ -92,6 +92,8 @@ export const HealthStatusTypeSchema = z.enum([
   'Physical health',
 ])
 
+export const GovernmentSubsidyEnumSchema = z.enum(['CSSA', 'Other'])
+
 export const NationalitySchema = z
   .object({
     category: NationalityCategorySchema,
@@ -212,6 +214,25 @@ export const MonthlyWageDetailSchema = z
     },
   )
 
+export const GovernmentSubsidyRecipientSchema = z
+  .object({
+    scheme_type: GovernmentSubsidyEnumSchema,
+    other_scheme: z.string().nullable().default(null),
+    source: z.string(),
+  })
+  .refine(
+    (data) => {
+      if (data.scheme_type !== 'Other') {
+        return true
+      }
+      return !!data.other_scheme
+    },
+    {
+      message: "other_scheme must be specified if scheme_type is 'Other'",
+      path: ['other_scheme'],
+    },
+  )
+
 export const CriminalRecordDetailSchema = z.object({
   record: CriminalRecordSchema,
   source: z.string(),
@@ -244,6 +265,8 @@ export const DefendantProfileSchema = z.object({
   education_level: EducationLevelDetailSchema.nullable().default(null),
   occupation: OccupationSchema.nullable().default(null),
   monthly_wage: MonthlyWageDetailSchema.nullable().default(null),
+  government_subsidy_recipient:
+    GovernmentSubsidyRecipientSchema.nullable().default(null),
   criminal_records: z
     .array(CriminalRecordDetailSchema)
     .nullable()
