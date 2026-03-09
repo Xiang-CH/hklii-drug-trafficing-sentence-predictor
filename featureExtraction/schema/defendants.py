@@ -13,6 +13,7 @@ class NationalityCategory(str, Enum):
 
 class HKResidentStatus(str, Enum):
     PERMANENT = "Permanent resident"
+    RESIDENT = "Resident"
     NEW_ARRIVAL = "New arrival"
     NA = "N/A"
 
@@ -244,9 +245,24 @@ class EducationLevelDetail(BaseModel):
 class MonthlyWageDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    wage: int = Field(
-        description="Monthly wage at time of offence in HKD, 0 if unemployed"
+    wage: int | List[int] = Field(
+        description="Monthly wage at time of offence in HKD, 0 if unemployed; "
+        "If wage provided as a range, use a list with two integers indicating the lower and upper bounds of the range"
     )
+
+    @model_validator(mode="after")
+    def validate_wage(cls, v):
+        if isinstance(v.wage, list):
+            if len(v.wage) != 2:
+                raise ValueError("Wage range must be a list of two integers")
+            if v.wage[0] > v.wage[1]:
+                raise ValueError(
+                    "Lower bound of wage range cannot be greater than upper bound"
+                )
+        elif v.wage < 0:
+            raise ValueError("Wage cannot be negative")
+        return v
+
     source: str = source_field("monthly wage")
 
 

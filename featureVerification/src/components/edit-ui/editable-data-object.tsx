@@ -1,5 +1,5 @@
 import { DateRangeField } from './date-time-field'
-import { AgeRangeField } from './age-range-field'
+import { AgeRangeField, WageRangeField } from './age-range-field'
 import { EditableField } from './editable-field'
 import { SourceField } from './source-field'
 import { EditableSourceField } from './editable-source-field'
@@ -147,6 +147,22 @@ export function EditableDataObject({
   ) {
     return (
       <AgeRangeField
+        value={data}
+        isEditing={isEditing && !isDisabled}
+        onChange={(val) => onChange(val)}
+        isComputed={isFieldComputed}
+      />
+    )
+  }
+
+  // Special handling for wage field (can be single wage or wage range)
+  if (
+    fieldName === 'wage' &&
+    parentField === 'monthly_wage' &&
+    (typeof data === 'number' || (Array.isArray(data) && data.length === 2))
+  ) {
+    return (
+      <WageRangeField
         value={data}
         isEditing={isEditing && !isDisabled}
         onChange={(val) => onChange(val)}

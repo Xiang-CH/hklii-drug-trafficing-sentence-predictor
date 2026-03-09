@@ -8,6 +8,7 @@ export const NationalityCategorySchema = z.enum([
 
 export const HKResidentStatusSchema = z.enum([
   'Permanent resident',
+  'Resident',
   'New arrival',
   'N/A',
 ])
@@ -178,10 +179,38 @@ export const EducationLevelDetailSchema = z.object({
   source: z.string(),
 })
 
-export const MonthlyWageDetailSchema = z.object({
-  wage: z.number(),
-  source: z.string(),
-})
+export const MonthlyWageDetailSchema = z
+  .object({
+    wage: z.union([
+      z.number().int().min(0),
+      z.array(z.number().int()).length(2),
+    ]),
+    source: z.string(),
+  })
+  .refine(
+    (data) => {
+      if (!Array.isArray(data.wage)) {
+        return true
+      }
+      return data.wage[0] <= data.wage[1]
+    },
+    {
+      message: 'Lower bound of wage range cannot be greater than upper bound',
+      path: ['wage'],
+    },
+  )
+  .refine(
+    (data) => {
+      if (!Array.isArray(data.wage)) {
+        return true
+      }
+      return data.wage.every((value) => value >= 0)
+    },
+    {
+      message: 'Wage cannot be negative',
+      path: ['wage'],
+    },
+  )
 
 export const CriminalRecordDetailSchema = z.object({
   record: CriminalRecordSchema,
