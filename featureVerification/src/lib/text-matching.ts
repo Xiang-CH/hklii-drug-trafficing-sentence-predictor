@@ -16,6 +16,53 @@ function normalizeText(text: string): string {
 }
 
 /**
+ * Normalizes plain text and tracks the original text boundaries for each
+ * normalized character so normalized ranges can be mapped back accurately.
+ */
+function normalizePlainTextWithBoundaries(originalText: string): {
+  normalizedText: string
+  boundaries: Array<number>
+} {
+  const normalizedChars: Array<string> = []
+  const boundaries: Array<number> = []
+
+  let pendingWhitespaceStart: number | null = null
+  let pendingWhitespaceEnd = 0
+
+  for (let i = 0; i < originalText.length; i++) {
+    const char = originalText[i]
+
+    if (/\s/.test(char)) {
+      if (normalizedChars.length > 0 && pendingWhitespaceStart === null) {
+        pendingWhitespaceStart = i
+      }
+      pendingWhitespaceEnd = i + 1
+      continue
+    }
+
+    if (pendingWhitespaceStart !== null) {
+      if (boundaries.length === 0) {
+        boundaries.push(pendingWhitespaceStart)
+      }
+      normalizedChars.push(' ')
+      boundaries.push(pendingWhitespaceEnd)
+      pendingWhitespaceStart = null
+    }
+
+    if (boundaries.length === 0) {
+      boundaries.push(i)
+    }
+    normalizedChars.push(char.toLowerCase())
+    boundaries.push(i + 1)
+  }
+
+  return {
+    normalizedText: normalizedChars.join(''),
+    boundaries: boundaries.length > 0 ? boundaries : [originalText.length],
+  }
+}
+
+/**
  * Calculates similarity between two strings using Levenshtein distance
  */
 function calculateSimilarity(str1: string, str2: string): number {
@@ -135,17 +182,17 @@ export function findAndHighlightText(
   // Strategy 1: Try to find exact substring matches
   for (const textNode of nodes) {
     const text = textNode.textContent || ''
-    const normalizedText = normalizeText(text)
+    const { normalizedText, boundaries } =
+      normalizePlainTextWithBoundaries(text)
 
     // Check if the search text is contained in this node (exact match)
     const index = normalizedText.indexOf(normalizedSearch)
     if (index !== -1) {
       const score = 1.0
       // Map normalized position back to original text
-      const originalStart = mapNormalizedToOriginal(text, normalizedText, index)
+      const originalStart = mapNormalizedToOriginal(boundaries, index)
       const originalEnd = mapNormalizedToOriginal(
-        text,
-        normalizedText,
+        boundaries,
         index + normalizedSearch.length,
       )
 
@@ -166,7 +213,8 @@ export function findAndHighlightText(
       if (performance.now() - startTime > timeout) break
 
       const text = textNode.textContent || ''
-      const normalizedText = normalizeText(text)
+      const { normalizedText, boundaries } =
+        normalizePlainTextWithBoundaries(text)
 
       // Use a sliding window that's slightly larger than search text
       const minWindow = normalizedSearch.length
@@ -186,14 +234,9 @@ export function findAndHighlightText(
             similarity > 0.6 &&
             (!bestMatch || similarity > bestMatch.score)
           ) {
-            const originalStart = mapNormalizedToOriginal(
-              text,
-              normalizedText,
-              i,
-            )
+            const originalStart = mapNormalizedToOriginal(boundaries, i)
             const originalEnd = mapNormalizedToOriginal(
-              text,
-              normalizedText,
+              boundaries,
               i + windowSize,
             )
             bestMatch = {
@@ -214,7 +257,8 @@ export function findAndHighlightText(
       if (performance.now() - startTime > timeout) break
 
       const text = textNode.textContent || ''
-      const normalizedText = normalizeText(text)
+      const { normalizedText, boundaries } =
+        normalizePlainTextWithBoundaries(text)
 
       const searchWords = normalizedSearch
         .split(/\s+/)
@@ -239,16 +283,8 @@ export function findAndHighlightText(
 
         const score = wordPositions.length / searchWords.length
         if (!bestMatch || score > bestMatch.score) {
-          const originalStart = mapNormalizedToOriginal(
-            text,
-            normalizedText,
-            firstIndex,
-          )
-          const originalEnd = mapNormalizedToOriginal(
-            text,
-            normalizedText,
-            lastIndex,
-          )
+          const originalStart = mapNormalizedToOriginal(boundaries, firstIndex)
+          const originalEnd = mapNormalizedToOriginal(boundaries, lastIndex)
           bestMatch = {
             node: textNode,
             start: originalStart,
@@ -317,15 +353,15 @@ function findAndHighlightSingleFragment(
   // Try exact match first
   for (const textNode of nodes) {
     const text = textNode.textContent || ''
-    const normalizedText = normalizeText(text)
+    const { normalizedText, boundaries } =
+      normalizePlainTextWithBoundaries(text)
 
     const index = normalizedText.indexOf(normalizedSearch)
     if (index !== -1) {
       const score = 1.0
-      const originalStart = mapNormalizedToOriginal(text, normalizedText, index)
+      const originalStart = mapNormalizedToOriginal(boundaries, index)
       const originalEnd = mapNormalizedToOriginal(
-        text,
-        normalizedText,
+        boundaries,
         index + normalizedSearch.length,
       )
 
@@ -346,7 +382,8 @@ function findAndHighlightSingleFragment(
       if (performance.now() - startTime > timeout) break
 
       const text = textNode.textContent || ''
-      const normalizedText = normalizeText(text)
+      const { normalizedText, boundaries } =
+        normalizePlainTextWithBoundaries(text)
 
       const minWindow = Math.min(normalizedSearch.length, normalizedText.length)
       const maxWindow = Math.min(
@@ -365,14 +402,9 @@ function findAndHighlightSingleFragment(
             similarity > 0.6 &&
             (!bestMatch || similarity > bestMatch.score)
           ) {
-            const originalStart = mapNormalizedToOriginal(
-              text,
-              normalizedText,
-              i,
-            )
+            const originalStart = mapNormalizedToOriginal(boundaries, i)
             const originalEnd = mapNormalizedToOriginal(
-              text,
-              normalizedText,
+              boundaries,
               i + windowSize,
             )
             bestMatch = {
@@ -399,33 +431,18 @@ function findAndHighlightSingleFragment(
  * Maps a position in normalized text back to original text position
  */
 function mapNormalizedToOriginal(
-  originalText: string,
-  normalizedText: string,
+  boundaries: Array<number>,
   normalizedPos: number,
 ): number {
-  if (normalizedPos >= normalizedText.length) {
-    return originalText.length
+  if (normalizedPos <= 0) {
+    return boundaries[0] ?? 0
   }
 
-  // Count characters in normalized text up to the position
-  let normalizedCount = 0
-  let originalCount = 0
-
-  for (
-    let i = 0;
-    i < originalText.length && normalizedCount < normalizedPos;
-    i++
-  ) {
-    const char = originalText[i]
-    const normalizedChar = normalizeText(char)
-
-    if (normalizedChar.length > 0) {
-      normalizedCount++
-    }
-    originalCount = i + 1
+  if (normalizedPos >= boundaries.length) {
+    return boundaries[boundaries.length - 1] ?? 0
   }
 
-  return Math.min(originalCount, originalText.length)
+  return boundaries[normalizedPos]
 }
 
 /**
