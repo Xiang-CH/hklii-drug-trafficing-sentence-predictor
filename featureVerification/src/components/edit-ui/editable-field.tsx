@@ -1,4 +1,5 @@
 import { DateTimeField, TimeField } from './date-time-field'
+import { CountrySelect } from './country-select'
 import { SubdistrictSelect } from './subdistrict-select'
 import {
   Select,
@@ -90,6 +91,10 @@ export function EditableField({
   // console.log(fieldName, value)
   if (fieldName === 'subDistrict') {
     return <SubdistrictSelect value={value} onValueChange={onChange} />
+  }
+
+  if (fieldName === 'foreign_country_code') {
+    return <CountrySelect value={value} onValueChange={onChange} />
   }
 
   // Check if this is an enumerated string field

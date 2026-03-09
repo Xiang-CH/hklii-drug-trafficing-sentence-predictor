@@ -119,7 +119,8 @@ export const NationalitySchema = z
       return true
     },
     {
-      message: 'Conditional fields validation failed',
+      message:
+        'If category is Hong Kong resident, hk_resident_status is required; if category is Foreign nationality, foreign_country_code is required',
     },
   )
 
