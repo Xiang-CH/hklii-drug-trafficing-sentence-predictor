@@ -16,12 +16,13 @@ const config = defineConfig({
   },
   plugins: [
     devtools(),
-    nitro({
-      preset:
-        process.env.DEPLOY_TARGET === 'azure'
-          ? './nitro/presets/azure-swa-custom.mjs'
-          : 'node-server',
-    }),
+    nitro(
+      process.env.DEPLOY_TARGET === 'azure'
+        ? {
+            preset: './nitro/presets/azure-swa-custom.mjs',
+          }
+        : undefined,
+    ),
     // this is the plugin that enables path aliases
     viteTsConfigPaths({
       projects: ['./tsconfig.json'],
