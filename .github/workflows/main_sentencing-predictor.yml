@@ -21,16 +21,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
           node-version: '24.x'
           cache: 'pnpm'
           cache-dependency-path: featureVerification/pnpm-lock.yaml
-
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 10
       
       - name: Install deps
         run: pnpm install --frozen-lockfile
