@@ -118,7 +118,7 @@ class AggravatingFactorDetail(BaseModel):
     other_factor: Optional[str] = Field(
         default=None, description="The mitigating factor if the factor is 'Other'"
     )
-    enhancement: Optional[int] = Field(
+    enhancement_months: Optional[int] = Field(
         default=None,
         description="The specific sentence enhancement in months due to this aggravating factor, "
         "or null if the judge acknowledged the factor but decided not to impose enhancement",
@@ -167,7 +167,7 @@ class GuiltyPleaDetail(BaseModel):
         default=None,
         description="The reduction in months (0-11) explicitly mentioned by the judge due to guilty plea, or null if not specified",
     )
-    reduction_percentage: Optional[int] = Field(
+    reduction_percentage: Optional[float] = Field(
         default=None,
         description="The reduction in percentage explicitly mentioned by the judge due to guilty plea, or null if not specified",
     )
@@ -223,12 +223,12 @@ class MitigatingFactorDetail(BaseModel):
     other_factor: Optional[str] = Field(
         default=None, description="The mitigating factor if the factor is 'Other'"
     )
-    reduction: Optional[int] = Field(
+    reduction_months: Optional[int] = Field(
         default=None,
         description="The specific sentence reduction in months due to this mitigating factor, "
         "or null if the judge acknowledged the factor but decided not to impose reduction",
     )
-    reduction_percentage: Optional[int] = Field(
+    reduction_percentage: Optional[float] = Field(
         default=None,
         description="The percentage (0-100) of sentence reduction due to this mitigating factor if specified, "
         "usually only applicable factor: Assistance.",

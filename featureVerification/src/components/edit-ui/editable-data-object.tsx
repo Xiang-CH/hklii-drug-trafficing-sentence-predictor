@@ -12,6 +12,14 @@ import {
   isMandatoryNotGivenField,
 } from '@/lib/schema'
 
+const INFERRED_FIELDS = [
+  'enhancement_months',
+  'reduction_months',
+  'reduction_years',
+  'sentence_years',
+  'sentence_months',
+]
+
 interface EditableDataObjectProps {
   data: any
   onSourceHover: (text: string | null) => void
@@ -52,6 +60,8 @@ export function EditableDataObject({
   const getFieldLabel = (name?: string) => {
     if (name === 'roles_facts') {
       return 'roles (facts)'
+    } else if (name === 'mitigation_reduction') {
+      return 'mitigation_reduction (excluding guilty plea)'
     }
     return name
   }
@@ -81,6 +91,27 @@ export function EditableDataObject({
           onChange={(e) => onToggle(e.target.checked)}
         />
         <span className="text-gray-500 dark:text-gray-400">Not given</span>
+      </label>
+    )
+  }
+
+  function InferredToggle({
+    checked,
+    onToggle,
+  }: {
+    checked: boolean
+    onToggle: (next: boolean) => void
+  }) {
+    return (
+      <label className="ml-2 flex items-center gap-1 text-xs">
+        <input
+          type="checkbox"
+          checked={checked}
+          onChange={(e) => onToggle(e.target.checked)}
+        />
+        <span className="text-amber-600 dark:text-amber-400">
+          Inferred/Calculated
+        </span>
       </label>
     )
   }
@@ -326,6 +357,11 @@ export function EditableDataObject({
           const hasValue = value !== null && value !== undefined
           const isMandatoryField = isMandatoryNotGivenField(key)
           const showNotGivenToggle = !isEntryComputed && isMandatoryField
+          const showInferredToggle =
+            isEditing &&
+            INFERRED_FIELDS.includes(key) &&
+            'inferred' in data &&
+            hasValue
           // TODO: DefaultValue not used because some fields has no matching schema and will cause errors
           /**
           let defaultValue: any
@@ -342,9 +378,11 @@ export function EditableDataObject({
               key={key}
               className={`flex ${isArray ? 'flex-col' : ' items-start'} w-full`}
             >
-              <div className="flex items-center gap-2">
+              <div
+                className={`flex items-center gap-2 ${showInferredToggle ? 'flex-wrap' : ''}`}
+              >
                 <div className="text-purple-600 dark:text-purple-400 font-medium">
-                  {getFieldLabel(key)}:
+                  {getFieldLabel(key)}{isEntryComputed? '*' : ''}:
                 </div>
                 {showNotGivenToggle && onToggleNotGiven && (
                   <NotGivenToggle
@@ -370,8 +408,14 @@ export function EditableDataObject({
                       Clear
                     </button>
                   )}
+                {showInferredToggle && (
+                  <InferredToggle
+                    checked={Boolean(data.inferred)}
+                    onToggle={(next) => onChange({ ...data, inferred: next })}
+                  />
+                )}
               </div>
-              <div className={`${isArray ? 'ml-6 mt-1' : 'ml-2'} flex-1`}>
+              <div className={`${isArray ? 'ml-6 mt-1' : 'ml-2'} flex-1 min-w-16`}>
                 {key === 'source' && typeof value === 'string' ? (
                   canEdit ? (
                     <EditableSourceField

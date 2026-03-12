@@ -6,6 +6,7 @@ export const COMPUTED_FIELDS = [
   'district',
   'court',
   'tracing_id',
+  'inferred',
 ]
 
 export const MANDATORY_NOT_GIVEN_FIELDS = [

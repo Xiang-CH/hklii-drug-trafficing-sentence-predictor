@@ -95,7 +95,8 @@ export const AggravatingFactorDetailSchema = z
   .object({
     factor: AggravatingFactorTypeSchema,
     other_factor: z.string().nullable().default(null),
-    enhancement: z.number().nullable().default(null),
+    enhancement_months: z.number().nullable().default(null),
+    inferred: z.boolean().default(false),
     source: z.string(),
   })
   .refine(
@@ -118,13 +119,8 @@ export const GuiltyPleaDetailSchema = z
     district_court_stage: DistrictCourtPleaStageSchema.nullable().default(null),
     reduction_years: z.number().int().nullable().default(null),
     reduction_months: z.number().int().nullable().default(null),
-    reduction_percentage: z
-      .number()
-      .int()
-      .min(0)
-      .max(100)
-      .nullable()
-      .default(null),
+    reduction_percentage: z.number().min(0).max(100).nullable().default(null),
+    inferred: z.boolean().default(false),
     source: z.string(),
   })
   .refine(
@@ -159,14 +155,9 @@ export const MitigatingFactorDetailSchema = z
   .object({
     factor: MitigatingFactorTypeSchema,
     other_factor: z.string().nullable().default(null),
-    reduction: z.number().nullable().default(null),
-    reduction_percentage: z
-      .number()
-      .int()
-      .min(0)
-      .max(100)
-      .nullable()
-      .default(null),
+    reduction_months: z.number().nullable().default(null),
+    reduction_percentage: z.number().min(0).max(100).nullable().default(null),
+    inferred: z.boolean().default(false),
     source: z.string(),
   })
   .refine(
@@ -184,6 +175,7 @@ export const MitigatingFactorDetailSchema = z
 export const StartingPointDetailInputSchema = z.object({
   sentence_years: z.number(),
   sentence_months: z.number(),
+  inferred: z.boolean().default(false),
   source: z.string(),
 })
 
@@ -196,6 +188,7 @@ export const StartingPointDetailSchema =
 export const SentenceAfterRoleDetailInputSchema = z.object({
   sentence_years: z.number(),
   sentence_months: z.number(),
+  inferred: z.boolean().default(false),
   source: z.string(),
 })
 
@@ -208,6 +201,7 @@ export const SentenceAfterRoleDetailSchema =
 export const NotionalSentenceDetailInputSchema = z.object({
   sentence_years: z.number(),
   sentence_months: z.number(),
+  inferred: z.boolean().default(false),
   source: z.string(),
 })
 
@@ -219,6 +213,7 @@ export const NotionalSentenceDetailSchema =
 
 export const MitigationReductionDetailSchema = z.object({
   reduction_months: z.number(),
+  inferred: z.boolean().default(false),
   source: z.string(),
 })
 
