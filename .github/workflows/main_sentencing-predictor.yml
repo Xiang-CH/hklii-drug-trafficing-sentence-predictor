@@ -40,11 +40,22 @@ jobs:
         run: pnpm build
         working-directory: featureVerification
 
+      - name: Verify build output
+        run: |
+          if [ ! -f "featureVerification/.output/server/index.mjs" ]; then
+            echo "Missing build output: featureVerification/.output/server/index.mjs"
+            ls -la featureVerification/.output || true
+            exit 1
+          fi
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: featureVerification
+          path: |
+            featureVerification/.output
+            featureVerification/package.json
+            featureVerification/pnpm-lock.yaml
 
   deploy:
     runs-on: ubuntu-latest
