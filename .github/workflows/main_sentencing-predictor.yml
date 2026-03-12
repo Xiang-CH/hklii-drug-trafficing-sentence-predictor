@@ -27,6 +27,10 @@ jobs:
           node-version: '24.x'
           cache: 'pnpm'
           cache-dependency-path: featureVerification/pnpm-lock.yaml
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
       
       - name: Install deps
         run: pnpm install --frozen-lockfile
