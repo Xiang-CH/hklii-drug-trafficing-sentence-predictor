@@ -1,55 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import { z } from 'zod'
 import {
-  ChargeNameSchema,
-  DefendantRoleSchema,
-  GenderSchema,
-  ReasonForOffenceSchema,
+  getDefaultValueForArrayItem,
   getDefaultValueForField,
   getDefaultValueForFieldSchema,
-  getSchemaByPath,
+  getFieldSchema,
   isFieldNullable,
 } from './schema'
-
-describe('getSchemaByPath', () => {
-  it('returns nested enum schema for judgement path', () => {
-    const schema = getSchemaByPath(
-      'judgement.charges[0].defendants_of_charge[0].roles_facts[0].role',
-    )
-    expect(schema).toBe(DefendantRoleSchema)
-  })
-
-  it('return array schema for array fields', () => {
-    const schema = getSchemaByPath(
-      'judgement.charges[0].defendants_of_charge[0].roles_facts',
-    )
-    console.log(schema)
-    expect(schema).toBeInstanceOf(z.ZodArray)
-  })
-
-  it('resolves through transformed and defaulted schemas', () => {
-    const chargeNameSchema = getSchemaByPath('judgement.charges[0].charge_name')
-    const reasonSchema = getSchemaByPath(
-      'judgement.charges[0].defendants_of_charge[0].reasons_for_offence[3].reason',
-    )
-    const ageSchema = getSchemaByPath('defendants[0].age_at_offence.age')
-
-    expect(chargeNameSchema).toBe(ChargeNameSchema)
-    expect(reasonSchema).toBe(ReasonForOffenceSchema)
-    expect(ageSchema).toBeInstanceOf(z.ZodUnion)
-  })
-
-  it('resolves defendant field schema', () => {
-    const schema = getSchemaByPath('defendants[1].gender.gender')
-    expect(schema).toBe(GenderSchema)
-  })
-
-  it('returns null for invalid paths', () => {
-    expect(getSchemaByPath('judgement[0].roles_facts.role')).toBeNull()
-    expect(getSchemaByPath('trials[0].not_a_field')).toBeNull()
-    expect(getSchemaByPath('')).toBeNull()
-  })
-})
 
 describe('getDefaultValueForFieldSchema', () => {
   it('handles all supported schema branches', () => {
@@ -98,5 +55,27 @@ describe('isFieldNullable', () => {
     expect(isFieldNullable('district_court_stage', 'guilty_plea')).toBe(true)
     expect(isFieldNullable('reduction_years', 'guilty_plea')).toBe(true)
     expect(isFieldNullable('pleaded_guilty', 'guilty_plea')).toBe(false)
+  })
+})
+
+describe('getDefaultValueForArrayItem', () => {
+  it('returns object defaults for defendants and trials', () => {
+    expect(() =>
+      getDefaultValueForArrayItem('defendants', 'defendants'),
+    ).not.toThrow()
+    expect(() => getDefaultValueForArrayItem('trials', 'trials')).not.toThrow()
+    expect(getDefaultValueForArrayItem('defendants', 'defendants')).toEqual(
+      expect.any(Object),
+    )
+    expect(getDefaultValueForArrayItem('trials', 'trials')).toEqual(
+      expect.any(Object),
+    )
+  })
+})
+
+describe('getFieldSchema', () => {
+  it('does not throw for root array parents', () => {
+    expect(() => getFieldSchema('defendants', 'defendants')).not.toThrow()
+    expect(() => getFieldSchema('trials', 'trials')).not.toThrow()
   })
 })

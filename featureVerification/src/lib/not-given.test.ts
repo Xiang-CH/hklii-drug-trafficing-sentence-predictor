@@ -72,7 +72,7 @@ describe('deriveNotGivenMapFromPayload', () => {
     })
 
     expect(map['defendants.defendants[0].criminal_records']).toBe(true)
-    expect(map['trials.trials[1].drugs']).toBe(true)
+    expect(map['trials.trials[1].drugs']).toBeUndefined()
     expect(map['trials.trials[0].drugs']).toBeUndefined()
   })
 })

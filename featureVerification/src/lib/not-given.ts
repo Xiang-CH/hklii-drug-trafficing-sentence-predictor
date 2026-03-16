@@ -1,10 +1,4 @@
-import { z } from 'zod'
-import {
-  MANDATORY_NOT_GIVEN_FIELDS,
-  getDefaultValueForField,
-  getDefaultValueForFieldSchema,
-  getSchemaByPath,
-} from './schema'
+import { MANDATORY_NOT_GIVEN_FIELDS } from './schema'
 
 type NotGivenMap = Record<string, boolean>
 
@@ -28,79 +22,6 @@ function setAtPath(obj: any, tokens: Array<string | number>, value: any) {
   }
   const last = tokens[tokens.length - 1]
   if (cur != null) cur[last as any] = value
-}
-
-function unwrapSchema(schema: z.ZodTypeAny): z.ZodTypeAny {
-  if (schema instanceof z.ZodNullable || schema instanceof z.ZodOptional) {
-    return unwrapSchema((schema as any)._def.innerType)
-  }
-  if (schema instanceof z.ZodDefault) {
-    return unwrapSchema((schema as any)._def.innerType)
-  }
-  if (schema instanceof z.ZodPipe) {
-    return unwrapSchema((schema as any).in)
-  }
-  if ((schema as any)?._def?.type === 'pipe' && (schema as any)?._def?.in) {
-    return unwrapSchema((schema as any)._def.in)
-  }
-  return schema
-}
-
-function getDefaultFromSchema(
-  schema: z.ZodTypeAny,
-  fieldNameForFallback?: string,
-  parentFieldForFallback?: string,
-): any {
-  if (schema instanceof z.ZodDefault) {
-    const defaultFn = (schema as any)._def.defaultValue
-    return typeof defaultFn === 'function' ? defaultFn() : defaultFn
-  }
-
-  if (schema instanceof z.ZodNullable || schema instanceof z.ZodOptional) {
-    return null
-  }
-
-  const unwrapped = unwrapSchema(schema)
-
-  if (unwrapped instanceof z.ZodString) return ''
-  if (unwrapped instanceof z.ZodNumber) return 0
-  if (unwrapped instanceof z.ZodBoolean) return false
-  if (unwrapped instanceof z.ZodEnum) return unwrapped.options[0]
-  if (unwrapped instanceof z.ZodArray) return []
-  if (unwrapped instanceof z.ZodUnion) {
-    const firstOption = (unwrapped as any)._def.options[0]
-    return getDefaultFromSchema(firstOption)
-  }
-  if (unwrapped instanceof z.ZodObject) {
-    const shape = unwrapped.shape
-    const result: Record<string, any> = {}
-    for (const [key, childSchema] of Object.entries(shape)) {
-      result[key] = getDefaultFromSchema(childSchema as z.ZodTypeAny, key)
-    }
-    return result
-  }
-
-  if (fieldNameForFallback) {
-    return getDefaultValueForField(fieldNameForFallback, parentFieldForFallback)
-  }
-
-  return null
-}
-
-function getLastStringTokens(tokens: Array<string | number>): {
-  fieldName?: string
-  parentFieldName?: string
-} {
-  let fieldName: string | undefined
-  let parentFieldName: string | undefined
-
-  for (const token of tokens) {
-    if (typeof token !== 'string') continue
-    parentFieldName = fieldName
-    fieldName = token
-  }
-
-  return { fieldName, parentFieldName }
 }
 
 function isEmptyLike(value: unknown): boolean {
@@ -171,16 +92,7 @@ export function applyNotGivenToPayload<T extends object>(
     }
     const tokens = parsePath(path)
     if (tokens.length === 0) continue
-    const fieldSchema = getSchemaByPath(path)
-    // console.log(`Applying not given to path: ${path}, schema is array: ${fieldSchema instanceof z.ZodArray}`)
-    const { fieldName, parentFieldName } = getLastStringTokens(tokens)
-    // console.log(`Applying not given to path: ${path}, fieldName: ${fieldName}, parentFieldName: ${parentFieldName}`)
-    const defaultValue = fieldSchema
-      ? getDefaultValueForFieldSchema(fieldSchema, fieldName)
-      : getDefaultValueForField(fieldName || '', parentFieldName || '')
-
-    // console.log(`Applying not given to path: ${path}, defaultValue: ${defaultValue}`)
-    setAtPath(cloned, tokens, defaultValue)
+    setAtPath(cloned, tokens, null)
   }
 
   return cloned

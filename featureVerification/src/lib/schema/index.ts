@@ -99,6 +99,7 @@ export const FIELD_SCHEMAS: Partial<Record<string, z.ZodTypeAny>> = {
   mitigation_reduction: MitigationReductionDetailSchema,
   final_sentence: FinalSentenceDetailInputSchema,
   charge_name: ChargeDetailSchema,
+  charge_type: ChargeDetailSchema,
 
   judgement: JudgementSchema,
   date: DateDetailInputSchema,
@@ -225,7 +226,7 @@ function getRootSchemaFromPathToken(token: string): z.ZodTypeAny | null {
   return FIELD_SCHEMAS[token] ?? null
 }
 
-function getFieldSchema(
+export function getFieldSchema(
   fieldName: string,
   parentFieldName?: string,
 ): z.ZodTypeAny | undefined {
@@ -236,46 +237,14 @@ function getFieldSchema(
     const parentObj = unwrapToObject(parentSchema)
     if (parentObj instanceof z.ZodObject) {
       const shape = parentObj.shape
-      const parentFieldSchema = shape[fieldName] as z.ZodTypeAny
-      return unwrapSchema(parentFieldSchema)
+      const parentFieldSchema = shape[fieldName] as z.ZodTypeAny | undefined
+      if (parentFieldSchema) {
+        return unwrapSchema(parentFieldSchema)
+      }
     }
   }
 
   return FIELD_SCHEMAS[fieldName]
-}
-
-export function getSchemaByPath(path: string): z.ZodTypeAny | null {
-  const tokens = parseSchemaPath(path)
-  if (tokens.length === 0) return null
-  if (typeof tokens[0] !== 'string') return null
-
-  const rootToken = tokens[0]
-  let schema: z.ZodTypeAny | null = getRootSchemaFromPathToken(rootToken)
-  if (!schema) return null
-
-  for (let i = 1; i < tokens.length; i++) {
-    if (!schema) return null
-    const token = tokens[i]
-    const unwrapped = unwrapSchema(schema)
-
-    if (typeof token === 'number') {
-      if (!(unwrapped instanceof z.ZodArray)) return null
-      schema = (unwrapped as any)._def.element ?? null
-      continue
-    }
-
-    if (unwrapped instanceof z.ZodArray && token === rootToken) {
-      continue
-    }
-
-    if (!(unwrapped instanceof z.ZodObject)) return null
-    const shape = unwrapped.shape
-    const nextSchema = shape[token] as z.ZodTypeAny | undefined
-    if (!nextSchema) return null
-    schema = nextSchema
-  }
-
-  return schema
 }
 
 export function getDefaultValueForField(
