@@ -5,24 +5,16 @@
       "redirect": "/"
     },
     {
-      "route": "/_serverFn/*",
-      "rewrite": "/api/server",
-      "methods": [
-        "GET",
-        "POST",
-        "PUT",
-        "PATCH",
-        "DELETE",
-        "OPTIONS"
-      ]
+      "route": "/",
+      "rewrite": "/api/server"
     },
     {
-      "route": "/",
+      "route": "/_serverFn/*",
       "rewrite": "/api/server"
     }
   ],
   "platform": {
-    "apiRuntime": "node:18"
+    "apiRuntime": "node:20"
   },
   "navigationFallback": {
     "rewrite": "/api/server"
