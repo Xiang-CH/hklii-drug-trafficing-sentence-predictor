@@ -19,7 +19,7 @@ const config = defineConfig({
     nitro(
       process.env.DEPLOY_TARGET === 'azure'
         ? {
-            preset: 'azure-swa'//'./nitro/presets/azure-swa-custom.mjs',
+            preset: './nitro/presets/azure-swa-custom.mjs',
           }
         : undefined,
     ),
