@@ -29,7 +29,7 @@ To serve the production build of this application:
 
 ```bash
 DEPLOY_TARGET=azure pnpm build
-npx @azure/static-web-apps-cli swa start .output/public --api .output/server
+npx @azure/static-web-apps-cli swa start .output/public --api-location .output/server
 ```
 
 # Serving For Production on Docker

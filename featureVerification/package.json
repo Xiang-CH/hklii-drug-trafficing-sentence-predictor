@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "vite dev --port 3000",
     "build": "vite build",
+    "build:azure": "DEPLOY_TARGET=azure vite build",
     "preview": "vite preview",
+    "preview:azure": "set -a; . ./.env.local; set +a; swa start .output/public --api-location .output/server",
     "start": "node --env-file=.env.local .output/server/index.mjs",
     "test": "vitest run",
     "lint": "eslint",
