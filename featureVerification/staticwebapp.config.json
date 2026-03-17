@@ -11,17 +11,6 @@
     {
       "route": "/_serverFn/*",
       "rewrite": "/api/server"
-    },
-    {
-      "route": "/_serverFn/*",
-      "methods": [
-        "post",
-        "get",
-        "put",
-        "delete",
-        "options"
-      ],
-      "rewrite": "/api/server"
     }
   ],
   "platform": {
