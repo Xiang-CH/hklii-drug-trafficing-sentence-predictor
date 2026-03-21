@@ -55,6 +55,7 @@ import {
 } from './defendant'
 import {
   BenefitsReceivedDetailSchema,
+  BenefitsReceivedStatusSchema,
   BenefitsReceivedTypeSchema,
   ChargeForDefendantSchema,
   ChargeNameSchema,
@@ -359,6 +360,7 @@ export const ENUM_OPTIONS: Record<string, Array<string>> = {
     ReasonForOffenceSchema,
   ),
   benefits_received_amount_type: getEnumValues(BenefitsReceivedTypeSchema),
+  benefits_received_received: getEnumValues(BenefitsReceivedStatusSchema),
   reasons_for_offence_reason: getEnumValues(ReasonForOffenceSchema),
   cross_border_type: getEnumValues(ImportExportEnumSchema),
   time_time_of_day: getEnumValues(TimeOfDaySchema),

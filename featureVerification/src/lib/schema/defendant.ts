@@ -77,6 +77,7 @@ export const PositiveHabitSchema = z.enum([
   'Working',
   'Negative drug tests',
   'Participation in rehabilitation/self-improvement',
+  'Religion',
 ])
 
 export const FamilySupportSchema = z.enum([
@@ -188,6 +189,7 @@ export const MonthlyWageDetailSchema = z
       z.number().int().min(0),
       z.array(z.number().int()).length(2),
     ]),
+    wage_currency: z.string().nullable().default(null),
     source: z.string(),
   })
   .refine(

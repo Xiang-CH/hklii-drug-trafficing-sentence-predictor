@@ -16,6 +16,7 @@ export const ChargeNameSchema = z.enum([
 ])
 
 export const NatureOfPlaceSchema = z.enum([
+  'Unknown',
   'Residential building',
   'Commercial building',
   'Industrial building',
@@ -84,6 +85,13 @@ export const BenefitsReceivedTypeSchema = z.enum([
   'total',
   'other',
 ])
+
+export const BenefitsReceivedStatusSchema = z.enum(['Yes', 'No', 'Unknown'])
+const BenefitsReceivedStatusInputSchema = z.preprocess((value) => {
+  if (value === true) return 'Yes'
+  if (value === false) return 'No'
+  return value
+}, BenefitsReceivedStatusSchema)
 
 export const ImportExportEnumSchema = z.enum(['import', 'export'])
 
@@ -196,14 +204,16 @@ export const TimeDetailSchema = TimeDetailInputSchema.superRefine(
 export const PlaceOfOffenceInputSchema = z.object({
   address: z.string(),
   nature: NatureOfPlaceSchema,
-  subDistrict: SubDistrictSchema,
+  subDistrict: SubDistrictSchema.nullable().default(null),
   source: z.string(),
 })
 
 export const PlaceOfOffenceSchema = PlaceOfOffenceInputSchema.transform(
   (data) => ({
     ...data,
-    district: getDistrictBySubDistrict(data.subDistrict),
+    district: data.subDistrict
+      ? getDistrictBySubDistrict(data.subDistrict)
+      : null,
   }),
 )
 
@@ -224,8 +234,9 @@ export const ReasonForOffenceDetailSchema = z.object({
 
 export const BenefitsReceivedDetailSchema = z
   .object({
-    received: z.boolean(),
+    received: BenefitsReceivedStatusInputSchema.default('Unknown'),
     amount: z.number().nullable().default(null),
+    amount_currency: z.string().nullable().default(null),
     amount_type: BenefitsReceivedTypeSchema.nullable().default(null),
     amount_type_other: z.string().nullable().default(null),
     non_monetary_benefits: z.string().nullable().default(null),

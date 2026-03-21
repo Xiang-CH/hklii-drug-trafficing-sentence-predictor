@@ -85,6 +85,7 @@ class PositiveHabit(str, Enum):
     WORKING = "Working"
     NEGATIVE_DRUG_TESTS = "Negative drug tests"
     REHABILITATION = "Participation in rehabilitation/self-improvement"
+    RELIGION = "Religion"
 
 
 class FamilySupport(str, Enum):
@@ -248,6 +249,10 @@ class MonthlyWageDetail(BaseModel):
     wage: int | List[int] = Field(
         description="Monthly wage at time of offence in HKD, 0 if unemployed; "
         "If wage provided as a range, use a list with two integers indicating the lower and upper bounds of the range"
+    )
+    wage_currency: Optional[str] = Field(
+        default=None,
+        description="Textual currency label for wages not in HKD.",
     )
 
     @model_validator(mode="after")
