@@ -21,6 +21,7 @@ export type AssignmentJudgement = {
   corrigendum?: string
   year?: string
   llmProcessed: boolean
+  verified: boolean
   assignedTo?: {
     id: string
     username: string
@@ -57,6 +58,7 @@ export const Route = createFileRoute('/api/assignment/$')({
         const llmProcessedFilter = url.searchParams.get('llmProcessed')
           ? url.searchParams.get('llmProcessed') === '1'
           : 0
+        const verifiedFilter = url.searchParams.get('verified') ?? 'all'
         const username = url.searchParams.get('username')?.trim() ?? null
 
         // Fetch users
@@ -78,11 +80,24 @@ export const Route = createFileRoute('/api/assignment/$')({
         // Fetch judgements
         const judgementsCollection = db.collection('judgement-html')
         const extractedCollection = db.collection('llm-extracted-features')
+        const verifiedCollection = db.collection('verified-features')
         const extractedIds = await extractedCollection.distinct(
           'source_judgement_id',
         )
         const processedIds = extractedIds.map((id) =>
           id instanceof ObjectId ? id : new ObjectId(id),
+        )
+        const verifiedIds = await verifiedCollection.distinct(
+          'source_judgement_id',
+          { is_verified: true },
+        )
+        const verifiedObjectIds = verifiedIds.map((id) =>
+          id instanceof ObjectId ? id : new ObjectId(id),
+        )
+        const verifiedIdSet = new Set(
+          verifiedIds.map((id) =>
+            id instanceof ObjectId ? id.toHexString() : String(id),
+          ),
         )
 
         const filters: Array<Record<string, unknown>> = []
@@ -123,6 +138,12 @@ export const Route = createFileRoute('/api/assignment/$')({
 
         if (llmProcessedFilter) {
           filters.push({ _id: { $in: processedIds } })
+        }
+
+        if (verifiedFilter === 'verified') {
+          filters.push({ _id: { $in: verifiedObjectIds } })
+        } else if (verifiedFilter === 'unverified') {
+          filters.push({ _id: { $nin: verifiedObjectIds } })
         }
 
         const match =
@@ -177,6 +198,7 @@ export const Route = createFileRoute('/api/assignment/$')({
               corrigendum: doc.corrigendum ?? undefined,
               year: doc.year ?? undefined,
               llmProcessed: isLlmProcessed,
+              verified: verifiedIdSet.has(id),
               assignedTo: doc.assigned_to
                 ? assigneeMap[
                     doc.assigned_to instanceof ObjectId

@@ -13,6 +13,6 @@
 
 ## Workflow / Admin
 - [x] Users page: assigned case count reflects actual assignments
-- [ ] Add `Verified / Unverified` filter alongside existing filters
+- [x] Add `Verified / Unverified` filter alongside existing filters
 - [ ] Add language filter to distinguish English vs Chinese judgments
 - [x] Allow Super.Admin to view all users’ work without reassignment

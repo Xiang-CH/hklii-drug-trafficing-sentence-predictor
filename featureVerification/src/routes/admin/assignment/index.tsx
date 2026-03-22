@@ -53,6 +53,7 @@ type AssignmentSearchParams = {
   search?: string
   assigned?: 'all' | 'assigned' | 'unassigned'
   llmProcessed?: number
+  verified?: 'all' | 'verified' | 'unverified'
   username?: string | null
 }
 
@@ -63,6 +64,7 @@ async function getAssignmentData(params: {
   search: string
   assigned: string
   llmProcessed?: number
+  verified?: string
   username?: string | null
 }): Promise<AssignmentData> {
   const query = new URLSearchParams({
@@ -70,6 +72,7 @@ async function getAssignmentData(params: {
     search: params.search,
     assigned: params.assigned,
     llmProcessed: params.llmProcessed?.toString() ?? '',
+    verified: params.verified ?? 'all',
     username: params.username ?? '',
   })
 
@@ -120,6 +123,8 @@ export const Route = createFileRoute('/admin/assignment/')({
       assigned:
         (search.assigned as AssignmentSearchParams['assigned']) ?? 'unassigned',
       llmProcessed: search.llmProcessed ? parseInt(search.llmProcessed) : 0,
+      verified:
+        (search.verified as AssignmentSearchParams['verified']) ?? 'all',
       username: search.username,
     }
   },
@@ -129,7 +134,8 @@ export const Route = createFileRoute('/admin/assignment/')({
 })
 
 function AssignmentComponent() {
-  const { page, search, assigned, llmProcessed, username } = Route.useSearch()
+  const { page, search, assigned, llmProcessed, verified, username } =
+    Route.useSearch()
   const navigate = useNavigate({ from: '/admin/assignment/' })
   const queryClient = useQueryClient()
 
@@ -142,19 +148,31 @@ function AssignmentComponent() {
   >(new Set())
   const [randomCount, setRandomCount] = React.useState(10)
   const [isRandomDialogOpen, setIsRandomDialogOpen] = React.useState(false)
+  const userButtonRefs = React.useRef<Record<string, HTMLButtonElement | null>>(
+    {},
+  )
 
   // Auto-select user from URL parameter
   const { data, isPending } = useQuery({
     queryKey:
       assigned === 'assigned'
-        ? ['assignment', page, search, assigned, llmProcessed, username]
-        : ['assignment', page, search, assigned, llmProcessed],
+        ? [
+            'assignment',
+            page,
+            search,
+            assigned,
+            llmProcessed,
+            verified,
+            username,
+          ]
+        : ['assignment', page, search, assigned, llmProcessed, verified],
     queryFn: () =>
       getAssignmentData({
         page: page ?? 1,
         search: search ?? '',
         assigned: assigned ?? 'all',
         llmProcessed: llmProcessed,
+        verified: verified ?? 'all',
         username: assigned === 'assigned' ? (username ?? null) : null,
       }),
   })
@@ -167,6 +185,23 @@ function AssignmentComponent() {
       setSelectedUser(null)
     }
   }, [username, data?.users])
+
+  React.useEffect(() => {
+    if (!username || !selectedUser) {
+      return
+    }
+
+    const selectedUserButton = userButtonRefs.current[selectedUser.id]
+    if (!selectedUserButton) {
+      return
+    }
+
+    selectedUserButton.scrollIntoView({
+      behavior: 'instant',
+      block: 'center',
+      inline: 'nearest',
+    })
+  }, [username, selectedUser])
 
   const assignMutation = useMutation({
     mutationFn: ({
@@ -380,6 +415,9 @@ function AssignmentComponent() {
                 {users.map((user) => (
                   <button
                     key={user.id}
+                    ref={(element) => {
+                      userButtonRefs.current[user.id] = element
+                    }}
                     // onClick={() => handleUserSelect(user)}
                     onClick={() =>
                       navigate({
@@ -406,7 +444,7 @@ function AssignmentComponent() {
                         }
                         className="text-xs"
                       >
-                        {user.assignedCount} assigned
+                        {user.assignedCount}
                       </Badge>
                     </div>
                     <div className="text-sm text-muted-foreground">
@@ -454,6 +492,48 @@ function AssignmentComponent() {
                     }}
                   />
                 </div>
+
+                <Select
+                  value={llmProcessed ? '1' : '0'}
+                  onValueChange={(value) => {
+                    navigate({
+                      search: (prev) => ({
+                        ...prev,
+                        page: 1,
+                        llmProcessed: value === '1' ? 1 : 0,
+                      }),
+                    })
+                  }}
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="1">Processed</SelectItem>
+                    <SelectItem value="0">All</SelectItem>
+                  </SelectContent>
+                </Select>
+                <Select
+                  value={verified ?? 'all'}
+                  onValueChange={(value) => {
+                    navigate({
+                      search: (prev) => ({
+                        ...prev,
+                        page: 1,
+                        verified: value as AssignmentSearchParams['verified'],
+                      }),
+                    })
+                  }}
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All</SelectItem>
+                    <SelectItem value="verified">Verified</SelectItem>
+                    <SelectItem value="unverified">Unverified</SelectItem>
+                  </SelectContent>
+                </Select>
                 <Select
                   value={assigned ?? 'all'}
                   onValueChange={(value) => {
@@ -473,26 +553,6 @@ function AssignmentComponent() {
                     <SelectItem value="all">All</SelectItem>
                     <SelectItem value="assigned">Assigned</SelectItem>
                     <SelectItem value="unassigned">Unassigned</SelectItem>
-                  </SelectContent>
-                </Select>
-                <Select
-                  value={llmProcessed ? '1' : '0'}
-                  onValueChange={(value) => {
-                    navigate({
-                      search: (prev) => ({
-                        ...prev,
-                        page: 1,
-                        llmProcessed: value === '1' ? 1 : 0,
-                      }),
-                    })
-                  }}
-                >
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="1">Processed</SelectItem>
-                    <SelectItem value="0">All</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -570,6 +630,15 @@ function AssignmentComponent() {
                               Not Processed
                             </Badge>
                           )}
+                          <Badge
+                            className={`text-xs hover:bg-green-100  ${
+                              judgement.verified
+                                ? 'bg-green-100 text-green-800'
+                                : 'bg-muted text-muted-foreground'
+                            }`}
+                          >
+                            {judgement.verified ? 'Verified' : 'Unverified'}
+                          </Badge>
                           {judgement.assignedTo ? (
                             <Badge variant="secondary" className="text-xs">
                               Assigned to {judgement.assignedTo.name}
