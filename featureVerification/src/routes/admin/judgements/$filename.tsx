@@ -1,7 +1,7 @@
 import { createFileRoute, redirect } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
 import type { JudgementDetail } from '@/routes/api/judgements/$filename'
-import { authClient } from '@/lib/auth-client'
+import { requireAdminAuth } from '@/lib/auth-client'
 import HtmlViewer from '@/components/html-viewer'
 
 async function getJudgement(filename: string): Promise<JudgementDetail> {
@@ -19,31 +19,29 @@ async function getJudgement(filename: string): Promise<JudgementDetail> {
 }
 
 export const Route = createFileRoute('/admin/judgements/$filename')({
+  ssr: false,
   component: JudgementDetailComponent,
   beforeLoad: async ({ location }) => {
-    const session = await authClient.getSession()
-    if (!session.data?.user) {
-      throw redirect({ to: '/login', search: { redirect: location.href } })
-    }
-    if (session.data.user.role !== 'admin') {
-      throw redirect({ to: '/' })
-    }
-  },
-  loader: async ({ params }) => {
-    return getJudgement(params.filename)
+    await requireAdminAuth(location.href)
   },
 })
 
 function JudgementDetailComponent() {
-  const initial = Route.useLoaderData()
   const { filename } = Route.useParams()
 
-  const { data } = useQuery({
+  const { data, isPending } = useQuery({
     queryKey: ['judgement', filename],
-    initialData: initial,
     queryFn: () => getJudgement(filename),
     gcTime: 0,
   })
+
+  if (isPending || !data) {
+    return (
+      <div className="flex h-[calc(100vh-4rem)] items-center justify-center text-muted-foreground">
+        Loading judgement...
+      </div>
+    )
+  }
 
   return (
     <div className="container mx-auto p-6 max-w-6xl">

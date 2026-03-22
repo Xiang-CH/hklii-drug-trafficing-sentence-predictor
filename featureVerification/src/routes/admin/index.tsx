@@ -1,4 +1,5 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
+import { useQuery } from '@tanstack/react-query'
 
 import { createServerFn } from '@tanstack/react-start'
 import {
@@ -22,15 +23,29 @@ const fetchAdminStats = createServerFn().handler(async () => {
 })
 
 export const Route = createFileRoute('/admin/')({
+  ssr: false,
   beforeLoad: async () => {
     await requireAdminAuth('/admin')
   },
   component: AdminComponent,
-  loader: async () => fetchAdminStats(),
 })
 
 function AdminComponent() {
-  const { userCount, judgementCount } = Route.useLoaderData()
+  const { data, isPending } = useQuery({
+    queryKey: ['admin-stats'],
+    queryFn: () => fetchAdminStats(),
+  })
+
+  const userCount = data?.userCount ?? 0
+  const judgementCount = data?.judgementCount ?? 0
+
+  if (isPending) {
+    return (
+      <div className="mx-auto flex w-full max-w-5xl items-center justify-center p-6 text-muted-foreground">
+        Loading dashboard...
+      </div>
+    )
+  }
 
   const adminLinks = [
     {

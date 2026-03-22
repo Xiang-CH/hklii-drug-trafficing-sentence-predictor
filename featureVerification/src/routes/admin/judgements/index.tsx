@@ -61,6 +61,7 @@ async function getJudgements(params: JudgementsSearchParams) {
 }
 
 export const Route = createFileRoute('/admin/judgements/')({
+  ssr: false,
   component: JudgementsComponent,
   validateSearch: (search: Record<string, string>): JudgementsSearchParams => {
     return {
@@ -72,32 +73,26 @@ export const Route = createFileRoute('/admin/judgements/')({
   beforeLoad: async ({ location }) => {
     await requireAdminAuth(location.href)
   },
-  loaderDeps: ({ search }) => ({
-    page: search.page,
-    status: search.status,
-    searchText: search.search,
-  }),
-  loader: async ({ deps }) => {
-    return getJudgements({
-      page: deps.page,
-      status: deps.status,
-      search: deps.searchText,
-    })
-  },
 })
 
 function JudgementsComponent() {
-  const initial = Route.useLoaderData()
   const { page, status, search } = Route.useSearch()
   const [searchText, setSearchText] = React.useState(search ?? '')
   const navigate = useNavigate({ from: '/admin/judgements/' })
 
-  const { data } = useQuery({
+  const { data, isPending } = useQuery({
     queryKey: ['judgements', page, status, search],
-    initialData: initial,
     queryFn: () => getJudgements({ page, status, search }),
     gcTime: 0,
   })
+
+  if (isPending || !data) {
+    return (
+      <div className="flex h-[calc(100vh-4rem)] items-center justify-center text-muted-foreground">
+        Loading judgements...
+      </div>
+    )
+  }
 
   const totalPages = Math.ceil(data.total / JUDGEMENTS_PER_PAGE)
 
@@ -129,7 +124,7 @@ function JudgementsComponent() {
               })
             }}
           >
-            <SelectTrigger className="w-[160px]">
+            <SelectTrigger className="w-40">
               <SelectValue placeholder="All" />
             </SelectTrigger>
             <SelectContent>

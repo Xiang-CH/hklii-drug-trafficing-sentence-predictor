@@ -111,6 +111,7 @@ async function assignJudgements(
 }
 
 export const Route = createFileRoute('/admin/assignment/')({
+  ssr: false,
   component: AssignmentComponent,
   validateSearch: (search: Record<string, string>): AssignmentSearchParams => {
     return {
@@ -125,27 +126,9 @@ export const Route = createFileRoute('/admin/assignment/')({
   beforeLoad: async ({ location }) => {
     await requireAdminAuth(location.href)
   },
-  loaderDeps: ({ search }) => ({
-    page: search.page ?? 1,
-    searchText: search.search ?? '',
-    assigned: search.assigned ?? 'all',
-    llmProcessed: search.llmProcessed,
-    // Only include username in deps when filter is "assigned" to prevent unnecessary refetches
-    username: search.assigned === 'assigned' ? search.username : undefined,
-  }),
-  loader: async ({ deps }) => {
-    return getAssignmentData({
-      page: deps.page,
-      search: deps.searchText,
-      assigned: deps.assigned,
-      llmProcessed: deps.llmProcessed,
-      username: deps.assigned === 'assigned' ? deps.username : undefined,
-    })
-  },
 })
 
 function AssignmentComponent() {
-  const initialData = Route.useLoaderData()
   const { page, search, assigned, llmProcessed, username } = Route.useSearch()
   const navigate = useNavigate({ from: '/admin/assignment/' })
   const queryClient = useQueryClient()
@@ -161,30 +144,11 @@ function AssignmentComponent() {
   const [isRandomDialogOpen, setIsRandomDialogOpen] = React.useState(false)
 
   // Auto-select user from URL parameter
-  React.useEffect(() => {
-    console.log([
-      'assignment',
-      page,
-      search,
-      assigned,
-      assigned === 'assigned' ? username : undefined,
-    ])
-    if (username && initialData.users.length > 0) {
-      const user = initialData.users.find((u) => u.username === username)
-      setSelectedUser(user || null)
-    } else {
-      setSelectedUser(null)
-    }
-  }, [username, initialData.users])
-
-  const { data } = useQuery({
-    // Only include username in queryKey when filter is "assigned"
-    // For "all" and "unassigned", switching users should not refetch data
+  const { data, isPending } = useQuery({
     queryKey:
       assigned === 'assigned'
         ? ['assignment', page, search, assigned, llmProcessed, username]
         : ['assignment', page, search, assigned, llmProcessed],
-    initialData,
     queryFn: () =>
       getAssignmentData({
         page: page ?? 1,
@@ -194,6 +158,15 @@ function AssignmentComponent() {
         username: assigned === 'assigned' ? (username ?? null) : null,
       }),
   })
+
+  React.useEffect(() => {
+    if (username && data?.users.length) {
+      const user = data.users.find((u) => u.username === username)
+      setSelectedUser(user || null)
+    } else {
+      setSelectedUser(null)
+    }
+  }, [username, data?.users])
 
   const assignMutation = useMutation({
     mutationFn: ({
@@ -212,6 +185,14 @@ function AssignmentComponent() {
       setSelectedJudgements(new Set())
     },
   })
+
+  if (isPending || !data) {
+    return (
+      <div className="flex h-[calc(100vh-4rem)] items-center justify-center text-muted-foreground">
+        Loading assignment data...
+      </div>
+    )
+  }
 
   const users = data.users
   const judgements = data.judgements
@@ -273,7 +254,7 @@ function AssignmentComponent() {
 
   return (
     <div className="container mx-auto p-4 h-[calc(100vh-3.2rem)] overflow-hidden flex flex-col">
-      <div className="flex flex-col gap-2 mb-4 flex-shrink-0">
+      <div className="mb-4 flex shrink-0 flex-col gap-2">
         <div>
           <h1 className="text-2xl font-semibold px-1">Assignment Management</h1>
         </div>
@@ -518,7 +499,7 @@ function AssignmentComponent() {
             </div>
           </CardHeader>
           <CardContent className="flex-1 p-0 flex flex-col pb-0">
-            <div className="px-6 pb-2 flex-shrink-0">
+            <div className="shrink-0 px-6 pb-2">
               <label className="flex items-center gap-2 py-2 cursor-pointer hover:bg-muted/50 rounded px-2 -mx-2">
                 <Checkbox
                   checked={
