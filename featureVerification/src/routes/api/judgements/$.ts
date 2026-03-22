@@ -80,6 +80,7 @@ export const Route = createFileRoute('/api/judgements/$')({
 
         const verifiedIds = await verifiedCollection.distinct(
           'source_judgement_id',
+          { is_verified: true },
         )
         const verifiedObjectIds = verifiedIds
           .filter(Boolean)

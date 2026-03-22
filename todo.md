@@ -15,4 +15,4 @@
 - [x] Users page: assigned case count reflects actual assignments
 - [ ] Add `Verified / Unverified` filter alongside existing filters
 - [ ] Add language filter to distinguish English vs Chinese judgments
-- [ ] Allow Super.Admin to view all users’ work without reassignment
+- [x] Allow Super.Admin to view all users’ work without reassignment

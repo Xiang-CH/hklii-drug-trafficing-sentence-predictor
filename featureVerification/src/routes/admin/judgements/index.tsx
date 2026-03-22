@@ -187,7 +187,11 @@ function JudgementsComponent() {
                           : 'bg-muted text-muted-foreground'
                     }`}
                   >
-                    {row.verified ? 'Verified' : row.processed ? 'Processed' : 'Unprocessed'}
+                    {row.verified
+                      ? 'Verified'
+                      : row.processed
+                        ? 'Processed'
+                        : 'Unprocessed'}
                   </span>
                 </TableCell>
                 <TableCell className="text-muted-foreground">
