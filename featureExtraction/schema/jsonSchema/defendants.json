@@ -608,6 +608,19 @@
                     "description": "Monthly wage at time of offence in HKD, 0 if unemployed; If wage provided as a range, use a list with two integers indicating the lower and upper bounds of the range",
                     "title": "Wage"
                 },
+                "wage_currency": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Textual currency label for wages not in HKD.",
+                    "title": "Wage Currency"
+                },
                 "source": {
                     "description": "The exact match source text from which the monthly wage was extracted. Do not include any additional information in the source document.",
                     "title": "Source",
@@ -785,7 +798,8 @@
                 "Studying",
                 "Working",
                 "Negative drug tests",
-                "Participation in rehabilitation/self-improvement"
+                "Participation in rehabilitation/self-improvement",
+                "Religion"
             ],
             "title": "PositiveHabit",
             "type": "string"

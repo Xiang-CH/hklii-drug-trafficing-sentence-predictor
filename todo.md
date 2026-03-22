@@ -3,7 +3,7 @@
 ## Annotation Features
 - [x] `place_of_offence.nature`: add `Unknown` option
 - [x] `place_of_offence.sub-district`: make non-mandatory
-- [ ] `defendants_of_charge.trafficking_mode`: allow multiple entries
+- [x] `defendants_of_charge.trafficking_mode`: allow multiple entries
 - [x] `benefits_received.received`: add `Unknown` option
 - [x] `benefits_received.amount`: allow ranges
 - [x] `benefits_received.amount_currency`: new field under `amount` for textual input (non-HKD)

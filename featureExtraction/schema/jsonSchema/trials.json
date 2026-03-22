@@ -20,7 +20,7 @@
                     "description": "The mitigating factor if the factor is 'Other'",
                     "title": "Other Factor"
                 },
-                "enhancement": {
+                "enhancement_months": {
                     "anyOf": [
                         {
                             "type": "integer"
@@ -31,7 +31,7 @@
                     ],
                     "default": null,
                     "description": "The specific sentence enhancement in months due to this aggravating factor, or null if the judge acknowledged the factor but decided not to impose enhancement",
-                    "title": "Enhancement"
+                    "title": "Enhancement Months"
                 },
                 "source": {
                     "description": "The exact match source text from which the aggravating factor was extracted. Do not include any additional information in the source document.",
@@ -293,7 +293,7 @@
                 "reduction_percentage": {
                     "anyOf": [
                         {
-                            "type": "integer"
+                            "type": "number"
                         },
                         {
                             "type": "null"
@@ -348,7 +348,7 @@
                     "description": "The mitigating factor if the factor is 'Other'",
                     "title": "Other Factor"
                 },
-                "reduction": {
+                "reduction_months": {
                     "anyOf": [
                         {
                             "type": "integer"
@@ -359,12 +359,12 @@
                     ],
                     "default": null,
                     "description": "The specific sentence reduction in months due to this mitigating factor, or null if the judge acknowledged the factor but decided not to impose reduction",
-                    "title": "Reduction"
+                    "title": "Reduction Months"
                 },
                 "reduction_percentage": {
                     "anyOf": [
                         {
-                            "type": "integer"
+                            "type": "number"
                         },
                         {
                             "type": "null"

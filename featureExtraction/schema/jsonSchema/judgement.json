@@ -4,9 +4,8 @@
             "additionalProperties": false,
             "properties": {
                 "received": {
-                    "description": "Whether benefits were received or to be received for trafficking.",
-                    "title": "Received",
-                    "type": "boolean"
+                    "$ref": "#/$defs/BenefitsReceivedStatus",
+                    "description": "Whether benefits were received or to be received for trafficking."
                 },
                 "amount": {
                     "anyOf": [
@@ -14,12 +13,31 @@
                             "type": "number"
                         },
                         {
+                            "items": {
+                                "type": "number"
+                            },
+                            "type": "array"
+                        },
+                        {
                             "type": "null"
                         }
                     ],
                     "default": null,
-                    "description": "Amount of benefits received or to be received for trafficking in HKD, excluding the value of the drug itself. Only set to null if benefit amount is not explicitly stated.",
+                    "description": "Amount of benefits received or to be received for trafficking in HKD, excluding the value of the drug itself. Can be a single amount or a [min, max] range. Only set to null if benefit amount is not explicitly stated.",
                     "title": "Amount"
+                },
+                "amount_currency": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Textual currency label for benefits not in HKD.",
+                    "title": "Amount Currency"
                 },
                 "amount_type": {
                     "anyOf": [
@@ -71,6 +89,15 @@
             ],
             "title": "BenefitsReceivedDetail",
             "type": "object"
+        },
+        "BenefitsReceivedStatus": {
+            "enum": [
+                "Yes",
+                "No",
+                "Unknown"
+            ],
+            "title": "BenefitsReceivedStatus",
+            "type": "string"
         },
         "BenefitsReceivedType": {
             "enum": [
@@ -181,13 +208,17 @@
                 "trafficking_mode": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/TraffickingMode"
+                            "items": {
+                                "$ref": "#/$defs/TraffickingMode"
+                            },
+                            "type": "array"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "default": null
+                    "default": null,
+                    "title": "Trafficking Mode"
                 },
                 "roles_facts": {
                     "anyOf": [
@@ -338,6 +369,7 @@
         },
         "NatureOfPlace": {
             "enum": [
+                "Unknown",
                 "Residential building",
                 "Commercial building",
                 "Industrial building",
@@ -375,7 +407,15 @@
                     "description": "The nature of the place of offence."
                 },
                 "subDistrict": {
-                    "$ref": "#/$defs/SubDistrict",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SubDistrict"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
                     "description": "The sub-district within the district where the place of offence is located"
                 },
                 "source": {
@@ -387,7 +427,6 @@
             "required": [
                 "address",
                 "nature",
-                "subDistrict",
                 "source"
             ],
             "title": "PlaceOfOffence",
