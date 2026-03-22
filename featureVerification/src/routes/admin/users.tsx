@@ -61,6 +61,8 @@ type UserMutationVariables =
 
 const USERS_PER_PAGE = 50
 
+type UsersQueryData = Awaited<ReturnType<typeof getUsers>>
+
 async function getUsers(page: number) {
   const response = await authClient.admin.listUsers({
     query: {
@@ -121,7 +123,7 @@ function UsersComponent() {
     void,
     Error,
     UserMutationVariables,
-    { previousUsers?: unknown }
+    { previousUsers?: UsersQueryData }
   >({
     mutationFn: async ({ userId, data }: UserMutationVariables) => {
       if (userId) {
@@ -135,15 +137,15 @@ function UsersComponent() {
     },
     onMutate: async (newUser) => {
       await queryClient.cancelQueries({ queryKey: ['users', page] })
-      const previousUsers = queryClient.getQueryData(['users', page])
-      queryClient.setQueryData(['users', page], (old: any) => {
-        return old.map((user: any) => {
-          if (user.id === newUser.userId) {
-            return { ...user, ...newUser.data }
-          }
-          return user
-        })
-      })
+      const previousUsers = queryClient.getQueryData<UsersQueryData>([
+        'users',
+        page,
+      ])
+
+      if (!newUser.userId) {
+        return { previousUsers }
+      }
+
       return { previousUsers }
     },
     onError: (err, _, context) => {
@@ -151,7 +153,7 @@ function UsersComponent() {
       queryClient.setQueryData(['users', page], context?.previousUsers) // rollback to previous users on error
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['users', page] })
+      queryClient.invalidateQueries({ queryKey: ['users'] })
     },
   })
 
@@ -465,7 +467,7 @@ function CreateUserForm({
     void,
     Error,
     UserMutationVariables,
-    { previousUsers?: unknown }
+    { previousUsers?: UsersQueryData }
   >
 }) {
   const [editedUsername, setEditedUsername] = React.useState(false)
@@ -479,10 +481,10 @@ function CreateUserForm({
     onSubmitInvalid(props) {
       console.log('CreateUserForm submit invalid', props)
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       console.log('CreateUserForm submit values', values.value)
       const data = { ...values.value, password: values.value.username }
-      updateUserMutation.mutateAsync({ data, userId: undefined })
+      await updateUserMutation.mutateAsync({ data, userId: undefined })
       form.reset()
     },
   })
