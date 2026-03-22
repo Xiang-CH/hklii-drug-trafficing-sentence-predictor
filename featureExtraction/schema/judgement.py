@@ -270,10 +270,11 @@ class BenefitsReceivedDetail(BaseModel):
     received: BenefitsReceivedStatus = Field(
         description="Whether benefits were received or to be received for trafficking."
     )
-    amount: Optional[float] = Field(
+    amount: Optional[float | List[float]] = Field(
         default=None,
         description="Amount of benefits received or to be received for trafficking in HKD, "
-        "excluding the value of the drug itself. Only set to null if benefit amount is not explicitly stated.",
+        "excluding the value of the drug itself. Can be a single amount or a [min, max] range. "
+        "Only set to null if benefit amount is not explicitly stated.",
     )
     amount_currency: Optional[str] = Field(
         default=None,
@@ -299,6 +300,20 @@ class BenefitsReceivedDetail(BaseModel):
     def coerce_received(cls, v):
         if isinstance(v, bool):
             return BenefitsReceivedStatus.YES if v else BenefitsReceivedStatus.NO
+        return v
+
+    @field_validator("amount")
+    @classmethod
+    def validate_amount(cls, v):
+        if isinstance(v, list):
+            if len(v) != 2:
+                raise ValueError(
+                    "amount must be a single number or an array of two numbers"
+                )
+            if v[1] <= v[0]:
+                raise ValueError(
+                    "amount array must be in the format [min, max] with max > min"
+                )
         return v
 
     @model_validator(mode="after")

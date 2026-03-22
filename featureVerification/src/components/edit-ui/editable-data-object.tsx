@@ -1,8 +1,9 @@
 import { DateRangeField } from './date-time-field'
-import { AgeRangeField, WageRangeField } from './age-range-field'
+import { AgeRangeField, AmountRangeField, WageRangeField } from './range-field'
 import { EditableField } from './editable-field'
 import { SourceField } from './source-field'
 import { EditableSourceField } from './editable-source-field'
+import type { RangeValue } from './range-field'
 import type { UndoState } from '@/components/editable-data-viewer'
 import {
   COMPUTED_FIELDS,
@@ -185,7 +186,7 @@ export function EditableDataObject({
   ) {
     return (
       <AgeRangeField
-        value={data}
+        value={data as RangeValue}
         isEditing={isEditing && !isDisabled}
         onChange={(val) => onChange(val)}
         isComputed={isFieldComputed}
@@ -201,7 +202,22 @@ export function EditableDataObject({
   ) {
     return (
       <WageRangeField
-        value={data}
+        value={data as RangeValue}
+        isEditing={isEditing && !isDisabled}
+        onChange={(val) => onChange(val)}
+        isComputed={isFieldComputed}
+      />
+    )
+  }
+
+  // Special handling for amount field (can be single amount or amount range)
+  if (
+    fieldName === 'amount' &&
+    (typeof data === 'number' || (Array.isArray(data) && data.length === 2))
+  ) {
+    return (
+      <AmountRangeField
+        value={data as RangeValue}
         isEditing={isEditing && !isDisabled}
         onChange={(val) => onChange(val)}
         isComputed={isFieldComputed}

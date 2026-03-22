@@ -1,5 +1,5 @@
 import { DateRangeField, DateTimeField, TimeField } from './date-time-field'
-import { AgeRangeField } from './age-range-field'
+import { AgeRangeField } from './range-field'
 import { EditableField } from './editable-field'
 import { SourceField } from './source-field'
 import { ValidationErrorsPanel } from './validation-error'

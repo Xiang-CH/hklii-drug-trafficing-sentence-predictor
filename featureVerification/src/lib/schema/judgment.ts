@@ -235,13 +235,38 @@ export const ReasonForOffenceDetailSchema = z.object({
 export const BenefitsReceivedDetailSchema = z
   .object({
     received: BenefitsReceivedStatusInputSchema.default('Unknown'),
-    amount: z.number().nullable().default(null),
+    amount: z
+      .union([z.number(), z.array(z.number())])
+      .nullable()
+      .default(null),
     amount_currency: z.string().nullable().default(null),
     amount_type: BenefitsReceivedTypeSchema.nullable().default(null),
     amount_type_other: z.string().nullable().default(null),
     non_monetary_benefits: z.string().nullable().default(null),
     source: z.string(),
   })
+  .refine(
+    (data) => {
+      if (Array.isArray(data.amount)) {
+        return data.amount.length === 2
+      }
+      return true
+    },
+    {
+      message: 'amount must be a single number or an array of two numbers',
+    },
+  )
+  .refine(
+    (data) => {
+      if (Array.isArray(data.amount)) {
+        return data.amount[1] > data.amount[0]
+      }
+      return true
+    },
+    {
+      message: 'amount array must be in the format [min, max] with max > min',
+    },
+  )
   .refine(
     (data) => {
       if (data.amount !== null && data.amount_type === null) {
