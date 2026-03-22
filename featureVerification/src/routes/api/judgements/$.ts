@@ -17,6 +17,10 @@ export type JudgementListItem = {
     username: string
     name: string
   }
+  verifiedBy?: {
+    username: string
+    name: string
+  }
 }
 
 const PAGE_SIZE = 20
@@ -43,6 +47,19 @@ export const Route = createFileRoute('/api/judgements/$')({
         const judgementsCollection = db.collection('judgement-html')
         const extractedCollection = db.collection('llm-extracted-features')
         const verifiedCollection = db.collection('verified-features')
+
+        const normalizeId = (value: unknown) =>
+          value instanceof ObjectId ? value.toHexString() : String(value)
+
+        const toObjectId = (value: unknown): ObjectId | null => {
+          if (value instanceof ObjectId) {
+            return value
+          }
+          if (typeof value === 'string' && ObjectId.isValid(value)) {
+            return new ObjectId(value)
+          }
+          return null
+        }
 
         const match: Record<string, unknown> = {}
         if (search) {
@@ -80,13 +97,24 @@ export const Route = createFileRoute('/api/judgements/$')({
 
         const total = await judgementsCollection.countDocuments(match)
         const assigneeIds = await judgementsCollection.distinct('assigned_to')
+        const verifierIds = await verifiedCollection.distinct('verified_by', {
+          is_verified: true,
+        })
 
-        const assignees = await db
+        const userObjectIds = Array.from(
+          new Set(
+            [...assigneeIds, ...verifierIds]
+              .map((id) => toObjectId(id)?.toHexString())
+              .filter((id): id is string => Boolean(id)),
+          ),
+        ).map((id) => new ObjectId(id))
+
+        const users = await db
           .collection('user')
-          .find({ _id: { $in: assigneeIds } })
+          .find({ _id: { $in: userObjectIds } })
           .toArray()
 
-        const assigneeMap = assignees.reduce(
+        const userMap = users.reduce(
           (acc, user) => {
             acc[user._id.toHexString()] = {
               username: user.username,
@@ -103,7 +131,41 @@ export const Route = createFileRoute('/api/judgements/$')({
           .skip((page - 1) * PAGE_SIZE)
           .limit(PAGE_SIZE)
 
-        const items = (await cursor.toArray()).map((doc) => {
+        const docs = await cursor.toArray()
+
+        const verificationDocs = await verifiedCollection
+          .find(
+            {
+              is_verified: true,
+              source_judgement_id: { $in: docs.map((doc) => doc._id) },
+            },
+            {
+              projection: {
+                source_judgement_id: 1,
+                verified_by: 1,
+                updated_at: 1,
+                verified_at: 1,
+              },
+            },
+          )
+          .sort({ updated_at: -1, verified_at: -1, _id: -1 })
+          .toArray()
+
+        const verifierByJudgementMap = new Map<string, string>()
+        for (const doc of verificationDocs) {
+          if (!doc.verified_by) {
+            continue
+          }
+          const judgementId = normalizeId(doc.source_judgement_id)
+          if (!verifierByJudgementMap.has(judgementId)) {
+            verifierByJudgementMap.set(
+              judgementId,
+              normalizeId(doc.verified_by),
+            )
+          }
+        }
+
+        const items = docs.map((doc) => {
           const id =
             doc._id instanceof ObjectId ? doc._id.toHexString() : `${doc._id}`
           const isProcessed = processedIds.some((pid) => pid.equals(doc._id))
@@ -111,8 +173,9 @@ export const Route = createFileRoute('/api/judgements/$')({
             vid.equals(doc._id),
           )
           const assignee = doc.assigned_to
-            ? assigneeMap[doc.assigned_to]
+            ? userMap[normalizeId(doc.assigned_to)]
             : undefined
+          const verifiedBy = userMap[verifierByJudgementMap.get(id) ?? '']
 
           return {
             id,
@@ -128,6 +191,7 @@ export const Route = createFileRoute('/api/judgements/$')({
               doc.updated_at?.toString?.() ??
               null,
             assignee,
+            verifiedBy,
           } satisfies JudgementListItem
         })
 

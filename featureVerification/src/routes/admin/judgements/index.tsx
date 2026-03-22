@@ -158,6 +158,7 @@ function JudgementsComponent() {
               <TableHead>Case</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Assignee</TableHead>
+              <TableHead>Verified By</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -186,11 +187,14 @@ function JudgementsComponent() {
                           : 'bg-muted text-muted-foreground'
                     }`}
                   >
-                    {row.processed ? 'Processed' : 'Unprocessed'}
+                    {row.verified ? 'Verified' : row.processed ? 'Processed' : 'Unprocessed'}
                   </span>
                 </TableCell>
                 <TableCell className="text-muted-foreground">
                   {row.assignee ? row.assignee.name : '-'}
+                </TableCell>
+                <TableCell className="text-muted-foreground">
+                  {row.verifiedBy ? row.verifiedBy.name : '-'}
                 </TableCell>
               </TableRow>
             ))}
