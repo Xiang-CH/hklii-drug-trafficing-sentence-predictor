@@ -13,6 +13,7 @@ import {
   FileText,
   Search,
   Shuffle,
+  SlidersHorizontal,
   Trash2,
   User,
 } from 'lucide-react'
@@ -47,6 +48,11 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { Pagination } from '@/components/pagination'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
 
 type AssignmentSearchParams = {
   page?: number
@@ -54,6 +60,7 @@ type AssignmentSearchParams = {
   assigned?: 'all' | 'assigned' | 'unassigned'
   llmProcessed?: number
   verified?: 'all' | 'verified' | 'unverified'
+  language?: 'all' | 'english' | 'chinese' | 'unknown'
   username?: string | null
 }
 
@@ -65,6 +72,7 @@ async function getAssignmentData(params: {
   assigned: string
   llmProcessed?: number
   verified?: string
+  language?: string
   username?: string | null
 }): Promise<AssignmentData> {
   const query = new URLSearchParams({
@@ -73,6 +81,7 @@ async function getAssignmentData(params: {
     assigned: params.assigned,
     llmProcessed: params.llmProcessed?.toString() ?? '',
     verified: params.verified ?? 'all',
+    language: params.language ?? 'all',
     username: params.username ?? '',
   })
 
@@ -125,6 +134,8 @@ export const Route = createFileRoute('/admin/assignment/')({
       llmProcessed: search.llmProcessed ? parseInt(search.llmProcessed) : 0,
       verified:
         (search.verified as AssignmentSearchParams['verified']) ?? 'all',
+      language:
+        (search.language as AssignmentSearchParams['language']) ?? 'all',
       username: search.username,
     }
   },
@@ -134,7 +145,7 @@ export const Route = createFileRoute('/admin/assignment/')({
 })
 
 function AssignmentComponent() {
-  const { page, search, assigned, llmProcessed, verified, username } =
+  const { page, search, assigned, llmProcessed, verified, language, username } =
     Route.useSearch()
   const navigate = useNavigate({ from: '/admin/assignment/' })
   const queryClient = useQueryClient()
@@ -163,9 +174,18 @@ function AssignmentComponent() {
             assigned,
             llmProcessed,
             verified,
+            language,
             username,
           ]
-        : ['assignment', page, search, assigned, llmProcessed, verified],
+        : [
+            'assignment',
+            page,
+            search,
+            assigned,
+            llmProcessed,
+            verified,
+            language,
+          ],
     queryFn: () =>
       getAssignmentData({
         page: page ?? 1,
@@ -173,6 +193,7 @@ function AssignmentComponent() {
         assigned: assigned ?? 'all',
         llmProcessed: llmProcessed,
         verified: verified ?? 'all',
+        language: language ?? 'all',
         username: assigned === 'assigned' ? (username ?? null) : null,
       }),
   })
@@ -232,6 +253,25 @@ function AssignmentComponent() {
   const users = data.users
   const judgements = data.judgements
   const totalPages = Math.ceil(data.total / JUDGEMENTS_PER_PAGE)
+  const activeFilterCount = [
+    llmProcessed === 1,
+    (verified ?? 'all') !== 'all',
+    (assigned ?? 'all') !== 'all',
+    (language ?? 'all') !== 'all',
+  ].filter(Boolean).length
+  const getLanguageLabel = (
+    languageValue: AssignmentData['judgements'][number]['language'] | undefined,
+  ) => {
+    if (
+      languageValue === 'chinese'
+    ) {
+      return 'Chinese'
+    }
+    if (languageValue === 'english') {
+      return 'English'
+    }
+    return 'Unknown'
+  }
 
   const handleJudgementSelect = (judgementId: string) => {
     setSelectedJudgements((prev) => {
@@ -492,69 +532,153 @@ function AssignmentComponent() {
                     }}
                   />
                 </div>
-
-                <Select
-                  value={llmProcessed ? '1' : '0'}
-                  onValueChange={(value) => {
-                    navigate({
-                      search: (prev) => ({
-                        ...prev,
-                        page: 1,
-                        llmProcessed: value === '1' ? 1 : 0,
-                      }),
-                    })
-                  }}
-                >
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="1">Processed</SelectItem>
-                    <SelectItem value="0">All</SelectItem>
-                  </SelectContent>
-                </Select>
-                <Select
-                  value={verified ?? 'all'}
-                  onValueChange={(value) => {
-                    navigate({
-                      search: (prev) => ({
-                        ...prev,
-                        page: 1,
-                        verified: value as AssignmentSearchParams['verified'],
-                      }),
-                    })
-                  }}
-                >
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All</SelectItem>
-                    <SelectItem value="verified">Verified</SelectItem>
-                    <SelectItem value="unverified">Unverified</SelectItem>
-                  </SelectContent>
-                </Select>
-                <Select
-                  value={assigned ?? 'all'}
-                  onValueChange={(value) => {
-                    navigate({
-                      search: (prev) => ({
-                        ...prev,
-                        page: 1,
-                        assigned: value as AssignmentSearchParams['assigned'],
-                      }),
-                    })
-                  }}
-                >
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All</SelectItem>
-                    <SelectItem value="assigned">Assigned</SelectItem>
-                    <SelectItem value="unassigned">Unassigned</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button variant="outline" className="gap-2">
+                      <SlidersHorizontal className="h-4 w-4" />
+                      Filters
+                      {activeFilterCount > 0 && (
+                        <Badge variant="secondary" className="h-5 px-1.5">
+                          {activeFilterCount}
+                        </Badge>
+                      )}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent align="end" className="w-80 space-y-3">
+                    <div className="text-sm font-medium">Filter Judgements</div>
+                    <div className="space-y-2 pl-2">
+                      <div className="space-y-1 flex gap-2 items-center">
+                        <span className="text-sm text-muted-foreground">
+                          Processed:
+                        </span>
+                        <Select
+                          value={llmProcessed ? '1' : '0'}
+                          onValueChange={(value) => {
+                            navigate({
+                              search: (prev) => ({
+                                ...prev,
+                                page: 1,
+                                llmProcessed: value === '1' ? 1 : 0,
+                              }),
+                            })
+                          }}
+                        >
+                          <SelectTrigger>
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="0">All</SelectItem>
+                            <SelectItem value="1">Processed</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="space-y-1 flex gap-2 items-center">
+                        <span className="text-sm text-muted-foreground">
+                          Verification:
+                        </span>
+                        <Select
+                          value={verified ?? 'all'}
+                          onValueChange={(value) => {
+                            navigate({
+                              search: (prev) => ({
+                                ...prev,
+                                page: 1,
+                                verified:
+                                  value as AssignmentSearchParams['verified'],
+                              }),
+                            })
+                          }}
+                        >
+                          <SelectTrigger>
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="all">All</SelectItem>
+                            <SelectItem value="verified">Verified</SelectItem>
+                            <SelectItem value="unverified">
+                              Unverified
+                            </SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="space-y-1 flex gap-2 items-center">
+                        <span className="text-sm text-muted-foreground">
+                          Assignment:
+                        </span>
+                        <Select
+                          value={assigned ?? 'all'}
+                          onValueChange={(value) => {
+                            navigate({
+                              search: (prev) => ({
+                                ...prev,
+                                page: 1,
+                                assigned:
+                                  value as AssignmentSearchParams['assigned'],
+                              }),
+                            })
+                          }}
+                        >
+                          <SelectTrigger>
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="all">All</SelectItem>
+                            <SelectItem value="assigned">Assigned</SelectItem>
+                            <SelectItem value="unassigned">
+                              Unassigned
+                            </SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="space-y-1 flex gap-2 items-center">
+                        <span className="text-sm text-muted-foreground">
+                          Language:
+                        </span>
+                        <Select
+                          value={language ?? 'all'}
+                          onValueChange={(value) => {
+                            navigate({
+                              search: (prev) => ({
+                                ...prev,
+                                page: 1,
+                                language:
+                                  value as AssignmentSearchParams['language'],
+                              }),
+                            })
+                          }}
+                        >
+                          <SelectTrigger>
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="all">All</SelectItem>
+                            <SelectItem value="english">English</SelectItem>
+                            <SelectItem value="chinese">Chinese</SelectItem>
+                            <SelectItem value="unknown">Unknown</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      className="w-full"
+                      onClick={() => {
+                        navigate({
+                          search: (prev) => ({
+                            ...prev,
+                            page: 1,
+                            llmProcessed: 0,
+                            verified: 'all',
+                            assigned: 'all',
+                            language: 'all',
+                          }),
+                        })
+                      }}
+                    >
+                      Reset Filters
+                    </Button>
+                  </PopoverContent>
+                </Popover>
               </div>
             </div>
           </CardHeader>
@@ -622,15 +746,22 @@ function AssignmentComponent() {
                             </span>
                           )}
                           {judgement.llmProcessed ? (
-                            <Badge variant="outline" className="text-xs">
-                              LLM Processed
+                            <Badge
+                              variant="secondary"
+                              className="text-xs bg-green-50"
+                            >
+                              Processed
                             </Badge>
                           ) : (
-                            <Badge variant="outline" className="text-xs">
-                              Not Processed
+                            <Badge
+                              variant="secondary"
+                              className="text-xs bg-muted text-muted-foreground"
+                            >
+                              Unprocessed
                             </Badge>
                           )}
                           <Badge
+                            variant="secondary"
                             className={`text-xs hover:bg-green-100  ${
                               judgement.verified
                                 ? 'bg-green-100 text-green-800'
@@ -648,6 +779,17 @@ function AssignmentComponent() {
                               Unassigned
                             </Badge>
                           )}
+                          <Badge
+                            variant="secondary"
+                            className={
+                              'text-xs ' +
+                              (judgement.language === 'chinese'
+                                ? 'bg-orange-50'
+                                : 'bg-indigo-50')
+                            }
+                          >
+                            {getLanguageLabel(judgement.language)}
+                          </Badge>
                         </div>
                       </div>
                     </label>

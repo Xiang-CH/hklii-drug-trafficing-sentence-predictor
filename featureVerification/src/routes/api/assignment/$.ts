@@ -20,6 +20,7 @@ export type AssignmentJudgement = {
   appeal?: string
   corrigendum?: string
   year?: string
+  language?: 'english' | 'chinese' | 'unknown'
   llmProcessed: boolean
   verified: boolean
   assignedTo?: {
@@ -59,6 +60,7 @@ export const Route = createFileRoute('/api/assignment/$')({
           ? url.searchParams.get('llmProcessed') === '1'
           : 0
         const verifiedFilter = url.searchParams.get('verified') ?? 'all'
+        const languageFilter = url.searchParams.get('language') ?? 'all'
         const username = url.searchParams.get('username')?.trim() ?? null
 
         // Fetch users
@@ -146,6 +148,22 @@ export const Route = createFileRoute('/api/assignment/$')({
           filters.push({ _id: { $nin: verifiedObjectIds } })
         }
 
+        if (languageFilter === 'english') {
+          filters.push({ language: 'english' })
+        } else if (languageFilter === 'chinese') {
+          filters.push({
+            language: { $in: ['chinese', 'traditional_chinese'] },
+          })
+        } else if (languageFilter === 'unknown') {
+          filters.push({
+            $or: [
+              { language: { $exists: false } },
+              { language: null },
+              { language: 'unknown' },
+            ],
+          })
+        }
+
         const match =
           filters.length === 0
             ? {}
@@ -197,6 +215,13 @@ export const Route = createFileRoute('/api/assignment/$')({
               appeal: doc.appeal ?? undefined,
               corrigendum: doc.corrigendum ?? undefined,
               year: doc.year ?? undefined,
+              language:
+                doc.language === 'traditional_chinese' ||
+                doc.language === 'chinese'
+                  ? 'chinese'
+                  : doc.language === 'english'
+                    ? 'english'
+                    : 'unknown',
               llmProcessed: isLlmProcessed,
               verified: verifiedIdSet.has(id),
               assignedTo: doc.assigned_to

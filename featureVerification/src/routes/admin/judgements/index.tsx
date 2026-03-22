@@ -95,6 +95,17 @@ function JudgementsComponent() {
   }
 
   const totalPages = Math.ceil(data.total / JUDGEMENTS_PER_PAGE)
+  const getLanguageLabel = (
+    language: JudgementListItem['language'] | undefined,
+  ) => {
+    if (language === 'chinese') {
+      return 'Chinese'
+    }
+    if (language === 'english') {
+      return 'English'
+    }
+    return 'Unknown'
+  }
 
   return (
     <div className="container mx-auto p-6 max-w-6xl">
@@ -156,6 +167,7 @@ function JudgementsComponent() {
           <TableHeader>
             <TableRow>
               <TableHead>Case</TableHead>
+              <TableHead>Language</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Assignee</TableHead>
               <TableHead>Verified By</TableHead>
@@ -176,6 +188,18 @@ function JudgementsComponent() {
                       {row.corrigendum ? ` (${row.corrigendum})` : ''}
                     </span>
                   </Link>
+                </TableCell>
+                <TableCell className="text-muted-foreground">
+                  <span
+                    className={
+                      'inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ' +
+                      (row.language === 'chinese'
+                        ? 'bg-orange-50'
+                        : 'bg-indigo-50')
+                    }
+                  >
+                    {getLanguageLabel(row.language)}
+                  </span>
                 </TableCell>
                 <TableCell>
                   <span

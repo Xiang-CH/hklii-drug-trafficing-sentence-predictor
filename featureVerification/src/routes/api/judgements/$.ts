@@ -10,6 +10,7 @@ export type JudgementListItem = {
   appeal?: string
   corrigendum?: string
   year?: string
+  language?: 'english' | 'chinese' | 'unknown'
   processed: boolean
   verified?: boolean
   updatedAt?: string
@@ -185,6 +186,7 @@ export const Route = createFileRoute('/api/judgements/$')({
             appeal: doc.appeal ?? null,
             corrigendum: doc.corrigendum ?? null,
             year: doc.year,
+            language: doc.language ?? 'unknown',
             processed: isProcessed,
             verified: isVerified,
             updatedAt:

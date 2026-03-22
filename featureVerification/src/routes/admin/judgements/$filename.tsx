@@ -1,4 +1,9 @@
-import { Link, createFileRoute, redirect } from '@tanstack/react-router'
+import {
+  Link,
+  createFileRoute,
+  redirect,
+  useRouter,
+} from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
 import { ArrowLeft, CheckCircle2 } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
@@ -43,6 +48,7 @@ function JudgementDetailComponent() {
   const [remarks, setRemarks] = useState<string>('')
   const [exclude, setExclude] = useState<boolean>(false)
   const [notGivenMap, setNotGivenMap] = useState<Record<string, boolean>>({})
+  const { history } = useRouter()
 
   const { data, isPending } = useQuery({
     queryKey: ['judgement', filename],
@@ -146,7 +152,13 @@ function JudgementDetailComponent() {
           <div className="border-b border-gray-200 px-4 py-1 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <Link to="/admin/judgements">
+                <Link
+                  to=".."
+                  onClick={(e) => {
+                    e.preventDefault
+                    history.back()
+                  }}
+                >
                   <Button size="sm" variant="ghost">
                     <ArrowLeft className="mr-2 h-4 w-4" />
                     Back

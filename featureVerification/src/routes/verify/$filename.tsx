@@ -1,4 +1,9 @@
-import { Link, createFileRoute, useNavigate } from '@tanstack/react-router'
+import {
+  Link,
+  createFileRoute,
+  useNavigate,
+  useRouter,
+} from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import {
@@ -37,6 +42,7 @@ export const Route = createFileRoute('/verify/$filename')({
 function VerifyJudgementPage() {
   const { filename } = Route.useParams()
   const navigate = useNavigate()
+  const { history } = useRouter()
   const queryClient = useQueryClient()
 
   const [judgementData, setJudgementData] = useState<any>(null)
@@ -265,7 +271,13 @@ function VerifyJudgementPage() {
       <div className="border-b border-gray-200 dark:border-gray-700 px-4 py-1">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <Link to="/">
+            <Link
+              to="/"
+              onClick={(e) => {
+                e.preventDefault
+                history.back()
+              }}
+            >
               <Button variant="ghost" size="sm">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back
