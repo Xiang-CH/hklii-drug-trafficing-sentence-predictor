@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { z } from 'zod'
 import {
+  ChargeForDefendantSchema,
   getDefaultValueForArrayItem,
   getDefaultValueForField,
   getDefaultValueForFieldSchema,
@@ -71,11 +72,58 @@ describe('getDefaultValueForArrayItem', () => {
       expect.any(Object),
     )
   })
+
+  it('returns a single trafficking_mode item default, not a nested array', () => {
+    const defaultItem = getDefaultValueForArrayItem(
+      'trafficking_mode',
+      'defendants_of_charge',
+    )
+
+    expect(defaultItem).toEqual({
+      mode: 'Street-level dealing',
+      source: '',
+    })
+  })
 })
 
 describe('getFieldSchema', () => {
   it('does not throw for root array parents', () => {
     expect(() => getFieldSchema('defendants', 'defendants')).not.toThrow()
     expect(() => getFieldSchema('trials', 'trials')).not.toThrow()
+  })
+})
+
+describe('getDefaultValueForField', () => {
+  it('does not wrap trafficking_mode into nested array for array item set value', () => {
+    const defaultValue = getDefaultValueForField(
+      'trafficking_mode',
+      'trafficking_mode',
+      true,
+    )
+
+    expect(defaultValue).toEqual({
+      mode: 'Street-level dealing',
+      source: '',
+    })
+  })
+})
+
+describe('ChargeForDefendantSchema trafficking_mode compatibility', () => {
+  it('coerces legacy object into a single-item array', () => {
+    const parsed = ChargeForDefendantSchema.parse({
+      defendant_name: 'A',
+      defendant_id: 1,
+      trafficking_mode: {
+        mode: 'Courier delivery',
+        source: 'test source',
+      },
+      roles_facts: null,
+      reasons_for_offence: null,
+      benefits_received: null,
+    })
+
+    expect(parsed.trafficking_mode).toEqual([
+      { mode: 'Courier delivery', source: 'test source' },
+    ])
   })
 })

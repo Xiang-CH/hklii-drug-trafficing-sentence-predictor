@@ -75,6 +75,7 @@ import {
   TimeDetailInputSchema,
   TimeOfDaySchema,
   TraffickingModeEnumSchema,
+  TraffickingModeListSchema,
   TraffickingModeSchema,
 } from './judgment'
 import { MANDATORY_NOT_GIVEN_FIELDS } from './mandetory-not-given'
@@ -108,7 +109,7 @@ export const FIELD_SCHEMAS: Partial<Record<string, z.ZodTypeAny>> = {
   time: TimeDetailInputSchema,
   offence_time: TimeDetailInputSchema,
   place_of_offence: PlaceOfOffenceInputSchema,
-  trafficking_mode: TraffickingModeSchema,
+  trafficking_mode: z.array(TraffickingModeSchema).nullable(),
   roles_facts: RoleDetailSchema,
   reasons_for_offence: ReasonForOffenceDetailSchema,
   benefits_received: BenefitsReceivedDetailSchema,
@@ -149,6 +150,7 @@ const FIELD_IS_ARRAY: Array<string> = [
   'positive_habits_after_arrest',
   'family_supports',
   'reasons_for_offence',
+  'trafficking_mode',
   'representatives',
   'health_conditions',
 ]
@@ -201,32 +203,6 @@ function unwrapToObject(schema: any): z.ZodObject<any> | null {
   }
 }
 
-function parseSchemaPath(path: string): Array<string | number> {
-  const out: Array<string | number> = []
-  const re = /([^[.\]]+)|\[(\d+)\]/g
-  let m: RegExpExecArray | null
-  while ((m = re.exec(path)) !== null) {
-    if (m[1]) out.push(m[1])
-    else if (m[2]) out.push(Number(m[2]))
-  }
-  return out
-}
-
-function getRootSchemaFromPathToken(token: string): z.ZodTypeAny | null {
-  if (token === 'judgement') {
-    return FIELD_SCHEMAS.judgement ?? null
-  }
-  if (token === 'defendants') {
-    const defendantSchema = FIELD_SCHEMAS.defendants
-    return defendantSchema ? z.array(defendantSchema) : null
-  }
-  if (token === 'trials') {
-    const trialSchema = FIELD_SCHEMAS.trials
-    return trialSchema ? z.array(trialSchema) : null
-  }
-  return FIELD_SCHEMAS[token] ?? null
-}
-
 export function getFieldSchema(
   fieldName: string,
   parentFieldName?: string,
@@ -253,7 +229,14 @@ export function getDefaultValueForField(
   parentFieldName?: string,
   isSetValue = false,
 ): any {
-  const schema = getFieldSchema(fieldName, parentFieldName)
+  let schema: z.ZodTypeAny | undefined
+
+  // Special case for trafficking_mode since it have legacy data and preprocessing.
+  if (fieldName === 'trafficking_mode') {
+    schema = TraffickingModeSchema
+  } else {
+    schema = getFieldSchema(fieldName, parentFieldName)
+  }
 
   if (!schema) {
     return {}
@@ -285,13 +268,21 @@ export function getDefaultValueForArrayItem(
   fieldName: string,
   parentFieldName?: string,
 ): any {
-  const schema = getFieldSchema(fieldName, parentFieldName)
+  let schema: z.ZodTypeAny | undefined
+
+  // Special case for trafficking_mode since it have legacy data and preprocessing.
+  if (fieldName === 'trafficking_mode') {
+    schema = z.array(TraffickingModeSchema).nullable()
+  } else {
+    schema = getFieldSchema(fieldName, parentFieldName)
+  }
 
   if (!schema) {
     return {}
   }
 
   const unwrappedSchema = unwrapSchema(schema)
+
   if (!(unwrappedSchema instanceof z.ZodArray)) {
     return getDefaultValueForField(fieldName, parentFieldName)
   }

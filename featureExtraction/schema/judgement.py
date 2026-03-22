@@ -359,7 +359,8 @@ class ChargeForDefendant(BaseModel):
         default=None,
         description="Defendant ID (1-indexed), automatically assigned based on first appearance order across all charges",
     )
-    trafficking_mode: Optional[TraffickingMode] = Field(default=None)
+    trafficking_mode: Optional[List[TraffickingMode]] = Field(default=None)
+
     roles_facts: Optional[List[RoleDetail]] = Field(default=None)
     reasons_for_offence: Optional[List[ReasonForOffenceDetail]] = Field(default=None)
     benefits_received: Optional[BenefitsReceivedDetail] = Field(

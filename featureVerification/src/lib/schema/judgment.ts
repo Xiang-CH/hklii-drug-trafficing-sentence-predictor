@@ -222,6 +222,21 @@ export const TraffickingModeSchema = z.object({
   source: z.string(),
 })
 
+export const TraffickingModeListSchema = z
+  .preprocess((value) => {
+    if (value === null || value === undefined) {
+      return null
+    }
+
+    if (Array.isArray(value)) {
+      return value
+    }
+
+    return [value]
+  }, z.array(TraffickingModeSchema))
+  .nullable()
+  .default(null)
+
 export const RoleDetailSchema = z.object({
   role: DefendantRoleSchema,
   source: z.string(),
@@ -299,7 +314,7 @@ export const CrossBorderDetailSchema = z.object({
 export const ChargeForDefendantSchema = z.object({
   defendant_name: z.string(),
   defendant_id: z.number(),
-  trafficking_mode: TraffickingModeSchema.nullable().default(null),
+  trafficking_mode: TraffickingModeListSchema,
   roles_facts: z.array(RoleDetailSchema).nullable().default(null),
   reasons_for_offence: z
     .array(ReasonForOffenceDetailSchema)
