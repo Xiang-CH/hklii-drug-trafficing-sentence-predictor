@@ -4,22 +4,12 @@ import {
   useNavigate,
   useRouter,
 } from '@tanstack/react-router'
-import { useEffect, useRef, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import {
-  AlertCircle,
-  ArrowLeft,
-  CheckCircle2,
-  Loader2,
-  Save,
-  Undo2,
-} from 'lucide-react'
+import { AlertCircle, ArrowLeft } from 'lucide-react'
 import { toast } from 'sonner'
-import type { EditableDataSectionKey } from '@/components/edit-ui/editable-data-section'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Separator } from '@/components/ui/separator'
 import VerificationWorkspace from '@/components/verification-workspace'
 import {
   getJudgementForVerification,
@@ -27,10 +17,7 @@ import {
   revertToInProgress,
   saveVerificationProgress,
 } from '@/server/user-judgements'
-import {
-  applyNotGivenToPayload,
-  deriveNotGivenMapFromPayload,
-} from '@/lib/not-given'
+import { useVerificationData } from '@/lib/verification-data'
 
 export const Route = createFileRoute('/verify/$filename')({
   component: VerifyJudgementPage,
@@ -44,25 +31,7 @@ function VerifyJudgementPage() {
   const navigate = useNavigate()
   const { history } = useRouter()
   const queryClient = useQueryClient()
-
-  const [judgementData, setJudgementData] = useState<any>(null)
-  const [defendantsData, setDefendantsData] = useState<any>(null)
-  const [trialsData, setTrialsData] = useState<any>(null)
-  const [remarks, setRemarks] = useState<string>('')
-  const [exclude, setExclude] = useState<boolean>(false)
-
   const [highlightedText, setHighlightedText] = useState<string | null>(null)
-  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false)
-  const [hasValidationErrors, setHasValidationErrors] = useState(false)
-
-  const [notGivenMap, setNotGivenMap] = useState<Record<string, boolean>>({})
-  const lastSyncedRef = useRef<{
-    judgement: any
-    defendants: any
-    trials: any
-    remarks: string
-    exclude: boolean
-  } | null>(null)
 
   const initial = Route.useLoaderData()
   const { data: judgement, error } = useQuery({
@@ -71,32 +40,30 @@ function VerifyJudgementPage() {
     queryFn: () => getJudgementForVerification({ data: filename }),
   })
 
-  // Initialize data from judgement
-  useEffect(() => {
-    const sourceData = judgement.verifiedData || judgement.extractedData
-    if (sourceData) {
-      setJudgementData(sourceData.judgement)
-      setDefendantsData(sourceData.defendants)
-      setTrialsData(sourceData.trials)
-      setRemarks(judgement.verifiedData?.remarks ?? '')
-      setExclude(judgement.verifiedData?.exclude ?? false)
-      setNotGivenMap(
-        deriveNotGivenMapFromPayload({
-          judgement: sourceData.judgement,
-          defendants: sourceData.defendants,
-          trials: sourceData.trials,
-        }),
-      )
-      lastSyncedRef.current = {
-        judgement: sourceData.judgement,
-        defendants: sourceData.defendants,
-        trials: sourceData.trials,
-        remarks: judgement.verifiedData?.remarks ?? '',
-        exclude: judgement.verifiedData?.exclude ?? false,
-      }
-      setHasUnsavedChanges(false)
-    }
-  }, [judgement])
+  const sourceData = useMemo(
+    () => judgement.verifiedData || judgement.extractedData,
+    [judgement.verifiedData, judgement.extractedData],
+  )
+
+  const {
+    judgementData,
+    defendantsData,
+    trialsData,
+    remarks,
+    exclude,
+    notGivenMap,
+    setNotGivenMap,
+    hasUnsavedChanges,
+    setHasUnsavedChanges,
+    hasValidationErrors,
+    handleDataChange,
+    handleRestoreDefault,
+    getCleanedData,
+  } = useVerificationData(
+    sourceData,
+    judgement.verifiedData?.remarks,
+    judgement.verifiedData?.exclude,
+  )
 
   const extractedDefaults = judgement.extractedData
     ? {
@@ -106,45 +73,17 @@ function VerifyJudgementPage() {
       }
     : {}
 
-  // Track unsaved changes
-  useEffect(() => {
-    if (!lastSyncedRef.current) {
-      return
-    }
-    const hasChanges =
-      JSON.stringify(judgementData) !==
-        JSON.stringify(lastSyncedRef.current.judgement) ||
-      JSON.stringify(defendantsData) !==
-        JSON.stringify(lastSyncedRef.current.defendants) ||
-      JSON.stringify(trialsData) !==
-        JSON.stringify(lastSyncedRef.current.trials) ||
-      remarks !== lastSyncedRef.current.remarks ||
-      exclude !== lastSyncedRef.current.exclude
-    setHasUnsavedChanges(hasChanges)
-  }, [judgementData, defendantsData, trialsData, remarks, exclude])
-
-  // Save progress mutation
   const saveMutation = useMutation({
-    mutationFn: () => {
-      const cleaned = applyNotGivenToPayload(
-        {
-          judgement: judgementData,
-          defendants: defendantsData,
-          trials: trialsData,
-        },
-        notGivenMap,
-      )
-
-      return saveVerificationProgress({
+    mutationFn: () =>
+      saveVerificationProgress({
         data: {
           judgementId: judgement.id || '',
           extractedId: judgement.extractedData?.extractedId,
-          data: cleaned,
+          data: getCleanedData(),
           remarks,
           exclude,
         },
-      })
-    },
+      }),
     onSuccess: (result) => {
       toast.success(result.message)
       setHasUnsavedChanges(false)
@@ -161,26 +100,16 @@ function VerifyJudgementPage() {
     },
   })
 
-  // Mark as verified mutation
   const verifyMutation = useMutation({
-    mutationFn: () => {
-      const cleaned = applyNotGivenToPayload(
-        {
-          judgement: judgementData,
-          defendants: defendantsData,
-          trials: trialsData,
-        },
-        notGivenMap,
-      )
-      return markAsVerified({
+    mutationFn: () =>
+      markAsVerified({
         data: {
           judgementId: judgement.id || '',
-          data: cleaned,
+          data: getCleanedData(),
           remarks,
           exclude,
         },
-      })
-    },
+      }),
     onSuccess: (result) => {
       toast.success(result.message)
       queryClient.invalidateQueries({ queryKey: ['user-stats'] })
@@ -197,7 +126,6 @@ function VerifyJudgementPage() {
     },
   })
 
-  // Revert to in progress mutation
   const revertMutation = useMutation({
     mutationFn: () =>
       revertToInProgress({ data: { judgementId: judgement.id || '' } }),
@@ -215,41 +143,6 @@ function VerifyJudgementPage() {
       })
     },
   })
-
-  // Handle data changes
-  const handleDataChange = (
-    newData: {
-      judgement: any
-      defendants: any
-      trials: any
-      remarks?: string
-      exclude: boolean
-    },
-    hasErrors: boolean,
-  ) => {
-    setHasValidationErrors(hasErrors)
-    setJudgementData(newData.judgement)
-    setDefendantsData(newData.defendants)
-    setTrialsData(newData.trials)
-    setRemarks(newData.remarks || '')
-    setExclude(newData.exclude)
-  }
-
-  const handleRestoreDefault = (
-    _section: EditableDataSectionKey,
-    newData: {
-      judgement: any
-      defendants: any
-      trials: any
-      remarks?: string
-      exclude: boolean
-    },
-    nextNotGivenMap: Record<string, boolean>,
-    hasErrors: boolean,
-  ) => {
-    setNotGivenMap(nextNotGivenMap)
-    handleDataChange(newData, hasErrors)
-  }
 
   if (error) {
     return (
@@ -282,146 +175,34 @@ function VerifyJudgementPage() {
   const htmlContent = `${judgement.appeal_html || ''} \n\n ${judgement.html} \n\n ${judgement.corrigendum_html || ''}`
 
   return (
-    <div className="flex flex-col h-[calc(100vh-4rem)] bg-gray-50 dark:bg-gray-900">
-      {/* Top Bar */}
-      <div className="border-b border-gray-200 dark:border-gray-700 px-4 py-1">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link
-              to="/"
-              onClick={(e) => {
-                e.preventDefault
-                history.back()
-              }}
-            >
-              <Button variant="ghost" size="sm">
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Back
-              </Button>
-            </Link>
-            <Separator orientation="vertical" className="h-6" />
-            <div className="flex gap-2">
-              <h1 className="text-lg font-semibold text-gray-900 dark:text-white">
-                {judgement.trial || judgement.filename}
-              </h1>
-              <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                {judgement.appeal && (
-                  <>
-                    <span>•</span>
-                    <span>Appeal: {judgement.appeal}</span>
-                  </>
-                )}
-                {judgement.corrigendum && (
-                  <>
-                    <span>•</span>
-                    <span>Corrigendum</span>
-                  </>
-                )}
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            {judgement.status === 'verified' ? (
-              <>
-                <Badge className="bg-green-100 text-green-700">
-                  <CheckCircle2 className="h-3 w-3 mr-1" />
-                  Verified
-                </Badge>
-                <Button
-                  onClick={() => revertMutation.mutate()}
-                  disabled={revertMutation.isPending}
-                  variant="outline"
-                >
-                  {revertMutation.isPending ? (
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                  ) : (
-                    <>
-                      <Undo2 className="h-4 w-4 mr-1" />
-                      Revert Verified
-                    </>
-                  )}
-                </Button>
-              </>
-            ) : judgement.status === 'in_progress' ? (
-              <Badge className="bg-amber-100 text-amber-700">In Progress</Badge>
-            ) : (
-              <Badge variant="outline">Pending</Badge>
-            )}
-            {hasUnsavedChanges && (
-              <Badge variant="secondary" className="bg-blue-100 text-blue-700">
-                Unsaved Changes
-              </Badge>
-            )}
-
-            {/* Save Progress Button */}
-            <Button
-              onClick={() => saveMutation.mutate()}
-              disabled={saveMutation.isPending || hasValidationErrors}
-              variant="outline"
-            >
-              {saveMutation.isPending ? (
-                <>
-                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                  Saving...
-                </>
-              ) : (
-                <>
-                  <Save className="h-4 w-4 mr-2" />
-                  Save Progress
-                </>
-              )}
-            </Button>
-
-            {/* Mark as Verified Button */}
-            <Button
-              onClick={() => verifyMutation.mutate()}
-              disabled={
-                verifyMutation.isPending ||
-                judgement.status === 'verified' ||
-                !judgementData ||
-                hasValidationErrors
-              }
-              className="bg-green-600 hover:bg-green-700"
-            >
-              {verifyMutation.isPending ? (
-                <>
-                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                  Verifying...
-                </>
-              ) : judgement.status === 'verified' ? (
-                <>
-                  <CheckCircle2 className="h-4 w-4 mr-2" />
-                  Verified
-                </>
-              ) : (
-                <>
-                  <CheckCircle2 className="h-4 w-4 mr-2" />
-                  Mark as Verified
-                </>
-              )}
-            </Button>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <VerificationWorkspace
-        data={{
-          judgement: judgementData,
-          defendants: defendantsData,
-          trials: trialsData,
-          exclude,
-          remarks,
-        }}
-        defaultData={extractedDefaults}
-        htmlContent={htmlContent}
-        highlightedText={highlightedText}
-        onSourceHover={setHighlightedText}
-        onDataChange={handleDataChange}
-        onRestoreDefault={handleRestoreDefault}
-        onNotGivenChange={setNotGivenMap}
-        notGivenMap={notGivenMap}
-      />
-    </div>
+    <VerificationWorkspace
+      data={{
+        judgement: judgementData,
+        defendants: defendantsData,
+        trials: trialsData,
+        exclude,
+        remarks,
+      }}
+      defaultData={extractedDefaults}
+      htmlContent={htmlContent}
+      highlightedText={highlightedText}
+      onSourceHover={setHighlightedText}
+      onDataChange={handleDataChange}
+      onRestoreDefault={handleRestoreDefault}
+      onNotGivenChange={setNotGivenMap}
+      notGivenMap={notGivenMap}
+      title={judgement.trial || judgement.filename}
+      appeal={judgement.appeal}
+      corrigendum={judgement.corrigendum}
+      status={judgement.status}
+      hasUnsavedChanges={hasUnsavedChanges}
+      hasValidationErrors={hasValidationErrors}
+      saveAction={saveMutation}
+      verifyAction={verifyMutation}
+      revertAction={
+        judgement.status === 'verified' ? revertMutation : undefined
+      }
+      onBack={() => history.back()}
+    />
   )
 }
