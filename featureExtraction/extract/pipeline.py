@@ -1,5 +1,6 @@
 import json
 import os
+import sys
 from typing import Any
 
 from langfuse import Langfuse, observe
@@ -134,7 +135,9 @@ def extract_all_features(
     previous_extractions: dict[str, Any] = {}
     extracted_by_schema: dict[str, ExtractionModel] = {}
 
-    for schema_name in tqdm(EXTRACTION_ORDER, desc="Schemas", leave=False):
+    for schema_name in tqdm(
+        EXTRACTION_ORDER, desc="Schemas", leave=False, file=sys.stdout
+    ):
         extracted_data = extract_single_schema(
             schema_name=schema_name,
             case_txt=case_txt,
