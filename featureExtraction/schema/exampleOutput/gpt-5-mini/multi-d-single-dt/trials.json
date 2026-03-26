@@ -4,51 +4,46 @@
       "charge_type": {
         "charge_no": 1,
         "charge_name": "Conspiracy to traffic in a dangerous drug",
-        "defendant_name": "Hui Kwai-chung, Dick",
+        "defendant_name": "Hui Kwai-chung, Dick (許貴仲)",
         "defendant_id": 1,
-        "source": "Offence:   Conspiracy to traffic in a dangerous drug (串謀販運危險藥物)"
+        "source": "Offence:   Conspiracy to traffic in a dangerous drug (串謀販運危險藥物)"
       },
       "drugs": [
         {
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 31.4,
-          "source": "two plastic bags containing a total of 42 grammes of a solid containing 31.4 grammes of cocaine narcotic. This is Exhibit E1."
+          "source": "Upon search, the police found a paper wrapping containing two plastic bags containing a total of 42 grammes of a solid containing 31.4 grammes of cocaine narcotic. This is Exhibit E1."
         }
       ],
-      "aggravating_factors": null,
+      "aggravating_factors": [],
       "mitigating_factors": [
         {
           "factor": "Assistance - useful",
           "other_factor": null,
-          "reduction": null,
+          "reduction_months": null,
           "reduction_percentage": null,
-          "source": "I am agreeable to give him a slight further discount for the information provided to the police. So he would be entitled to 36 per cent discount in total including his assistance and also his plea of guilty."
+          "source": "In respect of the 1st defendant’s assistance or the information offered by him in the video-recorded interviews that led to the arrest of one further person for drug trafficking activities, ... I am agreeable to give him a slight further discount for the information provided to the police. So he would be entitled to 36 per cent discount in total including his assistance and also his plea of guilty."
         },
         {
           "factor": "Rehabilitation programme",
           "other_factor": null,
-          "reduction": null,
+          "reduction_months": null,
           "reduction_percentage": null,
-          "source": "he had taken different courses to better equip himself whilst remanded in custody."
-        },
-        {
-          "factor": "Other",
-          "other_factor": "Gambling addiction, indebtedness and resulting family breakdown",
-          "reduction": null,
-          "reduction_percentage": null,
-          "source": "Starting from 2020, he started to gamble and eventually he owed debts in the region of $300,000. His gambling problem led to the divorce with his wife at the end of 2021."
+          "source": "He had taken different courses to better equip himself whilst remanded in custody."
         }
       ],
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "High Court",
         "high_court_stage": "Up to committal",
+        "high_court_stage_other": null,
         "district_court_stage": null,
+        "district_court_stage_other": null,
         "reduction_years": null,
         "reduction_months": null,
-        "reduction_percentage": 36,
-        "source": "They pleaded guilty to the offence on 3 February this year before a magistrate and were committed to the High Court for sentence. I am agreeable to give him a slight further discount for the information provided to the police. So he would be entitled to 36 per cent discount in total including his assistance and also his plea of guilty.",
+        "reduction_percentage": 36.0,
+        "source": "They pleaded guilty to the offence on 3 February this year before a magistrate and were committed to the High Court for sentence.\n... So he would be entitled to 36 per cent discount in total including his assistance and also his plea of guilty.",
         "total_reduction_months": null
       },
       "starting_point": {
@@ -66,14 +61,14 @@
       "notional_sentence": {
         "sentence_years": 6,
         "sentence_months": 7,
-        "source": "So for 31.4 grammes of cocaine narcotics, on a mathematical calculation, the starting point would be one of 6 years and 7 months’ imprisonment.",
+        "source": "I consider that the appropriate starting point should be 6 years and 7 months’ imprisonment.",
         "total_months": 79
       },
       "mitigation_reduction": null,
       "final_sentence": {
         "sentence_years": 4,
         "sentence_months": 2,
-        "source": "So he would be entitled to 36 per cent discount in total including his assistance and also his plea of guilty. The resulting sentence for the 1st defendant is 4 years and 2 months’ imprisonment.",
+        "source": "In any event, having considered all the circumstances, I am agreeable to give him a slight further discount for the information provided to the police. So he would be entitled to 36 per cent discount in total including his assistance and also his plea of guilty. The resulting sentence for the 1st defendant is 4 years and 2 months’ imprisonment.",
         "total_months": 50
       }
     },
@@ -81,75 +76,84 @@
       "charge_type": {
         "charge_no": 1,
         "charge_name": "Conspiracy to traffic in a dangerous drug",
-        "defendant_name": "Hong Ka-ming",
+        "defendant_name": "Hong Ka-ming (康家銘)",
         "defendant_id": 2,
-        "source": "Offence:   Conspiracy to traffic in a dangerous drug (串謀販運危險藥物)"
+        "source": "Offence:   Conspiracy to traffic in a dangerous drug (串謀販運危險藥物)"
       },
       "drugs": [
         {
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 31.4,
-          "source": "two plastic bags containing a total of 42 grammes of a solid containing 31.4 grammes of cocaine narcotic. This is Exhibit E1."
+          "source": "Upon search, the police found a paper wrapping containing two plastic bags containing a total of 42 grammes of a solid containing 31.4 grammes of cocaine narcotic. This is Exhibit E1."
         }
       ],
-      "aggravating_factors": null,
+      "aggravating_factors": [
+        {
+          "factor": "Role of the defendant",
+          "other_factor": null,
+          "enhancement_months": 1,
+          "source": "He also hired the room for a period of 2 years, apparently on behalf of the drug trafficking syndicate. ... Apparently, his role was slightly more culpable than that of the 1st defendant.\nHaving considered all the circumstances of the conspiracy, I consider the appropriate starting point for the 2nd defendant will be 6 years and 8 months’ imprisonment."
+        }
+      ],
       "mitigating_factors": [
         {
           "factor": "Assistance - limited",
           "other_factor": null,
-          "reduction": null,
+          "reduction_months": null,
           "reduction_percentage": null,
-          "source": "the 2nd defendant had provided a written statement to the police in his attempt to assist the authorities, but it did not result in anything fruitful and it was considered to be not of practical use to the prosecution."
+          "source": "Counsel also informed me the 2nd defendant had provided a written statement to the police in his attempt to assist the authorities, but it did not result in anything fruitful and it was considered to be not of practical use to the prosecution."
         },
         {
           "factor": "Medical conditions",
           "other_factor": null,
-          "reduction": null,
+          "reduction_months": 1,
           "reduction_percentage": null,
-          "source": "he has a long history of mental illness. He first received psychiatric treatment at the age of 11 and there were multiple psychiatric admissions to various hospitals between year 2009 to 2022."
+          "source": "Counsel urged this court to exercise its discretion to give him further discount because of his psychiatric conditions. ... While that do not in fact amount to any real mitigation, I would take that into account as a matter of leniency and grant him a further discount of 1 month. So the sentence in respect of the 2nd defendant is 4 years and 4 months’ imprisonment."
         }
       ],
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "High Court",
         "high_court_stage": "Up to committal",
+        "high_court_stage_other": null,
         "district_court_stage": null,
+        "district_court_stage_other": null,
         "reduction_years": null,
         "reduction_months": null,
-        "reduction_percentage": 33,
-        "source": "They pleaded guilty to the offence on 3 February this year before a magistrate and were committed to the High Court for sentence. As such, he is entitled to the full one-third discount which reduce the sentence to 4 years and 5 months’ imprisonment.",
+        "reduction_percentage": 33.333333,
+        "source": "They pleaded guilty to the offence on 3 February this year before a magistrate and were committed to the High Court for sentence.\n... As such, he is entitled to the full one-third discount which reduce the sentence to 4 years and 5 months’ imprisonment.",
         "total_reduction_months": null
       },
       "starting_point": {
         "sentence_years": 6,
-        "sentence_months": 8,
-        "source": "I consider the appropriate starting point for the 2nd defendant will be 6 years and 8 months’ imprisonment.",
-        "total_months": 80
+        "sentence_months": 7,
+        "source": "So for 31.4 grammes of cocaine narcotics, on a mathematical calculation, the starting point would be one of 6 years and 7 months’ imprisonment.",
+        "total_months": 79
       },
       "sentence_after_role": {
         "sentence_years": 6,
         "sentence_months": 8,
-        "source": "Inferred as starting point since role adjustment not provided",
+        "source": "Having considered all the circumstances of the conspiracy, I consider the appropriate starting point for the 2nd defendant will be 6 years and 8 months’ imprisonment.",
         "total_months": 80
       },
       "notional_sentence": {
         "sentence_years": 6,
         "sentence_months": 8,
-        "source": "I consider the appropriate starting point for the 2nd defendant will be 6 years and 8 months’ imprisonment.",
+        "source": "Having considered all the circumstances of the conspiracy, I consider the appropriate starting point for the 2nd defendant will be 6 years and 8 months’ imprisonment.",
         "total_months": 80
       },
       "mitigation_reduction": {
         "reduction_months": 1,
-        "source": "I would take that into account as a matter of leniency and grant him a further discount of 1 month. So the sentence in respect of the 2nd defendant is 4 years and 4 months’ imprisonment."
+        "source": "While that do not in fact amount to any real mitigation, I would take that into account as a matter of leniency and grant him a further discount of 1 month. So the sentence in respect of the 2nd defendant is 4 years and 4 months’ imprisonment."
       },
       "final_sentence": {
         "sentence_years": 4,
         "sentence_months": 4,
-        "source": "I would take that into account as a matter of leniency and grant him a further discount of 1 month. So the sentence in respect of the 2nd defendant is 4 years and 4 months’ imprisonment.",
+        "source": "So the sentence in respect of the 2nd defendant is 4 years and 4 months’ imprisonment.\nThis is the ultimate sentence for the 1st defendant, 4 years 2 months, and for the 2nd defendant, 4 years 4 months.",
         "total_months": 52
       }
     }
   ],
-  "tracing_id": "8358ea2ecb2681f44e538d90d715c728"
+  "tracing_id": "78b2abead35ddda3726cd2af03d1c18f"
 }

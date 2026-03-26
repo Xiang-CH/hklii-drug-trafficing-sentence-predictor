@@ -4,38 +4,44 @@
       "defendant_id": 1,
       "defendant_name": {
         "name": "黃鈺庭",
-        "source": "香港特別行政區 訴\n\n黃鈺庭\n（第一被告人）"
+        "source": "黃鈺庭（第一被告人）"
       },
-      "nationality": null,
+      "nationality": {
+        "category": "Hong Kong resident",
+        "hk_resident_status": "Resident",
+        "foreign_country_code": null,
+        "infer_reason": "Completed Form 3 in 2021 (local Hong Kong education) used to infer Hong Kong residency",
+        "source": "他在2021年完成中三學歷"
+      },
       "age_at_offence": {
         "age": [
           17,
           17
         ],
-        "source": "第二被告人一方亦公平地指出，他有利用年輕人犯案（第一被告人犯案時未滿18歲）"
+        "source": "第一被告人犯案時未滿18歲"
       },
       "age_at_sentencing": {
         "age": 18,
-        "source": "以第一被告人而言，他現年只有18歲。"
+        "source": "他現年只有18歲。"
       },
       "gender": {
         "gender": "Male",
-        "source": "以第一被告人而言，他現年只有18歲。"
+        "source": "他現年只有18歲。"
       },
       "marital_status": null,
       "parental_status": null,
       "household_composition": null,
       "health_conditions": [
         {
-          "name": "氯胺酮吸食 (ketamine use)",
           "type": "Drug addiction",
-          "source": "案發時第一被告人因為失業而借故外出消遣，繼而開始吸食氯胺酮。"
+          "name": "氯胺酮吸食",
+          "source": "繼而開始吸食氯胺酮"
         }
       ],
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Lower",
-        "source": "以第一被告人而言，他現年只有18歲。他在2021年完成中三學歷，之後展開工作生涯。"
+        "source": "他在2021年完成中三學歷"
       },
       "occupation": {
         "occupation_category": "Unemployed",
@@ -44,19 +50,20 @@
       },
       "monthly_wage": {
         "wage": 0,
+        "wage_currency": null,
         "source": "第二被告人知道第一被告人無業"
       },
       "government_subsidy_recipient": null,
       "criminal_records": [
         {
           "record": "None",
-          "source": "整體而言，兩位被告人均無定罪紀錄。"
+          "source": "兩位被告人均無定罪紀錄"
         }
       ],
       "positive_habits_after_arrest": [
         {
           "habit": "Participation in rehabilitation/self-improvement",
-          "source": "第一被告人的求情陳辭強調他沒有任何前科，坦白認罪，以及和警方充份合作。"
+          "source": "坦白認罪，以及和警方充份合作"
         }
       ],
       "family_supports": null
@@ -65,18 +72,27 @@
       "defendant_id": 2,
       "defendant_name": {
         "name": "蘇偉強",
-        "source": "香港特別行政區 訴\n\n蘇偉強\n（第二被告人）"
+        "source": "蘇偉強（第二被告人）"
       },
-      "nationality": null,
+      "nationality": {
+        "category": "Hong Kong resident",
+        "hk_resident_status": "Resident",
+        "foreign_country_code": null,
+        "infer_reason": "Inferred from Chinese name and local context",
+        "source": "蘇偉強"
+      },
       "age_at_offence": null,
       "age_at_sentencing": null,
       "gender": {
         "gender": "Male",
-        "source": "在警誡下，第二被告人說他會就介紹工作給第一被告人而“從中抽水”"
+        "source": "第二被告人說他會就介紹工作給第一被告人而“從中抽水”"
       },
       "marital_status": null,
       "parental_status": null,
-      "household_composition": null,
+      "household_composition": {
+        "composition": "Lives with non-family",
+        "source": "“So Ken”是前述住所租客"
+      },
       "health_conditions": null,
       "drug_treatment_participation": null,
       "education_level": null,
@@ -86,17 +102,17 @@
       "criminal_records": [
         {
           "record": "None",
-          "source": "整體而言，兩位被告人均無定罪紀錄。"
+          "source": "兩位被告人均無定罪紀錄"
         }
       ],
       "positive_habits_after_arrest": null,
       "family_supports": [
         {
           "support": "Letters of support from family",
-          "source": "基於他的求情內容，特別是其家人及朋友對他的正面評價及支持，本席酌情減刑3個月。"
+          "source": "辯方更依賴大量求情信，以支持第二被告人減刑陳辭"
         }
       ]
     }
   ],
-  "tracing_id": "4492282010f815f7c5ba3cf040cf0063"
+  "tracing_id": "a9c0f6c5ef6d13988594dd5dc27d8ce4"
 }

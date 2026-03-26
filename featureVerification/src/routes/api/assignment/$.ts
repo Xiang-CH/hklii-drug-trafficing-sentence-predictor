@@ -20,7 +20,9 @@ export type AssignmentJudgement = {
   appeal?: string
   corrigendum?: string
   year?: string
+  language?: 'english' | 'chinese' | 'unknown'
   llmProcessed: boolean
+  verified: boolean
   assignedTo?: {
     id: string
     username: string
@@ -35,6 +37,15 @@ export type AssignmentData = {
 }
 
 const PAGE_SIZE = 50
+const judgementListProjection = {
+  filename: 1,
+  trial: 1,
+  appeal: 1,
+  corrigendum: 1,
+  year: 1,
+  language: 1,
+  assigned_to: 1,
+}
 
 export const Route = createFileRoute('/api/assignment/$')({
   server: {
@@ -57,6 +68,8 @@ export const Route = createFileRoute('/api/assignment/$')({
         const llmProcessedFilter = url.searchParams.get('llmProcessed')
           ? url.searchParams.get('llmProcessed') === '1'
           : 0
+        const verifiedFilter = url.searchParams.get('verified') ?? 'all'
+        const languageFilter = url.searchParams.get('language') ?? 'all'
         const username = url.searchParams.get('username')?.trim() ?? null
 
         // Fetch users
@@ -78,11 +91,24 @@ export const Route = createFileRoute('/api/assignment/$')({
         // Fetch judgements
         const judgementsCollection = db.collection('judgement-html')
         const extractedCollection = db.collection('llm-extracted-features')
+        const verifiedCollection = db.collection('verified-features')
         const extractedIds = await extractedCollection.distinct(
           'source_judgement_id',
         )
         const processedIds = extractedIds.map((id) =>
           id instanceof ObjectId ? id : new ObjectId(id),
+        )
+        const verifiedIds = await verifiedCollection.distinct(
+          'source_judgement_id',
+          { is_verified: true },
+        )
+        const verifiedObjectIds = verifiedIds.map((id) =>
+          id instanceof ObjectId ? id : new ObjectId(id),
+        )
+        const verifiedIdSet = new Set(
+          verifiedIds.map((id) =>
+            id instanceof ObjectId ? id.toHexString() : String(id),
+          ),
         )
 
         const filters: Array<Record<string, unknown>> = []
@@ -125,6 +151,28 @@ export const Route = createFileRoute('/api/assignment/$')({
           filters.push({ _id: { $in: processedIds } })
         }
 
+        if (verifiedFilter === 'verified') {
+          filters.push({ _id: { $in: verifiedObjectIds } })
+        } else if (verifiedFilter === 'unverified') {
+          filters.push({ _id: { $nin: verifiedObjectIds } })
+        }
+
+        if (languageFilter === 'english') {
+          filters.push({ language: 'english' })
+        } else if (languageFilter === 'chinese') {
+          filters.push({
+            language: { $in: ['chinese', 'traditional_chinese'] },
+          })
+        } else if (languageFilter === 'unknown') {
+          filters.push({
+            $or: [
+              { language: { $exists: false } },
+              { language: null },
+              { language: 'unknown' },
+            ],
+          })
+        }
+
         const match =
           filters.length === 0
             ? {}
@@ -134,11 +182,15 @@ export const Route = createFileRoute('/api/assignment/$')({
 
         const total = await judgementsCollection.countDocuments(match)
 
+        const pipeline = [
+          { $match: match },
+          { $project: judgementListProjection },
+          { $sort: { year: -1, trial: 1 } },
+          { $skip: (page - 1) * PAGE_SIZE },
+          { $limit: PAGE_SIZE },
+        ]
         const judgements = await judgementsCollection
-          .find(match)
-          .sort({ year: -1, trial: 1 })
-          .skip((page - 1) * PAGE_SIZE)
-          .limit(PAGE_SIZE)
+          .aggregate(pipeline, { allowDiskUse: true })
           .toArray()
 
         // Build assignee map for quick lookup
@@ -176,7 +228,15 @@ export const Route = createFileRoute('/api/assignment/$')({
               appeal: doc.appeal ?? undefined,
               corrigendum: doc.corrigendum ?? undefined,
               year: doc.year ?? undefined,
+              language:
+                doc.language === 'traditional_chinese' ||
+                doc.language === 'chinese'
+                  ? 'chinese'
+                  : doc.language === 'english'
+                    ? 'english'
+                    : 'unknown',
               llmProcessed: isLlmProcessed,
+              verified: verifiedIdSet.has(id),
               assignedTo: doc.assigned_to
                 ? assigneeMap[
                     doc.assigned_to instanceof ObjectId

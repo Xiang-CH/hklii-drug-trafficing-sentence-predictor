@@ -29,6 +29,7 @@ class ChargeName(str, Enum):
 
 
 class NatureOfPlace(str, Enum):
+    UNKNOWN = "Unknown"
     RESIDENTIAL = "Residential building"
     COMMERCIAL = "Commercial building"
     INDUSTRIAL = "Industrial building"
@@ -71,6 +72,7 @@ class TraffickingModeEnum(str, Enum):
 class DefendantRole(str, Enum):
     COURIER = "Courier"
     STOREKEEPER = "Storekeeper"
+    PACKAGER = "Packager"
     LOOKOUT = "Lookout/scout"
     ACTUAL_TRAFFICKER = "Actual trafficker"
     MANAGER = "Manager/organizer"
@@ -171,14 +173,24 @@ class PlaceOfOffence(BaseModel):
 
     address: str = Field(description="The full address of the place of offence")
     nature: NatureOfPlace = Field(description="The nature of the place of offence.")
-    subDistrict: SubDistrict = Field(
+    subDistrict: Optional[SubDistrict] = Field(
+        default=None,
         description="The sub-district within the district where the place of offence is located",
     )
 
+    @field_validator("subDistrict", mode="before")
+    @classmethod
+    def coerce_subdistrict(cls, v):
+        if v == "":
+            return None
+        return v
+
     @computed_field
     @property
-    def district(self) -> District:
+    def district(self) -> Optional[District]:
         """Automatically computed district from the sub-district."""
+        if not self.subDistrict:
+            return None
         return get_district_for_subdistrict(self.subDistrict)
 
     source: str = source_field("place of offence")
@@ -213,6 +225,7 @@ class RoleDetail(BaseModel):
         description="Role of the defendant in the trafficking operation. "
         "Courier: Transporter of drugs; "
         "Storekeeper: Responsible for storage or warehousing; "
+        "Packager: Handles the preparation of drugs for sale by dividing bulk quantities into smaller units and repackaging them for concealment or distribution. Unlike couriers or storekeepers, the packager's role is focused on making the product market-ready. "
         "Lookout/scout: Person monitoring for law enforcement or rivals; "
         "Actual trafficker: Directly sells or distributes dangerous drugs to the public; "
         "Manager/organizer: Coordinator or planner of trafficking activities; "
@@ -247,16 +260,27 @@ class BenefitsReceivedType(str, Enum):
     OTHER = "other"
 
 
+class BenefitsReceivedStatus(str, Enum):
+    YES = "Yes"
+    NO = "No"
+    UNKNOWN = "Unknown"
+
+
 class BenefitsReceivedDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    received: bool = Field(
+    received: BenefitsReceivedStatus = Field(
         description="Whether benefits were received or to be received for trafficking."
     )
-    amount: Optional[float] = Field(
+    amount: Optional[float | List[float]] = Field(
         default=None,
         description="Amount of benefits received or to be received for trafficking in HKD, "
-        "excluding the value of the drug itself. Only set to null if benefit amount is not explicitly stated.",
+        "excluding the value of the drug itself. Can be a single amount or a [min, max] range. "
+        "Only set to null if benefit amount is not explicitly stated.",
+    )
+    amount_currency: Optional[str] = Field(
+        default=None,
+        description="Textual currency label for benefits not in HKD.",
     )
     amount_type: Optional[BenefitsReceivedType] = Field(
         default=None,
@@ -272,6 +296,27 @@ class BenefitsReceivedDetail(BaseModel):
         description="Description of any non-monetary benefits received, if mentioned in the judgment",
     )
     source: str = source_field("benefits amount")
+
+    @field_validator("received", mode="before")
+    @classmethod
+    def coerce_received(cls, v):
+        if isinstance(v, bool):
+            return BenefitsReceivedStatus.YES if v else BenefitsReceivedStatus.NO
+        return v
+
+    @field_validator("amount")
+    @classmethod
+    def validate_amount(cls, v):
+        if isinstance(v, list):
+            if len(v) != 2:
+                raise ValueError(
+                    "amount must be a single number or an array of two numbers"
+                )
+            if v[1] <= v[0]:
+                raise ValueError(
+                    "amount array must be in the format [min, max] with max > min"
+                )
+        return v
 
     @model_validator(mode="after")
     def validate_conditional_fields(self):
@@ -316,7 +361,8 @@ class ChargeForDefendant(BaseModel):
         default=None,
         description="Defendant ID (1-indexed), automatically assigned based on first appearance order across all charges",
     )
-    trafficking_mode: Optional[TraffickingMode] = Field(default=None)
+    trafficking_mode: Optional[List[TraffickingMode]] = Field(default=None)
+
     roles_facts: Optional[List[RoleDetail]] = Field(default=None)
     reasons_for_offence: Optional[List[ReasonForOffenceDetail]] = Field(default=None)
     benefits_received: Optional[BenefitsReceivedDetail] = Field(

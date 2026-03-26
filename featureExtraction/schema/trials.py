@@ -15,6 +15,7 @@ class DrugType(str, Enum):
     GHB_GBL = "GHB/GBL"
     HEROIN = "Heroin"
     KETAMINE = "Ketamine"
+    Fluorodeschloroketamine = "Fluorodeschloroketamine"
     NIMETAZEPAM = "Nimetazepam"
     MORPHINE = "Morphine"
     METH = "Methamphetamine"
@@ -54,6 +55,7 @@ class MitigatingFactorType(str, Enum):
     PROSECUTORIAL_DELAY = "Prosecutorial delay"
     MISTAKEN_BELIEF = "Mistaken belief"
     REHABILITATION_PROGRAMME = "Rehabilitation programme"
+    CHARITY = "Charity"
     OTHER = "Other"
 
 
@@ -69,6 +71,7 @@ class HighCourtPleaStage(str, Enum):
     AFTER_TRIAL_DATES_FIXED = "After dates fixed"
     FIRST_DAY_OF_TRIAL = "First day"
     DURING_TRIAL = "During trial"
+    OTHER = "Other"
 
 
 class DistrictCourtPleaStage(str, Enum):
@@ -77,6 +80,7 @@ class DistrictCourtPleaStage(str, Enum):
     AFTER_TRIAL_DATES_FIXED = "After dates fixed"
     FIRST_DAY_OF_TRIAL = "First day"
     DURING_TRIAL = "During trial"
+    OTHER = "Other"
 
 
 class DrugDetail(BaseModel):
@@ -148,7 +152,12 @@ class GuiltyPleaDetail(BaseModel):
         "After committal: After committal and up to and until trial dates are fixed; "
         "After dates fixed: After trial dates are fixed but before the first date of trial; "
         "First day: First day of trial; "
-        "During trial: During the trial.",
+        "During trial: During the trial; "
+        "Other: Other stages not specified above.",
+    )
+    high_court_stage_other: Optional[str] = Field(
+        default=None,
+        description="The high court stage if the stage is 'Other'",
     )
     district_court_stage: Optional[DistrictCourtPleaStage] = Field(
         default=None,
@@ -157,7 +166,12 @@ class GuiltyPleaDetail(BaseModel):
         "Plea day: At plea day; "
         "After dates fixed: After trial dates are fixed but before the first date of trial; "
         "First day: First day of trial; "
-        "During trial: During the trial.",
+        "During trial: During the trial; "
+        "Other: Other stages not specified above.",
+    )
+    district_court_stage_other: Optional[str] = Field(
+        default=None,
+        description="The district court stage if the stage is 'Other'",
     )
     reduction_years: Optional[int] = Field(
         default=None,
@@ -187,17 +201,32 @@ class GuiltyPleaDetail(BaseModel):
     def validate_conditional_fields(self):
         if self.pleaded_guilty and self.court_type is None:
             raise ValueError("court_type is required when pleaded_guilty is True")
-        if self.court_type == CourtType.HIGH_COURT and self.high_court_stage is None:
-            raise ValueError(
-                "high_court_stage is required when court_type is 'High Court'"
-            )
-        if (
-            self.court_type == CourtType.DISTRICT_COURT
-            and self.district_court_stage is None
-        ):
-            raise ValueError(
-                "district_court_stage is required when court_type is 'District Court'"
-            )
+        if self.court_type == CourtType.HIGH_COURT:
+            if self.high_court_stage is None:
+                raise ValueError(
+                    "high_court_stage is required when court_type is 'High Court'"
+                )
+            if (
+                self.high_court_stage == HighCourtPleaStage.OTHER
+                and self.high_court_stage_other is None
+            ):
+                raise ValueError(
+                    "high_court_stage_other is required when high_court_stage is 'Other'"
+                )
+
+        if self.court_type == CourtType.DISTRICT_COURT:
+            if self.district_court_stage is None:
+                raise ValueError(
+                    "district_court_stage is required when court_type is 'District Court'"
+                )
+            if (
+                self.district_court_stage == DistrictCourtPleaStage.OTHER
+                and self.district_court_stage_other is None
+            ):
+                raise ValueError(
+                    "district_court_stage_other is required when district_court_stage is 'Other'"
+                )
+
         return self
 
 
@@ -218,6 +247,7 @@ class MitigatingFactorDetail(BaseModel):
         "Family illness: Family illness or tragedy; "
         "Prosecutorial delay: Delay in prosecution; "
         "Mistaken belief: Mistaken belief about drug type; "
+        "Charity: the defendant has made constant donations to charities, and/or has active participation in charitable activities; "
         "Rehabilitation programme: Participation in anti-trafficking or rehabilitative programmes."
     )
     other_factor: Optional[str] = Field(

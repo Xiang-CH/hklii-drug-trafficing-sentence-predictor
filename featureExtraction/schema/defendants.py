@@ -85,6 +85,7 @@ class PositiveHabit(str, Enum):
     WORKING = "Working"
     NEGATIVE_DRUG_TESTS = "Negative drug tests"
     REHABILITATION = "Participation in rehabilitation/self-improvement"
+    RELIGION = "Religion"
 
 
 class FamilySupport(str, Enum):
@@ -171,9 +172,8 @@ class ParentalStatus(BaseModel):
 
 class HealthCondition(BaseModel):
     model_config = ConfigDict(extra="forbid")
-
-    name: str = Field(description="Name of the health condition")
     type: HealthStatusType = Field(description="Type of health status")
+    name: str = Field(description="Name of the health condition")
     source: str = source_field("health status")
 
 
@@ -249,6 +249,10 @@ class MonthlyWageDetail(BaseModel):
         description="Monthly wage at time of offence in HKD, 0 if unemployed; "
         "If wage provided as a range, use a list with two integers indicating the lower and upper bounds of the range"
     )
+    wage_currency: Optional[str] = Field(
+        default=None,
+        description="Textual currency label for wages not in HKD.",
+    )
 
     @model_validator(mode="after")
     def validate_wage(cls, v):
@@ -265,9 +269,11 @@ class MonthlyWageDetail(BaseModel):
 
     source: str = source_field("monthly wage")
 
+
 class GovernmentSubsidyEnum(str, Enum):
     CSSA = "CSSA"
     OTHER = "Other"
+
 
 class GovernmentSubsidyRecipient(BaseModel):
     model_config = ConfigDict(extra="forbid")
@@ -279,7 +285,7 @@ class GovernmentSubsidyRecipient(BaseModel):
 
     other_scheme: Optional[str] = Field(
         default=None,
-        description="If scheme_type is 'Other', specify the name of the subsidy scheme."
+        description="If scheme_type is 'Other', specify the name of the subsidy scheme.",
     )
 
     @model_validator(mode="after")
@@ -287,8 +293,9 @@ class GovernmentSubsidyRecipient(BaseModel):
         if v.scheme_type == GovernmentSubsidyEnum.OTHER and not v.other_scheme:
             raise ValueError("other_scheme must be specified if scheme_type is 'Other'")
         return v
-    
+
     source: str = source_field("government subsidy recipient")
+
 
 class CriminalRecordDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
@@ -341,7 +348,7 @@ class DefendantProfile(BaseModel):
     monthly_wage: Optional[MonthlyWageDetail] = Field(
         default=None, description="null means not mentioned at all; use 0 if unemployed"
     )
-    government_subsidy_recipient: Optional[GovernmentSubsidyRecipient] = Field( 
+    government_subsidy_recipient: Optional[GovernmentSubsidyRecipient] = Field(
         default=None
     )
     criminal_records: Optional[List[CriminalRecordDetail]] = Field(default=None)

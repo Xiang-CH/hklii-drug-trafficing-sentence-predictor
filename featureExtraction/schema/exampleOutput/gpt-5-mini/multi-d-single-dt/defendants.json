@@ -17,16 +17,16 @@
       },
       "gender": {
         "gender": "Male",
-        "source": "The 1st defendant is 39 years of age. He was 36 years old at the time of the offence."
+        "source": "He was 36 years old at the time of the offence."
       },
       "marital_status": {
         "status": "Separated/divorced",
-        "source": "He was divorced and lived together with his family members."
+        "source": "He was divorced"
       },
       "parental_status": null,
       "household_composition": {
         "composition": "Lives with family",
-        "source": "He was divorced and lived together with his family members."
+        "source": "lived together with his family members."
       },
       "health_conditions": null,
       "drug_treatment_participation": null,
@@ -41,13 +41,14 @@
       },
       "monthly_wage": {
         "wage": 0,
+        "wage_currency": null,
         "source": "He was unemployed at the time of his arrest."
       },
       "government_subsidy_recipient": null,
       "criminal_records": [
         {
           "record": "Other offences",
-          "source": "He has a total of three criminal convictions for the offence of gambling in a gambling establishment. He had never been imprisoned for those offences."
+          "source": "He has a total of three criminal convictions for the offence of gambling in a gambling establishment."
         }
       ],
       "positive_habits_after_arrest": [
@@ -61,7 +62,7 @@
     {
       "defendant_id": 2,
       "defendant_name": {
-        "name": "Hong Ka-ming (康家銘) (A2)",
+        "name": "Hong Ka-ming (康家銘)",
         "source": "Hong Ka-ming (康家銘) (A2)"
       },
       "nationality": null,
@@ -71,28 +72,28 @@
       },
       "age_at_sentencing": {
         "age": 36,
-        "source": "In respect of the 2nd defendant, he is now 36 years of age."
+        "source": "he is now 36 years of age."
       },
       "gender": {
         "gender": "Male",
-        "source": "In respect of the 2nd defendant, he is now 36 years of age."
+        "source": "he is now 36 years of age."
       },
       "marital_status": {
         "status": "Single",
-        "source": "He was single and worked as a hairdresser."
+        "source": "He was single"
       },
       "parental_status": null,
       "household_composition": null,
       "health_conditions": [
         {
-          "name": "Long history of mental illness (multiple psychiatric admissions)",
           "type": "Mental health",
-          "source": "In his mitigation, counsel for the 2nd defendant Mr Clement Lau informed this court that he has a long history of mental illness. He first received psychiatric treatment at the age of 11 and there were multiple psychiatric admissions to various hospitals between year 2009 to 2022."
+          "name": "long history of mental illness; multiple psychiatric admissions between 2009 and 2022",
+          "source": "he has a long history of mental illness. He first received psychiatric treatment at the age of 11 and there were multiple psychiatric admissions to various hospitals between year 2009 to 2022."
         },
         {
-          "name": "Past drug abuse",
           "type": "Drug addiction",
-          "source": "I noted from various psychiatric reports that had been submitted by counsel that indeed part of the condition of the 2nd defendant was a result of his own drug abuse. In any event, counsel informed me that he is now clear of the drug usage."
+          "name": "drug abuse (part of the condition was a result of his own drug abuse)",
+          "source": "part of the condition of the 2nd defendant was a result of his own drug abuse."
         }
       ],
       "drug_treatment_participation": null,
@@ -122,5 +123,5 @@
       ]
     }
   ],
-  "tracing_id": "8358ea2ecb2681f44e538d90d715c728"
+  "tracing_id": "78b2abead35ddda3726cd2af03d1c18f"
 }

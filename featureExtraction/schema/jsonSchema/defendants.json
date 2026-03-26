@@ -498,14 +498,14 @@
         "HealthCondition": {
             "additionalProperties": false,
             "properties": {
+                "type": {
+                    "$ref": "#/$defs/HealthStatusType",
+                    "description": "Type of health status"
+                },
                 "name": {
                     "description": "Name of the health condition",
                     "title": "Name",
                     "type": "string"
-                },
-                "type": {
-                    "$ref": "#/$defs/HealthStatusType",
-                    "description": "Type of health status"
                 },
                 "source": {
                     "description": "The exact match source text from which the health status was extracted. Do not include any additional information in the source document.",
@@ -514,8 +514,8 @@
                 }
             },
             "required": [
-                "name",
                 "type",
+                "name",
                 "source"
             ],
             "title": "HealthCondition",
@@ -607,6 +607,19 @@
                     ],
                     "description": "Monthly wage at time of offence in HKD, 0 if unemployed; If wage provided as a range, use a list with two integers indicating the lower and upper bounds of the range",
                     "title": "Wage"
+                },
+                "wage_currency": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Textual currency label for wages not in HKD.",
+                    "title": "Wage Currency"
                 },
                 "source": {
                     "description": "The exact match source text from which the monthly wage was extracted. Do not include any additional information in the source document.",
@@ -785,7 +798,8 @@
                 "Studying",
                 "Working",
                 "Negative drug tests",
-                "Participation in rehabilitation/self-improvement"
+                "Participation in rehabilitation/self-improvement",
+                "Religion"
             ],
             "title": "PositiveHabit",
             "type": "string"

@@ -48,18 +48,18 @@ export const getUserAssignmentCounts = createServerFn({
       ])
       .toArray()
 
-    const countMap = new Map<string, number>()
+    const normalizeId = (value: unknown) =>
+      value instanceof ObjectId ? value.toHexString() : String(value)
+
+    const assignmentMap = new Map<string, number>()
+    const verificationMap = new Map<string, number>()
 
     for (const item of assignmentCounts) {
-      const key =
-        item._id instanceof ObjectId ? item._id.toHexString() : String(item._id)
-      countMap.set(key, item.count)
+      assignmentMap.set(normalizeId(item._id), item.count)
     }
 
     for (const item of verificationCounts) {
-      const key =
-        item._id instanceof ObjectId ? item._id.toHexString() : String(item._id)
-      countMap.set(key, (countMap.get(key) || 0) + item.count)
+      verificationMap.set(normalizeId(item._id), item.count)
     }
 
     // Convert Map to a plain object for serialization
@@ -68,15 +68,15 @@ export const getUserAssignmentCounts = createServerFn({
       { assignment: number; verification: number } | undefined
     > = {}
 
-    countMap.forEach((value, key) => {
+    const keys = new Set<string>([
+      ...assignmentMap.keys(),
+      ...verificationMap.keys(),
+    ])
+
+    keys.forEach((key) => {
       serialized[key] = {
-        assignment: value,
-        verification:
-          verificationCounts.find((v) => {
-            const vKey =
-              v._id instanceof ObjectId ? v._id.toHexString() : String(v._id)
-            return vKey === key
-          })?.count || 0,
+        assignment: assignmentMap.get(key) ?? 0,
+        verification: verificationMap.get(key) ?? 0,
       }
     })
 

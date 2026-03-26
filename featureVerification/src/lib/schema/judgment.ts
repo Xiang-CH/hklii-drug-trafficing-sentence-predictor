@@ -16,6 +16,7 @@ export const ChargeNameSchema = z.enum([
 ])
 
 export const NatureOfPlaceSchema = z.enum([
+  'Unknown',
   'Residential building',
   'Commercial building',
   'Industrial building',
@@ -58,6 +59,7 @@ export const TraffickingModeEnumSchema = z.enum([
 export const DefendantRoleSchema = z.enum([
   'Courier',
   'Storekeeper',
+  'Packager',
   'Lookout/scout',
   'Actual trafficker',
   'Manager/organizer',
@@ -84,6 +86,13 @@ export const BenefitsReceivedTypeSchema = z.enum([
   'total',
   'other',
 ])
+
+export const BenefitsReceivedStatusSchema = z.enum(['Yes', 'No', 'Unknown'])
+const BenefitsReceivedStatusInputSchema = z.preprocess((value) => {
+  if (value === true) return 'Yes'
+  if (value === false) return 'No'
+  return value
+}, BenefitsReceivedStatusSchema)
 
 export const ImportExportEnumSchema = z.enum(['import', 'export'])
 
@@ -163,7 +172,8 @@ export const TimeDetailInputSchema = z.object({
       },
       { message: 'Invalid time format (expected HH:MM:SS or HH:MM:SS+HH:MM)' },
     )
-    .nullable(),
+    .nullable()
+    .default(null),
   time_of_day: TimeOfDaySchema.nullable().default(null),
   source: z.string(),
 })
@@ -196,14 +206,16 @@ export const TimeDetailSchema = TimeDetailInputSchema.superRefine(
 export const PlaceOfOffenceInputSchema = z.object({
   address: z.string(),
   nature: NatureOfPlaceSchema,
-  subDistrict: SubDistrictSchema,
+  subDistrict: SubDistrictSchema.nullable().default(null),
   source: z.string(),
 })
 
 export const PlaceOfOffenceSchema = PlaceOfOffenceInputSchema.transform(
   (data) => ({
     ...data,
-    district: getDistrictBySubDistrict(data.subDistrict),
+    district: data.subDistrict
+      ? getDistrictBySubDistrict(data.subDistrict)
+      : null,
   }),
 )
 
@@ -211,6 +223,21 @@ export const TraffickingModeSchema = z.object({
   mode: TraffickingModeEnumSchema,
   source: z.string(),
 })
+
+export const TraffickingModeListSchema = z
+  .preprocess((value) => {
+    if (value === null || value === undefined) {
+      return null
+    }
+
+    if (Array.isArray(value)) {
+      return value
+    }
+
+    return [value]
+  }, z.array(TraffickingModeSchema))
+  .nullable()
+  .default(null)
 
 export const RoleDetailSchema = z.object({
   role: DefendantRoleSchema,
@@ -224,13 +251,39 @@ export const ReasonForOffenceDetailSchema = z.object({
 
 export const BenefitsReceivedDetailSchema = z
   .object({
-    received: z.boolean(),
-    amount: z.number().nullable().default(null),
+    received: BenefitsReceivedStatusInputSchema.default('Unknown'),
+    amount: z
+      .union([z.number(), z.array(z.number())])
+      .nullable()
+      .default(null),
+    amount_currency: z.string().nullable().default(null),
     amount_type: BenefitsReceivedTypeSchema.nullable().default(null),
     amount_type_other: z.string().nullable().default(null),
     non_monetary_benefits: z.string().nullable().default(null),
     source: z.string(),
   })
+  .refine(
+    (data) => {
+      if (Array.isArray(data.amount)) {
+        return data.amount.length === 2
+      }
+      return true
+    },
+    {
+      message: 'amount must be a single number or an array of two numbers',
+    },
+  )
+  .refine(
+    (data) => {
+      if (Array.isArray(data.amount)) {
+        return data.amount[1] > data.amount[0]
+      }
+      return true
+    },
+    {
+      message: 'amount array must be in the format [min, max] with max > min',
+    },
+  )
   .refine(
     (data) => {
       if (data.amount !== null && data.amount_type === null) {
@@ -263,7 +316,7 @@ export const CrossBorderDetailSchema = z.object({
 export const ChargeForDefendantSchema = z.object({
   defendant_name: z.string(),
   defendant_id: z.number(),
-  trafficking_mode: TraffickingModeSchema.nullable().default(null),
+  trafficking_mode: TraffickingModeListSchema,
   roles_facts: z.array(RoleDetailSchema).nullable().default(null),
   reasons_for_offence: z
     .array(ReasonForOffenceDetailSchema)

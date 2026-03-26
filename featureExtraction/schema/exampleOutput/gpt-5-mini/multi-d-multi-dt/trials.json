@@ -6,7 +6,7 @@
         "charge_name": "Conspiracy to traffic in a dangerous drug",
         "defendant_name": "So Hoi-yan",
         "defendant_id": 1,
-        "source": "Count 1 against the 1st defendant, So\nSo has pleaded guilty to conspiracy to traffic in a dangerous drug, namely, cocaine with Fu, the defendant of 316/2023, and other persons unknown, between two dates, 1 and 2 October 2021 in Hong Kong."
+        "source": "So has pleaded guilty to conspiracy to traffic in a dangerous drug, namely, cocaine with Fu, the defendant of 316/2023, and other persons unknown, between two dates, 1 and 2 October 2021 in Hong Kong."
       },
       "drugs": [
         {
@@ -21,40 +21,35 @@
         {
           "factor": "Extreme youth",
           "other_factor": null,
-          "reduction": null,
+          "reduction_months": null,
           "reduction_percentage": null,
-          "source": "She was 15 years old at the time."
+          "source": "The 1st defendant of 317/2023, So, was 15 at the time of her arrest and is now 19 years old."
         },
         {
           "factor": "Assistance - testify",
           "other_factor": null,
-          "reduction": null,
+          "reduction_months": null,
           "reduction_percentage": null,
-          "source": "So went on to assist the police and agreed to be a prosecution witness against Fu."
-        },
-        {
-          "factor": "Rehabilitation programme",
-          "other_factor": null,
-          "reduction": null,
-          "reduction_percentage": null,
-          "source": "I have received a letter in mitigation and evidence of her further recent vocational training to set herself up in employment in the future."
+          "source": "After the trial for Fu had been set down, So gave a statement to the police, implicating Fu and agreeing to give evidence against him in his trial."
         }
       ],
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "High Court",
         "high_court_stage": "Up to committal",
+        "high_court_stage_other": null,
         "district_court_stage": null,
-        "reduction_years": null,
-        "reduction_months": null,
-        "reduction_percentage": 33,
-        "source": "The 1st and 2nd defendant of 317/2023 pleaded guilty to their respective charges at the earliest opportunity and were committed to the Court of First Instance for sentence to be dealt with after the trial of their co-accused",
-        "total_reduction_months": null
+        "district_court_stage_other": null,
+        "reduction_years": 2,
+        "reduction_months": 9,
+        "reduction_percentage": 48.0,
+        "source": "For 317/2023, Count 1 against the 1st defendant, So, I intend to take a starting point of 5 years and 9 months and I will reduce it to 3 years’ imprisonment. This reflects a discount of about 48 per cent.",
+        "total_reduction_months": 33
       },
       "starting_point": {
         "sentence_years": 5,
         "sentence_months": 9,
-        "source": "For the 1st defendant, So, I will take into account the drugs found on her in her bag and that was 20.44 grammes of cocaine. Now according to the latest sentencing guidelines, those trafficking in 20.44 grammes of cocaine would attract a mathematical starting point of 5 years and 9 months\u0019 imprisonment.",
+        "source": "For the 1st defendant, So, I will take into account the drugs found on her in her bag and that was 20.44 grammes of cocaine. Now according to the latest sentencing guidelines, those trafficking in 20.44 grammes of cocaine would attract a mathematical starting point of 5 years and 9 months’ imprisonment.",
         "total_months": 69
       },
       "sentence_after_role": {
@@ -66,24 +61,24 @@
       "notional_sentence": {
         "sentence_years": 5,
         "sentence_months": 9,
-        "source": "For the 1st defendant, So, I will take into account the drugs found on her in her bag and that was 20.44 grammes of cocaine. Now according to the latest sentencing guidelines, those trafficking in 20.44 grammes of cocaine would attract a mathematical starting point of 5 years and 9 months\u0019 imprisonment.",
+        "source": "For the 1st defendant, So, I will take into account the drugs found on her in her bag and that was 20.44 grammes of cocaine. Now according to the latest sentencing guidelines, those trafficking in 20.44 grammes of cocaine would attract a mathematical starting point of 5 years and 9 months’ imprisonment.",
         "total_months": 69
       },
       "mitigation_reduction": null,
       "final_sentence": {
         "sentence_years": 3,
         "sentence_months": 0,
-        "source": "Therefore, for 317/2023, Count 1 against the 1st defendant, So, I intend to take a starting point of 5 years and 9 months and I will reduce it to 3 years\u0019 imprisonment. This reflects a discount of about 48 per cent.",
+        "source": "Therefore, So is sentenced to 3 years’ imprisonment.",
         "total_months": 36
       }
     },
     {
       "charge_type": {
         "charge_no": 2,
-        "charge_name": "Conspiracy to traffic in a dangerous drug",
+        "charge_name": "Conspiracy to traffic in dangerous drugs",
         "defendant_name": "Lam Tsz-man",
         "defendant_id": 2,
-        "source": "Count 2 against the 2nd defendant only, Lam\nLam has pleaded guilty to conspiracy to traffic in a dangerous drug, namely, cocaine and cannabis in a herbal form with Fu, the defendant of 316/2023, and other persons unknown between 22 September and 3 October 2021, both dates inclusive, in Hong Kong."
+        "source": "Lam has pleaded guilty to conspiracy to traffic in a dangerous drug, namely, cocaine and cannabis in a herbal form with Fu, the defendant of 316/2023, and other persons unknown between 22 September and 3 October 2021, both dates inclusive, in Hong Kong."
       },
       "drugs": [
         {
@@ -104,33 +99,28 @@
         {
           "factor": "Young offender",
           "other_factor": null,
-          "reduction": null,
+          "reduction_months": null,
           "reduction_percentage": null,
           "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences and still is a student in a vocational education course."
-        },
-        {
-          "factor": "Other",
-          "other_factor": "Supportive mitigation letters and expressions of remorse from family and social workers",
-          "reduction": null,
-          "reduction_percentage": null,
-          "source": "I have received many mitigation letters from not only the defendant himself expressing remorse but his supportive father, uncle, aunt and social workers. All ask for leniency and truly believe this defendant when he says he has learnt his lesson and will not re-offend."
         }
       ],
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "High Court",
         "high_court_stage": "Up to committal",
+        "high_court_stage_other": null,
         "district_court_stage": null,
-        "reduction_years": null,
-        "reduction_months": 38,
-        "reduction_percentage": 33,
-        "source": "For Lam and So, they are entitled to the full one-third discount for their pleas of guilty at the earliest opportunity.\nCount 2 against the 2nd defendant, Lam. I intend to take a starting point of 9 years and 6 months\u0019 imprisonment and reduce it by 38 months to reflect his plea at the earliest opportunity.",
+        "district_court_stage_other": null,
+        "reduction_years": 3,
+        "reduction_months": 2,
+        "reduction_percentage": null,
+        "source": "Count 2 against the 2nd defendant, Lam. I intend to take a starting point of 9 years and 6 months' imprisonment and reduce it by 38 months to reflect his plea at the earliest opportunity. Lam is sentenced to 6 years and 4 months’ imprisonment.",
         "total_reduction_months": 38
       },
       "starting_point": {
         "sentence_years": 9,
         "sentence_months": 6,
-        "source": "Count 2 against the 2nd defendant, Lam. I intend to take a starting point of 9 years and 6 months\u0019 imprisonment and reduce it by 38 months to reflect his plea at the earliest opportunity.",
+        "source": "For the 2nd defendant, Lam, I will take into account the cocaine found on him and the cocaine found in the premises rented by Fu and Lam which totals 109.19 grammes of cocaine. According to the latest sentencing guidelines, those trafficking in 109.19 grammes of cocaine would attract a mathematical starting point of 9 years and 7 months’ imprisonment. (I intend to take a starting point of 9 years and 6 months' imprisonment.)",
         "total_months": 114
       },
       "sentence_after_role": {
@@ -142,14 +132,14 @@
       "notional_sentence": {
         "sentence_years": 9,
         "sentence_months": 6,
-        "source": "Count 2 against the 2nd defendant, Lam. I intend to take a starting point of 9 years and 6 months\u0019 imprisonment and reduce it by 38 months to reflect his plea at the earliest opportunity.",
+        "source": "For the 2nd defendant, Lam, I will take into account the cocaine found on him and the cocaine found in the premises rented by Fu and Lam which totals 109.19 grammes of cocaine. According to the latest sentencing guidelines, those trafficking in 109.19 grammes of cocaine would attract a mathematical starting point of 9 years and 7 months’ imprisonment. (I intend to take a starting point of 9 years and 6 months' imprisonment.)",
         "total_months": 114
       },
       "mitigation_reduction": null,
       "final_sentence": {
         "sentence_years": 6,
         "sentence_months": 4,
-        "source": "Count 2 against the 2nd defendant, Lam. I intend to take a starting point of 9 years and 6 months\u0019 imprisonment and reduce it by 38 months to reflect his plea at the earliest opportunity. Lam is sentenced to 6 years and 4 months\u0019 imprisonment.",
+        "source": "Lam is sentenced to 6 years and 4 months’ imprisonment.",
         "total_months": 76
       }
     },
@@ -159,7 +149,7 @@
         "charge_name": "Conspiracy to traffic in a dangerous drug",
         "defendant_name": "Fu Chun-wah",
         "defendant_id": 3,
-        "source": "Count 1 against the defendant, Fu\nFu now pleads guilty to conspiracy to traffic in a dangerous drug, namely, cocaine with So and Lam and other persons unknown between 1 and 2 October 2021 in Hong Kong."
+        "source": "Fu now pleads guilty to conspiracy to traffic in a dangerous drug, namely, cocaine with So and Lam and other persons unknown between 1 and 2 October 2021 in Hong Kong."
       },
       "drugs": [
         {
@@ -174,14 +164,14 @@
         {
           "factor": "Young offender",
           "other_factor": null,
-          "reduction": null,
+          "reduction_months": null,
           "reduction_percentage": null,
-          "source": "Fu of 316/2023 was also 18 at the time of these offences. Fu was also still a student"
+          "source": "Fu of 316/2023 was also 18 at the time of these offences. Fu was also still a student..."
         },
         {
           "factor": "Family illness",
           "other_factor": null,
-          "reduction": null,
+          "reduction_months": null,
           "reduction_percentage": null,
           "source": "I granted him bail to give him a chance to complete his HKDSE examinations and support his mother whilst she received chemotherapy treatment for cancer."
         }
@@ -189,18 +179,20 @@
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "High Court",
-        "high_court_stage": "First day",
+        "high_court_stage": "After dates fixed",
+        "high_court_stage_other": null,
         "district_court_stage": null,
-        "reduction_years": null,
-        "reduction_months": 23,
-        "reduction_percentage": 30,
-        "source": "He has pleaded guilty before me today and admitted the Summary of Facts. I convicted him accordingly.\nI intend to take a starting point of 6 years and 3 months\u0019 imprisonment and I will reduce it by 23 months. This represents a discount of just over 30 per cent.",
+        "district_court_stage_other": null,
+        "reduction_years": 1,
+        "reduction_months": 11,
+        "reduction_percentage": 30.0,
+        "source": "I intend to take a starting point of 6 years and 3 months' imprisonment and I will reduce it by 23 months. This represents a discount of just over 30 per cent. Fu is sentenced to 4 years and 4 months’ imprisonment for Count 1.",
         "total_reduction_months": 23
       },
       "starting_point": {
         "sentence_years": 6,
         "sentence_months": 3,
-        "source": "For Fu, there is 20.44 grammes of cocaine he admits he delivered to So in relation to the 1st count he faces. In relation to the 2nd count, which is not conspiracy but trafficking, there was 6.19 grammes of cocaine found in those rented premises. As far as he is concerned, I can quantify a total of 26.63 grammes of cocaine. According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months\u0019 imprisonment.",
+        "source": "For Fu, there is 20.44 grammes of cocaine he admits he delivered to So in relation to the 1st count he faces. In relation to the 2nd count ... As far as he is concerned, I can quantify a total of 26.63 grammes of cocaine. According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months’ imprisonment.",
         "total_months": 75
       },
       "sentence_after_role": {
@@ -212,14 +204,14 @@
       "notional_sentence": {
         "sentence_years": 6,
         "sentence_months": 3,
-        "source": "For Fu, there is 20.44 grammes of cocaine he admits he delivered to So in relation to the 1st count he faces. In relation to the 2nd count, which is not conspiracy but trafficking, there was 6.19 grammes of cocaine found in those rented premises. As far as he is concerned, I can quantify a total of 26.63 grammes of cocaine. According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months\u0019 imprisonment.",
+        "source": "According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months’ imprisonment.",
         "total_months": 75
       },
       "mitigation_reduction": null,
       "final_sentence": {
         "sentence_years": 4,
         "sentence_months": 4,
-        "source": "Therefore, for 316/2023, Count 1 against Fu. I intend to take a starting point of 6 years and 3 months\u0019 imprisonment and I will reduce it by 23 months. This represents a discount of just over 30 per cent. Fu is sentenced to 4 years and 4 months\u0019 imprisonment for Count 1.",
+        "source": "Fu is sentenced to 4 years and 4 months’ imprisonment for Count 1.",
         "total_months": 52
       }
     },
@@ -236,13 +228,13 @@
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 6.19,
-          "source": "They searched the premises and found 41 plastic bags containing a total of 7.2 grammes of a solid containing 6.19 grammes of cocaine"
+          "source": "they searched the premises and found 41 plastic bags containing a total of 7.2 grammes of a solid containing 6.19 grammes of cocaine"
         },
         {
           "drug_type": "Cannabis",
           "other_drug_type": null,
           "quantity": 6.12,
-          "source": "two plastic bags containing a total of 6.12 grammes of cannabis in herbal form"
+          "source": "they searched the premises and found ... two plastic bags containing a total of 6.12 grammes of cannabis in herbal form."
         }
       ],
       "aggravating_factors": null,
@@ -250,14 +242,14 @@
         {
           "factor": "Young offender",
           "other_factor": null,
-          "reduction": null,
+          "reduction_months": null,
           "reduction_percentage": null,
-          "source": "Fu of 316/2023 was also 18 at the time of these offences. Fu was also still a student"
+          "source": "Fu of 316/2023 was also 18 at the time of these offences. Fu was also still a student..."
         },
         {
           "factor": "Family illness",
           "other_factor": null,
-          "reduction": null,
+          "reduction_months": null,
           "reduction_percentage": null,
           "source": "I granted him bail to give him a chance to complete his HKDSE examinations and support his mother whilst she received chemotherapy treatment for cancer."
         }
@@ -265,18 +257,20 @@
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "High Court",
-        "high_court_stage": "First day",
+        "high_court_stage": "After dates fixed",
+        "high_court_stage_other": null,
         "district_court_stage": null,
-        "reduction_years": null,
-        "reduction_months": 23,
-        "reduction_percentage": 30,
-        "source": "He has pleaded guilty before me today and admitted the Summary of Facts. I convicted him accordingly.\nI intend to take a starting point of 6 years and 3 months\u0019 imprisonment and I will reduce it by 23 months. This represents a discount of just over 30 per cent.",
+        "district_court_stage_other": null,
+        "reduction_years": 1,
+        "reduction_months": 11,
+        "reduction_percentage": 30.0,
+        "source": "For Count 2, this defendant is sentenced to 4 years and 4 months’ imprisonment. For Count 1 and 2, I will order the sentences to run concurrently. Therefore, Fu is sentenced to a total of 4 years and 4 months’ imprisonment.",
         "total_reduction_months": 23
       },
       "starting_point": {
         "sentence_years": 6,
         "sentence_months": 3,
-        "source": "For Fu, there is 20.44 grammes of cocaine he admits he delivered to So in relation to the 1st count he faces. In relation to the 2nd count, which is not conspiracy but trafficking, there was 6.19 grammes of cocaine found in those rented premises. As far as he is concerned, I can quantify a total of 26.63 grammes of cocaine. According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months\u0019 imprisonment.",
+        "source": "According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months’ imprisonment.",
         "total_months": 75
       },
       "sentence_after_role": {
@@ -288,17 +282,17 @@
       "notional_sentence": {
         "sentence_years": 6,
         "sentence_months": 3,
-        "source": "For Fu, there is 20.44 grammes of cocaine he admits he delivered to So in relation to the 1st count he faces. In relation to the 2nd count, which is not conspiracy but trafficking, there was 6.19 grammes of cocaine found in those rented premises. As far as he is concerned, I can quantify a total of 26.63 grammes of cocaine. According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months\u0019 imprisonment.",
+        "source": "According to the latest sentencing guidelines, those trafficking in 26.63 grammes of cocaine would attract a mathematical starting point of 6 years and 3 months’ imprisonment.",
         "total_months": 75
       },
       "mitigation_reduction": null,
       "final_sentence": {
         "sentence_years": 4,
         "sentence_months": 4,
-        "source": "For Count 2, this defendant is sentenced to 4 years and 4 months\u0019 imprisonment.\nFor Count 1 and 2, I will order the sentences to run concurrently. Therefore, Fu is sentenced to a total of 4 years and 4 months\u0019 imprisonment.",
+        "source": "For Count 2, this defendant is sentenced to 4 years and 4 months’ imprisonment. For Count 1 and 2, I will order the sentences to run concurrently. Therefore, Fu is sentenced to a total of 4 years and 4 months’ imprisonment.",
         "total_months": 52
       }
     }
   ],
-  "tracing_id": "8564cc4908f43421ce8d18498eb97f54"
+  "tracing_id": "166893c871afdf340b4a8580651e1600"
 }

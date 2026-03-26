@@ -10,6 +10,7 @@ export type JudgementListItem = {
   appeal?: string
   corrigendum?: string
   year?: string
+  language?: 'english' | 'chinese' | 'unknown'
   processed: boolean
   verified?: boolean
   updatedAt?: string
@@ -17,9 +18,24 @@ export type JudgementListItem = {
     username: string
     name: string
   }
+  verifiedBy?: {
+    username: string
+    name: string
+  }
 }
 
 const PAGE_SIZE = 20
+const judgementListProjection = {
+  filename: 1,
+  trial: 1,
+  appeal: 1,
+  corrigendum: 1,
+  year: 1,
+  language: 1,
+  assigned_to: 1,
+  updatedAt: 1,
+  updated_at: 1,
+}
 
 export const Route = createFileRoute('/api/judgements/$')({
   server: {
@@ -44,6 +60,19 @@ export const Route = createFileRoute('/api/judgements/$')({
         const extractedCollection = db.collection('llm-extracted-features')
         const verifiedCollection = db.collection('verified-features')
 
+        const normalizeId = (value: unknown) =>
+          value instanceof ObjectId ? value.toHexString() : String(value)
+
+        const toObjectId = (value: unknown): ObjectId | null => {
+          if (value instanceof ObjectId) {
+            return value
+          }
+          if (typeof value === 'string' && ObjectId.isValid(value)) {
+            return new ObjectId(value)
+          }
+          return null
+        }
+
         const match: Record<string, unknown> = {}
         if (search) {
           match.$or = [
@@ -63,6 +92,7 @@ export const Route = createFileRoute('/api/judgements/$')({
 
         const verifiedIds = await verifiedCollection.distinct(
           'source_judgement_id',
+          { is_verified: true },
         )
         const verifiedObjectIds = verifiedIds
           .filter(Boolean)
@@ -80,13 +110,24 @@ export const Route = createFileRoute('/api/judgements/$')({
 
         const total = await judgementsCollection.countDocuments(match)
         const assigneeIds = await judgementsCollection.distinct('assigned_to')
+        const verifierIds = await verifiedCollection.distinct('verified_by', {
+          is_verified: true,
+        })
 
-        const assignees = await db
+        const userObjectIds = Array.from(
+          new Set(
+            [...assigneeIds, ...verifierIds]
+              .map((id) => toObjectId(id)?.toHexString())
+              .filter((id): id is string => Boolean(id)),
+          ),
+        ).map((id) => new ObjectId(id))
+
+        const users = await db
           .collection('user')
-          .find({ _id: { $in: assigneeIds } })
+          .find({ _id: { $in: userObjectIds } })
           .toArray()
 
-        const assigneeMap = assignees.reduce(
+        const userMap = users.reduce(
           (acc, user) => {
             acc[user._id.toHexString()] = {
               username: user.username,
@@ -97,13 +138,60 @@ export const Route = createFileRoute('/api/judgements/$')({
           {} as Record<string, { username: string; name: string }>,
         )
 
-        const cursor = judgementsCollection
-          .find(match)
-          .sort({ year: -1, trial: 1 })
-          .skip((page - 1) * PAGE_SIZE)
-          .limit(PAGE_SIZE)
+        // const cursor = judgementsCollection
+        //   .find(match)
+        //   .project(judgementListProjection)
+        //   .sort({ year: -1, trial: 1 })
+        //   .skip((page - 1) * PAGE_SIZE)
+        //   .limit(PAGE_SIZE)
+        //   .allowDiskUse(true)
 
-        const items = (await cursor.toArray()).map((doc) => {
+        const pipeline = [
+          { $match: match },
+          { $project: judgementListProjection },
+          { $sort: { year: -1, trial: 1 } },
+          { $skip: (page - 1) * PAGE_SIZE },
+          { $limit: PAGE_SIZE },
+        ]
+        const cursor = judgementsCollection.aggregate(pipeline, {
+          allowDiskUse: true,
+        })
+
+        const docs = await cursor.toArray()
+
+        const verificationDocs = await verifiedCollection
+          .find(
+            {
+              is_verified: true,
+              source_judgement_id: { $in: docs.map((doc) => doc._id) },
+            },
+            {
+              projection: {
+                source_judgement_id: 1,
+                verified_by: 1,
+                updated_at: 1,
+                verified_at: 1,
+              },
+            },
+          )
+          .sort({ updated_at: -1, verified_at: -1, _id: -1 })
+          .toArray()
+
+        const verifierByJudgementMap = new Map<string, string>()
+        for (const doc of verificationDocs) {
+          if (!doc.verified_by) {
+            continue
+          }
+          const judgementId = normalizeId(doc.source_judgement_id)
+          if (!verifierByJudgementMap.has(judgementId)) {
+            verifierByJudgementMap.set(
+              judgementId,
+              normalizeId(doc.verified_by),
+            )
+          }
+        }
+
+        const items = docs.map((doc) => {
           const id =
             doc._id instanceof ObjectId ? doc._id.toHexString() : `${doc._id}`
           const isProcessed = processedIds.some((pid) => pid.equals(doc._id))
@@ -111,8 +199,9 @@ export const Route = createFileRoute('/api/judgements/$')({
             vid.equals(doc._id),
           )
           const assignee = doc.assigned_to
-            ? assigneeMap[doc.assigned_to]
+            ? userMap[normalizeId(doc.assigned_to)]
             : undefined
+          const verifiedBy = userMap[verifierByJudgementMap.get(id) ?? '']
 
           return {
             id,
@@ -121,6 +210,7 @@ export const Route = createFileRoute('/api/judgements/$')({
             appeal: doc.appeal ?? null,
             corrigendum: doc.corrigendum ?? null,
             year: doc.year,
+            language: doc.language ?? 'unknown',
             processed: isProcessed,
             verified: isVerified,
             updatedAt:
@@ -128,6 +218,7 @@ export const Route = createFileRoute('/api/judgements/$')({
               doc.updated_at?.toString?.() ??
               null,
             assignee,
+            verifiedBy,
           } satisfies JudgementListItem
         })
 

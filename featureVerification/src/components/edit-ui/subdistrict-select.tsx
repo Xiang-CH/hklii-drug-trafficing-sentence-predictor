@@ -63,7 +63,7 @@ export function SubdistrictSelect({
       }
       value={selectedOption}
       onValueChange={(nextValue) => {
-        onValueChange?.(nextValue?.value ?? '')
+        onValueChange?.(nextValue?.value ?? null)
       }}
       itemToStringLabel={(item: SubdistrictOption) => item.label}
       itemToStringValue={(item: SubdistrictOption) => item.value}

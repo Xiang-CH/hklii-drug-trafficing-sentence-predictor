@@ -129,7 +129,6 @@ def extract_single_schema(
                 model=MODEL,
                 instructions=base_prompt,
                 input=full_input,
-                reasoning={"summary": "detailed"},
                 text_format=schema_model,
                 metadata={
                     "judgement_type": judgement_type,

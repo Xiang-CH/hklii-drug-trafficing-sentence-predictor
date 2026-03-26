@@ -23,7 +23,7 @@
       "parental_status": null,
       "household_composition": {
         "composition": "Lives with non-family",
-        "source": "she was living with a friend from September 2021 and not at home."
+        "source": "She was living with a friend from September 2021 and not at home."
       },
       "health_conditions": null,
       "drug_treatment_participation": null,
@@ -34,12 +34,16 @@
       "criminal_records": [
         {
           "record": "Other offences",
-          "source": "In June 2018, she was given a police superintendent’s caution for the offences of common assault and theft. In November 2018, she was sentenced to 24 months’ probation for the offences of wounding with intent to do grievous bodily harm and criminal damage. That probation order was subsequently extended for a further 6 months which would indicate trouble from her during the probation period and a breach of that probation."
+          "source": "In June 2018, she was given a police superintendent’s caution for the offences of common assault and theft. In November 2018, she was sentenced to 24 months’ probation for the offences of wounding with intent to do grievous bodily harm and criminal damage."
         }
       ],
       "positive_habits_after_arrest": [
         {
           "habit": "Studying",
+          "source": "I have received a letter in mitigation and evidence of her further recent vocational training to set herself up in employment in the future."
+        },
+        {
+          "habit": "Participation in rehabilitation/self-improvement",
           "source": "I have received a letter in mitigation and evidence of her further recent vocational training to set herself up in employment in the future."
         }
       ],
@@ -66,7 +70,10 @@
       "household_composition": null,
       "health_conditions": null,
       "drug_treatment_participation": null,
-      "education_level": null,
+      "education_level": {
+        "level": "Secondary - Upper",
+        "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences and still is a student in a vocational education course."
+      },
       "occupation": {
         "occupation_category": "Student",
         "occupation_name": null,
@@ -80,12 +87,7 @@
           "source": "He had a clear record at the time of his arrest."
         }
       ],
-      "positive_habits_after_arrest": [
-        {
-          "habit": "Studying",
-          "source": "The 2nd defendant of 317/2023, Lam, was 18 at the time of these offences and still is a student in a vocational education course."
-        }
-      ],
+      "positive_habits_after_arrest": null,
       "family_supports": [
         {
           "support": "Letters of support from family",
@@ -107,7 +109,7 @@
       "age_at_sentencing": null,
       "gender": {
         "gender": "Male",
-        "source": "Fu of 316/2023 was also 18 at the time of these offences. Fu was also still a student and I granted him bail to give him a chance to complete his HKDSE examinations and support his mother whilst she received chemotherapy treatment for cancer."
+        "source": "They seized the mobile with which he had communicated with So and a bunch of keys."
       },
       "marital_status": null,
       "parental_status": null,
@@ -116,12 +118,12 @@
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Upper",
-        "source": "I granted him bail to give him a chance to complete his HKDSE examinations"
+        "source": "Fu was also still a student and I granted him bail to give him a chance to complete his HKDSE examinations"
       },
       "occupation": {
         "occupation_category": "Student",
         "occupation_name": null,
-        "source": "Fu was also still a student and I granted him bail to give him a chance to complete his HKDSE examinations and support his mother whilst she received chemotherapy treatment for cancer."
+        "source": "Fu was also still a student and I granted him bail to give him a chance to complete his HKDSE examinations"
       },
       "monthly_wage": null,
       "government_subsidy_recipient": null,
@@ -131,19 +133,14 @@
           "source": "He too had a clear record at the time of his arrest."
         }
       ],
-      "positive_habits_after_arrest": [
-        {
-          "habit": "Studying",
-          "source": "I granted him bail to give him a chance to complete his HKDSE examinations"
-        }
-      ],
+      "positive_habits_after_arrest": null,
       "family_supports": [
         {
           "support": "Letters of support from family",
-          "source": "I have a letter from his mother who accepts he must bear responsibility for his mistakes but sees the good in him. I have also a letter from a social worker."
+          "source": "I have a letter from his mother who accepts he must bear responsibility for his mistakes."
         }
       ]
     }
   ],
-  "tracing_id": "8564cc4908f43421ce8d18498eb97f54"
+  "tracing_id": "166893c871afdf340b4a8580651e1600"
 }

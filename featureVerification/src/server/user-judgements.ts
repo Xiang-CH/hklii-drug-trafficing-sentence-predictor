@@ -38,6 +38,14 @@ export type VerifiedFeatureData = {
   verifiedBy?: string
 }
 
+const judgementListProjection = {
+  filename: 1,
+  trial: 1,
+  appeal: 1,
+  corrigendum: 1,
+  year: 1,
+}
+
 // Helper function to get status from verified-features collection
 async function getVerificationStatus(
   verifiedCollection: ReturnType<typeof db.collection>,
@@ -80,11 +88,17 @@ export const getUserAssignedJudgements = createServerFn({
     const judgementsCollection = db.collection('judgement-html')
     const verifiedCollection = db.collection('verified-features')
 
+    const pipeline = [
+      {
+        $match: {
+          $or: [{ assigned_to: new ObjectId(userId) }, { assigned_to: userId }],
+        },
+      },
+      { $project: judgementListProjection },
+      { $sort: { year: -1, trial: 1 } },
+    ]
     const judgements = await judgementsCollection
-      .find({
-        $or: [{ assigned_to: new ObjectId(userId) }, { assigned_to: userId }],
-      })
-      .sort({ year: -1, trial: 1 })
+      .aggregate(pipeline, { allowDiskUse: true })
       .toArray()
 
     const results: Array<UserJudgement> = []
@@ -384,6 +398,198 @@ export const revertToInProgress = createServerFn({
     if (!judgement) {
       throw new Error('Judgement not found or not assigned to you')
     }
+
+    const result = await verifiedCollection.updateOne(
+      { source_judgement_id: new ObjectId(judgementId) },
+      {
+        $set: {
+          is_verified: false,
+          updated_at: new Date(),
+        },
+        $unset: {
+          verified_by: '',
+          verified_at: '',
+        },
+      },
+    )
+
+    if (result.matchedCount === 0) {
+      throw new Error('No verified record found to revert')
+    }
+
+    return {
+      success: true,
+      message: 'Reverted to in progress',
+    }
+  })
+
+function requireAdmin(session: { user: { role?: string | null } }) {
+  if (session.user.role !== 'admin') {
+    throw new Error('Admin access required')
+  }
+}
+
+export const adminSaveVerificationProgress = createServerFn({
+  method: 'POST',
+})
+  .middleware([authMiddleware])
+  .inputValidator(
+    (input: {
+      judgementId: string
+      extractedId?: string
+      data: {
+        judgement: unknown
+        defendants: unknown
+        trials: unknown
+      }
+      remarks?: string
+      exclude: boolean
+    }) => input,
+  )
+  .handler(async ({ context, data }) => {
+    requireAdmin(context.session)
+    const userId = context.session.user.id
+    const { judgementId, extractedId, data: verificationData } = data
+
+    const verifiedCollection = db.collection('verified-features')
+
+    const existingDoc = await verifiedCollection.findOne({
+      source_judgement_id: new ObjectId(judgementId),
+    })
+
+    const now = new Date()
+
+    if (existingDoc) {
+      await verifiedCollection.updateOne(
+        { _id: existingDoc._id },
+        {
+          $set: {
+            judgement: verificationData.judgement,
+            defendants: verificationData.defendants,
+            trials: verificationData.trials,
+            remarks: data.remarks,
+            exclude: data.exclude,
+            updated_at: now,
+          },
+        },
+      )
+
+      return {
+        success: true,
+        verifiedFeatureId: existingDoc._id.toHexString(),
+        message: 'Progress saved',
+      }
+    } else {
+      const result = await verifiedCollection.insertOne({
+        source_judgement_id: new ObjectId(judgementId),
+        source_llm_extraction_id: extractedId
+          ? new ObjectId(extractedId)
+          : undefined,
+        is_verified: false,
+        judgement: verificationData.judgement,
+        defendants: verificationData.defendants,
+        trials: verificationData.trials,
+        created_by: new ObjectId(userId),
+        created_at: now,
+        updated_at: now,
+        remarks: data.remarks,
+        exclude: data.exclude,
+      })
+
+      return {
+        success: true,
+        verifiedFeatureId: result.insertedId.toHexString(),
+        message: 'Progress saved',
+      }
+    }
+  })
+
+export const adminMarkAsVerified = createServerFn({
+  method: 'POST',
+})
+  .middleware([authMiddleware])
+  .inputValidator(
+    (input: {
+      judgementId: string
+      data: {
+        judgement: unknown
+        defendants: unknown
+        trials: unknown
+      }
+      remarks?: string
+      exclude: boolean
+    }) => input,
+  )
+  .handler(async ({ context, data }) => {
+    requireAdmin(context.session)
+    const userId = context.session.user.id
+    const { judgementId, data: verificationData } = data
+
+    const verifiedCollection = db.collection('verified-features')
+
+    const existingDoc = await verifiedCollection.findOne({
+      source_judgement_id: new ObjectId(judgementId),
+    })
+
+    const now = new Date()
+
+    if (existingDoc) {
+      await verifiedCollection.updateOne(
+        { _id: existingDoc._id },
+        {
+          $set: {
+            judgement: verificationData.judgement,
+            defendants: verificationData.defendants,
+            trials: verificationData.trials,
+            is_verified: true,
+            verified_by: new ObjectId(userId),
+            verified_at: now,
+            updated_at: now,
+            remarks: data.remarks,
+            exclude: data.exclude,
+          },
+        },
+      )
+
+      return {
+        success: true,
+        verifiedFeatureId: existingDoc._id.toHexString(),
+        message: 'Marked as verified',
+      }
+    } else {
+      const result = await verifiedCollection.insertOne({
+        source_judgement_id: new ObjectId(judgementId),
+        is_verified: true,
+        judgement: verificationData.judgement,
+        defendants: verificationData.defendants,
+        trials: verificationData.trials,
+        verified_by: new ObjectId(userId),
+        verified_at: now,
+        created_by: new ObjectId(userId),
+        created_at: now,
+        updated_at: now,
+        remarks: data.remarks,
+        exclude: data.exclude,
+      })
+
+      return {
+        success: true,
+        verifiedFeatureId: result.insertedId.toHexString(),
+        message: 'Marked as verified',
+      }
+    }
+  })
+
+export const adminRevertToInProgress = createServerFn({
+  method: 'POST',
+})
+  .middleware([authMiddleware])
+  .inputValidator((input: { judgementId: string }) => input)
+  .handler(async ({ context, data }) => {
+    requireAdmin(context.session)
+    const { judgementId } = data
+
+    const verifiedCollection = db.collection('verified-features')
 
     const result = await verifiedCollection.updateOne(
       { source_judgement_id: new ObjectId(judgementId) },

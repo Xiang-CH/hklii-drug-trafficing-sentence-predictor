@@ -11,6 +11,7 @@ export const DrugTypeSchema = z.enum([
   'GHB/GBL',
   'Heroin',
   'Ketamine',
+  'Fluorodeschloroketamine',
   'Nimetazepam',
   'Morphine',
   'Methamphetamine',
@@ -50,6 +51,7 @@ export const MitigatingFactorTypeSchema = z.enum([
   'Prosecutorial delay',
   'Mistaken belief',
   'Rehabilitation programme',
+  'Charity',
   'Other',
 ])
 
@@ -62,6 +64,7 @@ export const HighCourtPleaStageSchema = z.enum([
   'After dates fixed',
   'First day',
   'During trial',
+  'Other',
 ])
 
 export const DistrictCourtPleaStageSchema = z.enum([
@@ -70,6 +73,7 @@ export const DistrictCourtPleaStageSchema = z.enum([
   'After dates fixed',
   'First day',
   'During trial',
+  'Other',
 ])
 
 export const DrugDetailSchema = z
@@ -116,31 +120,56 @@ export const GuiltyPleaDetailSchema = z
     pleaded_guilty: z.boolean(),
     court_type: CourtTypeSchema.nullable().default(null),
     high_court_stage: HighCourtPleaStageSchema.nullable().default(null),
+    high_court_stage_other: z.string().nullable().default(null),
     district_court_stage: DistrictCourtPleaStageSchema.nullable().default(null),
+    district_court_stage_other: z.string().nullable().default(null),
     reduction_years: z.number().int().nullable().default(null),
     reduction_months: z.number().int().nullable().default(null),
     reduction_percentage: z.number().min(0).max(100).nullable().default(null),
     inferred: z.boolean().default(false),
     source: z.string(),
   })
+  .refine((data) => !(data.pleaded_guilty && data.court_type === null), {
+    message: 'court_type is required when pleaded_guilty is true',
+  })
   .refine(
-    (data) => {
-      if (data.pleaded_guilty && data.court_type === null) {
-        return false
-      }
-      if (data.court_type === 'High Court' && data.high_court_stage === null) {
-        return false
-      }
-      if (
+    (data) =>
+      !(data.court_type === 'High Court' && data.high_court_stage === null),
+    {
+      message: 'high_court_stage is required when court_type is High Court',
+    },
+  )
+  .refine(
+    (data) =>
+      !(
+        data.high_court_stage === 'Other' &&
+        data.high_court_stage_other === null
+      ),
+    {
+      message:
+        'high_court_stage_other is required when high_court_stage is Other',
+    },
+  )
+  .refine(
+    (data) =>
+      !(
         data.court_type === 'District Court' &&
         data.district_court_stage === null
-      ) {
-        return false
-      }
-      return true
-    },
+      ),
     {
-      message: 'Conditional fields validation failed',
+      message:
+        'district_court_stage is required when court_type is District Court',
+    },
+  )
+  .refine(
+    (data) =>
+      !(
+        data.district_court_stage === 'Other' &&
+        data.district_court_stage_other === null
+      ),
+    {
+      message:
+        'district_court_stage_other is required when district_court_stage is Other',
     },
   )
   .transform((data) => ({

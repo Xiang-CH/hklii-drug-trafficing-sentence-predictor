@@ -11,7 +11,6 @@ import { Trash } from 'lucide-react'
 import { toast } from 'sonner'
 import type { UseMutationResult } from '@tanstack/react-query'
 import type { UserType } from '@/lib/auth'
-import type { UserAssignmentCounts } from '@/server/assignment'
 import { authClient, requireAdminAuth } from '@/lib/auth-client'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -62,6 +61,8 @@ type UserMutationVariables =
 
 const USERS_PER_PAGE = 50
 
+type UsersQueryData = Awaited<ReturnType<typeof getUsers>>
+
 async function getUsers(page: number) {
   const response = await authClient.admin.listUsers({
     query: {
@@ -77,6 +78,7 @@ async function getUsers(page: number) {
 }
 
 export const Route = createFileRoute('/admin/users')({
+  ssr: false,
   component: UsersComponent,
   validateSearch: (search: Record<string, string>): UsersSearchParams => {
     return {
@@ -86,56 +88,25 @@ export const Route = createFileRoute('/admin/users')({
   beforeLoad: async ({ search }) => {
     await requireAdminAuth(`/admin/users?page=${search.page}`)
   },
-  loaderDeps: ({ search }) => ({
-    page: search.page,
-  }),
-  loader: async (deps) => {
-    const { page = 1 } = deps.deps
-    const response = await getUsers(page)
-    const assignmentCounts = await getUserAssignmentCounts()
-    return { response, assignmentCounts }
-  },
 })
 
 function UsersComponent() {
-  const { response, assignmentCounts } = Route.useLoaderData()
   const navigate = useNavigate({ from: '/admin/users' })
   const { page = 1 } = Route.useSearch()
 
-  if (response.error) {
-    return (
-      <div className="flex h-[calc(100vh-4rem)] items-center justify-center text-destructive">
-        {response.error.status}: {response.error.statusText}
-        {response.error.message}
-      </div>
-    )
-  }
-
-  // const users = response?.data?.users ?? []
   const queryClient = useQueryClient()
-  const { data: users } = useQuery({
+  const { data: response, isPending: isUsersPending } = useQuery({
     queryKey: ['users', page],
-    initialData: response.data.users,
-    queryFn: () => getUsers(page).then((res) => res.data?.users ?? []),
+    queryFn: () => getUsers(page),
+  })
+  const { data: assignmentCounts } = useQuery({
+    queryKey: ['user-assignment-counts'],
+    queryFn: () => getUserAssignmentCounts(),
   })
 
-  // Track assignment counts locally and update on mutation success
-  const [localAssignmentCounts, setLocalAssignmentCounts] =
-    React.useState<UserAssignmentCounts>(assignmentCounts)
-
-  // Update local counts when loader data changes (e.g., when navigating back)
-  // React.useEffect(() => {
-  //   setLocalAssignmentCounts(assignmentCounts)
-  // }, [assignmentCounts])
-
-  // Refresh counts when component mounts or page changes
-  React.useEffect(() => {
-    const refreshCounts = async () => {
-      const freshCounts = await getUserAssignmentCounts()
-      setLocalAssignmentCounts(freshCounts)
-    }
-    refreshCounts()
-  }, [page])
+  const users = response?.data?.users ?? []
+  const totalUsers = response?.data?.total ?? 0
+  const localAssignmentCounts = assignmentCounts ?? {}
 
   const [editingId, setEditingId] = React.useState<string | null>(null)
   const [editingValues, setEditingValues] = React.useState({
@@ -152,7 +123,7 @@ function UsersComponent() {
     void,
     Error,
     UserMutationVariables,
-    { previousUsers?: unknown }
+    { previousUsers?: UsersQueryData }
   >({
     mutationFn: async ({ userId, data }: UserMutationVariables) => {
       if (userId) {
@@ -166,15 +137,15 @@ function UsersComponent() {
     },
     onMutate: async (newUser) => {
       await queryClient.cancelQueries({ queryKey: ['users', page] })
-      const previousUsers = queryClient.getQueryData(['users', page])
-      queryClient.setQueryData(['users', page], (old: any) => {
-        return old.map((user: any) => {
-          if (user.id === newUser.userId) {
-            return { ...user, ...newUser.data }
-          }
-          return user
-        })
-      })
+      const previousUsers = queryClient.getQueryData<UsersQueryData>([
+        'users',
+        page,
+      ])
+
+      if (!newUser.userId) {
+        return { previousUsers }
+      }
+
       return { previousUsers }
     },
     onError: (err, _, context) => {
@@ -182,9 +153,26 @@ function UsersComponent() {
       queryClient.setQueryData(['users', page], context?.previousUsers) // rollback to previous users on error
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['users', page] })
+      queryClient.invalidateQueries({ queryKey: ['users'] })
     },
   })
+
+  if (response?.error) {
+    return (
+      <div className="flex h-[calc(100vh-4rem)] items-center justify-center text-destructive">
+        {response.error.status}: {response.error.statusText}
+        {response.error.message}
+      </div>
+    )
+  }
+
+  if (isUsersPending) {
+    return (
+      <div className="flex h-[calc(100vh-4rem)] items-center justify-center text-muted-foreground">
+        Loading users...
+      </div>
+    )
+  }
 
   function startEdit(user: UserType) {
     setErrorMsg(null)
@@ -235,6 +223,7 @@ function UsersComponent() {
     try {
       await deleteUser({ data: editingId })
       queryClient.invalidateQueries({ queryKey: ['users', page] })
+      queryClient.invalidateQueries({ queryKey: ['user-assignment-counts'] })
       toast.success('User deleted successfully')
     } catch (err: any) {
       toast.error(err?.message || 'Failed to delete user')
@@ -456,7 +445,7 @@ function UsersComponent() {
       <div className="mt-4 flex justify-end">
         <Pagination
           currentPage={page}
-          totalPages={Math.ceil(response.data.total / USERS_PER_PAGE)}
+          totalPages={Math.ceil(totalUsers / USERS_PER_PAGE)}
           callback={(newPage) => {
             navigate({
               search: (prev) => ({
@@ -478,7 +467,7 @@ function CreateUserForm({
     void,
     Error,
     UserMutationVariables,
-    { previousUsers?: unknown }
+    { previousUsers?: UsersQueryData }
   >
 }) {
   const [editedUsername, setEditedUsername] = React.useState(false)
@@ -492,10 +481,10 @@ function CreateUserForm({
     onSubmitInvalid(props) {
       console.log('CreateUserForm submit invalid', props)
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       console.log('CreateUserForm submit values', values.value)
       const data = { ...values.value, password: values.value.username }
-      updateUserMutation.mutateAsync({ data, userId: undefined })
+      await updateUserMutation.mutateAsync({ data, userId: undefined })
       form.reset()
     },
   })

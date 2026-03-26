@@ -61,6 +61,7 @@ async function getJudgements(params: JudgementsSearchParams) {
 }
 
 export const Route = createFileRoute('/admin/judgements/')({
+  ssr: false,
   component: JudgementsComponent,
   validateSearch: (search: Record<string, string>): JudgementsSearchParams => {
     return {
@@ -72,34 +73,39 @@ export const Route = createFileRoute('/admin/judgements/')({
   beforeLoad: async ({ location }) => {
     await requireAdminAuth(location.href)
   },
-  loaderDeps: ({ search }) => ({
-    page: search.page,
-    status: search.status,
-    searchText: search.search,
-  }),
-  loader: async ({ deps }) => {
-    return getJudgements({
-      page: deps.page,
-      status: deps.status,
-      search: deps.searchText,
-    })
-  },
 })
 
 function JudgementsComponent() {
-  const initial = Route.useLoaderData()
   const { page, status, search } = Route.useSearch()
   const [searchText, setSearchText] = React.useState(search ?? '')
   const navigate = useNavigate({ from: '/admin/judgements/' })
 
-  const { data } = useQuery({
+  const { data, isPending } = useQuery({
     queryKey: ['judgements', page, status, search],
-    initialData: initial,
     queryFn: () => getJudgements({ page, status, search }),
     gcTime: 0,
   })
 
+  if (isPending || !data) {
+    return (
+      <div className="flex h-[calc(100vh-4rem)] items-center justify-center text-muted-foreground">
+        Loading judgements...
+      </div>
+    )
+  }
+
   const totalPages = Math.ceil(data.total / JUDGEMENTS_PER_PAGE)
+  const getLanguageLabel = (
+    language: JudgementListItem['language'] | undefined,
+  ) => {
+    if (language === 'chinese') {
+      return 'Chinese'
+    }
+    if (language === 'english') {
+      return 'English'
+    }
+    return 'Unknown'
+  }
 
   return (
     <div className="container mx-auto p-6 max-w-6xl">
@@ -129,7 +135,7 @@ function JudgementsComponent() {
               })
             }}
           >
-            <SelectTrigger className="w-[160px]">
+            <SelectTrigger className="w-40">
               <SelectValue placeholder="All" />
             </SelectTrigger>
             <SelectContent>
@@ -161,8 +167,10 @@ function JudgementsComponent() {
           <TableHeader>
             <TableRow>
               <TableHead>Case</TableHead>
+              <TableHead>Language</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Assignee</TableHead>
+              <TableHead>Verified By</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -181,6 +189,18 @@ function JudgementsComponent() {
                     </span>
                   </Link>
                 </TableCell>
+                <TableCell className="text-muted-foreground">
+                  <span
+                    className={
+                      'inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ' +
+                      (row.language === 'chinese'
+                        ? 'bg-orange-50'
+                        : 'bg-indigo-50')
+                    }
+                  >
+                    {getLanguageLabel(row.language)}
+                  </span>
+                </TableCell>
                 <TableCell>
                   <span
                     className={`inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ${
@@ -191,11 +211,18 @@ function JudgementsComponent() {
                           : 'bg-muted text-muted-foreground'
                     }`}
                   >
-                    {row.processed ? 'Processed' : 'Unprocessed'}
+                    {row.verified
+                      ? 'Verified'
+                      : row.processed
+                        ? 'Processed'
+                        : 'Unprocessed'}
                   </span>
                 </TableCell>
                 <TableCell className="text-muted-foreground">
                   {row.assignee ? row.assignee.name : '-'}
+                </TableCell>
+                <TableCell className="text-muted-foreground">
+                  {row.verifiedBy ? row.verifiedBy.name : '-'}
                 </TableCell>
               </TableRow>
             ))}
