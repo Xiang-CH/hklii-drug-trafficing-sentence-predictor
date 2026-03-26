@@ -4,7 +4,7 @@ import {
   useNavigate,
   useRouter,
 } from '@tanstack/react-router'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import {
   AlertCircle,
@@ -56,6 +56,13 @@ function VerifyJudgementPage() {
   const [hasValidationErrors, setHasValidationErrors] = useState(false)
 
   const [notGivenMap, setNotGivenMap] = useState<Record<string, boolean>>({})
+  const lastSyncedRef = useRef<{
+    judgement: any
+    defendants: any
+    trials: any
+    remarks: string
+    exclude: boolean
+  } | null>(null)
 
   const initial = Route.useLoaderData()
   const { data: judgement, error } = useQuery({
@@ -80,6 +87,14 @@ function VerifyJudgementPage() {
           trials: sourceData.trials,
         }),
       )
+      lastSyncedRef.current = {
+        judgement: sourceData.judgement,
+        defendants: sourceData.defendants,
+        trials: sourceData.trials,
+        remarks: judgement.verifiedData?.remarks ?? '',
+        exclude: judgement.verifiedData?.exclude ?? false,
+      }
+      setHasUnsavedChanges(false)
     }
   }, [judgement])
 
@@ -93,19 +108,20 @@ function VerifyJudgementPage() {
 
   // Track unsaved changes
   useEffect(() => {
-    const sourceData = judgement.verifiedData || judgement.extractedData
-    if (sourceData) {
-      const hasChanges =
-        JSON.stringify(judgementData) !==
-          JSON.stringify(sourceData.judgement) ||
-        JSON.stringify(defendantsData) !==
-          JSON.stringify(sourceData.defendants) ||
-        JSON.stringify(trialsData) !== JSON.stringify(sourceData.trials)
-      // TODO: No unsaved notification for Not Given Checkbox
-      // Object.values(notGivenMap).some(Boolean)
-      setHasUnsavedChanges(hasChanges)
+    if (!lastSyncedRef.current) {
+      return
     }
-  }, [judgementData, defendantsData, trialsData, judgement, notGivenMap])
+    const hasChanges =
+      JSON.stringify(judgementData) !==
+        JSON.stringify(lastSyncedRef.current.judgement) ||
+      JSON.stringify(defendantsData) !==
+        JSON.stringify(lastSyncedRef.current.defendants) ||
+      JSON.stringify(trialsData) !==
+        JSON.stringify(lastSyncedRef.current.trials) ||
+      remarks !== lastSyncedRef.current.remarks ||
+      exclude !== lastSyncedRef.current.exclude
+    setHasUnsavedChanges(hasChanges)
+  }, [judgementData, defendantsData, trialsData, remarks, exclude])
 
   // Save progress mutation
   const saveMutation = useMutation({
@@ -315,7 +331,6 @@ function VerifyJudgementPage() {
                   onClick={() => revertMutation.mutate()}
                   disabled={revertMutation.isPending}
                   variant="outline"
-                  size="sm"
                 >
                   {revertMutation.isPending ? (
                     <Loader2 className="h-4 w-4 animate-spin" />

@@ -21,4 +21,4 @@
 - [x] Add `Verified / Unverified` filter alongside existing filters
 - [x] Add language filter to distinguish English vs Chinese judgments
 - [x] Allow Super.Admin to view all users' work without reassignment
-- [ ] Allow admin to save changes when reviewing other users' work (currently must reassign case to self to edit)
+- [x] Allow admin to save changes when reviewing other users' work (currently must reassign case to self to edit)

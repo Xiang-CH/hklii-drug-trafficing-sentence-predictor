@@ -4,13 +4,22 @@ import {
   redirect,
   useRouter,
 } from '@tanstack/react-router'
-import { useQuery } from '@tanstack/react-query'
-import { ArrowLeft, CheckCircle2 } from 'lucide-react'
-import { useEffect, useMemo, useState } from 'react'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { ArrowLeft, CheckCircle2, Loader2, Save, Undo2 } from 'lucide-react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { toast } from 'sonner'
 import type { EditableDataSectionKey } from '@/components/edit-ui/editable-data-section'
 import type { JudgementDetail } from '@/routes/api/judgements/$filename'
 import { requireAdminAuth } from '@/lib/auth-client'
-import { deriveNotGivenMapFromPayload } from '@/lib/not-given'
+import {
+  applyNotGivenToPayload,
+  deriveNotGivenMapFromPayload,
+} from '@/lib/not-given'
+import {
+  adminMarkAsVerified,
+  adminRevertToInProgress,
+  adminSaveVerificationProgress,
+} from '@/server/user-judgements'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
@@ -48,7 +57,17 @@ function JudgementDetailComponent() {
   const [remarks, setRemarks] = useState<string>('')
   const [exclude, setExclude] = useState<boolean>(false)
   const [notGivenMap, setNotGivenMap] = useState<Record<string, boolean>>({})
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false)
+  const [hasValidationErrors, setHasValidationErrors] = useState(false)
+  const lastSyncedRef = useRef<{
+    judgement: any
+    defendants: any
+    trials: any
+    remarks: string
+    exclude: boolean
+  } | null>(null)
   const { history } = useRouter()
+  const queryClient = useQueryClient()
 
   const { data, isPending } = useQuery({
     queryKey: ['judgement', filename],
@@ -78,7 +97,31 @@ function JudgementDetailComponent() {
         trials: sourceData.trials,
       }),
     )
+    lastSyncedRef.current = {
+      judgement: sourceData.judgement,
+      defendants: sourceData.defendants,
+      trials: sourceData.trials,
+      remarks: data?.verifiedData?.remarks ?? '',
+      exclude: data?.verifiedData?.exclude ?? false,
+    }
+    setHasUnsavedChanges(false)
   }, [data?.verifiedData?.exclude, data?.verifiedData?.remarks, sourceData])
+
+  useEffect(() => {
+    if (!lastSyncedRef.current) {
+      return
+    }
+    const hasChanges =
+      JSON.stringify(judgementData) !==
+        JSON.stringify(lastSyncedRef.current.judgement) ||
+      JSON.stringify(defendantsData) !==
+        JSON.stringify(lastSyncedRef.current.defendants) ||
+      JSON.stringify(trialsData) !==
+        JSON.stringify(lastSyncedRef.current.trials) ||
+      remarks !== lastSyncedRef.current.remarks ||
+      exclude !== lastSyncedRef.current.exclude
+    setHasUnsavedChanges(hasChanges)
+  }, [judgementData, defendantsData, trialsData, remarks, exclude])
 
   const extractedDefaults = data?.extractedData
     ? {
@@ -88,6 +131,83 @@ function JudgementDetailComponent() {
       }
     : {}
 
+  const saveMutation = useMutation({
+    mutationFn: () => {
+      const cleaned = applyNotGivenToPayload(
+        {
+          judgement: judgementData,
+          defendants: defendantsData,
+          trials: trialsData,
+        },
+        notGivenMap,
+      )
+
+      return adminSaveVerificationProgress({
+        data: {
+          judgementId: data?.id || '',
+          extractedId: data?.extractedData?.extractedId,
+          data: cleaned,
+          remarks,
+          exclude,
+        },
+      })
+    },
+    onSuccess: (result) => {
+      toast.success(result.message)
+      setHasUnsavedChanges(false)
+      queryClient.invalidateQueries({ queryKey: ['judgement', filename] })
+    },
+    onError: (err) => {
+      toast.error('Failed to save progress', {
+        description: err instanceof Error ? err.message : 'Unknown error',
+      })
+    },
+  })
+
+  const verifyMutation = useMutation({
+    mutationFn: () => {
+      const cleaned = applyNotGivenToPayload(
+        {
+          judgement: judgementData,
+          defendants: defendantsData,
+          trials: trialsData,
+        },
+        notGivenMap,
+      )
+      return adminMarkAsVerified({
+        data: {
+          judgementId: data?.id || '',
+          data: cleaned,
+          remarks,
+          exclude,
+        },
+      })
+    },
+    onSuccess: (result) => {
+      toast.success(result.message)
+      queryClient.invalidateQueries({ queryKey: ['judgement', filename] })
+    },
+    onError: (err) => {
+      toast.error('Failed to verify', {
+        description: err instanceof Error ? err.message : 'Unknown error',
+      })
+    },
+  })
+
+  const revertMutation = useMutation({
+    mutationFn: () =>
+      adminRevertToInProgress({ data: { judgementId: data?.id || '' } }),
+    onSuccess: (result) => {
+      toast.success(result.message)
+      queryClient.invalidateQueries({ queryKey: ['judgement', filename] })
+    },
+    onError: (err) => {
+      toast.error('Failed to revert', {
+        description: err instanceof Error ? err.message : 'Unknown error',
+      })
+    },
+  })
+
   const handleDataChange = (
     newData: {
       judgement: any
@@ -96,8 +216,9 @@ function JudgementDetailComponent() {
       remarks?: string
       exclude: boolean
     },
-    _hasErrors: boolean,
+    hasErrors: boolean,
   ) => {
+    setHasValidationErrors(hasErrors)
     setJudgementData(newData.judgement)
     setDefendantsData(newData.defendants)
     setTrialsData(newData.trials)
@@ -214,10 +335,6 @@ function JudgementDetailComponent() {
                         {data.verifiedData.verifiedBy}
                       </Link>
                     </span>
-                    <Badge className="bg-green-100 text-green-700">
-                      <CheckCircle2 className="mr-1 h-3 w-3" />
-                      Verified
-                    </Badge>
                   </>
                 )}
                 {data.status === 'in_progress' && data.verifiedData && (
@@ -230,6 +347,79 @@ function JudgementDetailComponent() {
                     Unverified but Extracted
                   </Badge>
                 )}
+                {hasUnsavedChanges && (
+                  <Badge
+                    variant="secondary"
+                    className="bg-blue-100 text-blue-700"
+                  >
+                    Unsaved Changes
+                  </Badge>
+                )}
+                {data.status === 'verified' ? (
+                  <Button
+                    onClick={() => revertMutation.mutate()}
+                    disabled={revertMutation.isPending}
+                    variant="outline"
+                    size="sm"
+                  >
+                    {revertMutation.isPending ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : (
+                      <>
+                        <Undo2 className="mr-1 h-4 w-4" />
+                        Revert Verified
+                      </>
+                    )}
+                  </Button>
+                ) : null}
+                <Button
+                  onClick={() => saveMutation.mutate()}
+                  disabled={
+                    saveMutation.isPending ||
+                    hasValidationErrors ||
+                    !hasUnsavedChanges
+                  }
+                  variant="outline"
+                >
+                  {saveMutation.isPending ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Saving...
+                    </>
+                  ) : (
+                    <>
+                      <Save className="mr-2 h-4 w-4" />
+                      Save Progress
+                    </>
+                  )}
+                </Button>
+                <Button
+                  onClick={() => verifyMutation.mutate()}
+                  disabled={
+                    verifyMutation.isPending ||
+                    data.status === 'verified' ||
+                    !judgementData ||
+                    hasValidationErrors
+                  }
+                  className="bg-green-600 hover:bg-green-700"
+                >
+                  {verifyMutation.isPending ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Verifying...
+                    </>
+                  ) : data.status === 'verified' ? (
+                    <>
+                      <CheckCircle2 className="mr-2 h-4 w-4" />
+                      Verified
+                    </>
+                  ) : (
+                    <>
+                      <CheckCircle2 className="mr-2 h-4 w-4" />
+                      Mark as Verified
+                    </>
+                  )}
+                </Button>
               </div>
             </div>
           </div>
