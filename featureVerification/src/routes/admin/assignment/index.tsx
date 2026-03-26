@@ -262,9 +262,7 @@ function AssignmentComponent() {
   const getLanguageLabel = (
     languageValue: AssignmentData['judgements'][number]['language'] | undefined,
   ) => {
-    if (
-      languageValue === 'chinese'
-    ) {
+    if (languageValue === 'chinese') {
       return 'Chinese'
     }
     if (languageValue === 'english') {

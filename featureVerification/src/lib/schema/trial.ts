@@ -129,34 +129,47 @@ export const GuiltyPleaDetailSchema = z
     inferred: z.boolean().default(false),
     source: z.string(),
   })
+  .refine((data) => !(data.pleaded_guilty && data.court_type === null), {
+    message: 'court_type is required when pleaded_guilty is true',
+  })
   .refine(
-    (data) => !(data.pleaded_guilty && data.court_type === null),
-    {
-      message: 'court_type is required when pleaded_guilty is true',
-    },
-  )
-  .refine(
-    (data) => !(data.court_type === 'High Court' && data.high_court_stage === null),
+    (data) =>
+      !(data.court_type === 'High Court' && data.high_court_stage === null),
     {
       message: 'high_court_stage is required when court_type is High Court',
     },
   )
   .refine(
-    (data) => !(data.high_court_stage === 'Other' && data.high_court_stage_other === null),
+    (data) =>
+      !(
+        data.high_court_stage === 'Other' &&
+        data.high_court_stage_other === null
+      ),
     {
-      message: 'high_court_stage_other is required when high_court_stage is Other',
+      message:
+        'high_court_stage_other is required when high_court_stage is Other',
     },
   )
   .refine(
-    (data) => !(data.court_type === 'District Court' && data.district_court_stage === null),
+    (data) =>
+      !(
+        data.court_type === 'District Court' &&
+        data.district_court_stage === null
+      ),
     {
-      message: 'district_court_stage is required when court_type is District Court',
+      message:
+        'district_court_stage is required when court_type is District Court',
     },
   )
   .refine(
-    (data) => !(data.district_court_stage === 'Other' && data.district_court_stage_other === null),
+    (data) =>
+      !(
+        data.district_court_stage === 'Other' &&
+        data.district_court_stage_other === null
+      ),
     {
-      message: 'district_court_stage_other is required when district_court_stage is Other',
+      message:
+        'district_court_stage_other is required when district_court_stage is Other',
     },
   )
   .transform((data) => ({
