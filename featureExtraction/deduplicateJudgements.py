@@ -53,9 +53,7 @@ def is_present(value: Any) -> bool:
 
 def coerce_datetime(value: Any) -> datetime | None:
     if isinstance(value, datetime):
-        return (
-            value if value.tzinfo is not None else value.replace(tzinfo=timezone.utc)
-        )
+        return value if value.tzinfo is not None else value.replace(tzinfo=timezone.utc)
     if isinstance(value, str):
         try:
             normalized = value.replace("Z", "+00:00")
@@ -159,7 +157,9 @@ def find_duplicate_groups(
     )
 
     judgement_map = {
-        normalize_object_id(doc.get("_id")): doc for doc in judgement_docs if doc.get("_id")
+        normalize_object_id(doc.get("_id")): doc
+        for doc in judgement_docs
+        if doc.get("_id")
     }
     extracted_by_source: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for doc in extracted_docs:
@@ -366,14 +366,16 @@ def apply_group(
     primary_extraction = choose_primary_extraction(group.extraction_docs, keeper_id)
     primary_extraction_id = (
         primary_extraction.get("_id")
-        if primary_extraction is not None and isinstance(primary_extraction.get("_id"), ObjectId)
+        if primary_extraction is not None
+        and isinstance(primary_extraction.get("_id"), ObjectId)
         else None
     )
     extraction_update = build_extraction_update(primary_extraction, keeper)
     extraction_ids_to_delete = [
         doc["_id"]
         for doc in group.extraction_docs
-        if primary_extraction is not None and doc.get("_id") != primary_extraction.get("_id")
+        if primary_extraction is not None
+        and doc.get("_id") != primary_extraction.get("_id")
     ]
 
     primary_verified = choose_primary_verified(group.verified_docs, keeper_id)
@@ -383,7 +385,8 @@ def apply_group(
     verified_ids_to_delete = [
         doc["_id"]
         for doc in group.verified_docs
-        if primary_verified is not None and doc.get("_id") != primary_verified.get("_id")
+        if primary_verified is not None
+        and doc.get("_id") != primary_verified.get("_id")
     ]
 
     summary.groups += 1

@@ -11,6 +11,4 @@ if __name__ == "__main__":
     judgements_collection.create_index("trial")
     judgements_collection.create_index("appeal")
     judgements_collection.create_index("corrigendum")
-    judgements_collection.create_index(
-        ["trial", ("year", pymongo.DESCENDING)]
-    )
+    judgements_collection.create_index(["trial", ("year", pymongo.DESCENDING)])
