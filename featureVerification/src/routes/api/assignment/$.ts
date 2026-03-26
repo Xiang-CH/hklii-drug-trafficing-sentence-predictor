@@ -37,6 +37,15 @@ export type AssignmentData = {
 }
 
 const PAGE_SIZE = 50
+const judgementListProjection = {
+  filename: 1,
+  trial: 1,
+  appeal: 1,
+  corrigendum: 1,
+  year: 1,
+  language: 1,
+  assigned_to: 1,
+}
 
 export const Route = createFileRoute('/api/assignment/$')({
   server: {
@@ -173,11 +182,15 @@ export const Route = createFileRoute('/api/assignment/$')({
 
         const total = await judgementsCollection.countDocuments(match)
 
+        const pipeline = [
+          { $match: match },
+          { $project: judgementListProjection },
+          { $sort: { year: -1, trial: 1 } },
+          { $skip: (page - 1) * PAGE_SIZE },
+          { $limit: PAGE_SIZE },
+        ]
         const judgements = await judgementsCollection
-          .find(match)
-          .sort({ year: -1, trial: 1 })
-          .skip((page - 1) * PAGE_SIZE)
-          .limit(PAGE_SIZE)
+          .aggregate(pipeline, { allowDiskUse: true })
           .toArray()
 
         // Build assignee map for quick lookup

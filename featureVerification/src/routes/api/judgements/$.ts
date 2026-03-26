@@ -25,6 +25,17 @@ export type JudgementListItem = {
 }
 
 const PAGE_SIZE = 20
+const judgementListProjection = {
+  filename: 1,
+  trial: 1,
+  appeal: 1,
+  corrigendum: 1,
+  year: 1,
+  language: 1,
+  assigned_to: 1,
+  updatedAt: 1,
+  updated_at: 1,
+}
 
 export const Route = createFileRoute('/api/judgements/$')({
   server: {
@@ -127,11 +138,24 @@ export const Route = createFileRoute('/api/judgements/$')({
           {} as Record<string, { username: string; name: string }>,
         )
 
-        const cursor = judgementsCollection
-          .find(match)
-          .sort({ year: -1, trial: 1 })
-          .skip((page - 1) * PAGE_SIZE)
-          .limit(PAGE_SIZE)
+        // const cursor = judgementsCollection
+        //   .find(match)
+        //   .project(judgementListProjection)
+        //   .sort({ year: -1, trial: 1 })
+        //   .skip((page - 1) * PAGE_SIZE)
+        //   .limit(PAGE_SIZE)
+        //   .allowDiskUse(true)
+
+        const pipeline = [
+          { $match: match },
+          { $project: judgementListProjection },
+          { $sort: { year: -1, trial: 1 } },
+          { $skip: (page - 1) * PAGE_SIZE },
+          { $limit: PAGE_SIZE },
+        ]
+        const cursor = judgementsCollection.aggregate(pipeline, {
+          allowDiskUse: true,
+        })
 
         const docs = await cursor.toArray()
 

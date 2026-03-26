@@ -38,6 +38,14 @@ export type VerifiedFeatureData = {
   verifiedBy?: string
 }
 
+const judgementListProjection = {
+  filename: 1,
+  trial: 1,
+  appeal: 1,
+  corrigendum: 1,
+  year: 1,
+}
+
 // Helper function to get status from verified-features collection
 async function getVerificationStatus(
   verifiedCollection: ReturnType<typeof db.collection>,
@@ -80,11 +88,17 @@ export const getUserAssignedJudgements = createServerFn({
     const judgementsCollection = db.collection('judgement-html')
     const verifiedCollection = db.collection('verified-features')
 
+    const pipeline = [
+      {
+        $match: {
+          $or: [{ assigned_to: new ObjectId(userId) }, { assigned_to: userId }],
+        },
+      },
+      { $project: judgementListProjection },
+      { $sort: { year: -1, trial: 1 } },
+    ]
     const judgements = await judgementsCollection
-      .find({
-        $or: [{ assigned_to: new ObjectId(userId) }, { assigned_to: userId }],
-      })
-      .sort({ year: -1, trial: 1 })
+      .aggregate(pipeline, { allowDiskUse: true })
       .toArray()
 
     const results: Array<UserJudgement> = []
@@ -409,7 +423,7 @@ export const revertToInProgress = createServerFn({
     }
   })
 
-function requireAdmin(session: { user: { role?: string } }) {
+function requireAdmin(session: { user: { role?: string | null } }) {
   if (session.user.role !== 'admin') {
     throw new Error('Admin access required')
   }
