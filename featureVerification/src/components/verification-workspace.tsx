@@ -1,4 +1,3 @@
-import { Link } from '@tanstack/react-router'
 import {
   AlertCircle,
   ArrowLeft,
@@ -7,6 +6,8 @@ import {
   Save,
   Undo2,
 } from 'lucide-react'
+import { useState } from 'react'
+import { Dialog, DialogContent, DialogTrigger } from './ui/dialog'
 import type { ReactNode } from 'react'
 import type { EditableDataSectionKey } from '@/components/edit-ui/editable-data-section'
 import EditableDataViewer from '@/components/editable-data-viewer'
@@ -79,15 +80,65 @@ export default function VerificationWorkspace({
   onBack,
   extraInfo,
 }: VerificationWorkspaceProps) {
+  const [showUnsavedDialog, setShowUnsavedDialog] = useState(false)
+
+  const handleBack = () => {
+    if (hasUnsavedChanges) {
+      setShowUnsavedDialog(true)
+    } else {
+      onBack()
+    }
+  }
+
+  const confirmUnsaved = () => {
+    setShowUnsavedDialog(false)
+    onBack()
+  }
+
   return (
     <div className="flex h-[calc(100vh-4rem)] flex-col bg-gray-50 dark:bg-gray-900">
       <div className="border-b border-gray-200 px-4 py-1 dark:border-gray-700">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="sm" onClick={onBack}>
+            <Button variant="ghost" size="sm" onClick={handleBack}>
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back
             </Button>
+            {/* Unsaved changes confirmation dialog */}
+            <Dialog
+              open={showUnsavedDialog}
+              onOpenChange={setShowUnsavedDialog}
+            >
+              <DialogContent>
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center gap-2">
+                    <AlertCircle className="h-6 w-6 text-yellow-500" />
+                    <span className="font-semibold">
+                      You have unsaved changes
+                    </span>
+                  </div>
+                  <div>
+                    Are you sure you want to go back? Unsaved changes will be
+                    lost.
+                  </div>
+                  <div className="flex justify-end gap-2">
+                    <Button
+                      variant="outline"
+                      onClick={() => setShowUnsavedDialog(false)}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      className="bg-red-600 hover:bg-red-700 text-white"
+                      onClick={confirmUnsaved}
+                    >
+                      Continue
+                    </Button>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
+
             <Separator className="h-6" orientation="vertical" />
             <div className="flex gap-2">
               <h1 className="text-lg font-semibold text-gray-900 dark:text-white">
