@@ -127,7 +127,8 @@
                 "Plea day",
                 "After dates fixed",
                 "First day",
-                "During trial"
+                "During trial",
+                "Other"
             ],
             "title": "DistrictCourtPleaStage",
             "type": "string"
@@ -182,6 +183,7 @@
                 "GHB/GBL",
                 "Heroin",
                 "Ketamine",
+                "Fluorodeschloroketamine",
                 "Nimetazepam",
                 "Morphine",
                 "Methamphetamine",
@@ -250,7 +252,20 @@
                         }
                     ],
                     "default": null,
-                    "description": "Must have if court_type is High Court. Unknown: Stage unknown; Up to committal: Up to committal in Magistrates' Courts; After committal: After committal and up to and until trial dates are fixed; After dates fixed: After trial dates are fixed but before the first date of trial; First day: First day of trial; During trial: During the trial."
+                    "description": "Must have if court_type is High Court. Unknown: Stage unknown; Up to committal: Up to committal in Magistrates' Courts; After committal: After committal and up to and until trial dates are fixed; After dates fixed: After trial dates are fixed but before the first date of trial; First day: First day of trial; During trial: During the trial; Other: Other stages not specified above."
+                },
+                "high_court_stage_other": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The high court stage if the stage is 'Other'",
+                    "title": "High Court Stage Other"
                 },
                 "district_court_stage": {
                     "anyOf": [
@@ -262,7 +277,20 @@
                         }
                     ],
                     "default": null,
-                    "description": "Must have if court_type is District Court. Unknown: Stage unknown; Plea day: At plea day; After dates fixed: After trial dates are fixed but before the first date of trial; First day: First day of trial; During trial: During the trial."
+                    "description": "Must have if court_type is District Court. Unknown: Stage unknown; Plea day: At plea day; After dates fixed: After trial dates are fixed but before the first date of trial; First day: First day of trial; During trial: During the trial; Other: Other stages not specified above."
+                },
+                "district_court_stage_other": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The district court stage if the stage is 'Other'",
+                    "title": "District Court Stage Other"
                 },
                 "reduction_years": {
                     "anyOf": [
@@ -323,7 +351,8 @@
                 "After committal",
                 "After dates fixed",
                 "First day",
-                "During trial"
+                "During trial",
+                "Other"
             ],
             "title": "HighCourtPleaStage",
             "type": "string"
@@ -333,7 +362,7 @@
             "properties": {
                 "factor": {
                     "$ref": "#/$defs/MitigatingFactorType",
-                    "description": "The mitigating factor explicitly addressed by the judge (excluding guilty plea). Voluntary surrender: Defendant voluntarily surrendered to authorities; Self-consumption: Self-consumption of significant proportion of drugs; Assistance - limited: Of some limited help to authorities but unfruitful; Assistance - useful: Useful assistance leading to arrest/conviction of another accused; Assistance - testify: Testified in court successfully against another accused; Assistance - risk: Assisted authorities at considerable personal risk; Extreme youth: 15 years old or below; Young offender: 16-20 years old; Medical conditions: Defendant's medical conditions; Family illness: Family illness or tragedy; Prosecutorial delay: Delay in prosecution; Mistaken belief: Mistaken belief about drug type; Rehabilitation programme: Participation in anti-trafficking or rehabilitative programmes."
+                    "description": "The mitigating factor explicitly addressed by the judge (excluding guilty plea). Voluntary surrender: Defendant voluntarily surrendered to authorities; Self-consumption: Self-consumption of significant proportion of drugs; Assistance - limited: Of some limited help to authorities but unfruitful; Assistance - useful: Useful assistance leading to arrest/conviction of another accused; Assistance - testify: Testified in court successfully against another accused; Assistance - risk: Assisted authorities at considerable personal risk; Extreme youth: 15 years old or below; Young offender: 16-20 years old; Medical conditions: Defendant's medical conditions; Family illness: Family illness or tragedy; Prosecutorial delay: Delay in prosecution; Mistaken belief: Mistaken belief about drug type; Charity: the defendant has made constant donations to charities, and/or has active participation in charitable activities; Rehabilitation programme: Participation in anti-trafficking or rehabilitative programmes."
                 },
                 "other_factor": {
                     "anyOf": [
@@ -402,6 +431,7 @@
                 "Prosecutorial delay",
                 "Mistaken belief",
                 "Rehabilitation programme",
+                "Charity",
                 "Other"
             ],
             "title": "MitigatingFactorType",

@@ -498,14 +498,14 @@
         "HealthCondition": {
             "additionalProperties": false,
             "properties": {
+                "type": {
+                    "$ref": "#/$defs/HealthStatusType",
+                    "description": "Type of health status"
+                },
                 "name": {
                     "description": "Name of the health condition",
                     "title": "Name",
                     "type": "string"
-                },
-                "type": {
-                    "$ref": "#/$defs/HealthStatusType",
-                    "description": "Type of health status"
                 },
                 "source": {
                     "description": "The exact match source text from which the health status was extracted. Do not include any additional information in the source document.",
@@ -514,8 +514,8 @@
                 }
             },
             "required": [
-                "name",
                 "type",
+                "name",
                 "source"
             ],
             "title": "HealthCondition",

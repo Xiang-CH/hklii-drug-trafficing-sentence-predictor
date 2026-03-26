@@ -349,6 +349,7 @@
             "enum": [
                 "Courier",
                 "Storekeeper",
+                "Packager",
                 "Lookout/scout",
                 "Actual trafficker",
                 "Manager/organizer",
@@ -492,7 +493,7 @@
             "properties": {
                 "role": {
                     "$ref": "#/$defs/DefendantRole",
-                    "description": "Role of the defendant in the trafficking operation. Courier: Transporter of drugs; Storekeeper: Responsible for storage or warehousing; Lookout/scout: Person monitoring for law enforcement or rivals; Actual trafficker: Directly sells or distributes dangerous drugs to the public; Manager/organizer: Coordinator or planner of trafficking activities; Operator/financial controller: Making substantial gains from drug trafficking; International operator/financial controller: Organiser or controller of a large and lucrative commercial operation which transcends jurisdictional boundaries."
+                    "description": "Role of the defendant in the trafficking operation. Courier: Transporter of drugs; Storekeeper: Responsible for storage or warehousing; Packager: Handles the preparation of drugs for sale by dividing bulk quantities into smaller units and repackaging them for concealment or distribution. Unlike couriers or storekeepers, the packager's role is focused on making the product market-ready. Lookout/scout: Person monitoring for law enforcement or rivals; Actual trafficker: Directly sells or distributes dangerous drugs to the public; Manager/organizer: Coordinator or planner of trafficking activities; Operator/financial controller: Making substantial gains from drug trafficking; International operator/financial controller: Organiser or controller of a large and lucrative commercial operation which transcends jurisdictional boundaries."
                 },
                 "source": {
                     "description": "The exact match source text from which the role was extracted. Do not include any additional information in the source document.",
