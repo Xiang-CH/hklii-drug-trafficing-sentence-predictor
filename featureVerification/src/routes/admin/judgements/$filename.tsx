@@ -171,7 +171,12 @@ function JudgementDetailComponent() {
 
   return (
     <div className="w-full">
-      <div className={cn('flex gap-4 justify-end px-6 py-1', data.status === 'verified' ? 'bg-green-100' : 'bg-yellow-100')}>
+      <div
+        className={cn(
+          'flex gap-4 justify-end px-6 py-1',
+          data.status === 'verified' ? 'bg-green-100' : 'bg-yellow-100',
+        )}
+      >
         <span className="text-sm">
           Assigned to:{' '}
           <Link
