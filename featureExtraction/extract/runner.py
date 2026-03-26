@@ -60,7 +60,9 @@ def build_docs_to_process(
     must_include_ids = {doc["_id"] for doc in must_include_docs if doc.get("_id")}
     normal_filter: dict[str, Any] = base_filter.copy()
     if must_include_ids:
-        normal_filter = {"$and": [base_filter, {"_id": {"$nin": list(must_include_ids)}}]}
+        normal_filter = {
+            "$and": [base_filter, {"_id": {"$nin": list(must_include_ids)}}]
+        }
 
     normal_total = judgements_collection.count_documents(normal_filter)
     cursor = judgements_collection.find(normal_filter)
@@ -151,7 +153,9 @@ def main() -> None:
             for judgement_doc in docs_to_process
         ]
 
-        for future in tqdm(as_completed(futures), total=len(futures), desc="Judgements"):
+        for future in tqdm(
+            as_completed(futures), total=len(futures), desc="Judgements"
+        ):
             result = future.result()
 
             if result.message:

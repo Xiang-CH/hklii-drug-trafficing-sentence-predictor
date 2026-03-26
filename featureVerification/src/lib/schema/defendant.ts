@@ -142,8 +142,8 @@ export const ParentalStatusSchema = z.object({
 })
 
 export const HealthConditionSchema = z.object({
-  name: z.string(),
   type: HealthStatusTypeSchema,
+  name: z.string(),
   source: z.string(),
 })
 

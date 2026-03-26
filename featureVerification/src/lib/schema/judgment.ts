@@ -59,6 +59,7 @@ export const TraffickingModeEnumSchema = z.enum([
 export const DefendantRoleSchema = z.enum([
   'Courier',
   'Storekeeper',
+  'Packager',
   'Lookout/scout',
   'Actual trafficker',
   'Manager/organizer',
@@ -171,7 +172,8 @@ export const TimeDetailInputSchema = z.object({
       },
       { message: 'Invalid time format (expected HH:MM:SS or HH:MM:SS+HH:MM)' },
     )
-    .nullable(),
+    .nullable()
+    .default(null),
   time_of_day: TimeOfDaySchema.nullable().default(null),
   source: z.string(),
 })

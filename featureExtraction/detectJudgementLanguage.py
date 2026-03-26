@@ -74,7 +74,9 @@ def main() -> None:
     total = 0
     modified_total = 0
 
-    for doc in tqdm(cursor, desc="Detecting language", total=collection.count_documents({})):
+    for doc in tqdm(
+        cursor, desc="Detecting language", total=collection.count_documents({})
+    ):
         text = build_judgement_text(doc)
         language = detect_language(text)
         ops.append(

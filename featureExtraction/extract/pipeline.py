@@ -16,9 +16,7 @@ from .prompts import EXTRACTION_ORDER, SCHEMA_CONFIGS
 ExtractionModel = Judgement | Defendants | Trials
 
 
-def _build_prompt(
-    schema_name: str, previous_extractions: dict[str, Any] | None
-) -> str:
+def _build_prompt(schema_name: str, previous_extractions: dict[str, Any] | None) -> str:
     base_prompt = SCHEMA_CONFIGS[schema_name]["prompt"]
 
     if schema_name == "defendants" and previous_extractions is not None:
@@ -104,9 +102,7 @@ def extract_single_schema(
 
             with open(output_path, "w") as file:
                 output_dict_with_trace = output_dict.copy()
-                output_dict_with_trace["tracing_id"] = (
-                    langfuse.get_current_trace_id()
-                )
+                output_dict_with_trace["tracing_id"] = langfuse.get_current_trace_id()
                 file.write(
                     json.dumps(output_dict_with_trace, indent=2, ensure_ascii=False)
                 )

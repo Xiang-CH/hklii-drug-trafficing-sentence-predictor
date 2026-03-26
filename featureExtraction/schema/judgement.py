@@ -72,6 +72,7 @@ class TraffickingModeEnum(str, Enum):
 class DefendantRole(str, Enum):
     COURIER = "Courier"
     STOREKEEPER = "Storekeeper"
+    PACKAGER = "Packager"
     LOOKOUT = "Lookout/scout"
     ACTUAL_TRAFFICKER = "Actual trafficker"
     MANAGER = "Manager/organizer"
@@ -224,6 +225,7 @@ class RoleDetail(BaseModel):
         description="Role of the defendant in the trafficking operation. "
         "Courier: Transporter of drugs; "
         "Storekeeper: Responsible for storage or warehousing; "
+        "Packager: Handles the preparation of drugs for sale by dividing bulk quantities into smaller units and repackaging them for concealment or distribution. Unlike couriers or storekeepers, the packager's role is focused on making the product market-ready. "
         "Lookout/scout: Person monitoring for law enforcement or rivals; "
         "Actual trafficker: Directly sells or distributes dangerous drugs to the public; "
         "Manager/organizer: Coordinator or planner of trafficking activities; "
