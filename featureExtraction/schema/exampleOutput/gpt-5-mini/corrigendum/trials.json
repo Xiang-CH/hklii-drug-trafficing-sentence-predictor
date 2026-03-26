@@ -6,77 +6,99 @@
         "charge_name": "Conspiracy to traffic in a dangerous drug",
         "defendant_name": "黃鈺庭",
         "defendant_id": 1,
-        "source": "串謀販運危險藥物 (Conspiracy to traffic in a dangerous drug)"
+        "source": "控罪:   \n[3] 串謀販運危險藥物 (Conspiracy to traffic in a dangerous drug)"
       },
       "drugs": [
         {
           "drug_type": "Ketamine",
           "other_drug_type": null,
           "quantity": 105.0,
-          "source": "160包（共約105克）氯胺酮計算"
+          "source": "以本案而言，第一與第二被告人均同意以上原則，但認為基於第一被告人的「招認」，本席可以以160包（共約105克）氯胺酮計算。對此，控方不表異議。"
         }
       ],
-      "aggravating_factors": null,
+      "aggravating_factors": [
+        {
+          "factor": "Role of the defendant",
+          "other_factor": null,
+          "enhancement_months": null,
+          "source": "本案的嚴重處在於串謀販毒的罪行中必然涉及兩人之外，有幕後主腦存在相信是明顯不過。有人租下涉案單位，可見是次販毒活動有不少組織成份和部署。"
+        },
+        {
+          "factor": "Use of minors",
+          "other_factor": null,
+          "enhancement_months": null,
+          "source": "本案明顯涉及利用年輕人犯案。本席不接納第二被告人其實不知道第一被告人的年紀是可以抵銷這方面的罪責。第一被告人是年青人這一點是一眼可見。"
+        }
+      ],
       "mitigating_factors": [
         {
-          "factor": "Assistance - useful",
-          "other_factor": null,
-          "reduction": 3,
+          "factor": "Other",
+          "other_factor": "Admission / confession (\"招認\")",
+          "reduction_months": 3,
           "reduction_percentage": null,
-          "source": "本席就「招認」給予第一被告人3個月的減刑（即80個月之中的3.75%）"
+          "source": "經小心考慮後，本席就「招認」給予第一被告人3個月的減刑（即80個月之中的3.75%）便足夠。所以將53個月下調至50個月。"
         },
         {
           "factor": "Assistance - useful",
           "other_factor": null,
-          "reduction": 3,
+          "reduction_months": 3,
           "reduction_percentage": null,
           "source": "另外，第一被告人供出第二被告人並導致警方可把第二被告人繩之於法。即使第一被告人沒有需要出庭指證第二被告人，第一被告人的功勞算是實質性，此舉得被認許之餘，也進一步反映第一被告人的悔意和決心改過的勇氣。為此本席同意減刑3個月（同樣是3.75%）。"
         },
         {
           "factor": "Other",
-          "other_factor": "其他求情內容",
-          "reduction": 3,
+          "other_factor": "Other mitigation / other pleas",
+          "reduction_months": 3,
           "reduction_percentage": null,
-          "source": "本席就其他求情內容給予3個月進一步減刑，以鼓勵第一被告人改過自新.[1]"
+          "source": "（勘誤）“本席就其他求情內容給予3個月進一步減刑，以鼓勵第一被告人改過自新。”"
+        },
+        {
+          "factor": "Young offender",
+          "other_factor": null,
+          "reduction_months": null,
+          "reduction_percentage": null,
+          "source": "以第一被告人而言，他現年只有18歲。"
         }
       ],
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "District Court",
         "high_court_stage": null,
+        "high_court_stage_other": null,
         "district_court_stage": "Unknown",
-        "reduction_years": 2,
-        "reduction_months": 3,
-        "reduction_percentage": null,
-        "source": "就控罪二及三，兩名被告人均表示認罪.\n本席把第一被告人的80個月，下調約1/3至53個月以反映其認罪.",
+        "district_court_stage_other": null,
+        "reduction_years": null,
+        "reduction_months": 27,
+        "reduction_percentage": 33.33333333333333,
+        "source": "本席把第一被告人的80個月，下調約1/3至53個月以反映其認罪。",
         "total_reduction_months": 27
       },
       "starting_point": {
         "sentence_years": 6,
         "sentence_months": 8,
-        "source": "以105克毒品份量而定，針對兩名被告人的控罪三的適當的量刑起點便為80個月.",
+        "source": "以105克毒品份量而定，針對兩名被告人的控罪三的適當的量刑起點便為80個月。",
         "total_months": 80
       },
       "sentence_after_role": {
         "sentence_years": 6,
         "sentence_months": 8,
-        "source": "以105克毒品份量而定，針對兩名被告人的控罪三的適當的量刑起點便為80個月.",
+        "source": "Inferred as starting point since role adjustment not provided",
         "total_months": 80
       },
       "notional_sentence": {
         "sentence_years": 6,
         "sentence_months": 8,
-        "source": "以105克毒品份量而定，針對兩名被告人的控罪三的適當的量刑起點便為80個月.",
+        "source": "以105克毒品份量而定，針對兩名被告人的控罪三的適當的量刑起點便為80個月。",
         "total_months": 80
       },
       "mitigation_reduction": {
         "reduction_months": 9,
-        "source": "本席就「招認」給予第一被告人3個月的減刑（即80個月之中的3.75%）。\n為此本席同意減刑3個月（同樣是3.75%）。\n本席就其他求情內容給予3個月進一步減刑，以鼓勵第一被告人改過自新.[1]"
+        "source": "本席就「招認」給予第一被告人3個月的減刑...為此本席同意減刑3個月...（勘誤）本席就其他求情內容給予3個月進一步減刑。"
       },
       "final_sentence": {
         "sentence_years": 3,
         "sentence_months": 8,
-        "source": "綜合以上，針對第一被告人的控罪三，判刑為44個月即時監禁.\n最後本席希望鄭重向控辯各方致謝，本案看來簡單，但出現眾多細節要關注及伸延討論。他們的協助是值得嘉許。本席特此說明。\n最終判第一及第二被告人，分別就控罪三服刑44及57個月即時監禁是合適的。",
+        "source": "本席仍然認為，最終判第一及第二被告人，分別就控罪三服刑44及57個月即時監禁是合適的。",
         "total_months": 44
       }
     },
@@ -86,79 +108,81 @@
         "charge_name": "Conspiracy to traffic in a dangerous drug",
         "defendant_name": "蘇偉強",
         "defendant_id": 2,
-        "source": "串謀販運危險藥物 (Conspiracy to traffic in a dangerous drug)"
+        "source": "控罪:   \n[3] 串謀販運危險藥物 (Conspiracy to traffic in a dangerous drug)"
       },
       "drugs": [
         {
           "drug_type": "Ketamine",
           "other_drug_type": null,
           "quantity": 105.0,
-          "source": "160包（共約105克）氯胺酮計算"
+          "source": "以本案而言，第一與第二被告人均同意以上原則，但認為基於第一被告人的「招認」，本席可以以160包（共約105克）氯胺酮計算。對此，控方不表異議。"
         }
       ],
       "aggravating_factors": [
         {
-          "factor": "Use of minors",
-          "other_factor": null,
-          "enhancement": 8,
-          "source": "本案明顯涉及利用年輕人犯案...本席認為加刑起碼10%才足夠反映利用年青人的加刑因素."
-        },
-        {
           "factor": "Role of the defendant",
           "other_factor": null,
-          "enhancement": 6,
-          "source": "第一與第二被告人的角色不同，本席認為合適的量刑起點應有6個月的分野."
+          "enhancement_months": null,
+          "source": "就第二被告人，本席以86個月作為基準以反映他與第一被告人角色上的不同。"
+        },
+        {
+          "factor": "Use of minors",
+          "other_factor": null,
+          "enhancement_months": null,
+          "source": "本案明顯涉及利用年輕人犯案。本席不接納第二被告人其實不知道第一被告人的年紀是可以抵銷這方面的罪責。...本席認為加刑起碼10%才足夠反映利用年青人的加刑因素。"
         }
       ],
       "mitigating_factors": [
         {
           "factor": "Other",
-          "other_factor": "家人及朋友對他的正面評價及支持",
-          "reduction": 3,
+          "other_factor": "Positive character references / pleas",
+          "reduction_months": 3,
           "reduction_percentage": null,
-          "source": "他的認罪，可把判刑下調至60個月。基於他的求情內容，特別是其家人及朋友對他的正面評價及支持，本席酌情減刑3個月至57個月."
+          "source": "基於他的求情內容，特別是其家人及朋友對他的正面評價及支持，本席酌情減刑3個月至57個月。"
         }
       ],
       "guilty_plea": {
         "pleaded_guilty": true,
         "court_type": "District Court",
         "high_court_stage": null,
+        "high_court_stage_other": null,
         "district_court_stage": "Unknown",
-        "reduction_years": 2,
-        "reduction_months": 6,
-        "reduction_percentage": null,
-        "source": "就控罪二及三，兩名被告人均表示認罪.\n他的認罪，可把判刑下調至60個月.",
+        "district_court_stage_other": null,
+        "reduction_years": null,
+        "reduction_months": 30,
+        "reduction_percentage": 33.33333333333333,
+        "source": "綜合而言，一個90個月的綜合量刑基準才足以反映第二被告人的刑責。他的認罪，可把判刑下調至60個月。基於他的求情內容...本席酌情減刑3個月至57個月。",
         "total_reduction_months": 30
       },
       "starting_point": {
         "sentence_years": 6,
         "sentence_months": 8,
-        "source": "以105克毒品份量而定，針對兩名被告人的控罪三的適當的量刑起點便為80個月.",
+        "source": "以105克毒品份量而定，針對兩名被告人的控罪三的適當的量刑起點便為80個月。",
         "total_months": 80
       },
       "sentence_after_role": {
         "sentence_years": 7,
-        "sentence_months": 6,
-        "source": "綜合而言，一個90個月的綜合量刑基準才足以反映第二被告人的刑責.",
-        "total_months": 90
+        "sentence_months": 2,
+        "source": "就第二被告人，本席以86個月作為基準以反映他與第一被告人角色上的不同。",
+        "total_months": 86
       },
       "notional_sentence": {
         "sentence_years": 7,
         "sentence_months": 6,
-        "source": "綜合而言，一個90個月的綜合量刑基準才足以反映第二被告人的刑責.",
+        "source": "綜合而言，一個90個月的綜合量刑基準才足以反映第二被告人的刑責。",
         "total_months": 90
       },
       "mitigation_reduction": {
         "reduction_months": 3,
-        "source": "基於他的求情內容，特別是其家人及朋友對他的正面評價及支持，本席酌情減刑3個月至57個月."
+        "source": "基於他的求情內容，特別是其家人及朋友對他的正面評價及支持，本席酌情減刑3個月至57個月。"
       },
       "final_sentence": {
         "sentence_years": 4,
         "sentence_months": 9,
-        "source": "綜合而言，一個90個月的綜合量刑基準才足以反映第二被告人的刑責。他的認罪，可把判刑下調至60個月。基於他的求情內容，特別是其家人及朋友對他的正面評價及支持，本席酌情減刑3個月至57個月.\n最後本席認為，最終判第一及第二被告人，分別就控罪三服刑44及57個月即時監禁是合適的。",
+        "source": "本席仍然認為，最終判第一及第二被告人，分別就控罪三服刑44及57個月即時監禁是合適的。",
         "total_months": 57
       }
     }
   ],
-  "tracing_id": "4492282010f815f7c5ba3cf040cf0063"
+  "tracing_id": "a9c0f6c5ef6d13988594dd5dc27d8ce4"
 }

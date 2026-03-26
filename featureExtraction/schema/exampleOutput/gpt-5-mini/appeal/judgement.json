@@ -1,15 +1,23 @@
 {
   "neutral_citation": "[2025] HKCA 943",
-  "judge_name": "Andrew Macrae",
+  "judge_name": "Hon Andrew Macrae VP",
   "judgment_date_time": "2025-10-17T00:00:00+08:00",
   "representatives": [
     {
-      "name": "Prakash L Daryanani",
-      "role": "SPP, of the Department of Justice, for the Respondent"
+      "name": "Mr Prakash L Daryanani",
+      "role": "SPP, Department of Justice, for the Respondent"
     },
     {
-      "name": "Duncan Percy",
-      "role": "Instructed by SH Chan & Co, assigned by the Director of Legal Aid, for the Applicant"
+      "name": "Mr Duncan Percy",
+      "role": "Counsel, instructed by SH Chan & Co, assigned by the Director of Legal Aid, for the Applicant"
+    },
+    {
+      "name": "Ms Janice Kwan",
+      "role": "SPP, Department of Justice, for the Prosecution / HKSAR"
+    },
+    {
+      "name": "Mr Raymond Yu",
+      "role": "Counsel, instructed by Messrs. Chan & Chan, assigned by D.L.A., for the Defendant"
     }
   ],
   "cases_heard": [
@@ -32,38 +40,56 @@
         "time_of_day": "evening"
       },
       "place_of_offence": {
-        "address": "Room 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No. 2 Hoi Ting Road, Tai Kok Tsui, Kowloon",
+        "address": "Room 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon",
         "nature": "Residential building",
         "subDistrict": "Tai Kok Tsui",
-        "source": "the defendant on 2 April 2022, at room 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon",
+        "source": "room 2110, 21st floor, Hoi Yan House, Hoi Fu Court, No.2 Hoi Ting Road, Tai Kok Tsui, Kowloon",
         "district": "Yau Tsim Mong"
       },
       "cross_border": {
         "cross_border": false,
         "type": null,
-        "source": "No cross-border activity is mentioned in the judgment."
+        "source": "No cross-border trafficking or import/export was mentioned in the judgment."
       },
       "defendants_of_charge": [
         {
-          "defendant_name": "Lau Kam Hung (劉金洪)",
+          "defendant_name": "Lau Kam Hung",
           "defendant_id": 1,
-          "trafficking_mode": {
-            "mode": "Drug houses",
-            "source": "the paraphernalia of the trafficker were found inside the premises... people would come to the flat to consume or receive drugs"
-          },
+          "trafficking_mode": [
+            {
+              "mode": "Drug houses",
+              "source": "the Flat ... a rather more active, albeit on a small scale, centre for the distribution, packaging and consumption of different dangerous drugs"
+            },
+            {
+              "mode": "Drug repackaging or storage",
+              "source": "paraphernalia of the trafficker were found inside the premises ... multiple re-sealable plastic bags and an electronic scale"
+            },
+            {
+              "mode": "Street-level dealing",
+              "source": "E4 could have been sold at street level to drug abusers for HK$9,895.60"
+            }
+          ],
           "roles_facts": [
             {
               "role": "Storekeeper",
-              "source": "the judge identified the applicant's role as a \"storekeeper\""
+              "source": "the judge identified the applicant’s role as a “storekeeper”"
             }
           ],
           "reasons_for_offence": [
             {
               "reason": "Addiction-driven",
-              "source": "it was the pain that drove the defendant to resort to dangerous drugs"
+              "source": "Mr. Yu informed the court that it was the pain that drove the defendant to resort to dangerous drugs"
             }
           ],
-          "benefits_received": null
+          "benefits_received": {
+            "received": "No",
+            "amount": null,
+            "amount_currency": null,
+            "amount_type": null,
+            "amount_type_other": null,
+            "non_monetary_benefits": null,
+            "source": "There is no statement that the defendant received any payment, reward, profit, proceeds, benefit, gain or income from drug trafficking for his personal benefit in the judgment."
+          }
         }
       ]
     }
@@ -72,8 +98,8 @@
   "defendants": [
     {
       "id": 1,
-      "name": "Lau Kam Hung (劉金洪)"
+      "name": "Lau Kam Hung"
     }
   ],
-  "tracing_id": "be95ea62d5f39020840bdcad9dee3d49"
+  "tracing_id": "6cb9eb269cb0b804f163d70859e32511"
 }

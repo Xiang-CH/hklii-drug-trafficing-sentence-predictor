@@ -13,7 +13,7 @@
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 2.15,
-          "source": "本案中，警方在第一被告人駕駛的車上和其身上（衞衣前袋及斜孭袋內）找到合共6.73克可卡因（即是控罪一的2.15克及控罪四的4.58克）。"
+          "source": "警方在第一被告人駕駛的車上和其身上（衞衣前袋及斜孭袋內）找到合共6.73克可卡因（即是控罪一的2.15克及控罪四的4.58克）。"
         }
       ],
       "aggravating_factors": null,
@@ -22,17 +22,19 @@
         "pleaded_guilty": true,
         "court_type": "District Court",
         "high_court_stage": null,
+        "high_court_stage_other": null,
         "district_court_stage": "Unknown",
+        "district_court_stage_other": null,
         "reduction_years": null,
-        "reduction_months": null,
-        "reduction_percentage": 33,
-        "source": "第一被告人適時認罪，獲得三分之一的刑期扣減，每項控罪的刑期下調至32個月。",
-        "total_reduction_months": null
+        "reduction_months": 16,
+        "reduction_percentage": 33.333333,
+        "source": "兩人承認全部各自面對的控罪及同意案情，被裁定罪名成立。",
+        "total_reduction_months": 16
       },
       "starting_point": {
         "sentence_years": 4,
         "sentence_months": 0,
-        "source": "在缺乏其他的證據之下，本席認為以一合共6.73克的可卡因作計算，根據黃瑞芳案，適當的量刑起點為48個月監禁。",
+        "source": "因此，本席就每一項控罪採納48個月監禁為量刑起點。",
         "total_months": 48
       },
       "sentence_after_role": {
@@ -44,7 +46,7 @@
       "notional_sentence": {
         "sentence_years": 4,
         "sentence_months": 0,
-        "source": "在缺乏其他的證據之下，本席認為以一合共6.73克的可卡因作計算，根據黃瑞芳案，適當的量刑起點為48個月監禁。",
+        "source": "因此，本席就每一項控罪採納48個月監禁為量刑起點。",
         "total_months": 48
       },
       "mitigation_reduction": null,
@@ -68,7 +70,7 @@
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 2.15,
-          "source": "本案中，警方在第一被告人駕駛的車上和其身上（衞衣前袋及斜孭袋內）找到合共6.73克可卡因（即是控罪一的2.15克及控罪四的4.58克）。"
+          "source": "就第二被告人而言，涉及的危險藥物分別在第一被告人駕駛的車上和第二被告人的外套右袋找到合共4.05克可卡因（即控罪一的2.15克及控罪五的1.9克可卡因）。"
         }
       ],
       "aggravating_factors": null,
@@ -77,17 +79,19 @@
         "pleaded_guilty": true,
         "court_type": "District Court",
         "high_court_stage": null,
+        "high_court_stage_other": null,
         "district_court_stage": "Unknown",
+        "district_court_stage_other": null,
         "reduction_years": null,
-        "reduction_months": null,
-        "reduction_percentage": 33,
+        "reduction_months": 13,
+        "reduction_percentage": 33.333333,
         "source": "兩人承認全部各自面對的控罪及同意案情，被裁定罪名成立。",
-        "total_reduction_months": null
+        "total_reduction_months": 13
       },
       "starting_point": {
         "sentence_years": 3,
         "sentence_months": 2,
-        "source": "就第二被告人而言，涉及的危險藥物分別在第一被告人駕駛的車上和第二被告人的外套右袋找到合共4.05克可卡因（即控罪一的2.15克及控罪五的1.9克可卡因）。綜合兩項控罪的可卡因的總重量作計算，屬於販運10克以下的組別，相應的量刑起點是2至5年監禁。本案沒有證供顯示第二被告人在販運活動中擔演一名管理或組織者，又或是有其他證供顯示第二被告人直接將毒品售賣給他人，否則法庭可將量刑起點相應提高。因此，以合共4.05克可卡因作計算，考慮了整體情況之後，本席就每一項控罪採納38個月監禁為量刑起點。",
+        "source": "以合共4.05克可卡因（即控罪一的2.15克及控罪五的1.9克）作計算，屬於販運10克以下的組別，相應的量刑起點是2至5年監禁。本席就每一項控罪採納38個月監禁為量刑起點。",
         "total_months": 38
       },
       "sentence_after_role": {
@@ -99,7 +103,7 @@
       "notional_sentence": {
         "sentence_years": 3,
         "sentence_months": 2,
-        "source": "因此，以合共4.05克可卡因作計算，本席就每一項控罪採納38個月監禁為量刑起點。",
+        "source": "本席就每一項控罪採納38個月監禁為量刑起點。",
         "total_months": 38
       },
       "mitigation_reduction": null,
@@ -123,7 +127,7 @@
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 4.58,
-          "source": "本案中，警方在第一被告人駕駛的車上和其身上（衞衣前袋及斜孭袋內）找到合共6.73克可卡因（即是控罪一的2.15克及控罪四的4.58克）。"
+          "source": "警員17676在搜查第一被告人後發現證物13至15，分別載有內含1.15克、1.56克及1.87克可卡因（證物13至15）（控罪四），合共4.58克。"
         }
       ],
       "aggravating_factors": null,
@@ -132,17 +136,19 @@
         "pleaded_guilty": true,
         "court_type": "District Court",
         "high_court_stage": null,
+        "high_court_stage_other": null,
         "district_court_stage": "Unknown",
+        "district_court_stage_other": null,
         "reduction_years": null,
-        "reduction_months": null,
-        "reduction_percentage": 33,
-        "source": "第一被告人適時認罪，獲得三分之一的刑期扣減，每項控罪的刑期下調至32個月。",
-        "total_reduction_months": null
+        "reduction_months": 16,
+        "reduction_percentage": 33.333333,
+        "source": "兩人承認全部各自面對的控罪及同意案情，被裁定罪名成立。",
+        "total_reduction_months": 16
       },
       "starting_point": {
         "sentence_years": 4,
         "sentence_months": 0,
-        "source": "在缺乏其他的證據之下，本席認為以一合共6.73克的可卡因作計算，根據黃瑞芳案，適當的量刑起點為48個月監禁。",
+        "source": "因此，本席就每一項控罪採納48個月監禁為量刑起點。",
         "total_months": 48
       },
       "sentence_after_role": {
@@ -154,7 +160,7 @@
       "notional_sentence": {
         "sentence_years": 4,
         "sentence_months": 0,
-        "source": "在缺乏其他的證據之下，本席認為以一合共6.73克的可卡因作計算，根據黃瑞芳案，適當的量刑起點為48個月監禁。",
+        "source": "因此，本席就每一項控罪採納48個月監禁為量刑起點。",
         "total_months": 48
       },
       "mitigation_reduction": null,
@@ -178,7 +184,7 @@
           "drug_type": "Cocaine",
           "other_drug_type": null,
           "quantity": 1.9,
-          "source": "第二被告人的外套右袋內 (1) 一個膠袋，內有16個膠袋，載有內含1.9克可卡因的共2.72克固體（證物16）（控罪五）。"
+          "source": "第二被告人的外套右袋內載有16個膠袋，載有內含1.9克可卡因的共2.72克固體（證物16）（控罪五）。"
         }
       ],
       "aggravating_factors": null,
@@ -187,17 +193,19 @@
         "pleaded_guilty": true,
         "court_type": "District Court",
         "high_court_stage": null,
+        "high_court_stage_other": null,
         "district_court_stage": "Unknown",
+        "district_court_stage_other": null,
         "reduction_years": null,
-        "reduction_months": null,
-        "reduction_percentage": 33,
-        "source": "第二被告人適時認罪，獲得三分之一的刑期扣減，刪除小數位之後，刑期下調至25個月，兩項控罪同期執行，總刑期為25個月。",
-        "total_reduction_months": null
+        "reduction_months": 13,
+        "reduction_percentage": 33.333333,
+        "source": "兩人承認全部各自面對的控罪及同意案情，被裁定罪名成立。",
+        "total_reduction_months": 13
       },
       "starting_point": {
         "sentence_years": 3,
         "sentence_months": 2,
-        "source": "以合共4.05克可卡因作計算，考慮了整體情況之後，本席就每一項控罪採納38個月監禁為量刑起點。",
+        "source": "以合共4.05克可卡因（即控罪一的2.15克及控罪五的1.9克）作計算，本席就每一項控罪採納38個月監禁為量刑起點。",
         "total_months": 38
       },
       "sentence_after_role": {
@@ -209,7 +217,7 @@
       "notional_sentence": {
         "sentence_years": 3,
         "sentence_months": 2,
-        "source": "以合共4.05克可卡因作計算，考慮了整體情況之後，本席就每一項控罪採納38個月監禁為量刑起點。",
+        "source": "本席就每一項控罪採納38個月監禁為量刑起點。",
         "total_months": 38
       },
       "mitigation_reduction": null,
@@ -221,5 +229,5 @@
       }
     }
   ],
-  "tracing_id": "d99b504f84c432a17ff54268ad2f0f01"
+  "tracing_id": "5fa6588ce7c351b38c3d737e325bd586"
 }

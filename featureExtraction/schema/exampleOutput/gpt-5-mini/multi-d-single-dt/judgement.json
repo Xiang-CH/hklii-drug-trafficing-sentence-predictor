@@ -5,15 +5,15 @@
   "representatives": [
     {
       "name": "Miss Lo Sum-yee Rosa",
-      "role": "Miss Lo Sum-yee Rosa, SPP of the Department of Justice, for HKSAR"
+      "role": "SPP of the Department of Justice, for HKSAR"
     },
     {
       "name": "Mr Chung Boey",
-      "role": "Mr Chung Boey, instructed by Eli K K Tsui & Co, assigned by DLA, for the 1st accused"
+      "role": "for the 1st accused; instructed by Eli K K Tsui & Co, assigned by DLA"
     },
     {
       "name": "Mr Lau Chung-man Clement",
-      "role": "Mr Lau Chung-man Clement, instructed by Raymond C P Lo & Co, assigned by DLA, for the 2nd accused"
+      "role": "for the 2nd accused; instructed by Raymond C P Lo & Co, assigned by DLA"
     }
   ],
   "cases_heard": [
@@ -24,65 +24,108 @@
       "charge_no": 1,
       "charge_name": "Conspiracy to traffic in a dangerous drug",
       "offence_date": {
-        "date": "2022-12-27",
-        "source": "at about 1.20 am on 27 December 2022, the police arrived at Room 606D, Block B, Yau Tong Industrial City in Kwun Tong",
-        "day_of_week": 2,
-        "is_hk_public_holiday": false
+        "date": [
+          "2022-12-01",
+          "2022-12-27"
+        ],
+        "source": "on an unknown date between December 2022 and the 27th day of December 2022",
+        "day_of_week": [
+          4,
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          1,
+          2
+        ],
+        "is_hk_public_holiday": true
       },
       "offence_time": {
-        "time": "01:20:00+08:00",
+        "time": "01:20:00Z",
         "source": "at about 1.20 am on 27 December 2022, the police arrived at Room 606D, Block B, Yau Tong Industrial City in Kwun Tong",
         "time_of_day": "night"
       },
       "place_of_offence": {
-        "address": "Room 606D, Block B, Yau Tong Industrial City, Kwun Tong",
+        "address": "Room 606D, Block B, Yau Tong Industrial City in Kwun Tong",
         "nature": "Industrial building",
-        "subDistrict": "Kwun Tong",
-        "source": "at about 1.20 am on 27 December 2022, the police arrived at Room 606D, Block B, Yau Tong Industrial City in Kwun Tong",
+        "subDistrict": "Yau Tong",
+        "source": "Room 606D, Block B, Yau Tong Industrial City in Kwun Tong",
         "district": "Kwun Tong"
       },
       "cross_border": {
         "cross_border": false,
         "type": null,
-        "source": "No cross-border trafficking is mentioned in the judgment"
+        "source": "Both defendants were jointly charged with one count of conspiracy to traffic in a dangerous drug, namely ... in a room in Yau Tong"
       },
       "defendants_of_charge": [
         {
-          "defendant_name": "Hui Kwai-chung, Dick",
+          "defendant_name": "Hui Kwai-chung, Dick (許貴仲)",
           "defendant_id": 1,
-          "trafficking_mode": {
-            "mode": "Courier delivery",
-            "source": "he was mainly responsible for taking a quantity of cocaine from the Lei Yue Mun Plaza back to the room"
-          },
+          "trafficking_mode": [
+            {
+              "mode": "Courier delivery",
+              "source": "his role was more like a courier taking the drug from the Lei Yue Mun Plaza back to the room"
+            }
+          ],
           "roles_facts": [
             {
               "role": "Courier",
-              "source": "he was mainly responsible for taking a quantity of cocaine from the Lei Yue Mun Plaza back to the room"
+              "source": "Counsel submitted that his role was more like a courier taking the drug from the Lei Yue Mun Plaza back to the room; he received two transparent resealable plastic bags of cocaine from an unknown male at the 2nd floor and returned to the room"
             }
           ],
           "reasons_for_offence": [
             {
-              "reason": "Economic hardship",
-              "source": "Because the 1st defendant was indebted so he agreed... he owed debts in the region of $300,000... he committed the present offence to earn quick money."
+              "reason": "Financial gain",
+              "source": "he committed the present offence to earn quick money. Because the 1st defendant was indebted so he agreed ... he owed debts in the region of $300,000"
             }
           ],
-          "benefits_received": null
+          "benefits_received": {
+            "received": "Unknown",
+            "amount": null,
+            "amount_currency": null,
+            "amount_type": null,
+            "amount_type_other": null,
+            "non_monetary_benefits": null,
+            "source": "an acquaintance asked if he was interested in a job ... The acquaintance said that he would be remunerated afterwards"
+          }
         },
         {
-          "defendant_name": "Hong Ka-ming",
+          "defendant_name": "Hong Ka-ming (康家銘)",
           "defendant_id": 2,
-          "trafficking_mode": {
-            "mode": "Drug repackaging or storage",
-            "source": "the 2nd defendant signed a tenancy agreement to rent the room... the plastic recycling bag (Exhibit E2) was already there when [1st defendant] arrived"
-          },
+          "trafficking_mode": [
+            {
+              "mode": "Drug repackaging or storage",
+              "source": "the 2nd defendant signed a tenancy agreement to rent the room at the monthly rental of $4,800 ... he had rented the room and did not lock it, apparently for the purpose of allowing others to use it whenever they wanted"
+            }
+          ],
           "roles_facts": [
             {
               "role": "Storekeeper",
-              "source": "he had rented the room and did not lock it, apparently for the purpose of allowing others to use it whenever they wanted"
+              "source": "he had rented the room and did not lock it, apparently for the purpose of allowing others to use it whenever they wanted; he was the registered tenant of the room"
             },
             {
-              "role": "Manager/organizer",
-              "source": "He made a total of 19 calls between 26 and 27 December 2022 to the 1st defendant... the only reasonable inference is that he made those calls either to give instructions to the 1st defendant or to check his progress"
+              "role": "Other",
+              "source": "Call records showed that the 2nd defendant had called the 1st defendant a total of 19 times ... The only reasonable inference is that he made those calls either to give instructions to the 1st defendant or to check his progress"
             }
           ],
           "reasons_for_offence": null,
@@ -95,12 +138,12 @@
   "defendants": [
     {
       "id": 1,
-      "name": "Hui Kwai-chung, Dick"
+      "name": "Hui Kwai-chung, Dick (許貴仲)"
     },
     {
       "id": 2,
-      "name": "Hong Ka-ming"
+      "name": "Hong Ka-ming (康家銘)"
     }
   ],
-  "tracing_id": "8358ea2ecb2681f44e538d90d715c728"
+  "tracing_id": "78b2abead35ddda3726cd2af03d1c18f"
 }

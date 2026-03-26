@@ -4,13 +4,13 @@
       "defendant_id": 1,
       "defendant_name": {
         "name": "曾浩然",
-        "source": "曾浩然 （第一被告人）"
+        "source": "曾浩然（第一被告人）"
       },
       "nationality": {
         "category": "Hong Kong resident",
-        "hk_resident_status": "Permanent resident",
+        "hk_resident_status": "Resident",
         "foreign_country_code": null,
-        "infer_reason": "Text states the defendant was born in Hong Kong.",
+        "infer_reason": null,
         "source": "第一被告人現年26歲，香港出生，接受教育程度至中三。"
       },
       "age_at_offence": {
@@ -23,16 +23,16 @@
       },
       "gender": {
         "gender": "Male",
-        "source": "第一被告人在警誡下說出以下事情：（2）他無業，與女友同住。"
+        "source": "第一被告人在警誡下說出以下事情：(2) 他無業，與女友同住。"
       },
       "marital_status": {
         "status": "Single",
-        "source": "第一被告人未婚。"
+        "source": "第一被告人未婚，與家人關係良好。"
       },
       "parental_status": null,
       "household_composition": {
         "composition": "Lives with non-family",
-        "source": "第一被告人在警誡下說出以下事情：（2）他無業，與女友同住。"
+        "source": "第一被告人在警誡下說出以下事情：(2) 他無業，與女友同住。"
       },
       "health_conditions": null,
       "drug_treatment_participation": null,
@@ -41,13 +41,14 @@
         "source": "第一被告人現年26歲，香港出生，接受教育程度至中三。"
       },
       "occupation": {
-        "occupation_category": "Unemployed",
-        "occupation_name": null,
-        "source": "第一被告人在警誡下說出以下事情：（2）他無業，與女友同住。"
+        "occupation_category": "Craft and related worker",
+        "occupation_name": "電梯維修（曾任貨車及私家車司機）",
+        "source": "畢業後，他入讀職業訓練學院並修讀為期約4年半的電梯維修兼讀課程，隨後從事相關維修行業。此外，第一被告人曾擔任貨車及私家車司機等職位，每月收入約為港幣2萬元。"
       },
       "monthly_wage": {
-        "wage": 0,
-        "source": "第一被告人在警誡下說出以下事情：（2）他無業，與女友同住。"
+        "wage": 20000,
+        "wage_currency": null,
+        "source": "每月收入約為港幣2萬元。"
       },
       "government_subsidy_recipient": null,
       "criminal_records": [
@@ -59,7 +60,11 @@
       "positive_habits_after_arrest": [
         {
           "habit": "Participation in rehabilitation/self-improvement",
-          "source": "還押期間，第一被告人接受教會傳道人的輔導，並希望於刑期結束後能盡快尋求一份穩定的工作。"
+          "source": "第一被告人在此期間接受教會傳道人的輔導，並希望於刑期結束後能盡快尋求一份穩定的工作。"
+        },
+        {
+          "habit": "Religion",
+          "source": "第一被告人在此期間接受教會傳道人的輔導。"
         }
       ],
       "family_supports": [
@@ -77,19 +82,19 @@
       "defendant_id": 2,
       "defendant_name": {
         "name": "張曜龍",
-        "source": "張曜龍 （第二被告人）"
+        "source": "張曜龍（第二被告人）"
       },
       "nationality": {
         "category": "Hong Kong resident",
-        "hk_resident_status": "Permanent resident",
+        "hk_resident_status": "Resident",
         "foreign_country_code": null,
-        "infer_reason": "Text states the defendant was born in Hong Kong.",
-        "source": "馬大律師在其書面求情陳詞中，除接納控方所提供的認證經歷口供，以及補充「第二被告人現年23歲，香港出生，無刑事定罪紀錄」外..."
+        "infer_reason": "文內記載為香港出生",
+        "source": "第二被告人現年23歲，香港出生，無刑事定罪紀錄"
       },
       "age_at_offence": null,
       "age_at_sentencing": {
         "age": 23,
-        "source": "馬大律師在其書面求情陳詞中，除接納控方所提供的認證經歷口供，以及補充「第二被告人現年23歲，香港出生，無刑事定罪紀錄」外..."
+        "source": "第二被告人現年23歲，香港出生，無刑事定罪紀錄"
       },
       "gender": null,
       "marital_status": {
@@ -99,22 +104,23 @@
       "parental_status": null,
       "household_composition": {
         "composition": "Lives with family",
-        "source": "經歷口供提及...被捕之後與母親同住"
+        "source": "經歷口供提及第二被告人被捕之後與母親同住"
       },
       "health_conditions": null,
       "drug_treatment_participation": null,
       "education_level": {
         "level": "Secondary - Lower",
-        "source": "經歷口供提及第二被告人...接受教育程度至中三"
+        "source": "經歷口供提及第二被告人未婚，接受教育程度至中三"
       },
       "occupation": {
         "occupation_category": "Elementary occupation",
         "occupation_name": "倉務員",
-        "source": "經歷口供提及第二被告人之前任職倉務員。"
+        "source": "經歷口供提及... 第二被告人之前任職倉務員。"
       },
       "monthly_wage": {
         "wage": 8000,
-        "source": "最後，本席獲告知第二被告人母親今年49歲，現為一名電子零件的維修員，而第二被告人之前任職倉務員的每月收入為8,000元。"
+        "wage_currency": null,
+        "source": "最後，本席獲告知... 第二被告人之前任職倉務員的每月收入為8,000元。"
       },
       "government_subsidy_recipient": null,
       "criminal_records": [
@@ -127,5 +133,5 @@
       "family_supports": null
     }
   ],
-  "tracing_id": "d99b504f84c432a17ff54268ad2f0f01"
+  "tracing_id": "5fa6588ce7c351b38c3d737e325bd586"
 }
