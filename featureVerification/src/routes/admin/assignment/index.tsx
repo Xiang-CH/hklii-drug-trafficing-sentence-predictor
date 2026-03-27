@@ -5,7 +5,12 @@ import {
   redirect,
   useNavigate,
 } from '@tanstack/react-router'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import {
+  keepPreviousData,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from '@tanstack/react-query'
 import { toast } from 'sonner'
 import {
   Check,
@@ -162,9 +167,10 @@ function AssignmentComponent() {
   const userButtonRefs = React.useRef<Record<string, HTMLButtonElement | null>>(
     {},
   )
+  const shouldAutoScrollSelectedUser = React.useRef(Boolean(username))
 
   // Auto-select user from URL parameter
-  const { data, isPending } = useQuery({
+  const { data } = useQuery({
     queryKey:
       assigned === 'assigned'
         ? [
@@ -196,6 +202,7 @@ function AssignmentComponent() {
         language: language ?? 'all',
         username: assigned === 'assigned' ? (username ?? null) : null,
       }),
+    placeholderData: keepPreviousData,
   })
 
   React.useEffect(() => {
@@ -208,7 +215,7 @@ function AssignmentComponent() {
   }, [username, data?.users])
 
   React.useEffect(() => {
-    if (!username || !selectedUser) {
+    if (!shouldAutoScrollSelectedUser.current || !username || !selectedUser) {
       return
     }
 
@@ -217,11 +224,27 @@ function AssignmentComponent() {
       return
     }
 
-    selectedUserButton.scrollIntoView({
-      behavior: 'instant',
-      block: 'center',
-      inline: 'nearest',
+    const usersViewport = selectedUserButton.closest(
+      '[data-slot="scroll-area-viewport"]',
+    )
+    if (!(usersViewport instanceof HTMLDivElement)) {
+      return
+    }
+
+    const viewportRect = usersViewport.getBoundingClientRect()
+    const buttonRect = selectedUserButton.getBoundingClientRect()
+    const nextScrollTop =
+      usersViewport.scrollTop +
+      (buttonRect.top - viewportRect.top) -
+      usersViewport.clientHeight / 2 +
+      buttonRect.height / 2
+
+    usersViewport.scrollTo({
+      top: nextScrollTop,
+      behavior: 'auto',
     })
+
+    shouldAutoScrollSelectedUser.current = false
   }, [username, selectedUser])
 
   const assignMutation = useMutation({
@@ -242,7 +265,7 @@ function AssignmentComponent() {
     },
   })
 
-  if (isPending || !data) {
+  if (!data) {
     return (
       <div className="flex h-[calc(100vh-4rem)] items-center justify-center text-muted-foreground">
         Loading assignment data...
