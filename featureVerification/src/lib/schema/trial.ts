@@ -279,7 +279,7 @@ export const TrialSchema = z
       .nullable()
       .default(null),
     guilty_plea: GuiltyPleaDetailSchema,
-    starting_point: StartingPointDetailSchema,
+    starting_point: StartingPointDetailSchema.nullable(),
     sentence_after_role: SentenceAfterRoleDetailSchema.nullable().default(null),
     notional_sentence: NotionalSentenceDetailSchema,
     mitigation_reduction:
@@ -287,14 +287,25 @@ export const TrialSchema = z
     final_sentence: FinalSentenceDetailSchema,
   })
   .superRefine((data, ctx) => {
+    if (data.starting_point === null && data.sentence_after_role === null) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['starting_point', 'sentence_after_role'],
+        message:
+          'At least one of starting_point or sentence_after_role must be provided',
+      })
+
+      return
+    }
+
     const afterRoleTotal = data.sentence_after_role
       ? data.sentence_after_role.total_months
-      : data.starting_point.total_months
+      : data.starting_point!.total_months
     const notionalTotal = data.notional_sentence.total_months
 
     if (notionalTotal < afterRoleTotal) {
       ctx.addIssue({
-        code: z.ZodIssueCode.custom,
+        code: 'custom',
         path: ['notional_sentence'],
         message:
           'Notional sentence cannot be less than sentence after role/starting point',
@@ -307,7 +318,7 @@ export const TrialSchema = z
 
     if (finalTotal > currentSentence) {
       ctx.addIssue({
-        code: z.ZodIssueCode.custom,
+        code: 'custom',
         path: ['final_sentence'],
         message:
           'Final sentence cannot be greater than notional sentence minus mitigation reduction',
@@ -319,7 +330,7 @@ export const TrialSchema = z
       finalTotal !== currentSentence - data.guilty_plea.total_reduction_months
     ) {
       ctx.addIssue({
-        code: z.ZodIssueCode.custom,
+        code: 'custom',
         path: ['final_sentence'],
         message:
           'Final sentence must be equal to notional sentence minus mitigation reduction minus guilty plea reduction',

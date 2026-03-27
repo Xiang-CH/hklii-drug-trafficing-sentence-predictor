@@ -20,4 +20,5 @@ export const MANDATORY_NOT_GIVEN_FIELDS = [
   'age_at_sentencing',
   'gender',
   'criminal_records',
+  'starting_point',
 ]
