@@ -117,7 +117,7 @@ export const FIELD_SCHEMAS: Partial<Record<string, z.ZodTypeAny>> = {
   charges: ChargeSchema,
   representatives: RepresentativeSchema,
   defendants_of_charge: ChargeForDefendantSchema,
-  cases_heard: z.string().regex(/^[A-Z]+\s+\d+\/\d{4}$/),
+  cases_heard: z.string().regex(/^[A-Z]+\s+\d+[A-Za-z]?\/\d{4}$/),
 
   defendants: DefendantProfileSchema,
   defendant_name: DefendantNameDetailSchema,

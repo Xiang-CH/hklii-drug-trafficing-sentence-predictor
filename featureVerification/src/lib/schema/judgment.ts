@@ -372,7 +372,9 @@ export const JudgementInputSchema = z.object({
     },
   ),
   representatives: z.array(RepresentativeSchema),
-  cases_heard: z.array(z.string().regex(/^[A-Z]+\s+\d+\/\d{4}$/)).min(1),
+  cases_heard: z
+    .array(z.string().regex(/^[A-Z]+\s+\d+[A-Za-z]?\/\d{4}$/))
+    .min(1),
   charges: z.array(ChargeSchema),
 })
 

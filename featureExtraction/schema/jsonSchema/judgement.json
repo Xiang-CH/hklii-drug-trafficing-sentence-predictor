@@ -738,7 +738,7 @@
             "type": "array"
         },
         "cases_heard": {
-            "description": "List of cases heard in the judgment in the format <case_type case_no/year>, e.g. HCCC 100/2024 at least one case must be present",
+            "description": "List of cases heard in the judgment in the format <case_type case_no/year>, e.g. HCCC 100/2024 or DCCC 1098A/2020; at least one case must be present",
             "items": {
                 "type": "string"
             },

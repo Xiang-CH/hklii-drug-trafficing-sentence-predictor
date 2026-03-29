@@ -417,7 +417,7 @@ class DefendantInfo(BaseModel):
 
 # Regex patterns for validation
 NEUTRAL_CITATION_PATTERN = re.compile(r"^\[\d{4}\]\s+[A-Z]+\s+\d+$")
-CASES_HEARD_PATTERN = re.compile(r"^[A-Z]+\s+\d+/\d{4}$")
+CASES_HEARD_PATTERN = re.compile(r"^[A-Z]+\s+\d+[A-Za-z]?/\d{4}$")
 
 
 class Judgement(BaseModel):
@@ -451,7 +451,7 @@ class Judgement(BaseModel):
         description="List of legal representatives involved in the case"
     )
     cases_heard: List[str] = Field(
-        description="List of cases heard in the judgment in the format <case_type case_no/year>, e.g. HCCC 100/2024 at least one case must be present"
+        description="List of cases heard in the judgment in the format <case_type case_no/year>, e.g. HCCC 100/2024 or DCCC 1098A/2020; at least one case must be present"
     )
 
     @field_validator("cases_heard")
@@ -463,7 +463,7 @@ class Judgement(BaseModel):
             if not CASES_HEARD_PATTERN.match(case):
                 raise ValueError(
                     f"Invalid case format: '{case}'. "
-                    "Expected format: case_type case_no/year (e.g., 'HCCC 100/2024')"
+                    "Expected format: case_type case_no/year (e.g., 'HCCC 100/2024', 'DCCC 1098A/2020')"
                 )
         return v
 
