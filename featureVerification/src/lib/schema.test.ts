@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest'
 import { z } from 'zod'
 import {
   ChargeForDefendantSchema,
+  FinalSentenceDetailSchema,
+  GuiltyPleaDetailSchema,
   getDefaultValueForArrayItem,
   getDefaultValueForField,
   getDefaultValueForFieldSchema,
@@ -101,10 +103,12 @@ describe('getDefaultValueForField', () => {
       true,
     )
 
-    expect(defaultValue).toEqual({
-      mode: 'Street-level dealing',
-      source: '',
-    })
+    expect(defaultValue).toEqual([
+      {
+        mode: 'Street-level dealing',
+        source: '',
+      },
+    ])
   })
 })
 
@@ -125,5 +129,34 @@ describe('ChargeForDefendantSchema trafficking_mode compatibility', () => {
     expect(parsed.trafficking_mode).toEqual([
       { mode: 'Courier delivery', source: 'test source' },
     ])
+  })
+})
+
+describe('trial decimal month fields', () => {
+  it('accepts decimal months for guilty plea reduction and final sentence', () => {
+    const guiltyPlea = GuiltyPleaDetailSchema.parse({
+      pleaded_guilty: true,
+      court_type: 'District Court',
+      high_court_stage: null,
+      high_court_stage_other: null,
+      district_court_stage: 'Plea day',
+      district_court_stage_other: null,
+      reduction_years: 0,
+      reduction_months: 1.5,
+      reduction_percentage: null,
+      inferred: false,
+      source: 'test source',
+    })
+
+    const finalSentence = FinalSentenceDetailSchema.parse({
+      sentence_years: 2,
+      sentence_months: 3.5,
+      source: 'test source',
+    })
+
+    expect(guiltyPlea.reduction_months).toBe(1.5)
+    expect(guiltyPlea.total_reduction_months).toBe(1.5)
+    expect(finalSentence.sentence_months).toBe(3.5)
+    expect(finalSentence.total_months).toBe(27.5)
   })
 })
