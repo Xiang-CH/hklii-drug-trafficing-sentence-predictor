@@ -124,7 +124,7 @@ export const GuiltyPleaDetailSchema = z
     district_court_stage: DistrictCourtPleaStageSchema.nullable().default(null),
     district_court_stage_other: z.string().nullable().default(null),
     reduction_years: z.number().int().nullable().default(null),
-    reduction_months: z.number().int().nullable().default(null),
+    reduction_months: z.number().nullable().default(null),
     reduction_percentage: z.number().min(0).max(100).nullable().default(null),
     inferred: z.boolean().default(false),
     source: z.string(),
