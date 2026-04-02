@@ -123,7 +123,7 @@ export const GuiltyPleaDetailSchema = z
     high_court_stage_other: z.string().nullable().default(null),
     district_court_stage: DistrictCourtPleaStageSchema.nullable().default(null),
     district_court_stage_other: z.string().nullable().default(null),
-    reduction_years: z.number().int().nullable().default(null),
+    reduction_years: z.number().nullable().default(null),
     reduction_months: z.number().nullable().default(null),
     reduction_percentage: z.number().min(0).max(100).nullable().default(null),
     inferred: z.boolean().default(false),
@@ -322,18 +322,6 @@ export const TrialSchema = z
         path: ['final_sentence'],
         message:
           'Final sentence cannot be greater than notional sentence minus mitigation reduction',
-      })
-    }
-
-    if (
-      data.guilty_plea.total_reduction_months !== null &&
-      finalTotal !== currentSentence - data.guilty_plea.total_reduction_months
-    ) {
-      ctx.addIssue({
-        code: 'custom',
-        path: ['final_sentence'],
-        message:
-          'Final sentence must be equal to notional sentence minus mitigation reduction minus guilty plea reduction',
       })
     }
   })
