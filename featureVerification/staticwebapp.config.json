@@ -1,20 +1,20 @@
 {
   "routes": [
     {
+      "route": "/_serverFn/*",
+      "rewrite": "/api/server"
+    },
+    {
       "route": "/index.html",
       "redirect": "/"
     },
     {
       "route": "/",
       "rewrite": "/api/server"
-    },
-    {
-      "route": "/_serverFn/*",
-      "rewrite": "/api/server"
     }
   ],
   "platform": {
-    "apiRuntime": "node:20"
+    "apiRuntime": "node:18"
   },
   "navigationFallback": {
     "rewrite": "/api/server"

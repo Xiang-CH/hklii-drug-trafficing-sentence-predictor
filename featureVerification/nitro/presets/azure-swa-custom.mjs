@@ -7,4 +7,14 @@ const runtimeEntry = resolve(__dirname, '../runtime/azure-swa.mjs')
 export default {
   extends: 'azure-swa',
   entry: runtimeEntry,
+  azure: {
+    config: {
+      routes: [
+        {
+          route: '/_serverFn/*',
+          rewrite: '/api/server',
+        },
+      ],
+    },
+  },
 }
