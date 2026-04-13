@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/*",
+      "destination": "https://jolly-pond-0555ed700.1.azurestaticapps.net/",
+      "permanent": true
+    }
+  ]
+}
