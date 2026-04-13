@@ -10,9 +10,9 @@ const reminderEvent = {
   title: 'System Migration Reminder',
   message:
     'Please save all progess before 7pm today!! ' +
-    '\n\nThe system will migrate to a new URL between 7:00pm - 7:10pm.' +
+    '\n\nThe system will migrate to a new URL between 7:00pm - 7:05pm.' +
     ' You will be redirected to the new Link automatically after that.',
-  timestamp: '2026-04-13T19:00:00+08:00',
+  timestamp: '2026-04-13T19:05:00+08:00',
 }
 
 export default function VerificationNoticeToast() {
