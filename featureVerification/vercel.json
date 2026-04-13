@@ -1,8 +1,9 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
-      "source": "/*",
-      "destination": "https://jolly-pond-0555ed700.1.azurestaticapps.net/",
+      "source": "/:path*",
+      "destination": "https://jolly-pond-0555ed700.1.azurestaticapps.net/:path*",
       "permanent": true
     }
   ]
