@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { authClient } from '@/lib/auth-client'
 
 const reminderEvent = {
-  id: 'migration-reminder-2026-04-30T18:00:00+08:00',
+  id: 'migration-reminder-2026-04-13T19:05:00+08:00',
   title: 'System Migration Reminder',
   message:
     'Please save all progess before 7pm today!! ' +
