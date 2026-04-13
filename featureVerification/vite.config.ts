@@ -1,5 +1,5 @@
 import { URL, fileURLToPath } from 'node:url'
-import { defineConfig } from 'vite'
+import { defineConfig, type PluginOption } from 'vite'
 import { devtools } from '@tanstack/devtools-vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
@@ -19,10 +19,20 @@ const config = defineConfig({
     nitro(
       process.env.DEPLOY_TARGET === 'azure'
         ? {
-            preset: './nitro/presets/azure-swa-custom.mjs',
+            preset: './nitro/presets/azure-swa-custom.mjs', //'azure-swa',
+            azure: {
+              config: {
+                routes: [
+                  {
+                    route: '/_serverFn/*',
+                    rewrite: '/api/server',
+                  },
+                ],
+              },
+            },
           }
         : undefined,
-    ),
+    ) as PluginOption,
     // this is the plugin that enables path aliases
     viteTsConfigPaths({
       projects: ['./tsconfig.json'],

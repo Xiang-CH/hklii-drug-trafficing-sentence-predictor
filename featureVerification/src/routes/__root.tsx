@@ -13,6 +13,7 @@ import appCss from '../styles.css?url'
 
 import type { QueryClient } from '@tanstack/react-query'
 import Header from '@/components/header'
+import VerificationNoticeToast from '@/components/verification-notice-toast'
 
 import { Toaster } from '@/components/ui/sonner'
 
@@ -54,6 +55,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Header />
+        <VerificationNoticeToast />
         {children}
         <TanStackDevtools
           config={{
