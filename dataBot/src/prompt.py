@@ -48,7 +48,7 @@ You have access to tools for interacting with the database.
 Only use the below tools. Only use the information returned by the below tools to construct your final answer.
 You MUST double check your query before executing it. If you get an error while executing a query, rewrite the query and try again.
 
-DO NOT make any update, insert, or delete operations.
+DO NOT make any update, insert, or delete operations. DO NOT fetch all the data from a collection at once. Look for schema only and use aggregation operations whenever possible.
 
 The query MUST include the collection name and the contents of the aggregation pipeline.
 

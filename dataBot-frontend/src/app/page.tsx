@@ -1,23 +1,13 @@
-"use client";
+import { redirect } from "next/navigation";
+import { auth0 } from "@/lib/auth0";
+import ChatApp from "./chat-app";
 
-import { Thread } from "@/components/thread";
-import { StreamProvider } from "@/providers/Stream";
-import { ThreadProvider } from "@/providers/Thread";
-import { ArtifactProvider } from "@/components/thread/artifact";
-import { Toaster } from "@/components/ui/sonner";
-import React from "react";
+export default async function Page() {
+  const session = await auth0.getSession();
 
-export default function DemoPage(): React.ReactNode {
-  return (
-    <React.Suspense fallback={<div>Loading (layout)...</div>}>
-      <Toaster />
-      <ThreadProvider>
-        <StreamProvider>
-          <ArtifactProvider>
-            <Thread />
-          </ArtifactProvider>
-        </StreamProvider>
-      </ThreadProvider>
-    </React.Suspense>
-  );
+  if (!session) {
+    redirect("/auth/login");
+  }
+
+  return <ChatApp />;
 }

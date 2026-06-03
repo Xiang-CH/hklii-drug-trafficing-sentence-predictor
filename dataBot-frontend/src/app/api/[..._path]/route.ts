@@ -1,11 +1,27 @@
 import { initApiPassthrough } from "langgraph-nextjs-api-passthrough";
-
-// This file acts as a proxy for requests to your LangGraph server.
-// Read the [Going to Production](https://github.com/langchain-ai/agent-chat-ui?tab=readme-ov-file#going-to-production) section for more information.
+import { auth0 } from "@/lib/auth0";
+import type { NextRequest } from "next/server";
 
 export const { GET, POST, PUT, PATCH, DELETE, OPTIONS, runtime } =
   initApiPassthrough({
-    apiUrl: process.env.LANGGRAPH_API_URL ?? "remove-me", // default, if not defined it will attempt to read process.env.LANGGRAPH_API_URL
-    apiKey: process.env.LANGSMITH_API_KEY ?? "remove-me", // default, if not defined it will attempt to read process.env.LANGSMITH_API_KEY
-    runtime: "edge", // default
+    apiUrl: process.env.LANGGRAPH_API_URL ?? "remove-me",
+    apiKey: process.env.LANGSMITH_API_KEY ?? "remove-me",
+    runtime: "edge",
+    headers: async (_req: NextRequest): Promise<Record<string, string>> => {
+      const accessToken = await auth0.getAccessToken({
+        audience: process.env.AUTH0_AUDIENCE,
+        scope: "openid profile email",
+      });
+
+      const token =
+        typeof accessToken === "string"
+          ? accessToken
+          : accessToken.token;
+
+      return token
+        ? {
+            Authorization: `Bearer ${token}`,
+          }
+        : {};
+    },
   });

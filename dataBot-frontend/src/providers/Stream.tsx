@@ -141,7 +141,7 @@ const DEFAULT_ASSISTANT_ID = "agent";
 const AGENT_BUILDER_AUTH_SCHEME = "langsmith-api-key";
 
 export const StreamProvider: React.FC<{ children: ReactNode }> = ({
-  children,
+  children
 }) => {
   // Get environment variables
   const envApiUrl: string | undefined = process.env.NEXT_PUBLIC_API_URL;
