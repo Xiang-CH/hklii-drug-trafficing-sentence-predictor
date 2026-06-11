@@ -13,7 +13,7 @@ export const auth = betterAuth({
     enabled: true,
     minPasswordLength: 5,
   },
-  plugins: [tanstackStartCookies(), admin(), username()],
+  plugins: [admin(), username(), tanstackStartCookies()],
 })
 
 export type UserType = typeof auth.$Infer.Session.user

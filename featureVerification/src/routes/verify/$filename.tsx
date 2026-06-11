@@ -116,6 +116,7 @@ function VerifyJudgementPage() {
       setHasUnsavedChanges(false)
       queryClient.invalidateQueries({ queryKey: ['user-stats'] })
       queryClient.invalidateQueries({ queryKey: ['user-judgements'] })
+      queryClient.invalidateQueries({ queryKey: ['user-judgement-counts'] })
       queryClient.invalidateQueries({
         queryKey: ['judgement-verification', filename],
       })
@@ -143,6 +144,7 @@ function VerifyJudgementPage() {
       toast.success(result.message)
       queryClient.invalidateQueries({ queryKey: ['user-stats'] })
       queryClient.invalidateQueries({ queryKey: ['user-judgements'] })
+      queryClient.invalidateQueries({ queryKey: ['user-judgement-counts'] })
       queryClient.invalidateQueries({
         queryKey: ['judgement-verification', filename],
       })
@@ -172,6 +174,7 @@ function VerifyJudgementPage() {
       toast.success(result.message)
       queryClient.invalidateQueries({ queryKey: ['user-stats'] })
       queryClient.invalidateQueries({ queryKey: ['user-judgements'] })
+      queryClient.invalidateQueries({ queryKey: ['user-judgement-counts'] })
       queryClient.invalidateQueries({
         queryKey: ['judgement-verification', filename],
       })

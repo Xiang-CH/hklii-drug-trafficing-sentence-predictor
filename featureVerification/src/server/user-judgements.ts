@@ -111,7 +111,118 @@ async function getVerificationStatus(
   }
 }
 
+type UserJudgementStatus = 'pending' | 'verified' | 'in_progress'
+
+function buildJudgementLookupPipeline(userId: string) {
+  return [
+    {
+      $match: {
+        $or: [{ assigned_to: new ObjectId(userId) }, { assigned_to: userId }],
+      },
+    },
+    { $project: judgementListProjection },
+    {
+      $lookup: {
+        from: 'verified-features',
+        localField: '_id',
+        foreignField: 'source_judgement_id',
+        as: 'verified',
+        pipeline: [
+          {
+            $project: {
+              is_verified: 1,
+              _id: 1,
+              verified_at: 1,
+            },
+          },
+        ],
+      },
+    },
+    {
+      $addFields: {
+        verifiedDoc: { $first: '$verified' },
+      },
+    },
+    {
+      $addFields: {
+        status: {
+          $cond: {
+            if: { $eq: ['$verifiedDoc.is_verified', true] },
+            then: 'verified',
+            else: {
+              $cond: {
+                if: { $gt: [{ $size: '$verified' }, 0] },
+                then: 'in_progress',
+                else: 'pending',
+              },
+            },
+          },
+        },
+        verifiedFeatureId: {
+          $cond: {
+            if: { $gt: [{ $size: '$verified' }, 0] },
+            then: { $toString: '$verifiedDoc._id' },
+            else: null,
+          },
+        },
+        verifiedAt: {
+          $cond: {
+            if: { $eq: ['$verifiedDoc.is_verified', true] },
+            then: '$verifiedDoc.verified_at',
+            else: null,
+          },
+        },
+      },
+    },
+    { $project: { verified: 0, verifiedDoc: 0 } },
+  ]
+}
+
+function mapJudgement(doc: Record<string, unknown>): UserJudgement {
+  return {
+    id: doc._id instanceof ObjectId ? doc._id.toHexString() : `${doc._id}`,
+    filename: doc.filename as string,
+    trial: (doc.trial as string | null) || undefined,
+    appeal: (doc.appeal as string | null) || undefined,
+    corrigendum: (doc.corrigendum as string | null) || undefined,
+    year: (doc.year as string | null) || undefined,
+    status: doc.status as UserJudgementStatus,
+    verifiedAt:
+      doc.verifiedAt instanceof Date
+        ? doc.verifiedAt.toISOString()
+        : (doc.verifiedAt as string | null) || undefined,
+    verifiedFeatureId: (doc.verifiedFeatureId as string | null) || undefined,
+  }
+}
+
 export const getUserAssignedJudgements = createServerFn({
+  method: 'GET',
+})
+  .middleware([authMiddleware])
+  .handler(async ({ context }) => {
+    const userId = context.session.user.id
+    const judgementsCollection = db.collection('judgement-html')
+    const start = Date.now()
+
+    console.log(`[getUserAssignedJudgements] userId=${userId}`)
+
+    const pipeline = [
+      ...buildJudgementLookupPipeline(userId),
+      { $sort: { year: -1, trial: 1 } },
+    ]
+    const judgements = await judgementsCollection
+      .aggregate(pipeline, { allowDiskUse: true })
+      .toArray()
+
+    const elapsed = Date.now() - start
+    console.log(
+      `[getUserAssignedJudgements] userId=${userId} count=${judgements.length} elapsed=${elapsed}ms`,
+    )
+
+    return judgements.map(mapJudgement)
+  })
+
+export const getUserJudgementCounts = createServerFn({
   method: 'GET',
 })
   .middleware([authMiddleware])
@@ -120,41 +231,112 @@ export const getUserAssignedJudgements = createServerFn({
     const judgementsCollection = db.collection('judgement-html')
     const verifiedCollection = db.collection('verified-features')
 
-    const pipeline = [
-      {
-        $match: {
-          $or: [{ assigned_to: new ObjectId(userId) }, { assigned_to: userId }],
+    const assignedDocs = await judgementsCollection
+      .find({
+        $or: [{ assigned_to: new ObjectId(userId) }, { assigned_to: userId }],
+      })
+      .project({ _id: 1 })
+      .toArray()
+
+    const totalAssigned = assignedDocs.length
+    if (totalAssigned === 0) {
+      return {
+        counts: { pending: 0, in_progress: 0, verified: 0 },
+        total: 0,
+      }
+    }
+
+    const judgementIds = assignedDocs.map((d) => d._id)
+
+    const verifiedCursor = await verifiedCollection
+      .aggregate([
+        {
+          $match: {
+            source_judgement_id: { $in: judgementIds },
+          },
         },
+        {
+          $group: {
+            _id: '$is_verified',
+            count: { $sum: 1 },
+          },
+        },
+      ])
+      .toArray()
+
+    let verified = 0
+    let inProgress = 0
+    for (const r of verifiedCursor) {
+      if (r._id === true) {
+        verified = r.count
+      } else {
+        inProgress += r.count
+      }
+    }
+
+    const pending = totalAssigned - verified - inProgress
+
+    return {
+      counts: {
+        pending,
+        in_progress: inProgress,
+        verified,
       },
-      { $project: judgementListProjection },
+      total: totalAssigned,
+    }
+  })
+
+export const getUserAssignedJudgementsPaginated = createServerFn({
+  method: 'GET',
+})
+  .middleware([authMiddleware])
+  .inputValidator(
+    (input: {
+      status?: UserJudgementStatus
+      offset?: number
+      limit?: number
+      search?: string
+    }) => {
+      if (
+        input.status &&
+        !['pending', 'verified', 'in_progress'].includes(input.status)
+      ) {
+        throw new Error(
+          `Invalid status: ${input.status}. Must be one of: pending, verified, in_progress`,
+        )
+      }
+      return input
+    },
+  )
+  .handler(async ({ context, data }) => {
+    const userId = context.session.user.id
+    const judgementsCollection = db.collection('judgement-html')
+    const { status, offset = 0, limit = 50, search } = data
+
+    const searchFilter = search
+      ? {
+          $or: [
+            { trial: { $regex: search, $options: 'i' } },
+            { filename: { $regex: search, $options: 'i' } },
+            { appeal: { $regex: search, $options: 'i' } },
+          ],
+        }
+      : null
+
+    const pipeline = [
+      ...buildJudgementLookupPipeline(userId),
+      ...(searchFilter ? [{ $match: searchFilter }] : []),
+      ...(status ? [{ $match: { status } }] : []),
       { $sort: { year: -1, trial: 1 } },
+      { $skip: offset },
+      { $limit: limit },
     ]
+
     const judgements = await judgementsCollection
       .aggregate(pipeline, { allowDiskUse: true })
       .toArray()
 
-    const results: Array<UserJudgement> = []
-
-    for (const doc of judgements) {
-      const judgementId =
-        doc._id instanceof ObjectId ? doc._id.toHexString() : `${doc._id}`
-      const { status, verifiedFeatureId, verifiedAt } =
-        await getVerificationStatus(verifiedCollection, doc._id)
-
-      results.push({
-        id: judgementId,
-        filename: doc.filename,
-        trial: doc.trial ?? undefined,
-        appeal: doc.appeal ?? undefined,
-        corrigendum: doc.corrigendum ?? undefined,
-        year: doc.year ?? undefined,
-        status,
-        verifiedAt,
-        verifiedFeatureId,
-      })
-    }
-
-    return results
+    return judgements.map(mapJudgement)
   })
 
 export const getJudgementForVerification = createServerFn({
