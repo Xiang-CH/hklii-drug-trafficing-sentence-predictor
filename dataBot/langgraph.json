@@ -1,10 +1,19 @@
 {
-  "dependencies": ["."],
+  "$schema": "https://langgra.ph/schema.json",
+  "dependencies": [
+    "."
+  ],
   "graphs": {
     "agent": "./src/agent.py:agent"
   },
   "auth": {
     "path": "./src/auth.py:auth"
+  },
+  "checkpointer": {
+    "path": "./src/persistence.py:generate_checkpointer"
+  },
+  "store": {
+    "path": "./src/persistence.py:generate_store"
   },
   "env": ".env"
 }

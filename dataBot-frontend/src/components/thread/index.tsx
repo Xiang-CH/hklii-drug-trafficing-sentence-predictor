@@ -12,7 +12,8 @@ import {
   DO_NOT_RENDER_ID_PREFIX,
   ensureToolCallsHaveResponses,
 } from "@/lib/ensure-tool-responses";
-import { LangGraphLogoSVG } from "../icons/langgraph";
+// import { LangGraphLogoSVG } from "../icons/langgraph";
+import { LegalBotLogoSVG } from "../icons/legalbot";
 import { TooltipIconButton } from "./tooltip-icon-button";
 import {
   ArrowDown,
@@ -39,6 +40,7 @@ import {
 } from "../ui/tooltip";
 import { useFileUpload } from "@/hooks/use-file-upload";
 import { ContentBlocksPreview } from "./ContentBlocksPreview";
+import { getContentString } from "./utils";
 import {
   useArtifactOpen,
   ArtifactContent,
@@ -85,6 +87,37 @@ function ScrollToBottom(props: { className?: string }) {
       <span>Scroll to bottom</span>
     </Button>
   );
+}
+
+
+function HiddenToolCallGeneratingCard() {
+  return (
+    <div className="mr-auto flex w-full items-start gap-2">
+      <div className="bg-muted border-border/60 flex items-center gap-3 rounded-2xl border px-4 py-3 text-sm text-gray-700 shadow-xs">
+        <LoaderCircle className="size-4 animate-spin text-gray-500" />
+        <div>
+          <p className="font-medium text-gray-900">Generating response</p>
+          <p className="text-gray-500">Tool calls are hidden while the assistant works.</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function isWaitingOnHiddenToolCall(messages: Message[]) {
+  const lastMessage = messages[messages.length - 1];
+  if (!lastMessage) return false;
+
+  if (lastMessage.type === "tool") return true;
+
+  const contentString = getContentString(lastMessage.content ?? []);
+  const hasVisibleContent = contentString.trim().length > 0;
+  const hasToolCalls =
+    lastMessage.type === "ai" &&
+    "tool_calls" in lastMessage &&
+    !!lastMessage.tool_calls?.length;
+
+  return hasToolCalls && !hasVisibleContent;
 }
 
 function OpenGitHubRepo() {
@@ -254,6 +287,8 @@ export function Thread() {
   const hasNoAIOrToolMessages = !messages.find(
     (m) => m.type === "ai" || m.type === "tool",
   );
+  const showHiddenToolCallGeneratingCard =
+    hideToolCalls && isLoading && isWaitingOnHiddenToolCall(messages);
 
   return (
     <div className="flex h-screen w-full overflow-hidden">
@@ -360,12 +395,12 @@ export function Thread() {
                     damping: 30,
                   }}
                 >
-                  <LangGraphLogoSVG
+                  <LegalBotLogoSVG
                     width={32}
                     height={32}
                   />
                   <span className="text-xl font-semibold tracking-tight">
-                    Agent Chat
+                    Legal Bot
                   </span>
                 </motion.button>
               </div>
@@ -427,18 +462,20 @@ export function Thread() {
                       handleRegenerate={handleRegenerate}
                     />
                   )}
-                  {isLoading && !firstTokenReceived && (
+                  {showHiddenToolCallGeneratingCard ? (
+                    <HiddenToolCallGeneratingCard />
+                  ) : isLoading && !firstTokenReceived ? (
                     <AssistantMessageLoading />
-                  )}
+                  ) : null}
                 </>
               }
               footer={
                 <div className="sticky bottom-0 flex flex-col items-center gap-8 bg-white">
                   {!chatStarted && (
                     <div className="flex items-center gap-3">
-                      <LangGraphLogoSVG className="h-8 flex-shrink-0" />
+                      <LegalBotLogoSVG className="h-8 flex-shrink-0" />
                       <h1 className="text-2xl font-semibold tracking-tight">
-                        Agent Chat
+                        Legal Bot
                       </h1>
                     </div>
                   )}
@@ -499,7 +536,7 @@ export function Thread() {
                             </Label>
                           </div>
                         </div>
-                        <Label
+                        {/* <Label
                           htmlFor="file-input"
                           className="flex cursor-pointer items-center gap-2"
                         >
@@ -515,7 +552,7 @@ export function Thread() {
                           multiple
                           accept="image/jpeg,image/png,image/gif,image/webp,application/pdf"
                           className="hidden"
-                        />
+                        /> */}
                         {stream.isLoading ? (
                           <Button
                             key="stop"

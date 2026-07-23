@@ -144,6 +144,8 @@ export function AssistantMessage({
   const hasAnthropicToolCalls = !!anthropicStreamedToolCalls?.length;
   const isToolResult = message?.type === "tool";
 
+  const usage = thread.values.usage;
+
   if (isToolResult && hideToolCalls) {
     return null;
   }
@@ -165,6 +167,13 @@ export function AssistantMessage({
             {contentString.length > 0 && (
               <div className="py-1">
                 <MarkdownText>{contentString}</MarkdownText>
+              </div>
+            )}
+
+            {isLastMessage && usage && (
+              <div className="text-muted-foreground mt-1 text-xs">
+                Tokens: {usage.total_tokens} total · {usage.input_tokens} in ·{" "}
+                {usage.output_tokens} out
               </div>
             )}
 

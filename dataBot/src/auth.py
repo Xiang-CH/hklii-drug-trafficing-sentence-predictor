@@ -4,6 +4,8 @@ import asyncio
 import jwt
 import os
 
+from src.identity import user_scope
+
 
 AUTH0_DOMAIN = os.environ["AUTH0_DOMAIN"]
 AUTH0_AUDIENCE = os.environ["AUTH0_AUDIENCE"]
@@ -58,3 +60,37 @@ async def authenticate(headers: dict) -> Auth.types.MinimalUserDict:
         "email": claims.get("email"),
         "permissions": claims.get("permissions", []),
     }
+
+@auth.on.threads
+async def authorize_threads(
+    ctx: Auth.types.AuthContext,
+    value: dict,
+):
+    """
+    Restrict every thread and its runs to the authenticated Auth0 user.
+    """
+    user_id = ctx.user.identity
+
+    # On thread/run creation, this is persisted with the resource.
+    metadata = value.setdefault("metadata", {})
+    metadata["owner"] = user_id
+
+    # On every operation, LangGraph applies this as an access filter.
+    return {"owner": user_id}
+
+@auth.on.store
+async def authorize_store(
+    ctx: Auth.types.AuthContext,
+    value: Auth.types.on.store.value,
+):
+    """Isolate every long-term store namespace to the authenticated user."""
+    namespace = tuple(value["namespace"]) if value.get("namespace") else ()
+
+    # Application code puts this fixed-length, wildcard-free scope first in
+    # every namespace. Reject mismatches instead of adding a second prefix.
+    expected_scope = user_scope(ctx.user.identity)
+    if not namespace or namespace[0] != expected_scope:
+        raise Auth.exceptions.HTTPException(
+            status_code=403,
+            detail="Not authorized to access this store namespace.",
+        )

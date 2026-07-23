@@ -9,5 +9,7 @@ dependencies = [
     "langchain-mongodb>=0.11.0",
     "langchain-openai>=1.2.1",
     "langgraph-cli[inmem]>=0.4.25",
+    "langgraph-checkpoint-postgres>=3.1.0,<4.0",
     "python-dotenv>=1.2.2",
+    "psycopg[binary]>=3.3.4",
 ]

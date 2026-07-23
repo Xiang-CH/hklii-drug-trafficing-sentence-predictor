@@ -59,11 +59,11 @@ The tool evaluates the aggregation pipeline as **Python** (not JSON or Mongo she
 An example query looks like:
 
 ```python
-db.{table_name}.aggregate([{{ "$match": {{ "status": {{ "$ne": None }}, "active": True, "ok": False }} }}, {{ "$group": {{ _id: "$BillingCountry", "totalSpent": {{ "$sum": "$Total" }} }} }}, {{ "$sort": {{ "totalSpent": -1 }} }}, {{ "$limit": 5 }}])
+db.{table_name_features}.aggregate([{{ "$match": {{ "status": {{ "$ne": None }}, "active": True, "ok": False }} }}, {{ "$group": {{ _id: "$BillingCountry", "totalSpent": {{ "$sum": "$Total" }} }} }}, {{ "$sort": {{ "totalSpent": -1 }} }}, {{ "$limit": 5 }}])
 ```
 
-You should only query the {table_name} collection.
-To start you should ALWAYS check the schema of the {table_name} collection.
+You should only query the {table_name_features} collection for most of the time. You can refer to contents in the {table_name_text} collection ONLY IF you are explicitly instructed to explore or find evidence in the original case judgment.
+To start you should ALWAYS check the schema of the {table_name_features} collection.
 Do NOT skip this step.
 Output in tables when possible.
 
