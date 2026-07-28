@@ -1,5 +1,8 @@
 # Python
 __pycache__/
+notebooks/.cache/
+notebooks/stage_model_analysis.xlsx
+notebooks/linear_interpolation_analysis.xlsx
 *.py[cod]
 *$py.class
 *.so
@@ -126,3 +129,5 @@ todos.json
 dataBot/local_env_set.sh
 .sisyphus/
 .omo/
+
+.docs

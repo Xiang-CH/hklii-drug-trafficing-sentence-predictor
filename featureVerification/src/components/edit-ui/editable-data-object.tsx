@@ -3,6 +3,7 @@ import { AgeRangeField, AmountRangeField, WageRangeField } from './range-field'
 import { EditableField } from './editable-field'
 import { SourceField } from './source-field'
 import { EditableSourceField } from './editable-source-field'
+import { SentencingRoleField } from './sentencing-role-field'
 import type { RangeValue } from './range-field'
 import type { UndoState } from '@/components/editable-data-viewer'
 import {
@@ -72,6 +73,17 @@ export function EditableDataObject({
 
   const isDisabled = disabled || !!notGivenMap[path]
   const canEdit = isEditing && !isFieldComputed && !isDisabled
+
+  if (fieldName === 'sentencing_role') {
+    return (
+      <SentencingRoleField
+        value={data}
+        isEditing={canEdit}
+        onChange={onChange}
+        onSourceHover={onSourceHover}
+      />
+    )
+  }
 
   if (isDisabled) {
     return null

@@ -1,0 +1,467 @@
+{
+  "canonical_factor_map": {
+    "Export": "Cross-border trafficking",
+    "Import": "Cross-border trafficking",
+    "Refugee/Asylum": "Refugee claimant"
+  },
+  "drug_curves": {
+    "Cannabis": [
+      [
+        10.978,
+        3.5
+      ],
+      [
+        201.63,
+        6.0
+      ],
+      [
+        2976.205,
+        20.5
+      ],
+      [
+        8176.045,
+        44.5
+      ],
+      [
+        27966.655,
+        67.0
+      ],
+      [
+        370808.5,
+        210.0
+      ]
+    ],
+    "Cocaine": [
+      [
+        1.34,
+        27.0
+      ],
+      [
+        4.73,
+        41.0
+      ],
+      [
+        9.38,
+        57.0
+      ],
+      [
+        32.35,
+        79.0
+      ],
+      [
+        845.0,
+        244.5
+      ],
+      [
+        16645.0,
+        346.5
+      ]
+    ],
+    "Ecstasy": [
+      [
+        8.37,
+        43.0
+      ],
+      [
+        33.96,
+        58.5
+      ],
+      [
+        531.6,
+        135.0
+      ],
+      [
+        535.0,
+        136.0
+      ],
+      [
+        881.35,
+        160.5
+      ],
+      [
+        3799.0,
+        246.0
+      ]
+    ],
+    "Heroin": [
+      [
+        0.64,
+        36.0
+      ],
+      [
+        5.4,
+        42.5
+      ],
+      [
+        12.245000000000001,
+        60.0
+      ],
+      [
+        47.23,
+        96.0
+      ],
+      [
+        892.0,
+        253.0
+      ],
+      [
+        4447.094999999999,
+        309.5
+      ]
+    ],
+    "Ketamine": [
+      [
+        1.655,
+        24.0
+      ],
+      [
+        8.865,
+        43.0
+      ],
+      [
+        21.3,
+        54.0
+      ],
+      [
+        105.0,
+        80.0
+      ],
+      [
+        1303.5,
+        180.0
+      ],
+      [
+        6015.21,
+        252.0
+      ]
+    ],
+    "Methamphetamine": [
+      [
+        1.15,
+        40.0
+      ],
+      [
+        5.605,
+        64.0
+      ],
+      [
+        12.3,
+        84.5
+      ],
+      [
+        35.765,
+        103.0
+      ],
+      [
+        479.5,
+        208.0
+      ],
+      [
+        3880.0,
+        312.0
+      ]
+    ]
+  },
+  "factor_effects": {
+    "aggravation": {
+      "Cross-border trafficking": 0.060790835181079084,
+      "Illegal immigrant": 0.08029652750682793,
+      "Multiple drugs": 0.038461538461538464,
+      "On bail": 0.04412719013627514,
+      "Other": 0.05358851674641148,
+      "Persistent offender": 0.04,
+      "Refugee claimant": 0.06596341905106845,
+      "Suspended sentence": 0.05146627565982405,
+      "Use of minors": 0.046153846153846156,
+      "Wanted": 0.03571428571428571
+    },
+    "mitigation": {
+      "Assistance - limited": 0.028157894736842104,
+      "Assistance - risk": 0.04484592809977989,
+      "Assistance - testify": 0.5056898094872779,
+      "Assistance - useful": 0.06393398268398269,
+      "Charity": 0.018524871355060035,
+      "Extreme youth": 0.05366027007818053,
+      "Family illness": 0.016846175089754212,
+      "Medical conditions": 0.020833333333333332,
+      "Mistaken belief": 0.015909090909090907,
+      "Other": 0.03192307692307692,
+      "Prosecutorial delay": 0.0196078431372549,
+      "Rehabilitation programme": 0.011904761904761904,
+      "Self-consumption": 0.044444444444444446,
+      "Voluntary surrender": 0.05,
+      "Young offender": 0.047619047619047616
+    },
+    "plea": {
+      "Guilty plea: After committal": 0.3333333333331666,
+      "Guilty plea: After dates fixed": 0.25,
+      "Guilty plea: During trial": 0.16999999999999998,
+      "Guilty plea: First day": 0.25,
+      "Guilty plea: Other": 0.333316665,
+      "Guilty plea: Plea day": 0.3333333333333333,
+      "Guilty plea: Unknown": 0.3333333333333333,
+      "Guilty plea: Up to committal": 0.3333333333333333
+    }
+  },
+  "factor_support": [
+    {
+      "factor": "Cross-border trafficking",
+      "median_adjustment_months": 12.0,
+      "stage": "aggravation",
+      "support_trials": 104
+    },
+    {
+      "factor": "Illegal immigrant",
+      "median_adjustment_months": 8.5,
+      "stage": "aggravation",
+      "support_trials": 4
+    },
+    {
+      "factor": "Multiple drugs",
+      "median_adjustment_months": 3.0,
+      "stage": "aggravation",
+      "support_trials": 301
+    },
+    {
+      "factor": "On bail",
+      "median_adjustment_months": 3.0,
+      "stage": "aggravation",
+      "support_trials": 40
+    },
+    {
+      "factor": "Other",
+      "median_adjustment_months": 3.0,
+      "stage": "aggravation",
+      "support_trials": 38
+    },
+    {
+      "factor": "Persistent offender",
+      "median_adjustment_months": 3.0,
+      "stage": "aggravation",
+      "support_trials": 205
+    },
+    {
+      "factor": "Refugee claimant",
+      "median_adjustment_months": 6.0,
+      "stage": "aggravation",
+      "support_trials": 42
+    },
+    {
+      "factor": "Suspended sentence",
+      "median_adjustment_months": 2.0,
+      "stage": "aggravation",
+      "support_trials": 4
+    },
+    {
+      "factor": "Use of minors",
+      "median_adjustment_months": 5.0,
+      "stage": "aggravation",
+      "support_trials": 13
+    },
+    {
+      "factor": "Wanted",
+      "median_adjustment_months": 3.0,
+      "stage": "aggravation",
+      "support_trials": 1
+    },
+    {
+      "factor": "Assistance - limited",
+      "median_adjustment_months": 3.5,
+      "stage": "mitigation",
+      "support_trials": 28
+    },
+    {
+      "factor": "Assistance - risk",
+      "median_adjustment_months": 10.5,
+      "stage": "mitigation",
+      "support_trials": 2
+    },
+    {
+      "factor": "Assistance - testify",
+      "median_adjustment_months": 45.0,
+      "stage": "mitigation",
+      "support_trials": 2
+    },
+    {
+      "factor": "Assistance - useful",
+      "median_adjustment_months": 10.0,
+      "stage": "mitigation",
+      "support_trials": 12
+    },
+    {
+      "factor": "Charity",
+      "median_adjustment_months": 3.0,
+      "stage": "mitigation",
+      "support_trials": 10
+    },
+    {
+      "factor": "Extreme youth",
+      "median_adjustment_months": 3.5,
+      "stage": "mitigation",
+      "support_trials": 2
+    },
+    {
+      "factor": "Family illness",
+      "median_adjustment_months": 2.0,
+      "stage": "mitigation",
+      "support_trials": 6
+    },
+    {
+      "factor": "Medical conditions",
+      "median_adjustment_months": 1.5,
+      "stage": "mitigation",
+      "support_trials": 6
+    },
+    {
+      "factor": "Mistaken belief",
+      "median_adjustment_months": 3.5,
+      "stage": "mitigation",
+      "support_trials": 2
+    },
+    {
+      "factor": "Other",
+      "median_adjustment_months": 3.0,
+      "stage": "mitigation",
+      "support_trials": 121
+    },
+    {
+      "factor": "Prosecutorial delay",
+      "median_adjustment_months": 6.0,
+      "stage": "mitigation",
+      "support_trials": 3
+    },
+    {
+      "factor": "Rehabilitation programme",
+      "median_adjustment_months": 2.0,
+      "stage": "mitigation",
+      "support_trials": 39
+    },
+    {
+      "factor": "Self-consumption",
+      "median_adjustment_months": 3.0,
+      "stage": "mitigation",
+      "support_trials": 165
+    },
+    {
+      "factor": "Voluntary surrender",
+      "median_adjustment_months": 3.0,
+      "stage": "mitigation",
+      "support_trials": 5
+    },
+    {
+      "factor": "Young offender",
+      "median_adjustment_months": 3.0,
+      "stage": "mitigation",
+      "support_trials": 27
+    },
+    {
+      "factor": "Guilty plea: After committal",
+      "median_adjustment_months": 40.0,
+      "stage": "plea",
+      "support_trials": 34
+    },
+    {
+      "factor": "Guilty plea: After dates fixed",
+      "median_adjustment_months": 19.5,
+      "stage": "plea",
+      "support_trials": 15
+    },
+    {
+      "factor": "Guilty plea: During trial",
+      "median_adjustment_months": 12.73708,
+      "stage": "plea",
+      "support_trials": 11
+    },
+    {
+      "factor": "Guilty plea: First day",
+      "median_adjustment_months": 17.75,
+      "stage": "plea",
+      "support_trials": 13
+    },
+    {
+      "factor": "Guilty plea: Other",
+      "median_adjustment_months": 22.0,
+      "stage": "plea",
+      "support_trials": 14
+    },
+    {
+      "factor": "Guilty plea: Plea day",
+      "median_adjustment_months": 18.999999810000002,
+      "stage": "plea",
+      "support_trials": 342
+    },
+    {
+      "factor": "Guilty plea: Unknown",
+      "median_adjustment_months": 19.1440355,
+      "stage": "plea",
+      "support_trials": 318
+    },
+    {
+      "factor": "Guilty plea: Up to committal",
+      "median_adjustment_months": 48.0,
+      "stage": "plea",
+      "support_trials": 406
+    }
+  ],
+  "legacy_percentage_effects": {
+    "aggravation": {
+      "Cross-border trafficking": 0.0519,
+      "On bail": 0.0411,
+      "Persistent offender": 0.0591,
+      "Refugee claimant": 0.0595
+    },
+    "mitigation": {
+      "Self-consumption": 0.1
+    },
+    "plea": {
+      "Guilty plea: After dates fixed": 0.25,
+      "Guilty plea: During trial": 0.25,
+      "Guilty plea: First day": 0.25,
+      "Guilty plea: Plea day": 0.3333333333333333,
+      "Guilty plea: Up to committal": 0.3333333333333333
+    },
+    "role": {}
+  },
+  "model_name": "data-derived-linear-interpolation",
+  "model_version": "2026-07-19",
+  "role_effects": {
+    "circumstance_effects": {
+      "Divan keeping": 0.07912234042553191,
+      "Manufacturing": 0.09195402298850575
+    },
+    "courier_cross_border_strategy": "aggravation:Cross-border trafficking",
+    "primary_effects": {
+      "Actual trafficker": 0.05063291139240506,
+      "Courier / Storekeeper": 0.0,
+      "Manager / Organiser": 0.06125,
+      "Operator / Financial controller": 0.07792207792207792
+    },
+    "severe_cross_border_effect": 0.078125
+  },
+  "role_workbook": {
+    "exact_matched_workbook_rows": 270,
+    "fallback_matched_excluded_rows": 0,
+    "filename": "Role Sentence Adjustments.xlsx",
+    "modified_at": "2026-07-28T08:43:37.651415825+00:00",
+    "reconciliation_status": "matched",
+    "row_count": 274,
+    "sheet_name": "1st list_non-excluded cases",
+    "unmatched_excluded_keys": [],
+    "unmatched_excluded_row_count": 0
+  },
+  "training": {
+    "cache_created_at": "2026-07-28T09:07:12.265355+00:00",
+    "cache_document_count": 2308,
+    "curve_method": "single-drug training quantile medians; cumulative-maximum monotonic interpolation",
+    "fit_partition": "train",
+    "minimum_curve_support": 10,
+    "minimum_factor_support": 1,
+    "mixed_drug_method": "legacy total-quantity weighted average",
+    "random_seed": 2026,
+    "source_excluded_document_count": 205,
+    "source_excluded_documents_included_for_trial_reconciliation": true,
+    "source_excluded_documents_used_for_non_role_stages": false,
+    "source_excluded_documents_used_for_role_fitting": true,
+    "test_size": 0.2
+  }
+}

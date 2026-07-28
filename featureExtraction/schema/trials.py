@@ -2,6 +2,7 @@ from enum import Enum
 from typing import Optional, List
 from pydantic import BaseModel, Field, ConfigDict, model_validator, computed_field
 from schema.common import source_field
+from schema.judgement import ChargeName
 
 
 class DrugType(str, Enum):
@@ -39,6 +40,19 @@ class AggravatingFactorType(str, Enum):
     MULTIPLE_DRUG_TYPES = "Multiple drugs"
     ROLE_OF_THE_DEFENDANT = "Role of the defendant"
     OTHER = "Other"
+
+
+class SentencingPrimaryRole(str, Enum):
+    COURIER_STOREKEEPER = "Courier / Storekeeper"
+    ACTUAL_TRAFFICKER = "Actual trafficker"
+    MANAGER_ORGANISER = "Manager / Organiser"
+    OPERATOR_FINANCIAL_CONTROLLER = "Operator / Financial controller"
+
+
+class SupplementaryCircumstance(str, Enum):
+    CROSS_BORDER_TRAFFICKING = "Cross-border trafficking"
+    DIVAN_KEEPING = "Divan keeping"
+    MANUFACTURING = "Manufacturing"
 
 
 class MitigatingFactorType(str, Enum):
@@ -344,9 +358,6 @@ class FinalSentenceDetail(BaseModel):
         return self.sentence_years * 12 + self.sentence_months
 
 
-from schema.judgement import ChargeName
-
-
 class ChargeDetail(BaseModel):
     model_config = ConfigDict(extra="forbid")
     charge_no: int = Field(description="Charge number provided in the system prompt")
@@ -360,6 +371,27 @@ class ChargeDetail(BaseModel):
         description="ID of the defendant associated with this charge, as provided in the prompt"
     )
     source: str = source_field("charge type")
+
+
+class SentencingRoleDetail(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    primary_role: SentencingPrimaryRole = Field(
+        description="The single sentencing role selected for the current charge and defendant."
+    )
+    additional_circumstances: List[SupplementaryCircumstance] = Field(
+        default_factory=list,
+        description="Additional sentencing circumstances selected for the current charge and defendant.",
+    )
+    source: str = source_field("sentencing role and additional circumstances")
+
+    @model_validator(mode="after")
+    def validate_additional_circumstances(self):
+        if len(self.additional_circumstances) != len(
+            set(self.additional_circumstances)
+        ):
+            raise ValueError("additional_circumstances must not contain duplicates")
+        return self
 
 
 class Trial(BaseModel):
@@ -376,6 +408,10 @@ class Trial(BaseModel):
     mitigating_factors: Optional[List[MitigatingFactorDetail]] = Field(
         default=None,
         description="Mitigating factors explicitly addressed by the judge for the current charge (excluding guilty plea)",
+    )
+    sentencing_role: Optional[SentencingRoleDetail] = Field(
+        default=None,
+        description="Model-specific sentencing role and additional circumstances for the current charge",
     )
     guilty_plea: GuiltyPleaDetail
     starting_point: StartingPointDetail = Field(

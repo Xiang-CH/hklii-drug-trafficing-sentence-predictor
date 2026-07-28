@@ -512,6 +512,44 @@
             "title": "SentenceAfterRoleDetail",
             "type": "object"
         },
+        "SentencingPrimaryRole": {
+            "enum": [
+                "Courier / Storekeeper",
+                "Actual trafficker",
+                "Manager / Organiser",
+                "Operator / Financial controller"
+            ],
+            "title": "SentencingPrimaryRole",
+            "type": "string"
+        },
+        "SentencingRoleDetail": {
+            "additionalProperties": false,
+            "properties": {
+                "primary_role": {
+                    "$ref": "#/$defs/SentencingPrimaryRole",
+                    "description": "The single sentencing role selected for the current charge and defendant."
+                },
+                "additional_circumstances": {
+                    "description": "Additional sentencing circumstances selected for the current charge and defendant.",
+                    "items": {
+                        "$ref": "#/$defs/SupplementaryCircumstance"
+                    },
+                    "title": "Additional Circumstances",
+                    "type": "array"
+                },
+                "source": {
+                    "description": "The exact match source text from which the sentencing role and additional circumstances was extracted. Do not include any additional information in the source document.",
+                    "title": "Source",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "primary_role",
+                "source"
+            ],
+            "title": "SentencingRoleDetail",
+            "type": "object"
+        },
         "StartingPointDetail": {
             "additionalProperties": false,
             "properties": {
@@ -538,6 +576,15 @@
             ],
             "title": "StartingPointDetail",
             "type": "object"
+        },
+        "SupplementaryCircumstance": {
+            "enum": [
+                "Cross-border trafficking",
+                "Divan keeping",
+                "Manufacturing"
+            ],
+            "title": "SupplementaryCircumstance",
+            "type": "string"
         },
         "Trial": {
             "additionalProperties": false,
@@ -584,6 +631,18 @@
                     "default": null,
                     "description": "Mitigating factors explicitly addressed by the judge for the current charge (excluding guilty plea)",
                     "title": "Mitigating Factors"
+                },
+                "sentencing_role": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SentencingRoleDetail"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Model-specific sentencing role and additional circumstances for the current charge"
                 },
                 "guilty_plea": {
                     "$ref": "#/$defs/GuiltyPleaDetail"

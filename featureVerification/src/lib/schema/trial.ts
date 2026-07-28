@@ -37,6 +37,41 @@ export const AggravatingFactorTypeSchema = z.enum([
   'Other',
 ])
 
+export const SentencingPrimaryRoleSchema = z.enum([
+  'Courier / Storekeeper',
+  'Actual trafficker',
+  'Manager / Organiser',
+  'Operator / Financial controller',
+])
+
+export const SupplementaryCircumstanceSchema = z.enum([
+  'Cross-border trafficking',
+  'Divan keeping',
+  'Manufacturing',
+])
+
+export const SentencingRoleDetailSchema = z
+  .object({
+    primary_role: SentencingPrimaryRoleSchema,
+    additional_circumstances: z
+      .array(SupplementaryCircumstanceSchema)
+      .default([]),
+    inferred: z.boolean().default(false),
+    source: z.string(),
+  })
+  .superRefine((data, ctx) => {
+    if (
+      new Set(data.additional_circumstances).size !==
+      data.additional_circumstances.length
+    ) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['additional_circumstances'],
+        message: 'Additional circumstances must not contain duplicates',
+      })
+    }
+  })
+
 export const MitigatingFactorTypeSchema = z.enum([
   'Voluntary surrender',
   'Self-consumption',
@@ -278,6 +313,7 @@ export const TrialSchema = z
       .array(MitigatingFactorDetailSchema)
       .nullable()
       .default(null),
+    sentencing_role: SentencingRoleDetailSchema.nullable().default(null),
     guilty_plea: GuiltyPleaDetailSchema,
     starting_point: StartingPointDetailSchema.nullable(),
     sentence_after_role: SentenceAfterRoleDetailSchema.nullable().default(null),

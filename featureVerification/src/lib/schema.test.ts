@@ -4,6 +4,7 @@ import {
   ChargeForDefendantSchema,
   FinalSentenceDetailSchema,
   GuiltyPleaDetailSchema,
+  SentencingRoleDetailSchema,
   getDefaultValueForArrayItem,
   getDefaultValueForField,
   getDefaultValueForFieldSchema,
@@ -158,5 +159,33 @@ describe('trial decimal month fields', () => {
     expect(guiltyPlea.total_reduction_months).toBe(1.5)
     expect(finalSentence.sentence_months).toBe(3.5)
     expect(finalSentence.total_months).toBe(27.5)
+  })
+})
+
+describe('sentencing roles', () => {
+  it('accepts one primary role and unique supplementary circumstances', () => {
+    const role = SentencingRoleDetailSchema.parse({
+      primary_role: 'Courier / Storekeeper',
+      additional_circumstances: ['Cross-border trafficking', 'Manufacturing'],
+      inferred: false,
+      source: 'test source',
+    })
+
+    expect(role.primary_role).toBe('Courier / Storekeeper')
+    expect(role.additional_circumstances).toEqual([
+      'Cross-border trafficking',
+      'Manufacturing',
+    ])
+  })
+
+  it('rejects duplicate supplementary circumstances', () => {
+    const result = SentencingRoleDetailSchema.safeParse({
+      primary_role: 'Actual trafficker',
+      additional_circumstances: ['Divan keeping', 'Divan keeping'],
+      inferred: false,
+      source: 'test source',
+    })
+
+    expect(result.success).toBe(false)
   })
 })
