@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PredictRouteImport } from './routes/predict'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
@@ -22,6 +23,11 @@ import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 import { Route as ApiAssignmentSplatRouteImport } from './routes/api/assignment/$'
 import { Route as AdminJudgementsFilenameRouteImport } from './routes/admin/judgements/$filename'
 
+const PredictRoute = PredictRouteImport.update({
+  id: '/predict',
+  path: '/predict',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -86,6 +92,7 @@ const AdminJudgementsFilenameRoute = AdminJudgementsFilenameRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/predict': typeof PredictRoute
   '/admin/users': typeof AdminUsersRoute
   '/verify/$filename': typeof VerifyFilenameRoute
   '/admin/': typeof AdminIndexRoute
@@ -100,6 +107,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/predict': typeof PredictRoute
   '/admin/users': typeof AdminUsersRoute
   '/verify/$filename': typeof VerifyFilenameRoute
   '/admin': typeof AdminIndexRoute
@@ -115,6 +123,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/predict': typeof PredictRoute
   '/admin/users': typeof AdminUsersRoute
   '/verify/$filename': typeof VerifyFilenameRoute
   '/admin/': typeof AdminIndexRoute
@@ -131,6 +140,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/login'
+    | '/predict'
     | '/admin/users'
     | '/verify/$filename'
     | '/admin/'
@@ -145,6 +155,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/login'
+    | '/predict'
     | '/admin/users'
     | '/verify/$filename'
     | '/admin'
@@ -159,6 +170,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/login'
+    | '/predict'
     | '/admin/users'
     | '/verify/$filename'
     | '/admin/'
@@ -174,6 +186,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LoginRoute: typeof LoginRoute
+  PredictRoute: typeof PredictRoute
   AdminUsersRoute: typeof AdminUsersRoute
   VerifyFilenameRoute: typeof VerifyFilenameRoute
   AdminIndexRoute: typeof AdminIndexRoute
@@ -188,6 +201,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/predict': {
+      id: '/predict'
+      path: '/predict'
+      fullPath: '/predict'
+      preLoaderRoute: typeof PredictRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -278,6 +298,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LoginRoute: LoginRoute,
+  PredictRoute: PredictRoute,
   AdminUsersRoute: AdminUsersRoute,
   VerifyFilenameRoute: VerifyFilenameRoute,
   AdminIndexRoute: AdminIndexRoute,

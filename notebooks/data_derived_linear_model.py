@@ -183,7 +183,7 @@ class DataDerivedLinearPredictor:
 			role_enhancement = 0.0
 			role_status = "no sentencing role profile"
 		after_role = max(0.0, starting_point + role_enhancement)
-		aggravation = self._effect(other_aggravating, "aggravation", after_role)
+		aggravation = self._effect(other_aggravating, "aggravation", starting_point)
 		notional = max(0.0, after_role + aggravation)
 		mitigation = min(notional, max(0.0, self._effect(canonical_mitigating, "mitigation", notional)))
 		pre_plea = max(0.0, notional - mitigation)

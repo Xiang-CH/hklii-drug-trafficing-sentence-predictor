@@ -751,7 +751,7 @@ def flatten_documents(documents: list[dict[str, Any]]) -> tuple[pd.DataFrame, pd
 					continue
 				adjustment = factor.get("enhancement_months")
 				stage = "aggravation"
-				base = after_role
+				base = starting
 				if adjustment is not None and canonical and base and base > 0 and not is_inferred(factor):
 					effect_rows.append({
 						"case_id": case_id,
@@ -1078,15 +1078,15 @@ def build_factor_percentage_error_report(
 			"training_direct_adjustments": train_support,
 			"model_percentage": model_fraction * 100,
 			"model_median_months": model_months,
+			"mean_absolute_percentage_error": mean_absolute_percentage_error,
+			"mean_signed_error_months": group["error_months"].mean() if len(group) else np.nan,
 			"test_direct_adjustments": len(group),
 			"test_judgments": group["case_id"].nunique(),
 			"actual_median_percentage": group["effect_fraction"].median() * 100 if len(group) else np.nan,
 			"mae_months": group["error_months"].abs().mean() if len(group) else np.nan,
 			"median_absolute_error_months": group["error_months"].abs().median() if len(group) else np.nan,
-			"mean_signed_error_months": group["error_months"].mean() if len(group) else np.nan,
 			"mae_percentage_points": group["error_percentage_points"].abs().mean() if len(group) else np.nan,
 			"mean_signed_error_percentage_points": group["error_percentage_points"].mean() if len(group) else np.nan,
-			"mean_absolute_percentage_error": mean_absolute_percentage_error,
 		})
 	return pd.DataFrame(report_rows).sort_values(["stage", "canonical_factor"]).reset_index(drop=True)
 
@@ -1139,6 +1139,11 @@ def write_deployment_artifact(
 			"minimum_factor_support": MIN_FACTOR_SUPPORT,
 			"curve_method": "single-drug training quantile medians; cumulative-maximum monotonic interpolation",
 			"mixed_drug_method": "legacy total-quantity weighted average",
+			"factor_percentage_bases": {
+				"aggravation": "starting point",
+				"mitigation": "notional sentence",
+				"plea": "pre-plea sentence",
+			},
 		},
 		"canonical_factor_map": CANONICAL_FACTOR_MAP,
 		"drug_curves": {
@@ -1168,8 +1173,18 @@ def write_deployment_artifact(
 			for row in active_effects.itertuples(index=False)
 		],
 	}
+	artifact_json = json.dumps(artifact, indent=2, sort_keys=True)
 	artifact_path = notebook_dir / "data_derived_linear_model.json"
-	artifact_path.write_text(json.dumps(artifact, indent=2, sort_keys=True))
+	artifact_path.write_text(artifact_json)
+	typescript_artifact_path = (
+		notebook_dir.parent
+		/ "featureVerification"
+		/ "src"
+		/ "lib"
+		/ artifact_path.name
+	)
+	typescript_artifact_path.parent.mkdir(parents=True, exist_ok=True)
+	typescript_artifact_path.write_text(artifact_json)
 	return artifact_path
 
 
@@ -1319,8 +1334,8 @@ def run_analysis(refresh_cache: bool = False) -> dict[str, pd.DataFrame | str]:
 	)
 	test["predicted_sentence_after_role_months"] = test["predicted_starting_point_months"] + test["predicted_role_enhancement_months"]
 	test["predicted_aggravation_months"] = test.apply(
-		lambda row: stage_effect(row["prediction_aggravating_factors"], "aggravation", row["predicted_sentence_after_role_months"], supported_effects)
-		if pd.notna(row["predicted_sentence_after_role_months"])
+		lambda row: stage_effect(row["prediction_aggravating_factors"], "aggravation", row["predicted_starting_point_months"], supported_effects)
+		if pd.notna(row["predicted_starting_point_months"])
 		else np.nan,
 		axis=1,
 	)

@@ -217,6 +217,8 @@ class RoleAdjustmentModelTest(unittest.TestCase):
 
         self.assertEqual(trials["role_factors"].iloc[0], ["Role of the defendant"])
         self.assertEqual(effects["canonical_factor"].tolist(), ["On bail"])
+        self.assertEqual(effects["base_months"].tolist(), [100.0])
+        self.assertEqual(effects["effect_fraction"].tolist(), [0.05])
 
     def test_unmatched_workbook_exclusion_warns_without_stopping_analysis(self) -> None:
         catalogue = pd.DataFrame([
@@ -296,7 +298,7 @@ class RoleAdjustmentModelTest(unittest.TestCase):
             "canonical_factor_map": {},
             "drug_curves": {"Cocaine": [[0.0, 24.0], [10.0, 60.0]]},
             "factor_effects": {
-                "aggravation": {"Cross-border trafficking": 0.10},
+                "aggravation": {"Cross-border trafficking": 0.10, "On bail": 0.10},
                 "role": {},
                 "mitigation": {},
                 "plea": {},
@@ -336,6 +338,11 @@ class RoleAdjustmentModelTest(unittest.TestCase):
                 primary_role="Actual trafficker",
                 additional_circumstances=["Divan keeping"],
             )
+            role_plus_aggravation = predictor.predict(
+                {"Cocaine": 10.0},
+                aggravating_factors=["On bail"],
+                primary_role="Actual trafficker",
+            )
             severe_cross_border = predictor.predict(
                 {"Cocaine": 10.0},
                 aggravating_factors=["Cross-border trafficking"],
@@ -350,6 +357,7 @@ class RoleAdjustmentModelTest(unittest.TestCase):
         self.assertEqual(courier["role_enhancement_months"], 0.0)
         self.assertEqual(courier["aggravation_months"], 6.0)
         self.assertAlmostEqual(actual_trafficker["role_enhancement_months"], 18.0)
+        self.assertEqual(role_plus_aggravation["aggravation_months"], 6.0)
         self.assertEqual(severe_cross_border["role_enhancement_months"], 30.0)
         self.assertEqual(severe_cross_border["aggravation_months"], 0.0)
         self.assertEqual(legacy_role["role_enhancement_months"], 0.0)

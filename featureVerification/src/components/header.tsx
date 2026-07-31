@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router'
 
 import { useState } from 'react'
 import {
+  Calculator,
   ClipboardList,
   FileText,
   Globe,
@@ -123,6 +124,19 @@ export default function Header() {
               </div>
             </>
           )}
+
+          <Link
+            to="/predict"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
+            activeProps={{
+              className:
+                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
+            }}
+          >
+            <Calculator size={20} />
+            <span className="font-medium">Sentence calculator</span>
+          </Link>
 
           <Link
             to="/login"
