@@ -15,10 +15,27 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: true
           lfs: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.22.0
+          cache: pnpm
+          cache-dependency-path: featureVerification/pnpm-lock.yaml
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: featureVerification
+      - name: Build for Azure
+        run: pnpm build:azure
+        working-directory: featureVerification
+      - name: Include Static Web Apps configuration
+        run: cp staticwebapp.config.json .output/public/staticwebapp.config.json
+        working-directory: featureVerification
 
       - name: Build And Deploy
         id: builddeploy
@@ -29,10 +46,10 @@ jobs:
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "./featureVerification" # App source code path
+          app_location: "./featureVerification/.output/public" # App source code path
           api_location: "./featureVerification/.output/server" # Api source code path - optional
-          output_location: ".output/public" # Built app content directory - optional
-          app_build_command: "npm run build:azure"
+          output_location: "" # Built app content directory - optional
+          skip_app_build: true
           skip_api_build: true
           ###### End of Repository/Build Configurations ######
         env:
