@@ -20,20 +20,6 @@ jobs:
           submodules: true
           lfs: false
 
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 10
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22.22.0'
-          cache: pnpm
-          cache-dependency-path: featureVerification/pnpm-lock.yaml
-      
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-        working-directory: featureVerification
-
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -46,7 +32,8 @@ jobs:
           app_location: "./featureVerification" # App source code path
           api_location: "./featureVerification/.output/server" # Api source code path - optional
           output_location: ".output/public" # Built app content directory - optional
-          app_build_command: "pnpm run build:azure"
+          app_build_command: "npm run build:azure"
+          skip_api_build: true
           ###### End of Repository/Build Configurations ######
         env:
           DEPLOY_TARGET: azure
