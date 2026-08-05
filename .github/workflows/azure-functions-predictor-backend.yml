@@ -80,5 +80,5 @@ jobs:
         with:
           app-name: sentencing-predictor-backend
           package: release.zip
-          publish-profile: ${{ secrets.__publishingprofilesecretname__ }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_88722616272B4D67B4BFFAFFB015FDA2 }}
           sku: flexconsumption
