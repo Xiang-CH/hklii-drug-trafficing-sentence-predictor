@@ -2,6 +2,7 @@
 	"name": "drug-sentencing-predictor-backend",
 	"private": true,
 	"type": "module",
+	"main": "dist/functions/*.js",
 	"engines": {
 		"node": ">=22"
 	},
@@ -13,10 +14,12 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
+		"@azure/functions": "^4.16.2",
 		"@hono/node-server": "^1.19.7",
 		"@hono/swagger-ui": "^0.6.1",
 		"@hono/zod-openapi": "^1.5.1",
 		"@hono/zod-validator": "^0.7.6",
+		"@marplex/hono-azurefunc-adapter": "^1.0.1",
 		"hono": "^4.9.7",
 		"zod": "^4.3.6"
 	},
