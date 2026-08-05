@@ -1,8 +1,8 @@
 import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
-import { zValidator } from '@hono/zod-validator'
-import { Hono } from 'hono'
 import { HTTPException } from 'hono/http-exception'
+import { swaggerUI } from '@hono/swagger-ui'
+import { createRoute, OpenAPIHono, z } from '@hono/zod-openapi'
 import {
 	predictSentence,
 	UnsupportedPredictionError,
@@ -23,13 +23,131 @@ function validationResponse(
 		fields[field] = issue.message
 	}
 	return {
-		error: 'VALIDATION_ERROR',
+		error: 'VALIDATION_ERROR' as const,
 		message: 'The request body is invalid',
 		fields,
 	}
 }
 
-export const app = new Hono()
+const HealthResponseSchema = z
+	.object({
+		status: z.literal('ok'),
+	})
+	.openapi('HealthResponse')
+
+const PredictionAdjustmentSchema = z
+	.object({
+		factor: z.string(),
+		category: z.enum([
+			'defendantRole',
+			'aggravating',
+			'mitigating',
+			'guiltyPlea',
+		]),
+		direction: z.enum(['increase', 'decrease']),
+		months: z.number(),
+		years: z.number(),
+	})
+	.openapi('PredictionAdjustment')
+
+const PredictionResponseSchema = z
+	.object({
+		status: z.literal('supported'),
+		startingPointMonths: z.number(),
+		startingPointYears: z.number(),
+		adjustments: z.array(PredictionAdjustmentSchema),
+		finalSentenceMonths: z.number(),
+		finalSentenceYears: z.number(),
+	})
+	.openapi('PredictionResponse')
+
+const ValidationErrorSchema = z
+	.object({
+		error: z.literal('VALIDATION_ERROR'),
+		message: z.string(),
+		fields: z.record(z.string(), z.string()),
+	})
+	.openapi('ValidationError')
+
+const UnsupportedPredictionSchema = z
+	.object({
+		error: z.literal('MODEL_INPUT_UNAVAILABLE'),
+		message: z.string(),
+	})
+	.openapi('UnsupportedPredictionError')
+
+const InternalErrorSchema = z
+	.object({
+		error: z.literal('INTERNAL_ERROR'),
+		message: z.string(),
+	})
+	.openapi('InternalError')
+
+const healthRoute = createRoute({
+	method: 'get',
+	path: '/health',
+	responses: {
+		200: {
+			description: 'Service health status',
+			content: {
+				'application/json': {
+					schema: HealthResponseSchema,
+				},
+			},
+		},
+	},
+})
+
+const predictionRoute = createRoute({
+	method: 'post',
+	path: '/api/v1/sentence-predictions',
+	request: {
+		body: {
+			required: true,
+			content: {
+				'application/json': {
+					schema: PredictionRequestSchema.openapi('PredictionRequest'),
+				},
+			},
+		},
+	},
+	responses: {
+		200: {
+			description: 'A deterministic sentence prediction',
+			content: {
+				'application/json': {
+					schema: PredictionResponseSchema,
+				},
+			},
+		},
+		400: {
+			description: 'The request body is invalid',
+			content: {
+				'application/json': {
+					schema: ValidationErrorSchema,
+				},
+			},
+		},
+		422: {
+			description: 'The dummy predictor cannot handle the requested input',
+			content: {
+				'application/json': {
+					schema: UnsupportedPredictionSchema,
+				},
+			},
+		},
+		500: {
+			description: 'An unexpected server error occurred',
+			content: {
+				'application/json': {
+					schema: InternalErrorSchema,
+				},
+			},
+		},
+	},
+})
+
+export const app = new OpenAPIHono()
 
 app.use('*', logger())
 app.use(
@@ -42,23 +160,20 @@ app.use(
 	}),
 )
 
-app.get('/health', (context) => context.json({ status: 'ok' }))
+app.openapi(healthRoute, (context) =>
+	context.json({ status: 'ok' }, 200),
+)
 
-app.post(
-	'/api/v1/sentence-predictions',
-	zValidator('json', PredictionRequestSchema, (result, context) => {
-		if (!result.success) {
-			return context.json(validationResponse(result.error), 400)
-		}
-	}),
+app.openapi(
+	predictionRoute,
 	(context) => {
 		try {
-			return context.json(predictSentence(context.req.valid('json')))
+			return context.json(predictSentence(context.req.valid('json')), 200)
 		} catch (error) {
 			if (error instanceof UnsupportedPredictionError) {
 				return context.json(
 					{
-						error: error.code,
+						error: 'MODEL_INPUT_UNAVAILABLE' as const,
 						message: error.message,
 					},
 					422,
@@ -67,7 +182,30 @@ app.post(
 			throw error
 		}
 	},
+	(result, context) => {
+		if (!result.success) {
+			return context.json(validationResponse(result.error), 400)
+		}
+	},
 )
+
+app.doc('/openapi.json', {
+	openapi: '3.0.0',
+	info: {
+		title: 'Drug Sentencing Predictor API',
+		version: '1.0.0',
+		description:
+			'Public API for the deterministic sentence-prediction prototype.',
+	},
+	servers: [
+		{
+			url: 'http://localhost:8787',
+			description: 'Local development server',
+		},
+	],
+})
+
+app.get('/docs', swaggerUI({ url: '/openapi.json' }))
 
 app.notFound((context) =>
 	context.json(
@@ -85,6 +223,7 @@ app.onError((error, context) => {
 			{
 				error: 'VALIDATION_ERROR',
 				message: 'The request body is invalid',
+				fields: {},
 			},
 			400,
 		)
