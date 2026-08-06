@@ -1,8 +1,9 @@
-import { cors } from 'hono/cors'
+// import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
 import { HTTPException } from 'hono/http-exception'
 import { swaggerUI } from '@hono/swagger-ui'
 import { createRoute, OpenAPIHono, z } from '@hono/zod-openapi'
+import { Hono } from 'hono'
 import {
 	predictSentence,
 	UnsupportedPredictionError,

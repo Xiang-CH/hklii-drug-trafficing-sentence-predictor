@@ -132,3 +132,4 @@ dataBot/local_env_set.sh
 
 .docs/
 predictorBackend/local.settings.json
+.vercel
