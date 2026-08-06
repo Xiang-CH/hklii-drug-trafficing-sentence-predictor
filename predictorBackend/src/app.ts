@@ -1,4 +1,3 @@
-// import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
 import { HTTPException } from 'hono/http-exception'
 import { swaggerUI } from '@hono/swagger-ui'
@@ -8,10 +7,8 @@ import {
 	predictSentence,
 	UnsupportedPredictionError,
 } from './predictor.js'
+import { pickSimilarCases } from './similarCases.js'
 import { PredictionRequestSchema } from './schema.js'
-
-const frontendOrigin =
-	process.env.FRONTEND_ORIGIN?.trim()
 
 function validationResponse(
 	error: { issues: Array<{ path: Array<PropertyKey>; message: string }> },
@@ -61,6 +58,18 @@ const PredictionResponseSchema = z
 		finalSentenceYears: z.number(),
 	})
 	.openapi('PredictionResponse')
+
+const SimilarCaseSchema = z
+	.object({
+		neutralCitation: z.string(),
+		title: z.string(),
+		url: z.string(),
+	})
+	.openapi('SimilarCase')
+
+const SimilarCasesResponseSchema = z
+	.array(SimilarCaseSchema)
+	.openapi('SimilarCasesResponse')
 
 const ValidationErrorSchema = z
 	.object({
@@ -148,19 +157,51 @@ const predictionRoute = createRoute({
 	},
 })
 
+const similarCasesRoute = createRoute({
+	method: 'post',
+	path: '/api/similar-cases',
+	request: {
+		body: {
+			required: true,
+			content: {
+				'application/json': {
+					schema: PredictionRequestSchema.openapi('PredictionRequest'),
+				},
+			},
+		},
+	},
+	responses: {
+		200: {
+			description: 'A list of recommended similar cases',
+			content: {
+				'application/json': {
+					schema: SimilarCasesResponseSchema,
+				},
+			},
+		},
+		400: {
+			description: 'The request body is invalid',
+			content: {
+				'application/json': {
+					schema: ValidationErrorSchema,
+				},
+			},
+		},
+		500: {
+			description: 'An unexpected server error occurred',
+			content: {
+				'application/json': {
+					schema: InternalErrorSchema,
+				},
+			},
+		},
+	},
+})
+
 const app = new Hono()
 const api = new OpenAPIHono()
 
 api.use('*', logger())
-// api.use(
-// 	'*',
-// 	cors({
-// 		origin: (origin) =>
-// 			origin === frontendOrigin ? origin : undefined,
-// 		allowHeaders: ['Content-Type'],
-// 		allowMethods: ['GET', 'POST', 'OPTIONS'],
-// 	}),
-// )
 
 api.openapi(healthRoute, (context) =>
 	context.json({ status: 'ok' }, 200),
@@ -183,6 +224,18 @@ api.openapi(
 			}
 			throw error
 		}
+	},
+	(result, context) => {
+		if (!result.success) {
+			return context.json(validationResponse(result.error), 400)
+		}
+	},
+)
+
+api.openapi(
+	similarCasesRoute,
+	(context) => {
+		return context.json(pickSimilarCases(context.req.valid('json')), 200)
 	},
 	(result, context) => {
 		if (!result.success) {
@@ -229,7 +282,7 @@ api.onError((error, context) => {
 	return context.json(
 		{
 			error: 'INTERNAL_ERROR',
-			message: 'The prediction could not be calculated',
+			message: 'The request could not be processed',
 		},
 		500,
 	)

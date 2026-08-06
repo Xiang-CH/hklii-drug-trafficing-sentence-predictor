@@ -2,13 +2,14 @@
 
 Public API documentation for clients integrating with the sentence prediction service.
 
-## Endpoint
+## Endpoints
 
 ```http
 POST /api/sentence-predictions
+POST /api/similar-cases
 ```
 
-The endpoint is publicly accessible and does not require a login or API key.
+The endpoints are publicly accessible and do not require a login or API key.
 
 Requests may be rate limited. Do not include personal information, case documents, or other sensitive data in the request.
 
@@ -201,7 +202,7 @@ Adjustment amounts are returned as positive values. Use `direction` to determine
 ## Example request
 
 ```bash
-curl -X POST https://example.com/api/v1/sentence-predictions \
+curl -X POST https://example.com/api/sentence-predictions \
   -H 'Content-Type: application/json' \
   -d '{
     "drugs": [
@@ -214,6 +215,52 @@ curl -X POST https://example.com/api/v1/sentence-predictions \
     "mitigatingFactors": []
   }'
 ```
+
+## Similar cases
+
+Recommendations for cases similar to the submitted facts.
+
+```http
+POST /api/similar-cases
+```
+
+The request body is identical to the sentence-prediction request above. All request fields, drug types, roles, plea options, and factor rules apply unchanged.
+
+### Successful response
+
+Status: `200 OK`
+
+```json
+[
+  {
+    "neutralCitation": "HKSAR v Chan Kwok Ming [2019] HKCFI 1234",
+    "title": "HKSAR v Chan Kwok Ming",
+    "url": "https://www.hklii.hk/en/cases/hkcfi/2019/1234"
+  },
+  {
+    "neutralCitation": "HKSAR v Wong Wai Shing [2018] HKCFI 987",
+    "title": "HKSAR v Wong Wai Shing",
+    "url": "https://www.hklii.hk/en/cases/hkcfi/2018/987"
+  }
+]
+```
+
+### Response fields
+
+The response is a JSON array of case objects.
+
+| Field | Description |
+| --- | --- |
+| `neutralCitation` | Neutral citation of the judgment. |
+| `title` | Case title. |
+| `url` | Link to the judgment. |
+
+The number of returned cases is non-deterministic and currently ranges between 4 and 8. The recommendations are a placeholder implementation and do not yet reflect the request contents.
+
+### Errors
+
+- `400 Bad Request` — the request body is invalid, with the same `VALIDATION_ERROR` shape as above.
+- `500 Internal Server Error` — the service could not complete the lookup.
 
 ## Errors
 
@@ -258,12 +305,12 @@ The client has exceeded the permitted request rate.
 
 ### `500 Internal Server Error`
 
-The service could not complete the prediction.
+The service could not complete the request.
 
 ```json
 {
   "error": "INTERNAL_ERROR",
-  "message": "The prediction could not be calculated"
+  "message": "The request could not be processed"
 }
 ```
 

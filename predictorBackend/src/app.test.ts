@@ -8,12 +8,11 @@ const baseRequest = {
 	mitigatingFactors: [],
 }
 
-async function post(body: unknown, origin = 'http://localhost:3000') {
-	return app.request('/api/v1/sentence-predictions', {
+async function post(body: unknown, path = '/api/sentence-predictions') {
+	return app.request(path, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			Origin: origin,
 		},
 		body: JSON.stringify(body),
 	})
@@ -21,7 +20,7 @@ async function post(body: unknown, origin = 'http://localhost:3000') {
 
 describe('predictor API', () => {
 	it('returns a healthy status', async () => {
-		const response = await app.request('/health')
+		const response = await app.request('/api/health')
 
 		expect(response.status).toBe(200)
 		expect(await response.json()).toEqual({ status: 'ok' })
@@ -191,7 +190,7 @@ describe('predictor API', () => {
 	})
 
 	it('handles malformed JSON with a JSON error response', async () => {
-		const response = await app.request('/api/v1/sentence-predictions', {
+		const response = await app.request('/api/sentence-predictions', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: '{',
@@ -203,17 +202,32 @@ describe('predictor API', () => {
 		})
 	})
 
-	it('allows the configured frontend origin through CORS', async () => {
-		const response = await post(baseRequest)
+	it('returns a list of similar cases', async () => {
+		const response = await post(baseRequest, '/api/similar-cases')
+		const body = await response.json()
 
-		expect(response.headers.get('Access-Control-Allow-Origin')).toBe(
-			'http://localhost:3000',
-		)
+		expect(response.status).toBe(200)
+		expect(Array.isArray(body)).toBe(true)
+		expect(body.length).toBeGreaterThanOrEqual(4)
+		expect(body.length).toBeLessThanOrEqual(8)
+		for (const item of body) {
+			expect(item).toMatchObject({
+				neutralCitation: expect.any(String),
+				title: expect.any(String),
+				url: expect.any(String),
+			})
+		}
 	})
 
-	it('does not allow an unrelated origin through CORS', async () => {
-		const response = await post(baseRequest, 'https://example.invalid')
+	it('validates the similar-cases request body', async () => {
+		const response = await post(
+			{ drugs: [{ type: 'Unknown', quantity: 1 }], guiltyPlea: 'Plead not guilty' },
+			'/api/similar-cases',
+		)
 
-		expect(response.headers.get('Access-Control-Allow-Origin')).toBeNull()
+		expect(response.status).toBe(400)
+		expect(await response.json()).toMatchObject({
+			error: 'VALIDATION_ERROR',
+		})
 	})
 })
