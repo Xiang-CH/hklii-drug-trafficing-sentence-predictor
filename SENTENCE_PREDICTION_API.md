@@ -16,7 +16,7 @@ The API must not apply a sentencing guideline when the submitted drug type is un
 ## Endpoint
 
 ```http
-POST /api/v1/sentence-predictions
+POST /api/sentence-predictions
 ```
 
 ### Authentication

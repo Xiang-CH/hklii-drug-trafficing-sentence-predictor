@@ -5,7 +5,7 @@ Public API documentation for clients integrating with the sentence prediction se
 ## Endpoint
 
 ```http
-POST /api/v1/sentence-predictions
+POST /api/sentence-predictions
 ```
 
 The endpoint is publicly accessible and does not require a login or API key.

@@ -148,10 +148,11 @@ const predictionRoute = createRoute({
 	},
 })
 
-const app = new OpenAPIHono()
+const app = new Hono()
+const api = new OpenAPIHono()
 
-app.use('*', logger())
-// app.use(
+api.use('*', logger())
+// api.use(
 // 	'*',
 // 	cors({
 // 		origin: (origin) =>
@@ -161,11 +162,11 @@ app.use('*', logger())
 // 	}),
 // )
 
-app.openapi(healthRoute, (context) =>
+api.openapi(healthRoute, (context) =>
 	context.json({ status: 'ok' }, 200),
 )
 
-app.openapi(
+api.openapi(
 	predictionRoute,
 	(context) => {
 		try {
@@ -190,7 +191,7 @@ app.openapi(
 	},
 )
 
-app.doc('/openapi.json', {
+api.doc('/openapi.json', {
 	openapi: '3.0.0',
 	info: {
 		title: 'Drug Sentencing Predictor API',
@@ -206,9 +207,9 @@ app.doc('/openapi.json', {
 	],
 })
 
-app.get('/docs', swaggerUI({ url: '/openapi.json' }))
+api.get('/docs', swaggerUI({ url: '/openapi.json' }))
 
-app.notFound((context) =>
+api.notFound((context) =>
 	context.json(
 		{
 			error: 'NOT_FOUND',
@@ -218,7 +219,7 @@ app.notFound((context) =>
 	),
 )
 
-app.onError((error, context) => {
+api.onError((error, context) => {
 	if (error instanceof HTTPException && error.status === 400) {
 		return context.json(
 			{
@@ -240,4 +241,5 @@ app.onError((error, context) => {
 	)
 })
 
+app.route('/api', api)
 export default app
