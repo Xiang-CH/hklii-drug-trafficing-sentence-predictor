@@ -86,7 +86,7 @@ const InternalErrorSchema = z
 
 const healthRoute = createRoute({
 	method: 'get',
-	path: '/health',
+	path: '/api/health',
 	responses: {
 		200: {
 			description: 'Service health status',
@@ -198,13 +198,7 @@ api.doc('/openapi.json', {
 		version: '1.0.0',
 		description:
 			'Public API for the deterministic sentence-prediction prototype.',
-	},
-	servers: [
-		{
-			url: 'http://localhost:8787',
-			description: 'Local development server',
-		},
-	],
+	}
 })
 
 api.get('/docs', swaggerUI({ url: '/openapi.json' }))
