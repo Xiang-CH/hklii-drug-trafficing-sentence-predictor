@@ -101,7 +101,7 @@ const healthRoute = createRoute({
 
 const predictionRoute = createRoute({
 	method: 'post',
-	path: '/api/v1/sentence-predictions',
+	path: '/api/sentence-predictions',
 	request: {
 		body: {
 			required: true,
@@ -241,5 +241,5 @@ api.onError((error, context) => {
 	)
 })
 
-app.route('/api', api)
+app.route('/', api)
 export default app
