@@ -3,7 +3,6 @@ import { logger } from 'hono/logger'
 import { HTTPException } from 'hono/http-exception'
 import { swaggerUI } from '@hono/swagger-ui'
 import { createRoute, OpenAPIHono, z } from '@hono/zod-openapi'
-import { Hono } from 'hono'
 import {
 	predictSentence,
 	UnsupportedPredictionError,
@@ -11,7 +10,7 @@ import {
 import { PredictionRequestSchema } from './schema.js'
 
 const frontendOrigin =
-	process.env.FRONTEND_ORIGIN?.trim() || 'http://localhost:3000'
+	process.env.FRONTEND_ORIGIN?.trim()
 
 function validationResponse(
 	error: { issues: Array<{ path: Array<PropertyKey>; message: string }> },
@@ -148,18 +147,18 @@ const predictionRoute = createRoute({
 	},
 })
 
-export const app = new OpenAPIHono()
+const app = new OpenAPIHono()
 
 app.use('*', logger())
-app.use(
-	'*',
-	cors({
-		origin: (origin) =>
-			origin === frontendOrigin ? origin : undefined,
-		allowHeaders: ['Content-Type'],
-		allowMethods: ['GET', 'POST', 'OPTIONS'],
-	}),
-)
+// app.use(
+// 	'*',
+// 	cors({
+// 		origin: (origin) =>
+// 			origin === frontendOrigin ? origin : undefined,
+// 		allowHeaders: ['Content-Type'],
+// 		allowMethods: ['GET', 'POST', 'OPTIONS'],
+// 	}),
+// )
 
 app.openapi(healthRoute, (context) =>
 	context.json({ status: 'ok' }, 200),
@@ -239,3 +238,5 @@ app.onError((error, context) => {
 		500,
 	)
 })
+
+export default app

@@ -131,3 +131,4 @@ dataBot/local_env_set.sh
 .omo/
 
 .docs/
+predictorBackend/local.settings.json
