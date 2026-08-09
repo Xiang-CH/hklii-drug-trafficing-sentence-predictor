@@ -12,7 +12,7 @@ export const DrugTypeSchema = z.enum([
 	'Nimetazepam',
 ])
 
-export const MidazolamVariantSchema = z.enum(['powder', 'tablet'])
+export const MidazolamVariantSchema = z.literal('powder')
 
 export const DefendantRoleSchema = z.enum([
 	'Courier / Storekeeper',

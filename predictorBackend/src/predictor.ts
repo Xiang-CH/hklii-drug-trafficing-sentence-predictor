@@ -1,4 +1,5 @@
 import type { PredictionRequest } from './schema.js'
+import { predictNotionalWeightedMonths } from './guidelineModel.js'
 
 export type AdjustmentCategory =
 	| 'defendantRole'
@@ -32,38 +33,38 @@ export class UnsupportedPredictionError extends Error {
 	}
 }
 
-const drugWeights: Record<string, number> = {
-	Cocaine: 2,
-	Ketamine: 1.5,
-	Fluorodeschloroketamine: 1.5,
-	Methamphetamine: 2.5,
-	Heroin: 3,
-	'Cannabis/THC': 0.5,
-	Ecstasy: 1.75,
-	Nimetazepam: 1,
-}
-
 const roleAdjustments: Record<string, number> = {
 	'Courier / Storekeeper': 0,
 	'Actual trafficker': 0.05,
-	'Manager / Organiser': 0.1,
-	'Operator / Financial Controller': 0.15,
+	'Manager / Organiser': 0.06,
+	'Operator / Financial Controller': 0.08,
 }
 
-const aggravatingAdjustment = 0.04
-const courierCrossBorderAdjustment = 0.05
-const severeRoleCrossBorderAdjustment = 0.08
+const aggravatingAdjustments: Record<string, number> = {
+	'Multiple Drugs': 0.0385,
+	'Persistent offender': 0.04,
+	'On bail': 0.0441,
+	'Refugee/Asylum': 0.08,
+	'Use of minors': 0.0525,
+}
+
+const courierCrossBorderAdjustment = 0.0588
+const roleCrossBorderAdjustments: Record<string, number> = {
+	'Actual trafficker': 0.29,
+	'Manager / Organiser': 0.08,
+	'Operator / Financial Controller': 0.1,
+}
 
 const mitigatingAdjustments: Record<string, number> = {
-	'Self-consumption': 0.05,
-	'Assistance - limited': 0.1,
-	'Assistance - useful': 0.15,
-	'Assistance - testify': 0.2,
-	'Assistance - risk': 0.25,
-	'Young offender': 0.05,
+	'Self-consumption': 0.0451,
+	'Assistance - limited': 0.0182,
+	'Assistance - useful': 0.05,
+	'Assistance - testify': 0.3108,
+	'Assistance - risk': 0.0448,
+	'Young offender': 0.0409,
 	'Medical conditions': 0.03,
 	'Family illness': 0.03,
-	'Rehabilitation programme': 0.04,
+	'Rehabilitation programme': 0.0114,
 }
 
 const guiltyPleaAdjustments: Record<string, number> = {
@@ -97,63 +98,58 @@ function addAdjustment(
 	return direction === 'increase' ? baseMonths + months : baseMonths - months
 }
 
-function getDrugWeight(
-	type: string,
-	variant: 'powder' | 'tablet' | undefined,
-): number {
-	if (type === 'Midazolam') {
-		if (variant === 'powder') {
-			return 1.25
-		}
-		if (variant === 'tablet') {
-			return 1.5
-		}
+function getStartingPoint(input: PredictionRequest): number {
+	const startingPoint = predictNotionalWeightedMonths(input.drugs)
+	if (startingPoint === null) {
 		throw new UnsupportedPredictionError(
-			'Midazolam requires a supported variant',
+			'A prediction is not available for one of the submitted drugs',
 		)
 	}
-
-	const weight = drugWeights[type]
-	if (weight === undefined) {
-		throw new UnsupportedPredictionError(
-			`A prediction is not available for ${type}`,
-		)
-	}
-	return weight
+	return startingPoint
 }
 
 export function predictSentence(
 	input: PredictionRequest,
 ): PredictionResponse {
-	const startingPoint = input.drugs.reduce(
-		(total, drug) => total + drug.quantity * getDrugWeight(drug.type, drug.variant),
-		0,
-	)
+	const startingPoint = getStartingPoint(input)
 	const adjustments: Array<PredictionAdjustment> = []
 	let currentMonths = startingPoint
 
 	if (input.defendantRole !== null) {
-		currentMonths = addAdjustment(
-			adjustments,
-			input.defendantRole,
-			'defendantRole',
-			'increase',
-			currentMonths,
-			roleAdjustments[input.defendantRole],
+		const isCourier = input.defendantRole === 'Courier / Storekeeper'
+		const hasCrossBorder = input.additionalCircumstances.includes(
+			'Cross-border trafficking',
 		)
 
-		if (input.additionalCircumstances.includes('Cross-border trafficking')) {
-			const isCourier = input.defendantRole === 'Courier / Storekeeper'
+		if (!isCourier && hasCrossBorder) {
 			currentMonths = addAdjustment(
 				adjustments,
-				'Cross-border trafficking',
-				isCourier ? 'aggravating' : 'defendantRole',
+				`${input.defendantRole} + Cross-border trafficking`,
+				'defendantRole',
 				'increase',
 				currentMonths,
-				isCourier
-					? courierCrossBorderAdjustment
-					: severeRoleCrossBorderAdjustment,
+				roleCrossBorderAdjustments[input.defendantRole],
 			)
+		} else {
+			currentMonths = addAdjustment(
+				adjustments,
+				input.defendantRole,
+				'defendantRole',
+				'increase',
+				currentMonths,
+				roleAdjustments[input.defendantRole],
+			)
+
+			if (hasCrossBorder) {
+				currentMonths = addAdjustment(
+					adjustments,
+					'Cross-border trafficking',
+					'aggravating',
+					'increase',
+					currentMonths,
+					courierCrossBorderAdjustment,
+				)
+			}
 		}
 	}
 
@@ -164,19 +160,22 @@ export function predictSentence(
 			'aggravating',
 			'increase',
 			currentMonths,
-			aggravatingAdjustment,
+			aggravatingAdjustments[factor],
 		)
 	}
 
 	for (const factor of input.mitigatingFactors) {
-		currentMonths = addAdjustment(
-			adjustments,
-			factor,
-			'mitigating',
-			'decrease',
-			currentMonths,
-			mitigatingAdjustments[factor],
-		)
+		const adjustment = mitigatingAdjustments[factor]
+		if (adjustment !== undefined) {
+			currentMonths = addAdjustment(
+				adjustments,
+				factor,
+				'mitigating',
+				'decrease',
+				currentMonths,
+				adjustment,
+			)
+		}
 	}
 
 	const pleaAdjustment = guiltyPleaAdjustments[input.guiltyPlea]

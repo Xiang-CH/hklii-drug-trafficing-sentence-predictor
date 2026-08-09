@@ -65,7 +65,7 @@ Accept: application/json
 | `drugs` | array | Yes | One or more drug quantity records. |
 | `drugs[].type` | string | Yes | Drug category from the supported drug list. |
 | `drugs[].quantity` | number | Yes | Positive quantity in grams. |
-| `drugs[].variant` | string | Conditional | Required only for `Midazolam`; must be `powder` or `tablet`. |
+| `drugs[].variant` | string | Conditional | Required only for `Midazolam`; must be `powder`. |
 | `defendantRole` | string or `null` | No | One mutually exclusive defendant role. `null` means no role adjustment. |
 | `additionalCircumstances` | array | No | Additional circumstances associated with the selected role. |
 | `guiltyPlea` | string | Yes | Exactly one guilty-plea option. |
@@ -121,12 +121,13 @@ Different sentencing standards apply to Midazolam powder and tablets. The curren
 }
 ```
 
-Allowed variants are:
+The allowed value for `variant` is:
 
 - `powder`
-- `tablet`
 
-The model/data layer must apply the variant-specific Midazolam data. The API must not silently map Midazolam to a generic `Other` category.
+`tablet` is not accepted; Midazolam quantities are sent in grams of narcotic weight and follow the powder guidelines.
+
+The model/data layer must apply the Midazolam powder data. The API must not silently map Midazolam to a generic `Other` category.
 
 ## Defendant roles
 
@@ -237,6 +238,8 @@ The calculation must be performed in this order:
 6. Apply the guilty-plea reduction.
 7. Clamp the final sentence to zero months or greater.
 
+The starting point uses the bucketed sentencing-guideline interpolation. Each drug family has a series of quantity bands with a sentence range; a quantity is mapped to its band and interpolated linearly across the band's sentence range (`t = u`). Open-ended top bands predict the band floor, and the "at the sentencer's discretion" band predicts the previous band's ceiling. For a request with several drugs the starting point uses the notional-quantity method: for each drug, take the sentence the *total* quantity would attract in that drug's family, weight it by that drug's share of the total quantity, and sum the contributions.
+
 The base used by each adjustment must be returned so that consumers can reproduce the calculation.
 
 For a factor with a percentage adjustment:
@@ -342,7 +345,7 @@ Examples include:
 - missing `drugs`;
 - an empty drug list;
 - zero, negative, non-numeric, or non-finite quantities;
-- a missing or invalid `variant` for `Midazolam`;
+- a missing or invalid `variant` for `Midazolam` (`powder` is the only accepted value);
 - duplicate factors;
 - more than one defendant role;
 - an invalid plea option;
@@ -357,8 +360,7 @@ Examples include:
   "error": "MODEL_INPUT_UNAVAILABLE",
   "message": "A sentencing model is not available for Midazolam",
   "drug": {
-    "type": "Midazolam",
-    "variant": "tablet"
+    "type": "Midazolam"
   }
 }
 ```
@@ -366,7 +368,7 @@ Examples include:
 This status must be used when:
 
 - the combined `Cannabis/THC` type has no supported model;
-- the requested Midazolam variant has no supported model;
+- the requested drug type has no supported model;
 - Nimetazepam has no supported sentencing curve;
 - a requested drug category has insufficient reviewed data; or
 - a required role/cross-border adjustment has not been fitted.
@@ -480,7 +482,7 @@ The role-specific cross-border adjustment is applied once. A second generic cros
     {
       "type": "Midazolam",
       "quantity": 1.5,
-      "variant": "tablet"
+      "variant": "powder"
     }
   ],
   "defendantRole": null,

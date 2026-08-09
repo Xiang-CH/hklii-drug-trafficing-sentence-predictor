@@ -39,10 +39,10 @@ describe('predictor API', () => {
 		expect(response.status).toBe(200)
 		expect(body).toMatchObject({
 			status: 'supported',
-			startingPointMonths: 20,
-			startingPointYears: 1.67,
-			finalSentenceMonths: 12.38,
-			finalSentenceYears: 1.03,
+			startingPointMonths: 60,
+			startingPointYears: 5,
+			finalSentenceMonths: 41.46,
+			finalSentenceYears: 3.45,
 		})
 		expect(body.adjustments).toEqual(
 			expect.arrayContaining([
@@ -71,10 +71,10 @@ describe('predictor API', () => {
 		const body = await response.json()
 
 		expect(response.status).toBe(200)
-		expect(body.startingPointMonths).toBe(6)
+		expect(body.startingPointMonths).toBe(31.16)
 	})
 
-	it('supports both Midazolam variants', async () => {
+	it('supports Midazolam powder and rejects the tablet variant', async () => {
 		const powderResponse = await post({
 			...baseRequest,
 			drugs: [{ type: 'Midazolam', quantity: 2, variant: 'powder' }],
@@ -84,8 +84,8 @@ describe('predictor API', () => {
 			drugs: [{ type: 'Midazolam', quantity: 2, variant: 'tablet' }],
 		})
 
-		expect((await powderResponse.json()).startingPointMonths).toBe(2.5)
-		expect((await tabletResponse.json()).startingPointMonths).toBe(3)
+		expect((await powderResponse.json()).startingPointMonths).toBe(0.02)
+		expect(tabletResponse.status).toBe(400)
 	})
 
 	it('applies role and cross-border adjustments', async () => {
@@ -97,7 +97,7 @@ describe('predictor API', () => {
 		const body = await response.json()
 
 		expect(response.status).toBe(200)
-		expect(body.finalSentenceMonths).toBe(21)
+		expect(body.finalSentenceMonths).toBe(63.53)
 		expect(body.adjustments).toEqual(
 			expect.arrayContaining([
 			expect.objectContaining({

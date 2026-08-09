@@ -78,22 +78,25 @@ Accepted values for `drugs[].type` are:
 
 `Fluorodeschloroketamine` is accepted as a Ketamine-equivalent type.
 
-For `Midazolam`, `variant` is required and must be one of:
-
-- `powder`
-- `tablet`
-
-Example:
+For `Midazolam`, `variant` is required and must be `powder`:
 
 ```json
 {
   "type": "Midazolam",
   "quantity": 2,
-  "variant": "tablet"
+  "variant": "powder"
 }
 ```
 
+`tablet` is not accepted. Midazolam quantities are sent in grams of narcotic weight and follow the powder guidelines.
+
 No `variant` field is required for other drug types.
+
+## Starting point model
+
+The drug-based starting point uses the bucketed sentencing-guideline interpolation. Each drug family has a series of quantity bands (in grams) with a sentence range; a quantity is mapped to its band and interpolated linearly across the band's sentence range. Open-ended top bands predict the band floor, and the "at the sentencer's discretion" band predicts the previous band's ceiling.
+
+For a request with several drugs the starting point uses the notional-quantity method: for each drug, take the sentence the *total* quantity would attract in that drug's family, weight it by that drug's share of the total quantity, and sum the contributions. The other drugs remain eligible for the `Multiple Drugs` aggravating factor.
 
 ## Defendant roles
 
@@ -132,7 +135,6 @@ Accepted values for `aggravatingFactors` are:
 - `On bail`
 - `Refugee/Asylum`
 - `Use of minors`
-
 ## Mitigating factors
 
 Accepted values for `mitigatingFactors` are:
@@ -143,14 +145,13 @@ Accepted values for `mitigatingFactors` are:
 - `Assistance - testify`
 - `Assistance - risk`
 - `Young offender`
-- `Medical conditions`
-- `Family illness`
+- `Medical conditions` (To be Removed)
+- `Family illness` (To be Removed)
 - `Rehabilitation programme`
 
 Only one assistance option may be selected. `Extreme youth` is not accepted.
 
 ## Response
-
 ### Successful response
 
 Status: `200 OK`
