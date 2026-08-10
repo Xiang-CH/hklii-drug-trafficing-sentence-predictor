@@ -189,9 +189,11 @@ function startingPointSimilarity(a: number, b: number): number {
 	return Math.min(a, b) / Math.max(a, b, 0.1)
 }
 
+const MIN_SIMILARITY_SCORE = 0.6
+
 export function pickSimilarCases(
 	input: PredictionRequest,
-	count = 5,
+	count = 10,
 ): Array<SimilarCase> {
 	const inputStartingPoint = predictNotionalWeightedMonths(input.drugs)
 	if (inputStartingPoint === null) {
@@ -211,11 +213,15 @@ export function pickSimilarCases(
 		pool = pool.filter((candidate) => candidate.crossBorder)
 	}
 
-	const suggestions: Array<SimilarCase> = []
+	const candidates: Array<SimilarCase> = []
 	const seen = new Set<string>()
 	for (const tier of buildTiers(pool, input)) {
-		const scored = tier
-			.map((candidate) => ({
+		for (const candidate of tier) {
+			if (seen.has(candidate.neutralCitation)) {
+				continue
+			}
+			seen.add(candidate.neutralCitation)
+			candidates.push({
 				neutralCitation: candidate.neutralCitation,
 				title: candidate.title,
 				url: candidate.url,
@@ -223,17 +229,11 @@ export function pickSimilarCases(
 					inputStartingPoint,
 					candidate.startingPointMonths,
 				),
-			}))
-			.sort((a, b) => b.score - a.score)
-		for (const suggestion of scored) {
-			if (suggestions.length >= count) {
-				return suggestions
-			}
-			if (!seen.has(suggestion.neutralCitation)) {
-				seen.add(suggestion.neutralCitation)
-				suggestions.push(suggestion)
-			}
+			})
 		}
 	}
-	return suggestions
+	return candidates
+		.filter((candidate) => candidate.score >= MIN_SIMILARITY_SCORE)
+		.sort((a, b) => b.score - a.score)
+		.slice(0, count)
 }

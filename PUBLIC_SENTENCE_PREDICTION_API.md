@@ -234,14 +234,16 @@ Status: `200 OK`
 ```json
 [
   {
-    "neutralCitation": "HKSAR v Chan Kwok Ming [2019] HKCFI 1234",
+    "neutralCitation": "[2024] HKDC 1502",
     "title": "HKSAR v Chan Kwok Ming",
-    "url": "https://www.hklii.hk/en/cases/hkcfi/2019/1234"
+    "url": "https://www.hklii.hk/en/cases/hkdc/2024/1502",
+    "score": 1
   },
   {
-    "neutralCitation": "HKSAR v Wong Wai Shing [2018] HKCFI 987",
+    "neutralCitation": "[2023] HKDC 536",
     "title": "HKSAR v Wong Wai Shing",
-    "url": "https://www.hklii.hk/en/cases/hkcfi/2018/987"
+    "url": "https://www.hklii.hk/en/cases/hkdc/2023/536",
+    "score": 0.9955
   }
 ]
 ```
@@ -254,9 +256,10 @@ The response is a JSON array of case objects.
 | --- | --- |
 | `neutralCitation` | Neutral citation of the judgment. |
 | `title` | Case title. |
-| `url` | Link to the judgment. |
+| `url` | Link to the English or Chinese version of the judgment. |
+| `score` | Similarity to the submitted facts, between 0 and 1. |
 
-The number of returned cases is non-deterministic and currently ranges between 4 and 8. The recommendations are a placeholder implementation and do not yet reflect the request contents.
+Up to 10 cases are returned, sorted by `score` in descending order. Cases with a `score` below 0.6 are excluded.
 
 ### Errors
 

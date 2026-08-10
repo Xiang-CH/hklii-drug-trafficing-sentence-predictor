@@ -209,7 +209,7 @@ describe('predictor API', () => {
 		expect(response.status).toBe(200)
 		expect(Array.isArray(body)).toBe(true)
 		expect(body.length).toBeGreaterThan(0)
-		expect(body.length).toBeLessThanOrEqual(5)
+		expect(body.length).toBeLessThanOrEqual(10)
 		for (const item of body) {
 			expect(item).toMatchObject({
 				neutralCitation: expect.any(String),
@@ -217,8 +217,11 @@ describe('predictor API', () => {
 				url: expect.any(String),
 				score: expect.any(Number),
 			})
-			expect(item.score).toBeGreaterThan(0)
+			expect(item.score).toBeGreaterThanOrEqual(0.6)
 			expect(item.score).toBeLessThanOrEqual(1)
+		}
+		for (let i = 1; i < body.length; i++) {
+			expect(body[i].score).toBeLessThanOrEqual(body[i - 1].score)
 		}
 	})
 

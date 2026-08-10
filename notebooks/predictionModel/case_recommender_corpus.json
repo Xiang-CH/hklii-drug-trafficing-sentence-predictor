@@ -645,9 +645,9 @@
  {
   "actualFinalMonths": 64.0,
   "aggravating": [
-   "Refugee/Asylum",
+   "On bail",
    "Multiple Drugs",
-   "On bail"
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -1091,8 +1091,8 @@
  {
   "actualFinalMonths": 216.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -3420,8 +3420,8 @@
  {
   "actualFinalMonths": 60.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -4579,8 +4579,8 @@
  {
   "actualFinalMonths": 52.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -5496,8 +5496,8 @@
  {
   "actualFinalMonths": 30.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -5633,8 +5633,8 @@
  {
   "actualFinalMonths": 40.0,
   "aggravating": [
-   "Multiple Drugs",
-   "On bail"
+   "On bail",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -7007,8 +7007,8 @@
   "actualFinalMonths": 40.0,
   "aggravating": [
    "Persistent offender",
-   "Refugee/Asylum",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -7049,8 +7049,8 @@
  {
   "actualFinalMonths": 38.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -7349,8 +7349,8 @@
  {
   "actualFinalMonths": 24.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -11050,8 +11050,8 @@
  {
   "actualFinalMonths": 52.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -11243,8 +11243,8 @@
  {
   "actualFinalMonths": 55.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -11395,8 +11395,8 @@
  {
   "actualFinalMonths": 41.0,
   "aggravating": [
-   "Use of minors",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Use of minors"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -11779,8 +11779,8 @@
  {
   "actualFinalMonths": 40.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "On bail"
+   "On bail",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -12429,8 +12429,8 @@
  {
   "actualFinalMonths": 66.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Refugee/Asylum"
   ],
   "assistance": 1,
   "crossBorder": false,
@@ -13545,8 +13545,8 @@
  {
   "actualFinalMonths": 44.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -14540,8 +14540,8 @@
  {
   "actualFinalMonths": 52.0,
   "aggravating": [
-   "Multiple Drugs",
-   "On bail"
+   "On bail",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -15218,8 +15218,8 @@
  {
   "actualFinalMonths": 43.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -15455,8 +15455,8 @@
  {
   "actualFinalMonths": 72.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -16373,8 +16373,8 @@
  {
   "actualFinalMonths": 312.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Refugee/Asylum"
   ],
   "assistance": 1,
   "crossBorder": false,
@@ -17843,8 +17843,8 @@
  {
   "actualFinalMonths": 94.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Persistent offender"
+   "Persistent offender",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -17863,9 +17863,9 @@
  {
   "actualFinalMonths": 220.0,
   "aggravating": [
-   "Refugee/Asylum",
+   "Persistent offender",
    "Multiple Drugs",
-   "Persistent offender"
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -17886,9 +17886,9 @@
  {
   "actualFinalMonths": 220.0,
   "aggravating": [
-   "Refugee/Asylum",
+   "Persistent offender",
    "Multiple Drugs",
-   "Persistent offender"
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -18134,8 +18134,8 @@
  {
   "actualFinalMonths": 64.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -18156,8 +18156,8 @@
  {
   "actualFinalMonths": 40.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -18290,8 +18290,8 @@
  {
   "actualFinalMonths": 58.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -18380,8 +18380,8 @@
  {
   "actualFinalMonths": 113.0,
   "aggravating": [
-   "Multiple Drugs",
    "Persistent offender",
+   "Multiple Drugs",
    "On bail"
   ],
   "assistance": 0,
@@ -19674,8 +19674,8 @@
  {
   "actualFinalMonths": 42.0,
   "aggravating": [
-   "Use of minors",
-   "Persistent offender"
+   "Persistent offender",
+   "Use of minors"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -19712,8 +19712,8 @@
  {
   "actualFinalMonths": 40.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -20280,8 +20280,8 @@
  {
   "actualFinalMonths": 38.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -20663,8 +20663,8 @@
  {
   "actualFinalMonths": 26.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -21087,8 +21087,8 @@
  {
   "actualFinalMonths": 30.0,
   "aggravating": [
-   "Persistent offender",
-   "On bail"
+   "On bail",
+   "Persistent offender"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -21360,8 +21360,8 @@
  {
   "actualFinalMonths": 40.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -21403,8 +21403,8 @@
  {
   "actualFinalMonths": 22.0,
   "aggravating": [
-   "Persistent offender",
-   "On bail"
+   "On bail",
+   "Persistent offender"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -27558,8 +27558,8 @@
  {
   "actualFinalMonths": 86.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Persistent offender"
+   "Persistent offender",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -27747,8 +27747,8 @@
  {
   "actualFinalMonths": 81.0,
   "aggravating": [
-   "Persistent offender",
-   "On bail"
+   "On bail",
+   "Persistent offender"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -28643,8 +28643,8 @@
  {
   "actualFinalMonths": 74.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -28759,8 +28759,8 @@
  {
   "actualFinalMonths": 232.0,
   "aggravating": [
-   "Use of minors",
-   "Persistent offender"
+   "Persistent offender",
+   "Use of minors"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -29090,8 +29090,8 @@
  {
   "actualFinalMonths": 56.0,
   "aggravating": [
-   "Persistent offender",
-   "On bail"
+   "On bail",
+   "Persistent offender"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -29555,8 +29555,8 @@
  {
   "actualFinalMonths": 72.0,
   "aggravating": [
-   "Multiple Drugs",
-   "On bail"
+   "On bail",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -29787,8 +29787,8 @@
  {
   "actualFinalMonths": 66.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Persistent offender"
+   "Persistent offender",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -29850,8 +29850,8 @@
  {
   "actualFinalMonths": 200.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -29873,8 +29873,8 @@
  {
   "actualFinalMonths": 202.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -29928,8 +29928,8 @@
  {
   "actualFinalMonths": 294.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -30071,8 +30071,8 @@
  {
   "actualFinalMonths": 102.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -30136,8 +30136,8 @@
  {
   "actualFinalMonths": 76.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -31551,8 +31551,8 @@
  {
   "actualFinalMonths": 40.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -32048,8 +32048,8 @@
  {
   "actualFinalMonths": 42.0,
   "aggravating": [
-   "Multiple Drugs",
-   "On bail"
+   "On bail",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -32185,8 +32185,8 @@
  {
   "actualFinalMonths": 38.0,
   "aggravating": [
-   "Multiple Drugs",
-   "On bail"
+   "On bail",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -32717,8 +32717,8 @@
  {
   "actualFinalMonths": 22.0,
   "aggravating": [
-   "Multiple Drugs",
-   "On bail"
+   "On bail",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -32737,8 +32737,8 @@
  {
   "actualFinalMonths": 33.0,
   "aggravating": [
-   "Multiple Drugs",
-   "On bail"
+   "On bail",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -34326,8 +34326,8 @@
  {
   "actualFinalMonths": 36.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -34631,8 +34631,8 @@
  {
   "actualFinalMonths": 43.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -35951,8 +35951,8 @@
  {
   "actualFinalMonths": 36.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -36052,8 +36052,8 @@
  {
   "actualFinalMonths": 28.0,
   "aggravating": [
-   "Persistent offender",
-   "On bail"
+   "On bail",
+   "Persistent offender"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -36072,8 +36072,8 @@
  {
   "actualFinalMonths": 38.0,
   "aggravating": [
-   "Persistent offender",
-   "On bail"
+   "On bail",
+   "Persistent offender"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -36284,8 +36284,8 @@
  {
   "actualFinalMonths": 40.0,
   "aggravating": [
-   "Use of minors",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Use of minors"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -36305,8 +36305,8 @@
  {
   "actualFinalMonths": 40.0,
   "aggravating": [
-   "Use of minors",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Use of minors"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -36484,8 +36484,8 @@
  {
   "actualFinalMonths": 32.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -36756,8 +36756,8 @@
  {
   "actualFinalMonths": 86.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -38044,8 +38044,8 @@
  {
   "actualFinalMonths": 150.0,
   "aggravating": [
-   "Multiple Drugs",
    "Persistent offender",
+   "Multiple Drugs",
    "On bail"
   ],
   "assistance": 0,
@@ -39117,8 +39117,8 @@
  {
   "actualFinalMonths": 64.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -39143,8 +39143,8 @@
  {
   "actualFinalMonths": 76.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -40083,8 +40083,8 @@
  {
   "actualFinalMonths": 44.0,
   "aggravating": [
-   "Multiple Drugs",
-   "On bail"
+   "On bail",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -40106,8 +40106,8 @@
  {
   "actualFinalMonths": 62.0,
   "aggravating": [
-   "Multiple Drugs",
-   "On bail"
+   "On bail",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -40858,8 +40858,8 @@
  {
   "actualFinalMonths": 73.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -41314,9 +41314,9 @@
  {
   "actualFinalMonths": 62.0,
   "aggravating": [
-   "Persistent offender",
+   "On bail",
    "Multiple Drugs",
-   "On bail"
+   "Persistent offender"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -41353,8 +41353,8 @@
  {
   "actualFinalMonths": 82.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -41764,8 +41764,8 @@
  {
   "actualFinalMonths": 81.0,
   "aggravating": [
-   "Multiple Drugs",
    "Persistent offender",
+   "Multiple Drugs",
    "On bail"
   ],
   "assistance": 0,
@@ -41883,8 +41883,8 @@
  {
   "actualFinalMonths": 1.0,
   "aggravating": [
-   "Multiple Drugs",
-   "On bail"
+   "On bail",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -41903,8 +41903,8 @@
  {
   "actualFinalMonths": 204.0,
   "aggravating": [
-   "Multiple Drugs",
-   "On bail"
+   "On bail",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -42219,8 +42219,8 @@
  {
   "actualFinalMonths": 198.0,
   "aggravating": [
-   "Persistent offender",
-   "On bail"
+   "On bail",
+   "Persistent offender"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -42538,8 +42538,8 @@
  {
   "actualFinalMonths": 330.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Persistent offender"
+   "Persistent offender",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -42620,8 +42620,8 @@
  {
   "actualFinalMonths": 38.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -42698,8 +42698,8 @@
  {
   "actualFinalMonths": 50.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -42757,8 +42757,8 @@
  {
   "actualFinalMonths": 53.0,
   "aggravating": [
-   "Multiple Drugs",
-   "On bail"
+   "On bail",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -43473,8 +43473,8 @@
  {
   "actualFinalMonths": 43.0,
   "aggravating": [
-   "Persistent offender",
-   "On bail"
+   "On bail",
+   "Persistent offender"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -43758,8 +43758,8 @@
  {
   "actualFinalMonths": 30.0,
   "aggravating": [
-   "Multiple Drugs",
    "Persistent offender",
+   "Multiple Drugs",
    "On bail"
   ],
   "assistance": 0,
@@ -43938,8 +43938,8 @@
  {
   "actualFinalMonths": 33.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -44040,8 +44040,8 @@
  {
   "actualFinalMonths": 46.0,
   "aggravating": [
-   "Persistent offender",
-   "On bail"
+   "On bail",
+   "Persistent offender"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -44366,8 +44366,8 @@
  {
   "actualFinalMonths": 50.0,
   "aggravating": [
-   "Persistent offender",
-   "On bail"
+   "On bail",
+   "Persistent offender"
   ],
   "assistance": 0,
   "crossBorder": true,
@@ -44386,9 +44386,9 @@
  {
   "actualFinalMonths": 58.0,
   "aggravating": [
-   "Refugee/Asylum",
+   "Persistent offender",
    "Multiple Drugs",
-   "Persistent offender"
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -45218,8 +45218,8 @@
  {
   "actualFinalMonths": 48.0,
   "aggravating": [
-   "Multiple Drugs",
-   "On bail"
+   "On bail",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -45757,8 +45757,8 @@
  {
   "actualFinalMonths": 32.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -46367,8 +46367,8 @@
  {
   "actualFinalMonths": 36.0,
   "aggravating": [
-   "Refugee/Asylum",
-   "Multiple Drugs"
+   "Multiple Drugs",
+   "Refugee/Asylum"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -47034,8 +47034,8 @@
  {
   "actualFinalMonths": 52.0,
   "aggravating": [
-   "Persistent offender",
-   "On bail"
+   "On bail",
+   "Persistent offender"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -47172,8 +47172,8 @@
  {
   "actualFinalMonths": 28.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -47325,8 +47325,8 @@
  {
   "actualFinalMonths": 46.0,
   "aggravating": [
-   "Multiple Drugs",
-   "On bail"
+   "On bail",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -47382,8 +47382,8 @@
  {
   "actualFinalMonths": 62.0,
   "aggravating": [
-   "Multiple Drugs",
-   "On bail"
+   "On bail",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
@@ -47406,8 +47406,8 @@
  {
   "actualFinalMonths": 44.0,
   "aggravating": [
-   "Multiple Drugs",
-   "Persistent offender"
+   "Persistent offender",
+   "Multiple Drugs"
   ],
   "assistance": 0,
   "crossBorder": false,
