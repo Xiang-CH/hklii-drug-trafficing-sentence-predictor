@@ -64,6 +64,7 @@ const SimilarCaseSchema = z
 		neutralCitation: z.string(),
 		title: z.string(),
 		url: z.string(),
+		score: z.number().min(0).max(1),
 	})
 	.openapi('SimilarCase')
 

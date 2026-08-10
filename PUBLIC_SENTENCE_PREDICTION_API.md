@@ -53,7 +53,7 @@ Accept: application/json
 | `drugs` | Yes | One or more drug entries. |
 | `drugs[].type` | Yes | Drug type listed below. |
 | `drugs[].quantity` | Yes | Quantity in grams. Must be greater than zero. |
-| `drugs[].variant` | Conditional | Required only for `Midazolam`. |
+<!-- | `drugs[].variant` | Conditional | Required only for `Midazolam`. | -->
 | `defendantRole` | No | One defendant role, or `null`. |
 | `additionalCircumstances` | No | Additional circumstance list. |
 | `guiltyPlea` | Yes | One guilty-plea option. |
@@ -78,7 +78,7 @@ Accepted values for `drugs[].type` are:
 
 `Fluorodeschloroketamine` is accepted as a Ketamine-equivalent type.
 
-For `Midazolam`, `variant` is required and must be `powder`:
+<!-- For `Midazolam`, `variant` is required and must be `powder`:
 
 ```json
 {
@@ -90,7 +90,7 @@ For `Midazolam`, `variant` is required and must be `powder`:
 
 `tablet` is not accepted. Midazolam quantities are sent in grams of narcotic weight and follow the powder guidelines.
 
-No `variant` field is required for other drug types.
+No `variant` field is required for other drug types. -->
 
 ## Starting point model
 

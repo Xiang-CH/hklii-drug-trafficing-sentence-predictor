@@ -12,7 +12,7 @@ export const DrugTypeSchema = z.enum([
 	'Nimetazepam',
 ])
 
-export const MidazolamVariantSchema = z.literal('powder')
+// export const MidazolamVariantSchema = z.literal('powder')
 
 export const DefendantRoleSchema = z.enum([
 	'Courier / Storekeeper',
@@ -58,26 +58,26 @@ const DrugInputSchema = z
 	.object({
 		type: DrugTypeSchema,
 		quantity: z.number().finite().positive(),
-		variant: MidazolamVariantSchema.optional(),
+		// variant: MidazolamVariantSchema.optional(),
 	})
 	.strict()
-	.superRefine((drug, context) => {
-		if (drug.type === 'Midazolam' && drug.variant === undefined) {
-			context.addIssue({
-				code: 'custom',
-				path: ['variant'],
-				message: 'Variant is required for Midazolam',
-			})
-		}
+	// .superRefine((drug, context) => {
+	// 	if (drug.type === 'Midazolam' && drug.variant === undefined) {
+	// 		context.addIssue({
+	// 			code: 'custom',
+	// 			path: ['variant'],
+	// 			message: 'Variant is required for Midazolam',
+	// 		})
+	// 	}
 
-		if (drug.type !== 'Midazolam' && drug.variant !== undefined) {
-			context.addIssue({
-				code: 'custom',
-				path: ['variant'],
-				message: 'Variant is only supported for Midazolam',
-			})
-		}
-	})
+	// 	if (drug.type !== 'Midazolam' && drug.variant !== undefined) {
+	// 		context.addIssue({
+	// 			code: 'custom',
+	// 			path: ['variant'],
+	// 			message: 'Variant is only supported for Midazolam',
+	// 		})
+	// 	}
+	// })
 
 function addDuplicateIssues(
 	values: ReadonlyArray<string>,

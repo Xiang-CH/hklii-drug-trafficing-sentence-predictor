@@ -1,72 +1,239 @@
+import { readFileSync } from 'node:fs'
 import type { PredictionRequest } from './schema.js'
+import { predictNotionalWeightedMonths } from './guidelineModel.js'
 
 export type SimilarCase = {
 	neutralCitation: string
 	title: string
 	url: string
+	score: number
 }
 
-const dummyCasePool: Array<SimilarCase> = [
-	{
-		neutralCitation: 'HKSAR v Chan Kwok Ming [2019] HKCFI 1234',
-		title: 'HKSAR v Chan Kwok Ming',
-		url: 'https://www.hklii.hk/en/cases/hkcfi/2019/1234',
-	},
-	{
-		neutralCitation: 'HKSAR v Wong Wai Shing [2018] HKCFI 987',
-		title: 'HKSAR v Wong Wai Shing',
-		url: 'https://www.hklii.hk/en/cases/hkcfi/2018/987',
-	},
-	{
-		neutralCitation: 'HKSAR v Lee Ka Ho [2020] HKCFI 456',
-		title: 'HKSAR v Lee Ka Ho',
-		url: 'https://www.hklii.hk/en/cases/hkcfi/2020/456',
-	},
-	{
-		neutralCitation: 'HKSAR v Cheung Man Kit [2017] HKCFA 32',
-		title: 'HKSAR v Cheung Man Kit',
-		url: 'https://www.hklii.hk/en/cases/hkcfa/2017/32',
-	},
-	{
-		neutralCitation: 'HKSAR v Tam Siu Fung [2019] HKCFI 2101',
-		title: 'HKSAR v Tam Siu Fung',
-		url: 'https://www.hklii.hk/en/cases/hkcfi/2019/2101',
-	},
-	{
-		neutralCitation: 'HKSAR v Ng Ho Yin [2021] HKCFI 342',
-		title: 'HKSAR v Ng Ho Yin',
-		url: 'https://www.hklii.hk/en/cases/hkcfi/2021/342',
-	},
-	{
-		neutralCitation: 'HKSAR v Yip Chun Kit [2018] HKCFI 1502',
-		title: 'HKSAR v Yip Chun Kit',
-		url: 'https://www.hklii.hk/en/cases/hkcfi/2018/1502',
-	},
-	{
-		neutralCitation: 'HKSAR v Lau Ka Wing [2022] HKCFI 88',
-		title: 'HKSAR v Lau Ka Wing',
-		url: 'https://www.hklii.hk/en/cases/hkcfi/2022/88',
-	},
-	{
-		neutralCitation: 'HKSAR v Cheng Tsz Long [2020] HKCFI 1734',
-		title: 'HKSAR v Cheng Tsz Long',
-		url: 'https://www.hklii.hk/en/cases/hkcfi/2020/1734',
-	},
-	{
-		neutralCitation: 'HKSAR v Ho Chun Hin [2017] HKCFI 601',
-		title: 'HKSAR v Ho Chun Hin',
-		url: 'https://www.hklii.hk/en/cases/hkcfi/2017/601',
-	},
-]
+export type RecommenderCaseRecord = {
+	neutralCitation: string
+	title: string
+	url: string
+	language: 'english' | 'chinese'
+	drugs: Readonly<Record<string, number>>
+	role: string | null
+	crossBorder: boolean
+	aggravating: ReadonlyArray<string>
+	mitigating: ReadonlyArray<string>
+	assistance: number
+	plea: 'early' | 'late' | 'none'
+	actualFinalMonths: number
+	startingPointMonths: number
+}
+
+const recommenderCaseCorpus: ReadonlyArray<RecommenderCaseRecord> = JSON.parse(
+	readFileSync(
+		new URL('./case_recommender_corpus.json', import.meta.url),
+		'utf-8',
+	),
+)
+
+const DRUG_FAMILIES = [
+	'Cocaine',
+	'Ketamine',
+	'Methamphetamine',
+	'Heroin',
+	'Cannabis',
+	'Ecstasy',
+	'Nimetazepam',
+	'Midazolam',
+] as const
+
+const FAMILY_BY_DRUG_TYPE: Record<string, string> = {
+	Cocaine: 'Cocaine',
+	Ketamine: 'Ketamine',
+	Fluorodeschloroketamine: 'Ketamine',
+	Methamphetamine: 'Methamphetamine',
+	Heroin: 'Heroin',
+	'Cannabis/THC': 'Cannabis',
+	Ecstasy: 'Ecstasy',
+	Nimetazepam: 'Nimetazepam',
+	Midazolam: 'Midazolam',
+}
+
+function drugFamilyAmounts(input: PredictionRequest): Record<string, number> {
+	const amounts: Record<string, number> = {}
+	for (const drug of input.drugs) {
+		const family = FAMILY_BY_DRUG_TYPE[drug.type]
+		if (family === undefined) {
+			continue
+		}
+		amounts[family] = (amounts[family] ?? 0) + drug.quantity
+	}
+	return amounts
+}
+
+function assistanceLevel(input: PredictionRequest): number {
+	for (const factor of input.mitigatingFactors) {
+		if (factor === 'Assistance - limited') return 1
+		if (factor === 'Assistance - useful') return 2
+		if (factor === 'Assistance - testify') return 3
+		if (factor === 'Assistance - risk') return 4
+	}
+	return 0
+}
+
+function pleaBucket(input: PredictionRequest): 'early' | 'late' | 'none' {
+	switch (input.guiltyPlea) {
+		case 'Plead guilty (earliest opportunity)':
+			return 'early'
+		case 'Plead guilty (before trial dates are set)':
+		case 'Plead guilty (before trial starts)':
+		case 'Plead guilty (first day of trial)':
+		case 'Plead guilty (during the trial)':
+			return 'late'
+		default:
+			return 'none'
+	}
+}
+
+function filterByDrugs(
+	candidates: ReadonlyArray<RecommenderCaseRecord>,
+	inputFamilies: Record<string, number>,
+	band: number,
+	enforceZeroMatch: boolean,
+): ReadonlyArray<RecommenderCaseRecord> {
+	return candidates.filter((candidate) => {
+		for (const family of DRUG_FAMILIES) {
+			const inputQuantity = inputFamilies[family] ?? 0
+			const candidateQuantity = candidate.drugs[family] ?? 0
+			if (inputQuantity > 0) {
+				if (
+					candidateQuantity < inputQuantity * (1 - band) ||
+					candidateQuantity > inputQuantity * (1 + band)
+				) {
+					return false
+				}
+			} else if (enforceZeroMatch && candidateQuantity > 0) {
+				return false
+			}
+		}
+		return true
+	})
+}
+
+function filterByDrugPresence(
+	candidates: ReadonlyArray<RecommenderCaseRecord>,
+	inputFamilies: Record<string, number>,
+): ReadonlyArray<RecommenderCaseRecord> {
+	return candidates.filter((candidate) =>
+		DRUG_FAMILIES.every(
+			(family) =>
+				(inputFamilies[family] ?? 0) <= 0 || (candidate.drugs[family] ?? 0) > 0,
+		),
+	)
+}
+
+function crossBorderSelected(input: PredictionRequest): boolean {
+	return input.additionalCircumstances.includes('Cross-border trafficking')
+}
+
+function buildTiers(
+	pool: ReadonlyArray<RecommenderCaseRecord>,
+	input: PredictionRequest,
+): Array<ReadonlyArray<RecommenderCaseRecord>> {
+	const tiers: Array<ReadonlyArray<RecommenderCaseRecord>> = []
+	let working = pool
+
+	const assistance = assistanceLevel(input)
+	if (assistance > 0) {
+		const proximityOrder = [1, 2, 3, 4].sort(
+			(a, b) => Math.abs(a - assistance) - Math.abs(b - assistance),
+		)
+		for (const level of proximityOrder) {
+			tiers.push(working.filter((candidate) => candidate.assistance === level))
+		}
+		working = working.filter((candidate) => candidate.assistance === 0)
+	}
+
+	if (input.aggravatingFactors.includes('Refugee/Asylum')) {
+		tiers.push(
+			working.filter((candidate) =>
+				candidate.aggravating.includes('Refugee/Asylum'),
+			),
+		)
+		working = working.filter(
+			(candidate) => !candidate.aggravating.includes('Refugee/Asylum'),
+		)
+	}
+
+	if (input.defendantRole !== null) {
+		tiers.push(
+			working.filter((candidate) => candidate.role === input.defendantRole),
+		)
+		working = working.filter((candidate) => candidate.role !== input.defendantRole)
+	}
+
+	const plea = pleaBucket(input)
+	if (plea === 'early') {
+		tiers.push(working.filter((candidate) => candidate.plea === 'early'))
+		tiers.push(working.filter((candidate) => candidate.plea === 'late'))
+		tiers.push(working.filter((candidate) => candidate.plea === 'none'))
+	} else if (plea === 'late') {
+		tiers.push(working.filter((candidate) => candidate.plea === 'late'))
+		tiers.push(working.filter((candidate) => candidate.plea === 'early'))
+		tiers.push(working.filter((candidate) => candidate.plea === 'none'))
+	} else {
+		tiers.push(working.filter((candidate) => candidate.plea === 'none'))
+		tiers.push(working.filter((candidate) => candidate.plea !== 'none'))
+	}
+
+	return tiers.filter((tier) => tier.length > 0)
+}
+
+function startingPointSimilarity(a: number, b: number): number {
+	return Math.min(a, b) / Math.max(a, b, 0.1)
+}
 
 export function pickSimilarCases(
-	_input: PredictionRequest,
+	input: PredictionRequest,
+	count = 5,
 ): Array<SimilarCase> {
-	const count = 4 + Math.floor(Math.random() * 5)
-	const pool = [...dummyCasePool]
-	for (let index = pool.length - 1; index > 0; index -= 1) {
-		const swapIndex = Math.floor(Math.random() * (index + 1))
-		;[pool[index], pool[swapIndex]] = [pool[swapIndex], pool[index]]
+	const inputStartingPoint = predictNotionalWeightedMonths(input.drugs)
+	if (inputStartingPoint === null) {
+		return []
 	}
-	return pool.slice(0, count)
+	const inputFamilies = drugFamilyAmounts(input)
+
+	let pool = filterByDrugs(recommenderCaseCorpus, inputFamilies, 0.2, true)
+	if (pool.length < count) {
+		pool = filterByDrugs(recommenderCaseCorpus, inputFamilies, 0.5, false)
+	}
+	if (pool.length < count) {
+		pool = filterByDrugPresence(recommenderCaseCorpus, inputFamilies)
+	}
+
+	if (crossBorderSelected(input)) {
+		pool = pool.filter((candidate) => candidate.crossBorder)
+	}
+
+	const suggestions: Array<SimilarCase> = []
+	const seen = new Set<string>()
+	for (const tier of buildTiers(pool, input)) {
+		const scored = tier
+			.map((candidate) => ({
+				neutralCitation: candidate.neutralCitation,
+				title: candidate.title,
+				url: candidate.url,
+				score: startingPointSimilarity(
+					inputStartingPoint,
+					candidate.startingPointMonths,
+				),
+			}))
+			.sort((a, b) => b.score - a.score)
+		for (const suggestion of scored) {
+			if (suggestions.length >= count) {
+				return suggestions
+			}
+			if (!seen.has(suggestion.neutralCitation)) {
+				seen.add(suggestion.neutralCitation)
+				suggestions.push(suggestion)
+			}
+		}
+	}
+	return suggestions
 }
