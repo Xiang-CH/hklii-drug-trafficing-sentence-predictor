@@ -1,5 +1,8 @@
 import type { PredictionRequest } from './schema.js'
-import { predictNotionalWeightedMonths } from './guidelineModel.js'
+import {
+	drugFamilyFor,
+	predictNotionalWeightedMonths,
+} from './guidelineModel.js'
 
 export type AdjustmentCategory =
 	| 'defendantRole'
@@ -153,7 +156,19 @@ export function predictSentence(
 		}
 	}
 
-	for (const factor of input.aggravatingFactors) {
+	const distinctFamilies = new Set(
+		input.drugs
+			.map((drug) => drugFamilyFor(drug.type))
+			.filter((family): family is string => family !== null),
+	)
+	const hasMultipleDrugs =
+		distinctFamilies.size >= 2 ||
+		input.aggravatingFactors.includes('Multiple Drugs')
+	const aggravatingFactors =
+		hasMultipleDrugs && !input.aggravatingFactors.includes('Multiple Drugs')
+			? ['Multiple Drugs', ...input.aggravatingFactors]
+			: input.aggravatingFactors
+	for (const factor of aggravatingFactors) {
 		currentMonths = addAdjustment(
 			adjustments,
 			factor,

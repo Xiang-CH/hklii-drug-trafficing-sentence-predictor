@@ -25,12 +25,8 @@ const drugFamilyMap: Record<string, string> = {
 }
 
 export function drugFamilyFor(
-	type: string,
-	variant?: 'powder',
+	type: string
 ): string | null {
-	if (type === 'Midazolam') {
-		return variant === 'powder' ? 'Midazolam-powder' : null
-	}
 	return drugFamilyMap[type] ?? null
 }
 
@@ -162,9 +158,8 @@ function interpolate(
 export function predictStartingPointMonths(
 	type: string,
 	quantity: number,
-	variant?: 'powder',
 ): number | null {
-	const family = drugFamilyFor(type, variant)
+	const family = drugFamilyFor(type)
 	if (family === null) {
 		return null
 	}
@@ -205,8 +200,7 @@ export function predictNotionalWeightedMonths(
 	for (const drug of drugs) {
 		const sentenceAtTotal = predictStartingPointMonths(
 			drug.type,
-			total,
-			drug.variant,
+			total
 		)
 		if (sentenceAtTotal === null) {
 			return null

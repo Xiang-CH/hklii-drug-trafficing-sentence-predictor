@@ -1,4 +1,5 @@
 import { logger } from 'hono/logger'
+import { cors } from 'hono/cors'
 import { HTTPException } from 'hono/http-exception'
 import { swaggerUI } from '@hono/swagger-ui'
 import { createRoute, OpenAPIHono, z } from '@hono/zod-openapi'
@@ -202,6 +203,7 @@ const similarCasesRoute = createRoute({
 const app = new Hono()
 const api = new OpenAPIHono()
 
+api.use('*', cors())
 api.use('*', logger())
 
 api.openapi(healthRoute, (context) =>
