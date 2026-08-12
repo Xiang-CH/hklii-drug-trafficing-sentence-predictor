@@ -228,9 +228,9 @@ The configured assistance reductions are:
 
 | Assistance option | Reduction |
 | --- | --- |
-| `Assistance - limited` | 7% |
-| `Assistance - useful` | 10% |
-| `Assistance - testify` | 17% |
+| `Assistance - limited` | 6.7% |
+| `Assistance - useful` | 9% |
+| `Assistance - testify` | 16% |
 | `Assistance - risk` | 32% |
 
 ## Calculation order
