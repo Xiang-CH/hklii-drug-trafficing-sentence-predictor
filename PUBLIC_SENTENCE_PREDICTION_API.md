@@ -267,6 +267,10 @@ The response is a JSON array of case objects.
 | `url` | Link to the English or Chinese version of the judgment. |
 | `score` | Similarity to the submitted facts, between 0 and 1. |
 
+The `score` is a weighted combination: `0.8 × drug-profile similarity + 0.2 × starting-point similarity`. The drug-profile component compares the quantity of every requested drug family against the case (a missing drug family scores zero) and is diluted by any additional drug family present in the case but not requested. The starting-point component compares the two sentencing starting points.
+
+Cases must contain every requested drug family to be returned.
+
 Up to 10 cases are returned, sorted by `score` in descending order. Cases with a `score` below 0.6 are excluded.
 
 ### Errors

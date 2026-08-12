@@ -41,8 +41,8 @@ describe('predictor API', () => {
 			status: 'supported',
 			startingPointMonths: 60,
 			startingPointYears: 5,
-			finalSentenceMonths: 37.1,
-			finalSentenceYears: 3.09,
+			finalSentenceMonths: 37.75,
+			finalSentenceYears: 3.15,
 		})
 		expect(body.adjustments).toEqual(
 			expect.arrayContaining([
@@ -247,6 +247,28 @@ describe('predictor API', () => {
 		}
 		for (let i = 1; i < body.length; i++) {
 			expect(body[i].score).toBeLessThanOrEqual(body[i - 1].score)
+		}
+	})
+
+	it('ranks multi-drug similar cases by drug profile, not coincidental sentence length', async () => {
+		const response = await post(
+			{
+				drugs: [
+					{ type: 'Cocaine', quantity: 50 },
+					{ type: 'Heroin', quantity: 50 },
+				],
+				guiltyPlea: 'Plead not guilty',
+				aggravatingFactors: [],
+				mitigatingFactors: [],
+			},
+			'/api/similar-cases',
+		)
+		const body = await response.json()
+
+		expect(response.status).toBe(200)
+		expect(body.length).toBeGreaterThan(0)
+		for (const item of body) {
+			expect(item.neutralCitation).not.toBe('[2025] HKCFI 6413')
 		}
 	})
 

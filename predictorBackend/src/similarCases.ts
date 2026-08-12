@@ -43,6 +43,8 @@ const DRUG_FAMILIES = [
 	'Midazolam',
 ] as const
 
+const REQUESTED_FAMILY_ENFORCEMENT = [0.2, 0.5, 1] as const
+
 const FAMILY_BY_DRUG_TYPE: Record<string, string> = {
 	Cocaine: 'Cocaine',
 	Ketamine: 'Ketamine',
@@ -102,6 +104,9 @@ function filterByDrugs(
 			const inputQuantity = inputFamilies[family] ?? 0
 			const candidateQuantity = candidate.drugs[family] ?? 0
 			if (inputQuantity > 0) {
+				if (candidateQuantity <= 0) {
+					return false
+				}
 				if (
 					candidateQuantity < inputQuantity * (1 - band) ||
 					candidateQuantity > inputQuantity * (1 + band)
@@ -189,6 +194,46 @@ function startingPointSimilarity(a: number, b: number): number {
 	return Math.min(a, b) / Math.max(a, b, 0.1)
 }
 
+function drugSimilarity(
+	inputFamilies: Record<string, number>,
+	candidate: RecommenderCaseRecord,
+): number {
+	const inputFamiliesEntries = Object.entries(inputFamilies).filter(
+		([, quantity]) => quantity > 0,
+	)
+	const totalInputQuantity = inputFamiliesEntries.reduce(
+		(sum, [, quantity]) => sum + quantity,
+		0,
+	)
+	if (totalInputQuantity === 0) {
+		return 0
+	}
+
+	let weightedSum = 0
+	for (const [family, inputQuantity] of inputFamiliesEntries) {
+		const candidateQuantity = candidate.drugs[family] ?? 0
+		const ratio =
+			candidateQuantity > 0
+				? Math.min(inputQuantity, candidateQuantity) /
+					Math.max(inputQuantity, candidateQuantity)
+				: 0
+		weightedSum += (inputQuantity / totalInputQuantity) * ratio
+	}
+
+	let extraDrugWeight = 0
+	for (const family of DRUG_FAMILIES) {
+		const candidateQuantity = candidate.drugs[family] ?? 0
+		if (candidateQuantity > 0 && (inputFamilies[family] ?? 0) <= 0) {
+			extraDrugWeight += candidateQuantity / totalInputQuantity
+		}
+	}
+
+	return weightedSum / (1 + extraDrugWeight)
+}
+
+const DRUG_SIMILARITY_WEIGHT = 0.8
+const STARTING_POINT_SIMILARITY_WEIGHT = 0.2
+
 const MIN_SIMILARITY_SCORE = 0.6
 
 export function pickSimilarCases(
@@ -201,9 +246,12 @@ export function pickSimilarCases(
 	}
 	const inputFamilies = drugFamilyAmounts(input)
 
-	let pool = filterByDrugs(recommenderCaseCorpus, inputFamilies, 0.2, true)
-	if (pool.length < count) {
-		pool = filterByDrugs(recommenderCaseCorpus, inputFamilies, 0.5, false)
+	let pool: ReadonlyArray<RecommenderCaseRecord> = []
+	for (const band of REQUESTED_FAMILY_ENFORCEMENT) {
+		pool = filterByDrugs(recommenderCaseCorpus, inputFamilies, band, band === REQUESTED_FAMILY_ENFORCEMENT[0])
+		if (pool.length >= count) {
+			break
+		}
 	}
 	if (pool.length < count) {
 		pool = filterByDrugPresence(recommenderCaseCorpus, inputFamilies)
@@ -225,10 +273,14 @@ export function pickSimilarCases(
 				neutralCitation: candidate.neutralCitation,
 				title: candidate.title,
 				url: candidate.url,
-				score: startingPointSimilarity(
-					inputStartingPoint,
-					candidate.startingPointMonths,
-				),
+				score:
+					DRUG_SIMILARITY_WEIGHT *
+						drugSimilarity(inputFamilies, candidate) +
+					STARTING_POINT_SIMILARITY_WEIGHT *
+						startingPointSimilarity(
+							inputStartingPoint,
+							candidate.startingPointMonths,
+						),
 			})
 		}
 	}
