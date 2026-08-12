@@ -228,10 +228,12 @@ The configured assistance reductions are:
 
 | Assistance option | Reduction |
 | --- | --- |
-| `Assistance - limited` | 6.7% |
-| `Assistance - useful` | 9% |
-| `Assistance - testify` | 16% |
-| `Assistance - risk` | 32% |
+| `Assistance - limited` | 6.67% |
+| `Assistance - useful` | 9.17% |
+| `Assistance - testify` | 16.67% |
+| `Assistance - risk` | 32.5% |
+
+These are the assistance portion only: each guideline total discount (up to 40%, 40–45%, usually 50%, up to 2/3) is reduced by the one-third guilty-plea discount, which is credited separately.
 
 ## Calculation order
 
@@ -303,14 +305,14 @@ For a reduction, `months` is returned as a positive magnitude and `direction` is
       "factor": "Assistance - useful",
       "category": "mitigating",
       "direction": "decrease",
-      "percentage": 9,
+      "percentage": 9.17,
       "baseMonths": 65.52,
-      "months": 5.9,
-      "years": 0.49
+      "months": 6.01,
+      "years": 0.5
     }
   ],
-  "finalSentenceMonths": 37.8,
-  "finalSentenceYears": 3.15
+  "finalSentenceMonths": 37.69,
+  "finalSentenceYears": 3.14
 }
 ```
 

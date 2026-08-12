@@ -41,8 +41,8 @@ describe('predictor API', () => {
 			status: 'supported',
 			startingPointMonths: 60,
 			startingPointYears: 5,
-			finalSentenceMonths: 37.75,
-			finalSentenceYears: 3.15,
+			finalSentenceMonths: 37.64,
+			finalSentenceYears: 3.14,
 		})
 		expect(body.adjustments).toEqual(
 			expect.arrayContaining([
@@ -70,8 +70,8 @@ describe('predictor API', () => {
 
 		expect(response.status).toBe(200)
 		expect(body.startingPointMonths).toBe(60)
-		expect(body.finalSentenceMonths).toBe(28.8)
-		expect(body.finalSentenceYears).toBe(2.4)
+		expect(body.finalSentenceMonths).toBe(28.5)
+		expect(body.finalSentenceYears).toBe(2.38)
 		const plea = body.adjustments.find(
 			(adjustment: { factor: string }) =>
 				adjustment.factor === 'Plead guilty (first day of trial)',
@@ -80,7 +80,7 @@ describe('predictor API', () => {
 			(adjustment: { factor: string }) => adjustment.factor === 'Assistance - risk',
 		)
 		expect(plea.months).toBe(12)
-		expect(assistance.months).toBe(19.2)
+		expect(assistance.months).toBe(19.5)
 		expect(plea.baseMonths).toBe(60)
 		expect(assistance.baseMonths).toBe(60)
 	})
