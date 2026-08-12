@@ -14,6 +14,8 @@ export type PredictionAdjustment = {
 	factor: string
 	category: AdjustmentCategory
 	direction: 'increase' | 'decrease'
+	percentage: number
+	baseMonths: number
 	months: number
 	years: number
 }
@@ -60,14 +62,17 @@ const roleCrossBorderAdjustments: Record<string, number> = {
 
 const mitigatingAdjustments: Record<string, number> = {
 	'Self-consumption': 0.0451,
-	'Assistance - limited': 0.0182,
-	'Assistance - useful': 0.05,
-	'Assistance - testify': 0.3108,
-	'Assistance - risk': 0.0448,
 	'Young offender': 0.0409,
 	'Medical conditions': 0.03,
 	'Family illness': 0.03,
 	'Rehabilitation programme': 0.0114,
+}
+
+const assistanceGuidelineAdjustments: Record<string, number> = {
+	'Assistance - limited': 0.07,
+	'Assistance - useful': 0.1,
+	'Assistance - testify': 0.17,
+	'Assistance - risk': 0.32,
 }
 
 const guiltyPleaAdjustments: Record<string, number> = {
@@ -95,6 +100,8 @@ function addAdjustment(
 		factor,
 		category,
 		direction,
+		percentage: round(percentage * 100),
+		baseMonths: round(baseMonths),
 		months: round(Math.abs(months)),
 		years: round(Math.abs(months) / 12),
 	})
@@ -179,31 +186,57 @@ export function predictSentence(
 		)
 	}
 
+	// All reductions are non-compounding percentages of the notional sentence
+	// (the sentence after role and aggravating adjustments only).
+	const reductionBaseMonths = currentMonths
+	const reductions: Array<{
+		factor: string
+		category: 'mitigating' | 'guiltyPlea'
+		percentage: number
+	}> = []
+
 	for (const factor of input.mitigatingFactors) {
 		const adjustment = mitigatingAdjustments[factor]
 		if (adjustment !== undefined) {
-			currentMonths = addAdjustment(
-				adjustments,
-				factor,
-				'mitigating',
-				'decrease',
-				currentMonths,
-				adjustment,
-			)
+			reductions.push({ factor, category: 'mitigating', percentage: adjustment })
 		}
 	}
 
 	const pleaAdjustment = guiltyPleaAdjustments[input.guiltyPlea]
 	if (pleaAdjustment !== undefined) {
-		currentMonths = addAdjustment(
-			adjustments,
-			input.guiltyPlea,
-			'guiltyPlea',
-			'decrease',
-			currentMonths,
-			pleaAdjustment,
-		)
+		reductions.push({
+			factor: input.guiltyPlea,
+			category: 'guiltyPlea',
+			percentage: pleaAdjustment,
+		})
 	}
+
+	const assistanceFactor = input.mitigatingFactors.find(
+		(factor) => assistanceGuidelineAdjustments[factor] !== undefined,
+	)
+	if (assistanceFactor !== undefined) {
+		reductions.push({
+			factor: assistanceFactor,
+			category: 'mitigating',
+			percentage: assistanceGuidelineAdjustments[assistanceFactor],
+		})
+	}
+
+	let totalReductionMonths = 0
+	for (const reduction of reductions) {
+		const months = reductionBaseMonths * reduction.percentage
+		totalReductionMonths += months
+		adjustments.push({
+			factor: reduction.factor,
+			category: reduction.category,
+			direction: 'decrease',
+			percentage: round(reduction.percentage * 100),
+			baseMonths: round(reductionBaseMonths),
+			months: round(Math.abs(months)),
+			years: round(Math.abs(months) / 12),
+		})
+	}
+	currentMonths = reductionBaseMonths - totalReductionMonths
 
 	const finalSentenceMonths = Math.max(0, currentMonths)
 	return {

@@ -41,8 +41,8 @@ describe('predictor API', () => {
 			status: 'supported',
 			startingPointMonths: 60,
 			startingPointYears: 5,
-			finalSentenceMonths: 41.46,
-			finalSentenceYears: 3.45,
+			finalSentenceMonths: 37.1,
+			finalSentenceYears: 3.09,
 		})
 		expect(body.adjustments).toEqual(
 			expect.arrayContaining([
@@ -58,6 +58,31 @@ describe('predictor API', () => {
 				}),
 			]),
 		)
+	})
+
+	it('applies plea and assistance reductions non-compounding from the notional sentence', async () => {
+		const response = await post({
+			...baseRequest,
+			guiltyPlea: 'Plead guilty (first day of trial)',
+			mitigatingFactors: ['Assistance - risk'],
+		})
+		const body = await response.json()
+
+		expect(response.status).toBe(200)
+		expect(body.startingPointMonths).toBe(60)
+		expect(body.finalSentenceMonths).toBe(28.8)
+		expect(body.finalSentenceYears).toBe(2.4)
+		const plea = body.adjustments.find(
+			(adjustment: { factor: string }) =>
+				adjustment.factor === 'Plead guilty (first day of trial)',
+		)
+		const assistance = body.adjustments.find(
+			(adjustment: { factor: string }) => adjustment.factor === 'Assistance - risk',
+		)
+		expect(plea.months).toBe(12)
+		expect(assistance.months).toBe(19.2)
+		expect(plea.baseMonths).toBe(60)
+		expect(assistance.baseMonths).toBe(60)
 	})
 
 	it('supports multiple drugs and Fluorodeschloroketamine', async () => {

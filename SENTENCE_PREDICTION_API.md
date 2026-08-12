@@ -48,12 +48,10 @@ Accept: application/json
   ],
   "guiltyPlea": "Plead guilty (earliest opportunity)",
   "aggravatingFactors": [
-    "Multiple Drugs",
-    "On bail"
+    "Multiple Drugs"
   ],
   "mitigatingFactors": [
-    "Assistance - useful",
-    "Rehabilitation programme"
+    "Assistance - useful"
   ]
 }
 ```
@@ -226,6 +224,15 @@ The accepted mitigating factors are:
 
 The assistance options are mutually exclusive sentencing classifications. If more than one assistance classification is supplied, the API must return a validation error.
 
+The configured assistance reductions are:
+
+| Assistance option | Reduction |
+| --- | --- |
+| `Assistance - limited` | 7% |
+| `Assistance - useful` | 10% |
+| `Assistance - testify` | 17% |
+| `Assistance - risk` | 32% |
+
 ## Calculation order
 
 The calculation must be performed in this order:
@@ -233,10 +240,12 @@ The calculation must be performed in this order:
 1. Calculate the drug-based starting point.
 2. Apply the defendant-role adjustment.
 3. Apply aggravating-factor increases.
-4. Calculate the notional sentence.
-5. Apply mitigating-factor reductions.
-6. Apply the guilty-plea reduction.
+4. Calculate the notional sentence (the result after role and aggravating adjustments only).
+5. Calculate every mitigating-factor reduction (including any single assistance classification) and the guilty-plea reduction as a non-compounding percentage of the notional sentence.
+6. Subtract the sum of all reductions from the notional sentence.
 7. Clamp the final sentence to zero months or greater.
+
+All reductions are non-compounding: each one is computed against the same notional sentence, never against a sentence that has already been reduced, and the individual reduction amounts are added together before being subtracted once. This means the order in which reductions are listed in the response does not change the final sentence.
 
 The starting point uses the bucketed sentencing-guideline interpolation. Each drug family has a series of quantity bands with a sentence range; a quantity is mapped to its band and interpolated linearly across the band's sentence range (`t = u`). Open-ended top bands predict the band floor, and the "at the sentencer's discretion" band predicts the previous band's ceiling. For a request with several drugs the starting point uses the notional-quantity method: for each drug, take the sentence the *total* quantity would attract in that drug's family, weight it by that drug's share of the total quantity, and sum the contributions.
 
@@ -283,26 +292,26 @@ For a reduction, `months` is returned as a positive magnitude and `direction` is
       "years": 0.21
     },
     {
-      "factor": "Assistance - useful",
-      "category": "mitigating",
-      "direction": "decrease",
-      "percentage": 6,
-      "baseMonths": 65.52,
-      "months": 3.93,
-      "years": 0.33
-    },
-    {
       "factor": "Plead guilty (earliest opportunity)",
       "category": "guiltyPlea",
       "direction": "decrease",
       "percentage": 33.3,
-      "baseMonths": 61.59,
-      "months": 20.51,
-      "years": 1.71
+      "baseMonths": 65.52,
+      "months": 21.82,
+      "years": 1.82
+    },
+    {
+      "factor": "Assistance - useful",
+      "category": "mitigating",
+      "direction": "decrease",
+      "percentage": 10,
+      "baseMonths": 65.52,
+      "months": 6.55,
+      "years": 0.55
     }
   ],
-  "finalSentenceMonths": 41.08,
-  "finalSentenceYears": 3.42
+  "finalSentenceMonths": 37.15,
+  "finalSentenceYears": 3.1
 }
 ```
 

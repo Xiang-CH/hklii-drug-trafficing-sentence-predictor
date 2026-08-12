@@ -166,6 +166,8 @@ Status: `200 OK`
       "factor": "Actual trafficker",
       "category": "defendantRole",
       "direction": "increase",
+      "percentage": 5,
+      "baseMonths": 60,
       "months": 3,
       "years": 0.25
     },
@@ -173,12 +175,14 @@ Status: `200 OK`
       "factor": "Plead guilty (earliest opportunity)",
       "category": "guiltyPlea",
       "direction": "decrease",
-      "months": 20.5,
-      "years": 1.71
+      "percentage": 33.3,
+      "baseMonths": 63,
+      "months": 20.98,
+      "years": 1.75
     }
   ],
-  "finalSentenceMonths": 42.5,
-  "finalSentenceYears": 3.54
+  "finalSentenceMonths": 42.02,
+  "finalSentenceYears": 3.5
 }
 ```
 
@@ -193,12 +197,16 @@ Status: `200 OK`
 | `adjustments[].factor` | Role, factor, or plea option applied. |
 | `adjustments[].category` | `defendantRole`, `aggravating`, `mitigating`, or `guiltyPlea`. |
 | `adjustments[].direction` | `increase` or `decrease`. |
+| `adjustments[].percentage` | Percentage used by the model. |
+| `adjustments[].baseMonths` | Sentence amount to which the adjustment was applied. |
 | `adjustments[].months` | Adjustment amount in months. |
 | `adjustments[].years` | Adjustment amount in years. |
 | `finalSentenceMonths` | Final predicted sentence in months. |
 | `finalSentenceYears` | Final predicted sentence in years. |
 
 Adjustment amounts are returned as positive values. Use `direction` to determine whether an amount is added or reduced.
+
+Reductions (mitigating factors and the guilty plea) are non-compounding: each is calculated against the notional sentence (the sentence after role and aggravating adjustments only) and the reduction amounts are summed before being subtracted once.
 
 ## Example request
 

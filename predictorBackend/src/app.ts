@@ -44,6 +44,8 @@ const PredictionAdjustmentSchema = z
 			'guiltyPlea',
 		]),
 		direction: z.enum(['increase', 'decrease']),
+		percentage: z.number(),
+		baseMonths: z.number(),
 		months: z.number(),
 		years: z.number(),
 	})
