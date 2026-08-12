@@ -69,9 +69,9 @@ const mitigatingAdjustments: Record<string, number> = {
 }
 
 const assistanceGuidelineAdjustments: Record<string, number> = {
-	'Assistance - limited': 0.07,
-	'Assistance - useful': 0.1,
-	'Assistance - testify': 0.17,
+	'Assistance - limited': 0.067,
+	'Assistance - useful': 0.09,
+	'Assistance - testify': 0.16,
 	'Assistance - risk': 0.32,
 }
 
