@@ -238,14 +238,13 @@ The configured assistance reductions are:
 The calculation must be performed in this order:
 
 1. Calculate the drug-based starting point.
-2. Apply the defendant-role adjustment.
-3. Apply aggravating-factor increases.
-4. Calculate the notional sentence (the result after role and aggravating adjustments only).
-5. Calculate every mitigating-factor reduction (including any single assistance classification) and the guilty-plea reduction as a non-compounding percentage of the notional sentence.
-6. Subtract the sum of all reductions from the notional sentence.
-7. Clamp the final sentence to zero months or greater.
+2. Apply the defendant-role increase as a percentage of the starting point, forming the post-role sentence.
+3. Apply aggravating-factor increases as percentages of the post-role sentence, forming the notional sentence.
+4. Calculate every mitigating-factor reduction (including any single assistance classification) and the guilty-plea reduction as a percentage of the notional sentence.
+5. Subtract the sum of all reductions from the notional sentence.
+6. Clamp the final sentence to zero months or greater.
 
-All reductions are non-compounding: each one is computed against the same notional sentence, never against a sentence that has already been reduced, and the individual reduction amounts are added together before being subtracted once. This means the order in which reductions are listed in the response does not change the final sentence.
+Adjustments are non-compounding within each stage: role increases are each computed against the unchanged starting point and summed once; aggravating increases are each computed against the unchanged post-role sentence and summed once; reductions are each computed against the unchanged notional sentence and summed once. No adjustment is applied to the result of another adjustment within the same stage, so the order of adjustments in a stage does not change the result. The stages are sequential, so aggravating increases do build on the post-role sentence, and reductions build on the notional sentence.
 
 The starting point uses the bucketed sentencing-guideline interpolation. Each drug family has a series of quantity bands with a sentence range; a quantity is mapped to its band and interpolated linearly across the band's sentence range (`t = u`). Open-ended top bands predict the band floor, and the "at the sentencer's discretion" band predicts the previous band's ceiling. For a request with several drugs the starting point uses the notional-quantity method: for each drug, take the sentence the *total* quantity would attract in that drug's family, weight it by that drug's share of the total quantity, and sum the contributions.
 

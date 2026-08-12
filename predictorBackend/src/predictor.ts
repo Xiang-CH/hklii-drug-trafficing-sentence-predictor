@@ -87,27 +87,6 @@ function round(value: number): number {
 	return Math.round((value + Number.EPSILON) * 100) / 100
 }
 
-function addAdjustment(
-	adjustments: Array<PredictionAdjustment>,
-	factor: string,
-	category: AdjustmentCategory,
-	direction: PredictionAdjustment['direction'],
-	baseMonths: number,
-	percentage: number,
-): number {
-	const months = baseMonths * percentage
-	adjustments.push({
-		factor,
-		category,
-		direction,
-		percentage: round(percentage * 100),
-		baseMonths: round(baseMonths),
-		months: round(Math.abs(months)),
-		years: round(Math.abs(months) / 12),
-	})
-	return direction === 'increase' ? baseMonths + months : baseMonths - months
-}
-
 function getStartingPoint(input: PredictionRequest): number {
 	const startingPoint = predictNotionalWeightedMonths(input.drugs)
 	if (startingPoint === null) {
@@ -123,7 +102,17 @@ export function predictSentence(
 ): PredictionResponse {
 	const startingPoint = getStartingPoint(input)
 	const adjustments: Array<PredictionAdjustment> = []
-	let currentMonths = startingPoint
+
+	const roleIncreases: Array<{
+		factor: string
+		category: 'defendantRole'
+		percentage: number
+	}> = []
+	const aggravatingIncreases: Array<{
+		factor: string
+		category: 'aggravating'
+		percentage: number
+	}> = []
 
 	if (input.defendantRole !== null) {
 		const isCourier = input.defendantRole === 'Courier / Storekeeper'
@@ -132,33 +121,24 @@ export function predictSentence(
 		)
 
 		if (!isCourier && hasCrossBorder) {
-			currentMonths = addAdjustment(
-				adjustments,
-				`${input.defendantRole} + Cross-border trafficking`,
-				'defendantRole',
-				'increase',
-				currentMonths,
-				roleCrossBorderAdjustments[input.defendantRole],
-			)
+			roleIncreases.push({
+				factor: `${input.defendantRole} + Cross-border trafficking`,
+				category: 'defendantRole',
+				percentage: roleCrossBorderAdjustments[input.defendantRole],
+			})
 		} else {
-			currentMonths = addAdjustment(
-				adjustments,
-				input.defendantRole,
-				'defendantRole',
-				'increase',
-				currentMonths,
-				roleAdjustments[input.defendantRole],
-			)
+			roleIncreases.push({
+				factor: input.defendantRole,
+				category: 'defendantRole',
+				percentage: roleAdjustments[input.defendantRole],
+			})
 
 			if (hasCrossBorder) {
-				currentMonths = addAdjustment(
-					adjustments,
-					'Cross-border trafficking',
-					'aggravating',
-					'increase',
-					currentMonths,
-					courierCrossBorderAdjustment,
-				)
+				aggravatingIncreases.push({
+					factor: 'Cross-border trafficking',
+					category: 'aggravating',
+					percentage: courierCrossBorderAdjustment,
+				})
 			}
 		}
 	}
@@ -176,19 +156,52 @@ export function predictSentence(
 			? ['Multiple Drugs', ...input.aggravatingFactors]
 			: input.aggravatingFactors
 	for (const factor of aggravatingFactors) {
-		currentMonths = addAdjustment(
-			adjustments,
+		aggravatingIncreases.push({
 			factor,
-			'aggravating',
-			'increase',
-			currentMonths,
-			aggravatingAdjustments[factor],
-		)
+			category: 'aggravating',
+			percentage: aggravatingAdjustments[factor],
+		})
+	}
+
+	// Role increases are non-compounding percentages of the starting point;
+	// they are summed before being added once to form the post-role sentence.
+	let totalRoleIncreaseMonths = 0
+	for (const increase of roleIncreases) {
+		const months = startingPoint * increase.percentage
+		totalRoleIncreaseMonths += months
+		adjustments.push({
+			factor: increase.factor,
+			category: increase.category,
+			direction: 'increase',
+			percentage: round(increase.percentage * 100),
+			baseMonths: round(startingPoint),
+			months: round(Math.abs(months)),
+			years: round(Math.abs(months) / 12),
+		})
+	}
+	const postRoleMonths = startingPoint + totalRoleIncreaseMonths
+
+	// Aggravating increases are non-compounding percentages of the post-role
+	// sentence; they are summed before being added once to form the notional
+	// sentence.
+	let totalAggravatingIncreaseMonths = 0
+	for (const increase of aggravatingIncreases) {
+		const months = postRoleMonths * increase.percentage
+		totalAggravatingIncreaseMonths += months
+		adjustments.push({
+			factor: increase.factor,
+			category: increase.category,
+			direction: 'increase',
+			percentage: round(increase.percentage * 100),
+			baseMonths: round(postRoleMonths),
+			months: round(Math.abs(months)),
+			years: round(Math.abs(months) / 12),
+		})
 	}
 
 	// All reductions are non-compounding percentages of the notional sentence
-	// (the sentence after role and aggravating adjustments only).
-	const reductionBaseMonths = currentMonths
+	// (the post-role sentence plus the summed aggravating increases).
+	const reductionBaseMonths = postRoleMonths + totalAggravatingIncreaseMonths
 	const reductions: Array<{
 		factor: string
 		category: 'mitigating' | 'guiltyPlea'
@@ -236,9 +249,7 @@ export function predictSentence(
 			years: round(Math.abs(months) / 12),
 		})
 	}
-	currentMonths = reductionBaseMonths - totalReductionMonths
-
-	const finalSentenceMonths = Math.max(0, currentMonths)
+	const finalSentenceMonths = Math.max(0, reductionBaseMonths - totalReductionMonths)
 	return {
 		status: 'supported',
 		startingPointMonths: round(startingPoint),

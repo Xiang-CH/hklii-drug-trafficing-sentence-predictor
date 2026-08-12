@@ -206,7 +206,7 @@ Status: `200 OK`
 
 Adjustment amounts are returned as positive values. Use `direction` to determine whether an amount is added or reduced.
 
-Reductions (mitigating factors and the guilty plea) are non-compounding: each is calculated against the notional sentence (the sentence after role and aggravating adjustments only) and the reduction amounts are summed before being subtracted once.
+Adjustments are non-compounding within each stage. Role increases are each calculated against the unchanged starting point and summed to form the post-role sentence; aggravating increases are each calculated against that post-role sentence and summed to form the notional sentence; reductions (mitigating factors and the guilty plea) are each calculated against the notional sentence and summed, then the total reduction is subtracted once.
 
 ## Example request
 
