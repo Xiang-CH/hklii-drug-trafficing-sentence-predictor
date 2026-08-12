@@ -304,14 +304,14 @@ For a reduction, `months` is returned as a positive magnitude and `direction` is
       "factor": "Assistance - useful",
       "category": "mitigating",
       "direction": "decrease",
-      "percentage": 10,
+      "percentage": 9,
       "baseMonths": 65.52,
-      "months": 6.55,
-      "years": 0.55
+      "months": 5.9,
+      "years": 0.49
     }
   ],
-  "finalSentenceMonths": 37.15,
-  "finalSentenceYears": 3.1
+  "finalSentenceMonths": 37.8,
+  "finalSentenceYears": 3.15
 }
 ```
 
