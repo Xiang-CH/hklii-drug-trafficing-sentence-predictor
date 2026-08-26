@@ -96,7 +96,7 @@ No `variant` field is required for other drug types. -->
 
 The drug-based starting point uses the bucketed sentencing-guideline interpolation. Each drug family has a series of quantity bands (in grams) with a sentence range; a quantity is mapped to its band and interpolated linearly across the band's sentence range. Open-ended top bands predict the band floor, and the "at the sentencer's discretion" band predicts the previous band's ceiling.
 
-For a request with several drugs the starting point uses the notional-quantity method: for each drug, take the sentence the *total* quantity would attract in that drug's family, weight it by that drug's share of the total quantity, and sum the contributions. The other drugs remain eligible for the `Multiple Drugs` aggravating factor.
+For a request with several drugs the starting point uses the notional-quantity method: for each drug, take the sentence the *total* quantity would attract in that drug's family, weight it by that drug's share of the total quantity, and sum the contributions. The `Multiple Drugs` aggravating factor is only applied when explicitly included in `aggravatingFactors`; it is never selected automatically.
 
 ## Defendant roles
 

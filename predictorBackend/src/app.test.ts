@@ -97,6 +97,34 @@ describe('predictor API', () => {
 
 		expect(response.status).toBe(200)
 		expect(body.startingPointMonths).toBe(31.16)
+		expect(body.adjustments).not.toEqual(
+			expect.arrayContaining([
+				expect.objectContaining({ factor: 'Multiple Drugs' }),
+			]),
+		)
+	})
+
+	it('only applies Multiple Drugs when explicitly requested', async () => {
+		const response = await post({
+			...baseRequest,
+			drugs: [
+				{ type: 'Cocaine', quantity: 10 },
+				{ type: 'Heroin', quantity: 10 },
+			],
+			aggravatingFactors: ['Multiple Drugs'],
+		})
+		const body = await response.json()
+
+		expect(response.status).toBe(200)
+		expect(body.adjustments).toEqual(
+			expect.arrayContaining([
+				expect.objectContaining({
+					factor: 'Multiple Drugs',
+					category: 'aggravating',
+					direction: 'increase',
+				}),
+			]),
+		)
 	})
 
 	// it('supports Midazolam powder and rejects the tablet variant', async () => {

@@ -1,6 +1,5 @@
 import type { PredictionRequest } from './schema.js'
 import {
-	drugFamilyFor,
 	predictNotionalWeightedMonths,
 } from './guidelineModel.js'
 
@@ -143,19 +142,7 @@ export function predictSentence(
 		}
 	}
 
-	const distinctFamilies = new Set(
-		input.drugs
-			.map((drug) => drugFamilyFor(drug.type))
-			.filter((family): family is string => family !== null),
-	)
-	const hasMultipleDrugs =
-		distinctFamilies.size >= 2 ||
-		input.aggravatingFactors.includes('Multiple Drugs')
-	const aggravatingFactors =
-		hasMultipleDrugs && !input.aggravatingFactors.includes('Multiple Drugs')
-			? ['Multiple Drugs', ...input.aggravatingFactors]
-			: input.aggravatingFactors
-	for (const factor of aggravatingFactors) {
+	for (const factor of input.aggravatingFactors) {
 		aggravatingIncreases.push({
 			factor,
 			category: 'aggravating',
