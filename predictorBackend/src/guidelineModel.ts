@@ -22,6 +22,7 @@ const drugFamilyMap: Record<string, string> = {
 	'Cannabis/THC': 'Cannabis',
 	Ecstasy: 'Ecstasy',
 	Nimetazepam: 'Nimetazepam',
+	Midazolam: 'Midazolam-powder',
 }
 
 export function drugFamilyFor(

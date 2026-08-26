@@ -141,6 +141,17 @@ describe('predictor API', () => {
 	// 	expect(tabletResponse.status).toBe(400)
 	// })
 
+	it('supports Midazolam using the powder guidelines', async () => {
+		const response = await post({
+			...baseRequest,
+			drugs: [{ type: 'Midazolam', quantity: 2 }],
+		})
+		const body = await response.json()
+
+		expect(response.status).toBe(200)
+		expect(body.startingPointMonths).toBe(0.02)
+	})
+
 	it('applies role and cross-border adjustments', async () => {
 		const response = await post({
 			...baseRequest,
