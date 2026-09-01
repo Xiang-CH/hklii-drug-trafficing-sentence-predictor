@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Drug Sentencing Predictor · Monorepo System",
+    "locale": "en",
+    "output": "system-architecture.html",
+    "quality_profile": "showcase",
+    "viewBox": [1300, 700],
+    "views": [
+      {
+        "id": "extraction",
+        "label": "Extraction",
+        "focus": ["hk-judgments", "feature-extraction", "mongo"],
+        "note": "The LLM pipeline turns judgment HTML into structured features."
+      },
+      {
+        "id": "verification",
+        "label": "Verification",
+        "focus": ["annotators", "feature-verification", "mongo"],
+        "note": "Annotators review and correct the LLM output."
+      },
+      {
+        "id": "prediction",
+        "label": "Prediction API",
+        "focus": ["public-clients", "predictor-backend"],
+        "note": "Guideline-based sentence prediction endpoint."
+      },
+      {
+        "id": "chat",
+        "label": "Data chat",
+        "focus": ["analysts", "data-bot-frontend", "data-bot", "mongo", "postgres"],
+        "note": "A LangGraph agent answers questions over verified features."
+      },
+      {
+        "id": "modeling",
+        "label": "Modeling",
+        "focus": ["mongo", "notebooks", "predictor-backend", "feature-verification"],
+        "note": "Notebook analysis turns verified features into model artifacts."
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "hk-judgments",
+      "type": "external",
+      "label": "HK Court Judgments",
+      "sublabel": "HKLII HTML source",
+      "pos": [20, 150],
+      "size": [130, 60]
+    },
+    {
+      "id": "feature-extraction",
+      "type": "backend",
+      "label": "featureExtraction",
+      "sublabel": "LLM extraction · Python",
+      "tag": "OpenAI LLM · Langfuse",
+      "pos": [200, 137],
+      "size": [170, 86]
+    },
+    {
+      "id": "mongo",
+      "type": "database",
+      "label": "MongoDB",
+      "sublabel": "drug-sentencing-predictor",
+      "tag": "4 collections",
+      "pos": [430, 115],
+      "size": [190, 130]
+    },
+    {
+      "id": "feature-verification",
+      "type": "frontend",
+      "label": "featureVerification",
+      "sublabel": "TanStack Start · React 19",
+      "tag": "Better-Auth",
+      "pos": [690, 137],
+      "size": [170, 86]
+    },
+    {
+      "id": "annotators",
+      "type": "external",
+      "label": "Annotators",
+      "sublabel": "Human verifiers",
+      "pos": [920, 150],
+      "size": [130, 60]
+    },
+    {
+      "id": "public-clients",
+      "type": "external",
+      "label": "API clients",
+      "sublabel": "Developers · integrators",
+      "pos": [20, 410],
+      "size": [130, 60]
+    },
+    {
+      "id": "predictor-backend",
+      "type": "backend",
+      "label": "predictorBackend",
+      "sublabel": "Hono · Azure Functions",
+      "tag": "guidelines + similar cases",
+      "pos": [200, 397],
+      "size": [170, 86]
+    },
+    {
+      "id": "notebooks",
+      "type": "backend",
+      "label": "notebooks",
+      "sublabel": "Python model analysis",
+      "tag": "model artifacts",
+      "pos": [430, 397],
+      "size": [190, 86]
+    },
+    {
+      "id": "data-bot",
+      "type": "backend",
+      "label": "dataBot",
+      "sublabel": "LangGraph agent · Python",
+      "tag": "MongoDB toolkit",
+      "pos": [690, 397],
+      "size": [170, 86]
+    },
+    {
+      "id": "data-bot-frontend",
+      "type": "frontend",
+      "label": "dataBot-frontend",
+      "sublabel": "Next.js chat UI",
+      "tag": "LangGraph SDK",
+      "pos": [920, 400],
+      "size": [160, 80]
+    },
+    {
+      "id": "analysts",
+      "type": "external",
+      "label": "Data analysts",
+      "sublabel": "Chat users",
+      "pos": [1120, 430],
+      "size": [130, 60]
+    },
+    {
+      "id": "postgres",
+      "type": "database",
+      "label": "PostgreSQL",
+      "sublabel": "checkpoint · memory store",
+      "pos": [920, 560],
+      "size": [150, 70]
+    }
+  ],
+  "connections": [
+    {
+      "id": "hk-to-extract",
+      "from": "hk-judgments",
+      "to": "feature-extraction",
+      "label": "judgment HTML",
+      "variant": "emphasis",
+      "labelAt": [175, 105]
+    },
+    {
+      "id": "extract-to-mongo",
+      "from": "feature-extraction",
+      "to": "mongo",
+      "label": "write judgement-html · llm-extracted-features",
+      "labelAt": [400, 300]
+    },
+    {
+      "id": "mongo-to-verify",
+      "from": "mongo",
+      "to": "feature-verification",
+      "label": "read judgement-html · llm-extracted-features",
+      "labelAt": [655, 70]
+    },
+    {
+      "id": "verify-to-mongo",
+      "from": "feature-verification",
+      "to": "mongo",
+      "label": "write verified-features",
+      "labelAt": [600, 90]
+    },
+    {
+      "id": "annotators-to-verify",
+      "from": "annotators",
+      "to": "feature-verification",
+      "label": "review · correct · verify",
+      "labelAt": [890, 250]
+    },
+    {
+      "id": "mongo-to-databot",
+      "from": "mongo",
+      "to": "data-bot",
+      "label": "query verified-features · judgement-html",
+      "labelAt": [650, 320]
+    },
+    {
+      "id": "mongo-to-notebooks",
+      "from": "mongo",
+      "to": "notebooks",
+      "label": "load verified-features",
+      "labelAt": [520, 330]
+    },
+    {
+      "id": "notebooks-to-predictor",
+      "from": "notebooks",
+      "to": "predictor-backend",
+      "label": "model artifacts",
+      "labelAt": [400, 510]
+    },
+    {
+      "id": "frontend-to-databot",
+      "from": "data-bot-frontend",
+      "to": "data-bot",
+      "label": "thread run · event stream",
+      "labelAt": [815, 520]
+    },
+    {
+      "id": "analysts-to-frontend",
+      "from": "analysts",
+      "to": "data-bot-frontend",
+      "label": "ask data questions",
+      "labelAt": [1100, 530]
+    },
+    {
+      "id": "databot-to-postgres",
+      "from": "data-bot",
+      "to": "postgres",
+      "label": "checkpoint · memory",
+      "labelAt": [890, 500]
+    },
+    {
+      "id": "clients-to-predictor",
+      "from": "public-clients",
+      "to": "predictor-backend",
+      "label": "POST /api/sentence-predictions",
+      "variant": "emphasis",
+      "labelAt": [175, 510]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Extraction & verification",
+      "items": [
+        "featureExtraction writes structured features to MongoDB",
+        "featureVerification lets annotators review and verify them"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "Prediction",
+      "items": [
+        "notebooks/ fits and evaluates sentence models",
+        "predictorBackend serves sentence and similar-case APIs"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Data chat",
+      "items": [
+        "dataBot queries verified features with LangGraph",
+        "dataBot-frontend streams chat; PostgreSQL stores checkpoints and memory"
+      ]
+    }
+  ]
+}

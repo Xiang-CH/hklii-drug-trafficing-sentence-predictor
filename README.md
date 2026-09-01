@@ -1,15 +1,28 @@
-## HKLII AI Drug Trafficking Sentence Predictor
+# HKLII drug sentencing predictor
 
-This repository contains all the code and resources for the HKLII AI Drug Trafficking Sentence Predictor. This project aims to predict the likelihood of drug trafficking sentences based on various input features. The model leverages advanced algorithms to analyze patterns in sentencing data and provide insights into potential outcomes for individuals involved in drug trafficking cases.
+This monorepo extracts features from Hong Kong court judgments, verifies them, trains sentencing models, and serves predictions and data chat.
 
-### Directory Structure
-```
-./
-├── featureExtraction/     # Python project for LLM-based feature extraction
-├── featureVerification/   # Typescript web app for manual verification of extracted features
-``` 
+## System diagram
 
-### Pipeline Overview
-1. featureExtraction: LLM-based feature extraction from judgement documents
-2. featureVerification: Manual verification of extracted features using LLMs
+![Drug sentencing predictor system diagram](diagrams/system-architecture.webp)
 
+[Open the interactive diagram](diagrams/system-architecture.html)
+
+## Components
+
+| Component | Purpose |
+| --- | --- |
+| [`featureExtraction/`](featureExtraction/) | Python LLM extraction from HKLII judgment HTML. |
+| [`featureVerification/`](featureVerification/) | TanStack web app for human review and verification. |
+| [`notebooks/`](notebooks/) | Data analysis, model fitting, and model artifacts. |
+| [`predictorBackend/`](predictorBackend/) | Hono and Azure Functions API for sentence predictions and similar cases. |
+| [`dataBot/`](dataBot/) | Python LangGraph agent for questions over verified data. |
+| [`dataBot-frontend/`](dataBot-frontend/) | Next.js chat interface for data analysts. |
+| MongoDB | Judgment HTML, extracted features, and verified features. |
+| PostgreSQL | LangGraph checkpoints and memory. |
+
+The main flow is:
+
+`HKLII → featureExtraction → MongoDB → featureVerification → notebooks → predictorBackend`
+
+`dataBot` reads verified data from MongoDB and serves `dataBot-frontend`.
