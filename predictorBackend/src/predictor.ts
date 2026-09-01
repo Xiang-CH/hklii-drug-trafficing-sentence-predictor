@@ -202,13 +202,15 @@ export function predictSentence(
 		}
 	}
 
-	const pleaAdjustment = guiltyPleaAdjustments[input.guiltyPlea]
-	if (pleaAdjustment !== undefined) {
-		reductions.push({
-			factor: input.guiltyPlea,
-			category: 'guiltyPlea',
-			percentage: pleaAdjustment,
-		})
+	if (input.guiltyPlea !== null) {
+		const pleaAdjustment = guiltyPleaAdjustments[input.guiltyPlea]
+		if (pleaAdjustment !== undefined) {
+			reductions.push({
+				factor: input.guiltyPlea,
+				category: 'guiltyPlea',
+				percentage: pleaAdjustment,
+			})
+		}
 	}
 
 	const assistanceFactor = input.mitigatingFactors.find(

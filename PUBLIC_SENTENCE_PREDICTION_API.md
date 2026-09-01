@@ -56,11 +56,11 @@ Accept: application/json
 <!-- | `drugs[].variant` | Conditional | Required only for `Midazolam`. | -->
 | `defendantRole` | No | One defendant role, or `null`. |
 | `additionalCircumstances` | No | Additional circumstance list. |
-| `guiltyPlea` | Yes | One guilty-plea option. |
+| `guiltyPlea` | No | One guilty-plea option, or `null` when unknown. |
 | `aggravatingFactors` | No | Aggravating-factor list. |
 | `mitigatingFactors` | No | Mitigating-factor list. |
 
-If omitted, `additionalCircumstances`, `aggravatingFactors`, and `mitigatingFactors` are treated as empty lists.
+If omitted, `additionalCircumstances`, `aggravatingFactors`, and `mitigatingFactors` are treated as empty lists, and `guiltyPlea` defaults to `null`.
 
 ## Drug types
 
@@ -117,8 +117,9 @@ The only accepted value for `additionalCircumstances` is:
 
 ## Guilty plea options
 
-`guiltyPlea` must be one of:
+`guiltyPlea` is optional and must be one of, or `null` when the plea is unknown:
 
+- `null`
 - `Plead not guilty`
 - `Plead guilty (earliest opportunity)`
 - `Plead guilty (before trial dates are set)`

@@ -85,6 +85,38 @@ describe('predictor API', () => {
 		expect(assistance.baseMonths).toBe(60)
 	})
 
+	it('allows a null guiltyPlea with no plea reduction', async () => {
+		const response = await post({
+			...baseRequest,
+			guiltyPlea: null,
+		})
+		const body = await response.json()
+
+		expect(response.status).toBe(200)
+		expect(body.status).toBe('supported')
+		expect(body.startingPointMonths).toBe(60)
+		expect(body.adjustments).not.toEqual(
+			expect.arrayContaining([
+				expect.objectContaining({ category: 'guiltyPlea' }),
+			]),
+		)
+	})
+
+	it('allows an omitted guiltyPlea with no plea reduction', async () => {
+		const { guiltyPlea: _guiltyPlea, ...withoutPlea } = baseRequest
+		const response = await post(withoutPlea)
+		const body = await response.json()
+
+		expect(response.status).toBe(200)
+		expect(body.status).toBe('supported')
+		expect(body.startingPointMonths).toBe(60)
+		expect(body.adjustments).not.toEqual(
+			expect.arrayContaining([
+				expect.objectContaining({ category: 'guiltyPlea' }),
+			]),
+		)
+	})
+
 	it('supports multiple drugs and Fluorodeschloroketamine', async () => {
 		const response = await post({
 			...baseRequest,

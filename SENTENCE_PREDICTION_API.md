@@ -66,11 +66,11 @@ Accept: application/json
 | `drugs[].variant` | string | Conditional | Required only for `Midazolam`; must be `powder`. |
 | `defendantRole` | string or `null` | No | One mutually exclusive defendant role. `null` means no role adjustment. |
 | `additionalCircumstances` | array | No | Additional circumstances associated with the selected role. |
-| `guiltyPlea` | string | Yes | Exactly one guilty-plea option. |
+| `guiltyPlea` | string or `null` | No | One guilty-plea option, or `null` when the plea is unknown. `null` applies no plea reduction. |
 | `aggravatingFactors` | array | No | Selected aggravating factors. |
 | `mitigatingFactors` | array | No | Selected mitigating factors. |
 
-If omitted, `additionalCircumstances`, `aggravatingFactors`, and `mitigatingFactors` default to empty arrays. Duplicate values in any array are invalid.
+If omitted, `additionalCircumstances`, `aggravatingFactors`, and `mitigatingFactors` default to empty arrays, and `guiltyPlea` defaults to `null`. Duplicate values in any array are invalid.
 
 ## Drug types
 
@@ -168,14 +168,17 @@ An additional circumstance may not be submitted without a `defendantRole`.
 
 ## Guilty plea
 
-Exactly one option is required:
+The field is optional. A single option may be submitted, or `null` may be sent when the plea is unknown:
 
+- `null`
 - `Plead not guilty`
 - `Plead guilty (earliest opportunity)`
 - `Plead guilty (before trial dates are set)`
 - `Plead guilty (before trial starts)`
 - `Plead guilty (first day of trial)`
 - `Plead guilty (during the trial)`
+
+When `guiltyPlea` is `null` or `Plead not guilty`, no guilty-plea reduction is applied.
 
 The guilty-plea reduction percentage is controlled by the server-side sentencing-guideline configuration. Clients must not submit their own percentage.
 

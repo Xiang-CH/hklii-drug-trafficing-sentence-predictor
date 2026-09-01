@@ -104,7 +104,7 @@ export const PredictionRequestSchema = z
 		additionalCircumstances: z
 			.array(AdditionalCircumstanceSchema)
 			.default([]),
-		guiltyPlea: GuiltyPleaSchema,
+		guiltyPlea: GuiltyPleaSchema.nullable().optional().default(null),
 		aggravatingFactors: z.array(AggravatingFactorSchema).default([]),
 		mitigatingFactors: z.array(MitigatingFactorSchema).default([]),
 	})
